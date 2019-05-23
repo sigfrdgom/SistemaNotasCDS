@@ -11,10 +11,10 @@ class Paginas extends Controller{
     }
 
     public function index(){
-        $usuarios = $this->ejemploModel->obtenerUsuarios();
+        $nombres = $this->ejemploModel->obtenerUsuarios();
         $datos = [
             'titulo' => "Bienvenidos A la plantilla MVC",
-            'usuarios' => $usuarios
+            'nombres' => $nombres
         ];
 
         $this->view('pages/inicio', $datos);

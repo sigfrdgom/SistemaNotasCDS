@@ -1,4 +1,4 @@
-<?php
+ <?php
 //clase encargada de cargar los modelos y las vistas
 class Controller{
 

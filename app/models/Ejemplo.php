@@ -7,7 +7,7 @@
         }
 
         public function obtenerUsuarios(){
-            $this->db->query("SELECT * FROM usuarios;");
+            $this->db->query("SELECT * FROM participante;");
             return $this->db->findAll();
         }
     }

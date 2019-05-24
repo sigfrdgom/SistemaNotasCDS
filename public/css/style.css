@@ -1,11 +1,8 @@
 body{
-<<<<<<< HEAD
     background: rgb(240, 216, 189);
-=======
-    background: rgb(221, 238, 240);
+    
 }
 p{
     font-size: 3em;
     color: blue;
->>>>>>> dfe6a905ac638fa11b9a77720e02bedc7da46aeb
 }

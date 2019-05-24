@@ -18,9 +18,10 @@ class TipoModuloModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO tipo_modulo FROM VALUES(:id_tipo_mpdulo, :nombre, :estado)');
+        $this->db->query('INSERT INTO tipo_modulo FROM VALUES(:id_tipo_modulo, :nombre, :estado)');
+        $this->db->bind(':id', $datos['id_tipo_modulo']);
         $this->db->bind(':nombre',$datos['nombre']);
-        $this->db->bind('estado', $datos['estado']);
+        $this->db->bind(':estado', $datos['estado']);
         if ($this->db->execute()){
             return true;
         }else{
@@ -30,9 +31,9 @@ class TipoModuloModel{
 
     public function update($datos){
         $this->db->query('UPDATE tipo_modulo SET nombre = :nombre, estado = :estado WHERE id_tipo_modulo = :id ');
-        $this->db->bind(':id', $datos['id']);
+        $this->db->bind(':id', $datos['id_tipo_modulo']);
         $this->db->bind(':nombre'. $datos['nombre']);
-        $this->db->bind('estado', $datos['estado']);
+        $this->db->bind(':estado', $datos['estado']);
         if($this->db->execute()){
             return true;
         }else{

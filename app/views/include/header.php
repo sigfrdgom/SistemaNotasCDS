@@ -94,7 +94,7 @@ desired effect
                                 <img src="<?php echo RUTA_URL; ?>/public/img/carlosduty.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Carlos Duty - Web Developer
+                                    Carlos Duty - Diseñador Web
                                     <small>Miembro de CDS Y experto con conexiones a base datos con CSS</small>
                                 </p>
                             </li>
@@ -102,10 +102,10 @@ desired effect
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
                                 </div>
                             </li>
                         </ul>
@@ -138,7 +138,7 @@ desired effect
             <!-- search form (Optional) -->
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <input type="text" name="q" class="form-control" placeholder="Buscar..">
                     <span class="input-group-btn">
               <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
               </button>
@@ -151,9 +151,20 @@ desired effect
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Menú</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-user-circle"></i> <span>Participantes</span></a></li>
+                <li><a href="#"><i class="fa fa-user-circle"></i> <span>Participantes</span></a></li>
                 <li><a href="#"><i class="fa fa-book"></i> <span>Notas</span></a></li>
                 <li><a href="#"><i class="fa fa-user-circle-o"></i> <span>Usuarios</span></a></li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-wrench"></i> <span>Mantenimientos</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?php echo RUTA_URL; ?>/paginas/tipomodulo">Tipo Modulos</a></li>
+                        <li><a href="<?php echo RUTA_URL; ?>/paginas/docentes">Docentes</a></li>
+                    </ul>
+                </li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-print"></i> <span>Reportes</span>
                         <span class="pull-right-container">
@@ -175,7 +186,3 @@ desired effect
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
-
-        <!-- Main content -->
-        <section class="content container-fluid">

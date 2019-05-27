@@ -3,13 +3,12 @@ class Paginas extends Controller{
     
     public function __construct() {
         //Cargar Modelos de la paginas;
-        $this->ejemploModel = $this->model('Ejemplo');
         $this->tipoModuloModel = $this->model('TipoModuloModel');
     }
 
     /*Vista Principal*/
     public function index(){
-        $nombres = $this->ejemploModel->obtenerUsuarios();
+        $nombres = array();
         $datos = [
             'titulo' => "Sistemas de Notas",
             'nombres' => $nombres

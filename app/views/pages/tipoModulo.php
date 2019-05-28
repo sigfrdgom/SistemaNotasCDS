@@ -25,30 +25,34 @@ require_once RUTA_APP . '/views/include/header.php';
 
     <div class="row">
 
-    <div class="card card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover display">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-                    <th colspan="2">Acciones</th>
-                </tr>
-                <?php
-                foreach ($datos['tipoModelo'] as $tipoModelos) {
-                    echo "<tr>
+        <div class="card card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover display">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($datos['tipoModelo'] as $tipoModelos) {
+                        echo "<tr>
                                 <td>$tipoModelos->nombre</td>
                                 <td>$tipoModelos->estado</td>
                                 <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                                 <td><a href='' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</a></td>
                                 </tr>
                                 ";
-                }
-                ?>
-            </table>
-        </div>
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
 
+        </div>
     </div>
-    <div>
 
 
 <?php

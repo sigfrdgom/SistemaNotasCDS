@@ -1,113 +1,157 @@
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+<!-- END content -->
 
-<!-- Main Footer -->
-<footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-        Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright&copy;
+</div>
+<!-- END content-page -->
+
+<footer class="footer">
+		<span class="text-right">
+		<strong>Copyright&copy;
         <script type="text/javascript">
             var year = new Date();
             document.write(year.getFullYear());
         </script>
         <a href="#">CDS Santa Ana</a>.</strong>Todos los derechos reservados.
+		</span>
+
 </footer>
 
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-        <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <!-- Home tab content -->
-        <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript:;">
-                        <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                        <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                            <p>Will be 23 on April 24th</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.control-sidebar-menu -->
-
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript:;">
-                        <h4 class="control-sidebar-subheading">
-                            Custom Template Design
-                            <span class="pull-right-container">
-                    <span class="label label-danger pull-right">70%</span>
-                  </span>
-                        </h4>
-
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.control-sidebar-menu -->
-
-        </div>
-        <!-- /.tab-pane -->
-        <!-- Stats tab content -->
-        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-        <!-- /.tab-pane -->
-        <!-- Settings tab content -->
-        <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-                <h3 class="control-sidebar-heading">General Settings</h3>
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Report panel usage
-                        <input type="checkbox" class="pull-right" checked>
-                    </label>
-
-                    <p>
-                        Some information about this general settings option
-                    </p>
-                </div>
-                <!-- /.form-group -->
-            </form>
-        </div>
-        <!-- /.tab-pane -->
-    </div>
-</aside>
-<!-- /.control-sidebar -->
-<!-- Add the sidebar's background. This div must be placed
-immediately after the control sidebar -->
-<div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
+<!-- END main -->
 
-<!-- REQUIRED JS SCRIPTS -->
+<script src="<?php echo RUTA_URL ?>/assets/js/modernizr.min.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/js/jquery.min.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/js/moment.min.js"></script>
 
-<!-- jQuery 3 -->
-<script src="<?php echo RUTA_URL; ?>/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="<?php echo RUTA_URL; ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo RUTA_URL; ?>/dist/js/adminlte.min.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/js/popper.min.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/js/bootstrap.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+<script src="<?php echo RUTA_URL ?>/assets/js/detect.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/js/fastclick.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/js/jquery.blockUI.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/js/jquery.nicescroll.js"></script>
+
+<!-- App js -->
+<script src="<?php echo RUTA_URL ?>/assets/js/pikeadmin.js"></script>
+
+<!-- BEGIN Java Script for this page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Counter-Up-->
+<script src="<?php echo RUTA_URL ?>/assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/plugins/counterup/jquery.counterup.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // data-tables
+        $('#example1').DataTable();
+
+        // counter-up
+        $('.counter').counterUp({
+            delay: 10,
+            time: 600
+        });
+    } );
+</script>
+
+<script>
+    var ctx1 = document.getElementById("lineChart").getContext('2d');
+    var lineChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: 'Dataset 1',
+                backgroundColor: '#3EB9DC',
+                data: [10, 14, 6, 7, 13, 9, 13, 16, 11, 8, 12, 9]
+            }, {
+                label: 'Dataset 2',
+                backgroundColor: '#EBEFF3',
+                data: [12, 14, 6, 7, 13, 6, 13, 16, 10, 8, 11, 12]
+            }]
+
+        },
+        options: {
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+
+
+    var ctx2 = document.getElementById("pieChart").getContext('2d');
+    var pieChart = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Red",
+                "Orange",
+                "Yellow",
+                "Green",
+                "Blue"
+            ]
+        },
+        options: {
+            responsive: true
+        }
+
+    });
+
+
+    var ctx3 = document.getElementById("doughnutChart").getContext('2d');
+    var doughnutChart = new Chart(ctx3, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Red",
+                "Orange",
+                "Yellow",
+                "Green",
+                "Blue"
+            ]
+        },
+        options: {
+            responsive: true
+        }
+
+    });
+</script>
+<!-- END Java Script for this page -->
+
 </body>
 </html>

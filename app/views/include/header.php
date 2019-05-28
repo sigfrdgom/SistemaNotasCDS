@@ -1,188 +1,137 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="<?php echo RUTA_URL; ?>/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo RUTA_URL; ?>/bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="<?php echo RUTA_URL; ?>/bower_components/Ionicons/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="<?php echo RUTA_URL; ?>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo RUTA_URL; ?>/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect. -->
-    <link rel="stylesheet" href="<?php echo RUTA_URL; ?>/dist/css/skins/skin-blue.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema CDS Notas</title>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
-    <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<?php echo RUTA_URL; ?>/assets/images/favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link href="<?php echo RUTA_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Font Awesome CSS -->
+    <link href="<?php echo RUTA_URL ?>/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Custom CSS -->
+    <link href="<?php echo RUTA_URL ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- BEGIN CSS for this page -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    <!-- END CSS for this page -->
+
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
 
-    <!-- Main Header -->
-    <header class="main-header">
+<body class="adminbody">
 
-        <!-- Logo -->
-        <a href="index.html" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>CDS</b>N</span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>CDS</b>NOTAS</span>
-        </a>
+<div id="main">
 
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                <span class="sr-only">Toggle navigation</span>
-            </a>
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
+    <!-- top bar navigation -->
+    <div class="headerbar">
 
-                    <!-- User Account Menu -->
-                    <li class="dropdown user user-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <!-- The user image in the navbar-->
-                            <img src="<?php echo RUTA_URL; ?>/public/img/carlosduty.jpg" class="user-image" alt="User Image">
-                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Carlos Duty</span>
+        <!-- LOGO -->
+        <div class="headerbar-left">
+            <a href="index" class="logo "><img alt="Logo" class="img-logo" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
+        </div>
+
+        <nav class="navbar-custom">
+
+            <ul class="list-inline float-right mb-0">
+
+                <li class="list-inline-item dropdown notif">
+                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="text-overflow"><small>Hola, Carlos</small> </h5>
+                        </div>
+
+                        <!-- item-->
+                        <a href="pro-profile.html" class="dropdown-item notify-item">
+                            <i class="fa fa-user"></i> <span>Perfil</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <!-- The user image in the menu -->
-                            <li class="user-header">
-                                <img src="<?php echo RUTA_URL; ?>/public/img/carlosduty.jpg" class="img-circle" alt="User Image">
 
-                                <p>
-                                    Carlos Duty - Diseñador Web
-                                    <small>Miembro de CDS Y experto con conexiones a base datos con CSS</small>
-                                </p>
-                            </li>
+                        <!-- item-->
+                        <a href="#" class="dropdown-item notify-item">
+                            <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
+                        </a>
 
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
-                                </div>
-                            </li>
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+                </li>
+            </ul>
+
+        </nav>
+
+    </div>
+    <!-- End Navigation -->
+
+
+    <!-- Left Sidebar -->
+    <div class="left main-sidebar">
+
+        <div class="sidebar-inner leftscroll">
+
+            <div id="sidebar-menu">
+
+                <ul>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-book"></i><span> Notas </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-user"></i><span> Usuarios </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-print"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Reporte 1</a></li>
+                            <li><a href="#">Reporte 2</a></li>
                         </ul>
                     </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+
+                    <li class="submenu">
+                        <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/tipoModulo">Tipo Modulo</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/modulo">Modulos</a></li>
+
+                        </ul>
                     </li>
+
                 </ul>
-            </div>
-        </nav>
-    </header>
-    <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
+                <div class="clearfix"></div>
 
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="<?php echo RUTA_URL; ?>/public/img/carlosduty.jpg" class="img-circle" alt="User Image">
-                </div>
-                <div class="pull-left info">
-                    <p>Carlos Duty</p>
-                    <!-- Status -->
-                </div>
             </div>
 
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Buscar..">
-                    <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-                </div>
-            </form>
-            <!-- /.search form -->
+            <div class="clearfix"></div>
 
-            <!-- Sidebar Menu -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">Menú</li>
-                <!-- Optionally, you can add icons to the links -->
-                <li><a href="#"><i class="fa fa-user-circle"></i> <span>Participantes</span></a></li>
-                <li><a href="#"><i class="fa fa-book"></i> <span>Notas</span></a></li>
-                <li><a href="#"><i class="fa fa-user-circle-o"></i> <span>Usuarios</span></a></li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-wrench"></i> <span>Mantenimientos</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?php echo RUTA_URL; ?>/paginas/tipomodulo">Tipo Modulos</a></li>
-                        <li><a href="<?php echo RUTA_URL; ?>/paginas/docentes">Docentes</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-print"></i> <span>Reportes</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">Reporte 1</a></li>
-                        <li><a href="#">Reporte 2</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-question"></i> <span>Preguntas Frecuentes</span></a></li>
-                <li><a href="#"><i class="fa fa-send"></i> <span>About US</span></a></li>
-            </ul>
-            <!-- /.sidebar-menu -->
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+        </div>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    </div>
+    <!-- End Sidebar -->
+
+
+    <div class="content-page">
+
+        <!-- Start content -->
+

@@ -11,7 +11,7 @@ class Paginas extends Controller{
         $nombres = array();
         $descripcion = "";
         $datos = [
-            'titulo' => "Sistemas de Notas",
+            'titulo' => "Inicio",
             'descripcion' => $descripcion,
             'nombres' => $nombres
         ];

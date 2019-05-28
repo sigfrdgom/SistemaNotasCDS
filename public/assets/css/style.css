@@ -269,6 +269,16 @@ a {
 .img-logo{
   background: white;
 }
+
+.img-fgk{
+  max-width: 70px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  background: #ffffff;
+  margin: 5% auto 2%;
+  display: block;
+}
 	  
 .navbar-custom {
   background-color: #002f6c ;

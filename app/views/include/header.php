@@ -85,6 +85,7 @@
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
+                <a href="index" ><img alt="Logo" class="img-fgk" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
 
                 <ul>
 
@@ -101,6 +102,15 @@
                     </li>
 
                     <li class="submenu">
+                        <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/tipoModulo">Tipo Modulo</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/modulo">Modulos</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-print"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="#">Reporte 1</a></li>
@@ -109,12 +119,7 @@
                     </li>
 
                     <li class="submenu">
-                        <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/tipoModulo">Tipo Modulo</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/modulo">Modulos</a></li>
-
-                        </ul>
+                        <a href="#"><i class="fa fa-fw fa-deviantart"></i><span> About Us </span> </a>
                     </li>
 
                 </ul>

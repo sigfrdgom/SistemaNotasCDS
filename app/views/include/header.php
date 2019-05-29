@@ -106,10 +106,6 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-user"></i><span> Usuarios </span> </a>
-                    </li>
-
-                    <li class="submenu">
                         <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/paginas/tipoModulo">Tipo Modulo</a></li>
@@ -131,6 +127,10 @@
                             <li><a href="#">Reporte 1</a></li>
                             <li><a href="#">Reporte 2</a></li>
                         </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-question"></i><span> Preguntas Frecuentes </span> </a>
                     </li>
 
                     <li class="submenu">

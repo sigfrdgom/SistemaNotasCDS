@@ -1,6 +1,6 @@
 <?php
 class Paginas extends Controller{
-    
+
     public function __construct() {
         //Cargar Modelos de la paginas;
         $this->tipoModuloModel = $this->model('TipoModuloModel');
@@ -28,6 +28,7 @@ class Paginas extends Controller{
     }
 
     /*Vista de Vista de Tipo Modulo*/
+    /*
     public function tipoModulo(){
         $tipoModulo = $this->tipoModuloModel->findAll();
         $descripcion = "Vista que muestra todos los tipos de modulos que existen";
@@ -38,6 +39,7 @@ class Paginas extends Controller{
         ];
         $this->view('pages/tipoModulo', $datos);
     }
+    */
 
     public function modulo(){
         $modulo = $this->moduloModel->findAll();
@@ -61,16 +63,7 @@ class Paginas extends Controller{
         $this->view('pages/curso', $datos);
     }
 
-    public function docente(){
-        $docente = $this->docenteModel->findAll();
-        $descripcion = "Vista que muestra todos los docentes que existen";
-        $datos = [
-            'titulo' => "Docente",
-            'descripcion' => $descripcion,
-            'docente' => $docente
-        ];
-        $this->view('pages/docente', $datos);
-    }
+
 
     public function matricula(){
         $matricula = $this->matriculaModel->findAll();

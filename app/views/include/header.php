@@ -90,6 +90,14 @@
                 <ul>
 
                     <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-user"></i><span> Cursos </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-book"></i><span> Modulos </span> </a>
+                    </li>
+
+                    <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>
                     </li>
 
@@ -106,6 +114,13 @@
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/paginas/tipoModulo">Tipo Modulo</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/paginas/modulo">Modulos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/nota">Notas</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/matricula">Matricula</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/curso">Cursos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/modulosCurso">Modulos por cursos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/porcentajesCurso">Porcentaje modulos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/participante">Participantes</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/paginas/docente">Docentes</a></li>
 
                         </ul>
                     </li>

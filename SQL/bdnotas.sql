@@ -195,7 +195,7 @@ ENGINE = InnoDB;
 -- Table `notas`.`porcentajes_curso`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `notas`.`porcentajes_curso` (
-  `id_porcentajes_curso` INT NOT NULL,
+  `id_porcentajes_curso` INT NOT NULL AUTO_INCREMENT,
   `id_curso` INT NOT NULL,
   `id_tipo_modulo` INT NOT NULL,
   `porcentaje` DOUBLE NOT NULL,

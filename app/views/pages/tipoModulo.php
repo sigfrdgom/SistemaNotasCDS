@@ -37,7 +37,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($datos['tipoModelo'] as $tipoModelos) {
+                    foreach ($datos['tipoModulo'] as $tipoModelos) {
                         echo "<tr>
                                 <td>$tipoModelos->nombre</td>
                                 <td>$tipoModelos->estado</td>

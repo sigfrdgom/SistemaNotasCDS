@@ -18,8 +18,9 @@ class TipoModuloModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO tipo_modulo FROM VALUES(:id_tipo_modulo, :nombre, :estado)');
-        $this->db->bind(':nombre',$datos['nombre']);
+        $this->db->query('INSERT INTO tipo_modulo VALUES(:id_tipo_modulo, :nombre, :estado)');
+        $this->db->bind(':id_tipo_modulo',null);
+        $this->db->bind(':nombre', $datos['nombre']);
         $this->db->bind(':estado', $datos['estado']);
         if ($this->db->execute()){
             return true;

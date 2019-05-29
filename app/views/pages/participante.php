@@ -163,15 +163,15 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="pdui" class="mrg-spr-ex">DUI del participante:</label>
                         <input type="text" name="pdui" id="pdui" placeholder="Ingresa si posee Ej. 0123456-0" 
-                        class="form-control pad-extra-input"  pattern='[0-9]{8}[-]{1}[0-9]{1}'>
+                        class="form-control pad-extra-input"  pattern='[0-9]{8}[-]{1}[0-9]{1}' required>
                         
                         <label for="pnit" class="mrg-spr-ex">NIT del participante:</label>
                         <input type="text" name="pnit" id="pnit" placeholder="Ingresa si posee Ej. 0210-010101-100-1" 
-                        class="form-control pad-extra-input" pattern='[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{3}[-]{1}[0-9]{1}'>
+                        class="form-control pad-extra-input" pattern='[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{3}[-]{1}[0-9]{1}' required>
                         
                         <label for="pcarnet_minoridad" class="mrg-spr-ex">Carnet de minoridad del participante:</label>
                         <input type="text" name="pcarnet_minoridad" id="pcarnet" placeholder="Ingresa si posee Ej. 1234567" 
-                        class="form-control pad-extra-input" pattern='[0-9]{7}'>
+                        class="form-control pad-extra-input" pattern='[0-9]{7}' required>
                         
                         <label for="pdireccion" class="mrg-spr-ex">Direccion del participante:</label>
                         <input type="text" name="pdireccion" placeholder="Escribe la direccion del participante" 
@@ -208,7 +208,6 @@ require_once RUTA_APP . '/views/include/header.php';
                                     </label>
                                 </div>         
                             </div>
-                    
         </div>
         
         <!-- Modal footer -->

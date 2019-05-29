@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="<?php echo RUTA_URL; ?>/assets/images/favicon.ico">
 
     <!-- Bootstrap CSS -->
-    <link href="<?php echo RUTA_URL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo RUTA_URL ?>/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Font Awesome CSS -->
     <link href="<?php echo RUTA_URL ?>/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -108,15 +108,15 @@
                     <li class="submenu">
                         <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/tipoModulo">Tipo Modulo</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/modulo">Modulos</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/nota">Notas</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/matricula">Matricula</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/curso">Cursos</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/modulosCurso">Modulos por cursos</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/porcentajesCurso">Porcentaje modulos</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/participante">Participantes</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/paginas/docente">Docentes</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/tipoModulo">Tipo Modulo</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/nota">Notas</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/curso">Cursos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/modulosCurso">Modulos por cursos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/porcentajesCurso">Porcentaje modulos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/participante">Participantes</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/docente">Docentes</a></li>
 
                         </ul>
                     </li>

@@ -4,7 +4,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
 ?>
  <!-- BEGIN CSS for this page -->
- <style>
+<style>
         .parsley-error {
             border-color: #ff5d48 !important;
         }
@@ -35,7 +35,7 @@ require_once RUTA_APP . '/views/include/header.php';
         .form-section.current {
             display: inherit;
         }
-    </style>
+</style>
 
     <!-- Start content -->
     <div class="content">
@@ -112,6 +112,12 @@ require_once RUTA_APP . '/views/include/header.php';
 
         </div>
     </div>
+
+
+
+
+
+    
     <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable">
       <div class="modal-content">
@@ -124,7 +130,7 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" action="#" autocomplete="off" action="#" data-parsley-validate novalidate >
+                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/participante/create"data-parsley-validate novalidate >
 
                         <label for="pnombres" class="mrg-spr-ex">Nombres del participante: </label>
                         <input type="text" name="pnombres" placeholder="Escribe los nombres del participante" 

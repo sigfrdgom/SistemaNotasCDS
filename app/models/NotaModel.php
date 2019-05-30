@@ -18,7 +18,7 @@ class NotaModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO nota FROM VALUES(:id_nota, :id_participante, :id_modulos_curso, :notas_modulo, :nota_final, :observaciones) ;');
+        $this->db->query('INSERT INTO nota VALUES(:id_nota, :id_participante, :id_modulos_curso, :notas_modulo, :nota_final, :observaciones) ;');
         $this->db->bind(':id_participante',$datos['id_participante']);
         $this->db->bind(':id_modulos_curso',$datos['id_modulos_curso']);
         $this->db->bind(':notas_modulo',$datos['notas_modulo']);

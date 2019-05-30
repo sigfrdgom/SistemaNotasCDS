@@ -18,7 +18,7 @@ class PorcentajesCursoModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO porcentajes_curso FROM VALUES(:id_porcentajes_curso, :id_curso, :id_tipo_modulo, :porcentaje, :observacion)');
+        $this->db->query('INSERT INTO porcentajes_curso VALUES(:id_porcentajes_curso, :id_curso, :id_tipo_modulo, :porcentaje, :observacion)');
         $this->db->bind(':id_curso',$datos['id_curso']);
         $this->db->bind(':id_tipo_modulo', $datos['id_tipo_modulo']);
         $this->db->bind(':porcentaje', $datos['porcentaje']);

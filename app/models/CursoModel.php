@@ -18,7 +18,7 @@ class CursoModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO curso FROM VALUES(:id_curso, :nombre_curso, :cohorte, :descripcion)');
+        $this->db->query('INSERT INTO curso VALUES(:id_curso, :nombre_curso, :cohorte, :descripcion)');
         $this->db->bind(':id_curso', $datos['id_curso']);
         $this->db->bind(':nombre_curso', $datos['nombre_curso']);
         $this->db->bind(':cohorte', $datos['cohorte']);

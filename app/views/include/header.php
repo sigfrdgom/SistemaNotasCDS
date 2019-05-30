@@ -22,6 +22,42 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
     <!-- END CSS for this page -->
 
+    <style>
+
+        .mrg-spr-ex{
+            margin-top:1.25em;
+        }
+        .parsley-error {
+            border-color: #ff5d48 !important;
+        }
+
+        .parsley-errors-list.filled {
+            display: block;
+        }
+
+        .parsley-errors-list {
+            display: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .parsley-errors-list > li {
+            font-size: 12px;
+            list-style: none;
+            color: #ff5d48;
+            margin-top: 5px;
+        }
+
+        .form-section {
+            padding-left: 15px;
+            border-left: 2px solid #FF851B;
+            display: none;
+        }
+
+        .form-section.current {
+            display: inherit;
+        }
+</style>
 </head>
 
 <body class="adminbody">

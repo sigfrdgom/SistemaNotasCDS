@@ -18,7 +18,7 @@ class DocenteModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO participante FROM VALUES(:id_docente, :nombres, :apellidos, :fecha_nacimiento, :sexo, :dui, :nit, :especialidad, :tipo_usuario, :pass, :estado)');
+        $this->db->query('INSERT INTO participante VALUES(:id_docente, :nombres, :apellidos, :fecha_nacimiento, :sexo, :dui, :nit, :especialidad, :tipo_usuario, :pass, :estado)');
         $this->db->bind(':nombres',$datos['nombres']);
         $this->db->bind(':apellidos',$datos['apellidos']);
         $this->db->bind(':fecha_nacimiento',$datos['fecha_nacimiento']);

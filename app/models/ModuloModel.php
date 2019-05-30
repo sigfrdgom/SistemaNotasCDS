@@ -18,7 +18,7 @@ class ModuloModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO modulo FROM VALUES(:id_modulo, :nombre_modulo, :descripcion_modulo, :horas_modulo, :tipo_modulo, :evaluaciones)');
+        $this->db->query('INSERT INTO modulo  VALUES(:id_modulo, :nombre_modulo, :descripcion_modulo, :horas_modulo, :tipo_modulo, :evaluaciones)');
         $this->db->bind(':id', $datos['id_modulo']);
         $this->db->bind(':nombre_modulo',$datos['nombre_modulo']);
         $this->db->bind(':descripcion_modulo', $datos['descripcion_modulo']);

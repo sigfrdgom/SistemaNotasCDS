@@ -18,7 +18,7 @@ class MatriculaModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO matricula FROM VALUES(:id_matricula, :id_curso, :id_participante, :estado, :observaciones) ;');
+        $this->db->query('INSERT INTO matricula VALUES(:id_matricula, :id_curso, :id_participante, :estado, :observaciones) ;');
         $this->db->bind(':id_curso',$datos['id_curso']);
         $this->db->bind(':id_participante',$datos['id_participante']);
         $this->db->bind(':estado',$datos['estado']);

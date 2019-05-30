@@ -3,39 +3,8 @@
 require_once RUTA_APP . '/views/include/header.php';
 
 ?>
- <!-- BEGIN CSS for this page -->
-<style>
-        .parsley-error {
-            border-color: #ff5d48 !important;
-        }
+<!-- BEGIN CSS for this page -->
 
-        .parsley-errors-list.filled {
-            display: block;
-        }
-
-        .parsley-errors-list {
-            display: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .parsley-errors-list > li {
-            font-size: 12px;
-            list-style: none;
-            color: #ff5d48;
-            margin-top: 5px;
-        }
-
-        .form-section {
-            padding-left: 15px;
-            border-left: 2px solid #FF851B;
-            display: none;
-        }
-
-        .form-section.current {
-            display: inherit;
-        }
-</style>
 
     <!-- Start content -->
     <div class="content">
@@ -48,7 +17,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;  </h1>
 
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarParticipante">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo participante
                     </button>
 
@@ -113,12 +82,7 @@ require_once RUTA_APP . '/views/include/header.php';
         </div>
     </div>
 
-
-
-
-
-    
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="agregarParticipante">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable">
       <div class="modal-content">
       
@@ -134,11 +98,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="pnombres" class="mrg-spr-ex">Nombres del participante: </label>
                         <input type="text" name="pnombres" placeholder="Escribe los nombres del participante" 
-                        class="form-control " required pattern='[a-zA-zÑñ ]{1,64}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
                         <label for="papellidos" class="mrg-spr-ex">Apellidos del participante:</label>
                         <input type="text" name="papellidos" placeholder="Escribe los apellidos del participante" 
-                        class="form-control " required pattern='[a-zA-zÑn ]{1,64}'> 
+                        class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{1,64}'> 
 
                         <label for="pfecha_nacimiento" class="mrg-spr-ex">Fecha de nacimiento del participante:</label>
                         <input type="date" name="pfechanacimiento" placeholder="DD/MM/AAAA" class="form-control" required
@@ -181,7 +145,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         
                         <label for="pdireccion" class="mrg-spr-ex">Direccion del participante:</label>
                         <input type="text" name="pdireccion" placeholder="Escribe la direccion del participante" 
-                        class="form-control pad-extra-input" required pattern='[a-zA-z0-9/.#, ]{1,64}'>
+                        class="form-control pad-extra-input" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9/.#, ]{1,64}'>
 
                         <label for="pdtelefono" class=" mrg-spr-ex">Telefono del participante:</label>
                         <input type="text" name="ptelefono" id="ptelefono" placeholder="Escribe el telefono del participante" 

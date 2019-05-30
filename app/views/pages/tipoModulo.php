@@ -77,8 +77,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                 echo "<tr>
                                 <td>$tipoModelos->nombre</td>
                                 <td>$tipoModelos->estado</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><a href='' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</a></td>
+                                <td><a href='' class=' btn btn-warning '><span class='fa fa-edit'></span> Editar</a></td>
+                                <td><a id='btn_eliminar2' href='tipoModulo/delete/$tipoModelos->id_tipo_modulo' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</a></td>
                                 </tr>
                                 ";
                             }
@@ -126,13 +126,8 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         </div>
                     </div><!-- end card-->
+
                 </div>
-
-
-            </div>
-
-
-
 
 
         </div>
@@ -142,9 +137,13 @@ require_once RUTA_APP . '/views/include/header.php';
 
     </div>
     <!-- END content -->
-
+    <script src="assets/plugins/switchery/switchery.min.js"></script>
 
 <?php
 /*Importacion de Footer de la aplicacion */
 require_once RUTA_APP . '/views/include/footer.php';
+
 ?>
+
+
+

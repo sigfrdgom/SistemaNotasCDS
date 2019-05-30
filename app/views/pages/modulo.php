@@ -75,7 +75,7 @@ require_once RUTA_APP . '/views/include/header.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo usuario</h4>
+          <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo modulo</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -83,78 +83,34 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="modal-body">
                     <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/docente/create"data-parsley-validate novalidate >
 
-                        <label for="dnombres" class="mrg-spr-ex">Nombres del usuario: </label>
-                        <input type="text" name="dnombres" placeholder="Escribe los nombres del usuario" 
+                        <label for="mnombre" class="mrg-spr-ex">Nombre del modulo: </label>
+                        <input type="text" name="mnombre" placeholder="Escribe el nombre del modulo" 
                         class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
-                        <label for="dapellidos" class="mrg-spr-ex">Apellidos del usuario:</label>
-                        <input type="text" name="dapellidos" placeholder="Escribe los apellidos del usuario" 
+                        <label for="mdescripcion" class="mrg-spr-ex">Descripcion del modulo:</label>
+                        <input type="text" name="mdescripcion" placeholder="Escribe la descripcion del modulo" 
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,255}'>
+
+                        <label for="mhoras" class="mrg-spr-ex">Horas del modulo:</label>
+                        <input type="text" name="mhoras" placeholder="Escribe las horas del modulo" 
                         class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{1,64}'> 
 
-                        <label for="dfecha_nacimiento" class="mrg-spr-ex">Fecha de nacimiento del usuario:</label>
-                        <input type="date" name="dfechanacimiento" placeholder="DD/MM/AAAA" class="form-control" required
-                        min="<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 65 year  -3 month"));?>" 
-                        max="<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 18 year  -3 month"));?>"> 
+                        <label for="ctipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
+								<select class="form-control select2"  name="csede" required>
+                                    <option value="">Selecciona un tipo</option>    
+                                        <?php
+                                            foreach ($datos['tipoModulo'] as $tm) {
+                                                echo " <option value='$tm->id_tipo_modulo'>$tm->nombre</option>";
+                                            }
+                                        ?>
+								</select>
+
+                        <label for="mevaluacions" class="mrg-spr-ex">Cantidad de evaluacion:</label>
+                        <input type="number" name="mevaluaciones" placeholder="Escribe la cantidad de evaluaciones del modulo" 
+                        class="form-control " min="0" max="10" step="1" required>
                         
-                        <label class="mrg-spr-ex" >Sexo del usuario:</label>
-                            <div style="margin-left:2em;">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo1" value="MASCULINO" required>
-                                        Masculino
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo2" value="FEMENINO" required>
-                                        Femenimo
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo3" value="INEDFINIDO" required>
-                                        Indefinido
-                                    </label>
-                                </div>         
-                            </div>
 
-                        <label for="ddui" class="mrg-spr-ex">DUI del usuario:</label>
-                        <input type="text" name="ddui" id="ddui" placeholder="Ingresa el DUI Ej. 0123456-0" 
-                        class="form-control pad-extra-input"  pattern='[0-9]{8}[-]{1}[0-9]{1}' required>
-                        
-                        <label for="dnit" class="mrg-spr-ex">NIT del usuario:</label>
-                        <input type="text" name="dnit" id="dnit" placeholder="Ingresa el NIT Ej. 0210-010101-100-1" 
-                        class="form-control pad-extra-input" pattern='[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{3}[-]{1}[0-9]{1}' required>
-
-                        <label for="despecialidad" class="mrg-spr-ex">Especialidad del usuario:</label>
-                        <input type="text" name="despecialidad" placeholder="Escribe la especialidad del usuario" 
-                        class="form-control pad-extra-input" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9/.#, ]{1,64}'>
-
-                        <label class="mrg-spr-ex" >Tipo de usuario:</label>
-                            <div style="margin-left:2em;">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="dtipo" id="tipo1" value="ADMINISTRADOR" required>
-                                        Adimistrador
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="dtipo" id="tipo2" value="DOCENTE" required>
-                                        Docente
-                                    </label>
-                                </div>         
-                            </div>
-
-                        <label for="ppass" class="mrg-spr-ex">Ingresa un password para el participante:</label>
-                        <input type="password" name="ppass" placeholder="Escribe un password para el participante" 
-                        class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'>
-
-                        <!-- <label for="ppassc" class="mrg-spr-ex">Confirma el password para el participante:</label>
-                        <input type="password" name="ppassc" placeholder="Confirma el password para el participante" 
-                        class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'> -->
-
-                        <label class="mrg-spr-ex" >Estado del participante:</label>
+                        <label class="mrg-spr-ex" >Estado del modulo:</label>
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">

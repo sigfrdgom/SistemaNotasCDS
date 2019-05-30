@@ -4,21 +4,18 @@ require_once RUTA_APP . '/views/include/header.php';
 
 ?>
 
-    <!-- Start content -->
-    <div class="content">
+<!-- Start content -->
+<div class="content">
 
-    <div class="container-fluid">
-
+<div class="container-fluid">
     <div class="row">
         <div class="col-xl-12">
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
-
                 <!-- El boton para agregar a traves de un modal -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModulo">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo
                     </button>
-
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
@@ -35,15 +32,15 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="table-responsive">
                 <table class="table table-bordered table-hover display">
                     <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Duracion horas</th>
-                        <th>TipoModulo</th>
-                        <th>Evaluaciones</th>
-                        <th>Estado</th>
-                        <th colspan="2">Acciones</th>
-                    </tr>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Duracion horas</th>
+                            <th>TipoModulo</th>
+                            <th>Evaluaciones</th>
+                            <th>Estado</th>
+                            <th colspan="2">Acciones</th>
+                        </tr>
                     </thead>
                     <tbody>
                     <?php
@@ -64,13 +61,12 @@ require_once RUTA_APP . '/views/include/header.php';
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 
 
 <div class="modal fade" id="agregarModulo">
-    <div class="modal-dialog modal-xl  modal-dialog-scrollable">
+    <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
       
         <!-- Modal Header -->
@@ -81,7 +77,7 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/docente/create"data-parsley-validate novalidate >
+                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/modulo/create"data-parsley-validate novalidate >
 
                         <label for="mnombre" class="mrg-spr-ex">Nombre del modulo: </label>
                         <input type="text" name="mnombre" placeholder="Escribe el nombre del modulo" 
@@ -97,18 +93,13 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="ctipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
 								<select class="form-control select2"  name="csede" required>
-                                    <option value="">Selecciona un tipo</option>    
+                                    <option value="">Selecciona un tipo de modulo</option>    
                                         <?php
                                             foreach ($datos['tipoModulo'] as $tm) {
                                                 echo " <option value='$tm->id_tipo_modulo'>$tm->nombre</option>";
                                             }
                                         ?>
 								</select>
-
-                        <label for="mevaluacions" class="mrg-spr-ex">Cantidad de evaluacion:</label>
-                        <input type="number" name="mevaluaciones" placeholder="Escribe la cantidad de evaluaciones del modulo" 
-                        class="form-control " min="0" max="10" step="1" required>
-                        
 
                         <label class="mrg-spr-ex" >Estado del modulo:</label>
                             <div style="margin-left:2em;">
@@ -125,6 +116,11 @@ require_once RUTA_APP . '/views/include/header.php';
                                     </label>
                                 </div>         
                             </div>
+
+                        <label for="mevaluacions" class="mrg-spr-ex">Cantidad de evaluaciones:</label>
+                        <input type="number" name="mevaluaciones" placeholder="Escribe la cantidad de evaluaciones del modulo" 
+                        class="form-control " min="0" max="10" step="1" required>
+            
         </div>
         
         <!-- Modal footer -->
@@ -134,7 +130,6 @@ require_once RUTA_APP . '/views/include/header.php';
             </form>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
-        
       </div>
     </div>
 </div>

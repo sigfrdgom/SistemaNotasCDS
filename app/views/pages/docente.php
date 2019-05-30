@@ -77,7 +77,7 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
 
     <div class="modal fade" id="agregarUsuario">
-    <div class="modal-dialog modal-xl  modal-dialog-scrollable">
+    <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
       
         <!-- Modal Header -->

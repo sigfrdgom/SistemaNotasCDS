@@ -76,7 +76,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
 <!-- El modal para agregar un nuevo curso -->
 <div class="modal fade" id="agregarCurso">
-    <div class="modal-dialog modal-xl  modal-dialog-scrollable">
+    <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
       
         <!-- Modal Header -->

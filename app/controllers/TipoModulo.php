@@ -21,11 +21,11 @@ class TipoModulo extends Controller{
     public function create(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $datos = [
-                'nombre' => trim($_POST['nombre']),
+                'nombre' => trim($_POST['nombreTipoModulo']),
                 'estado' => trim($_POST['estado'])
             ];
-            if($this->tipoModuloModel->crate($datos)){
-                redireccionar('tipomodulo');
+            if($this->tipoModuloModel->create($datos)){
+                redireccionar('tipoModulo');
             }else{
                 die("Error al insertar los datos");
             }
@@ -36,6 +36,5 @@ class TipoModulo extends Controller{
             ];
             $this->view('pages/tipoModulo', $datos);
         }
-
     }
 }

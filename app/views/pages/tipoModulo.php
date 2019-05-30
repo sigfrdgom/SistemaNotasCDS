@@ -60,6 +60,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
             <div class="row">
 
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="card card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover display">
@@ -89,75 +90,49 @@ require_once RUTA_APP . '/views/include/header.php';
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h3>Nuevo Registro</h3>
-                    </div>
 
-                    <div class="card-body">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h3>Nuevo Registro</h3>
+                        </div>
 
-                        <form action="#" data-parsley-validate novalidate>
-                            <div class="form-group">
-                                <label for="userName">Nombre de Usuario<span class="text-danger">*</span></label>
-                                <input type="text" name="nick" data-parsley-trigger="change" required
-                                       placeholder="Ingrese el nombre de usuario" class="form-control" id="userName">
-                            </div>
-                            <div class="form-group">
-                                <label for="emailAddress">Email address<span class="text-danger">*</span></label>
-                                <input type="email" name="email" data-parsley-trigger="change" required
-                                       placeholder="Enter email" class="form-control" id="emailAddress">
-                            </div>
-                            <div class="form-group">
-                                <label for="pass1">Password<span class="text-danger">*</span></label>
-                                <input id="pass1" type="password" placeholder="Password" required class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="passWord2">Confirm Password <span class="text-danger">*</span></label>
-                                <input data-parsley-equalto="#pass1" type="password" required placeholder="Password"
-                                       class="form-control" id="passWord2">
-                            </div>
-                            <div class="form-group">
-                                <label>URL</label>
-                                <div>
-                                    <input data-parsley-type="url" type="url" class="form-control" required
-                                           placeholder="URL"/>
+                        <div class="card-body">
+
+                            <form method="POST" action="<?php echo RUTA_URL ?>/tipoModulo/create" data-parsley-validate novalidate>
+                                <div class="form-group">
+                                    <label for="idTipoModulo">Nombre de Tipo<span class="text-danger">*</span></label>
+                                    <input type="text" name="nombreTipoModulo" data-parsley-trigger="change" required
+                                           placeholder="Ingrese el nombre de usuario" class="form-control" id="idTipoModulo">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Number</label>
-                                <div>
-                                    <input data-parsley-type="number" type="text" class="form-control" required
-                                           placeholder="Enter only numbers"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Textarea</label>
-                                <div>
-                                    <textarea required class="form-control"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <input id="remember-1" type="checkbox">
-                                    <label for="remember-1"> Remember me </label>
-                                </div>
-                            </div>
 
-                            <div class="form-group text-right m-b-0">
-                                <button class="btn btn-primary" type="submit">
-                                    Submit
-                                </button>
-                                <button type="reset" class="btn btn-secondary m-l-5">
-                                    Cancel
-                                </button>
-                            </div>
+                                <div class="form-group">
+                                    <label for="idEstado">Estado<span class="text-danger">*</span></label>
+                                    <input type="text" name="estado" data-parsley-trigger="change" required
+                                           placeholder="Estado" class="form-control" id="idEstado">
+                                </div>
 
-                        </form>
 
-                    </div>
-                </div><!-- end card-->
+                                <div class="form-group text-left m-b-0">
+                                    <button class="btn btn-primary" type="submit">
+                                        Guardar
+                                    </button>
+                                    <button type="reset" class="btn btn-secondary m-l-5">
+                                        Cancelar
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div><!-- end card-->
+                </div>
+
+
             </div>
+
+
+
 
 
         </div>

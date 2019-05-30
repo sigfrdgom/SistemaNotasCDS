@@ -37,4 +37,47 @@ class TipoModulo extends Controller{
             $this->view('pages/tipoModulo', $datos);
         }
     }
+
+    public function update($id){
+        if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
+            $datos = [
+                'nombre' => trim($_POST['nombreTipoModulo']),
+                'estado' => trim($_POST['estado'])
+            ];
+            if($this->tipoModuloModel->update($datos)){
+                redireccionar('tipoModulo');
+            }else{
+                die("Error al Actualizar los datos");
+            }
+        }else{
+            //Obtener la informacion de la entidad
+            $info = $this->tipoModuloModel->findById($id);
+            $datos = [
+                'id_tipo_modulo' => $info['id_tipo_modulo'],
+                'nombre' => $info['nombre'],
+                'estado' => $info['estado']
+            ];
+            $this->view('pages/tipoModulo', $datos);
+        }
+    }
+
+    public function delete($id){
+        if (isset($id)){
+            if($this->tipoModuloModel->delete($id)){
+                redireccionar('tipoModulo');
+            }else{
+                die("Error al eliminar los datos");
+            }
+        }else{
+            $this->index();
+        }
+    }
+
+    public function  findById($id){
+        if(isset($id)){
+            return $this->tipoModuloModel->findById($id);
+        }else{
+            die("Error al buscar el dato");
+        }
+    }
 }

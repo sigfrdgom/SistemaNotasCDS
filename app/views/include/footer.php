@@ -29,11 +29,36 @@
 <script src="<?php echo RUTA_URL ?>/assets/js/fastclick.js"></script>
 <script src="<?php echo RUTA_URL ?>/assets/js/jquery.blockUI.js"></script>
 <script src="<?php echo RUTA_URL ?>/assets/js/jquery.nicescroll.js"></script>
+<script src="assets/plugins/switchery/switchery.min.js"></script
 
 <!-- App js -->
 <script src="<?php echo RUTA_URL ?>/assets/js/pikeadmin.js"></script>
 <!-- BEGIN Java Script for this page -->
 <script src="assets/plugins/parsleyjs/parsley.min.js"></script>
+<!-- Sweet alert --->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function menjaseEliminar(ruta){
+        return swal({
+            title: "Esta seguro de eliminar el registro?",
+            text: "Una vez eliminado, ya no podras recobrar la información!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("El registro se eliminado!", {
+                        icon: "success",
+                    }).then((ok) => {
+                        window.location.href = ruta;
+                    });
+                }
+            });
+
+    }
+</script>
+<!-- END Java Script for this page -->
 
 <!-- BEGIN Java Script for this page -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -43,6 +68,8 @@
 <!-- Counter-Up-->
 <script src="<?php echo RUTA_URL ?>/assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
 <script src="<?php echo RUTA_URL ?>/assets/plugins/counterup/jquery.counterup.min.js"></script>
+
+
 
 </body>
 </html>

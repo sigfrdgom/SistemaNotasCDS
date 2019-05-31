@@ -43,7 +43,7 @@
             title: "Esta seguro de eliminar el registro?",
             text: "Una vez eliminado, ya no podras recobrar la información!",
             icon: "warning",
-            buttons: true,
+            buttons: ["Cancelar", "Si"],
             dangerMode: true,
         })
             .then((willDelete) => {

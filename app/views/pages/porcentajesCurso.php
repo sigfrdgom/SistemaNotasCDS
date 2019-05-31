@@ -50,7 +50,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$porcentajesCursos->porcentaje</td>
                                 <td>$porcentajesCursos->observacion</td>
                                 <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><a href='' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</a></td>
+                                <td><a id='btn_eliminar2' href='porcentajeCurso/delete/$porcentajesCursos->id_porcentajes_curso' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</a></td>
                                 </tr>
                                 ";
                     }
@@ -77,8 +77,8 @@ require_once RUTA_APP . '/views/include/header.php';
                     <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/porcentajeCurso/create"data-parsley-validate novalidate >
 
                         <label for="pcidCurso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="csede" required>
-                                <option value="">Selecciona un curso</option>    
+							<select class="form-control select2"  name="pid_curso" required>
+                                <option name="oid_curso" >Selecciona un curso</option>
                                     <?php
                                         foreach ($datos['curso'] as $curso) {
                                             echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso</option>";
@@ -87,8 +87,8 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
 
                         <label for="pctipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
-							<select class="form-control select2"  name="csede" required>
-                                <option value="">Selecciona un tipo de modulo</option>    
+							<select class="form-control select2"  name="pid_tipo_modulo" required>
+                                <option name="oid_tipo_modulo" >Selecciona un tipo de modulo</option>
                                     <?php
                                         foreach ($datos['tipoModulo'] as $tm) {
                                             echo " <option value='$tm->id_tipo_modulo'>$tm->nombre</option>";
@@ -97,11 +97,11 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
 
                         <label for="mevaluacions" class="mrg-spr-ex">Porcentaje a asignar:</label>
-                        <input type="number" name="mevaluaciones" placeholder="Escribe el porcentaje. Ej. 25.0" 
+                        <input type="number" name="pporcentaje" placeholder="Escribe el porcentaje. Ej. 25.0"
                         class="form-control " min="1.0" max="100.0" step="0.1" required>
 
                         <label for="mdescripcion" class="mrg-spr-ex">Observación:</label>
-                        <input type="text" name="mdescripcion" placeholder="Escribe una observación" 
+                        <input type="text" name="pobservacion" placeholder="Escribe una observación"
                         class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
             
         </div>

@@ -22,4 +22,35 @@ class PorcentajeCurso extends Controller
         ];
         $this->view('pages/porcentajesCurso', $datos);
     }
+
+    public function create(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $datos = [
+                'id_curso' => trim($_POST['pid_curso']),
+                'id_tipo_modulo' => trim($_POST['pid_tipo_modulo']),
+                'porcentaje' => trim($_POST['pporcentaje']),
+                'observacion' => trim($_POST['pobservacion'])
+            ];
+            var_dump($datos);
+            if($this->porcentajesCursoModel->create($datos)){
+                redireccionar('porcentajeCurso');
+            }else{
+                die("Error al insertar los datos");
+            }
+        }else{
+            $this->index();
+        }
+    }
+
+    public function delete($id){
+        if (isset($id)){
+            if($this->porcentajesCursoModel->delete($id)){
+                redireccionar('porcentajeCurso');
+            }else{
+                die("Error al eliminar los datos");
+            }
+        }else{
+            $this->index();
+        }
+    }
 }

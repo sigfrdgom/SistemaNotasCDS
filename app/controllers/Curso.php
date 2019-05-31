@@ -16,4 +16,37 @@ class Curso extends Controller
         ];
         $this->view('pages/curso', $datos);
     }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+           $datos = [
+               'id_curso' => null,
+               'nombre_curso' => trim($_POST['cnombre']),
+               'cohorte' => trim($_POST['ccohorte']),
+               'descripcion' => trim($_POST['cdescripcion']),
+               'duracion' => trim($_POST['cduracion']),
+               'sede' => trim($_POST['csede']),
+               'estado' => trim($_POST['cestado']),
+               'nivel' => trim($_POST['cnivel']),
+               'fecha_inicio' => trim($_POST['cfecha_inicio']),
+               'fecha_fin' => trim($_POST['cfecha_fin'])
+           ];
+           var_dump($datos);
+           if($this->cursoModel->create($datos))
+           {
+               redireccionar('curso');
+
+           }
+           else
+           {
+               die("Error al insertar los datos");
+           }
+       }
+
+
+
+   }
+
 }

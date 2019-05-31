@@ -15,7 +15,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarMatricula">
-                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo porcentaje curso
+                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo matricula
                     </button>
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
@@ -74,10 +74,10 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/porcentajeCurso/create"data-parsley-validate novalidate >
+                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/matricula/create"data-parsley-validate novalidate >
 
                         <label for="mparticipante" class="mrg-spr-ex">Participante:</label>
-							<select class="form-control select2"  name="mparticipante" required>
+							<select class="form-control select2"  name="mid_participante" required>
                                 <option value="">Selecciona un participante</option>    
                                     <?php
                                         foreach ($datos['participante'] as $p) {
@@ -87,7 +87,7 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
                         
                         <label for="mcurso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mcurso" required>
+							<select class="form-control select2"  name="mid_curso" required>
                                 <option value="">Selecciona un curso</option>    
                                     <?php
                                         foreach ($datos['curso'] as $curso) {
@@ -100,20 +100,20 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="mestado" id="pestado1" value="1" required>
                                         Activa
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado2" value="0" required>
+                                        <input class="form-check-input" type="radio" name="mestado" id="pestado2" value="0" required>
                                         Inactiva
                                     </label>
                                 </div>         
                             </div>
 
                         <label for="mobservacion" class="mrg-spr-ex">Observación de matricula:</label>
-                        <input type="text" name="mobservacion" placeholder="Escribe una observación para la matricula" 
+                        <input type="text" name="mobservaciones" placeholder="Escribe una observación para la matricula" 
                         class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
             
         </div>

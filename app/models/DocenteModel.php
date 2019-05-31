@@ -18,7 +18,8 @@ class DocenteModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO participante VALUES(:id_docente, :nombres, :apellidos, :fecha_nacimiento, :sexo, :dui, :nit, :especialidad, :tipo_usuario, :pass, :estado)');
+        $this->db->query('INSERT INTO docente VALUES(:id_docente, :nombres, :apellidos, :fecha_nacimiento, :sexo, :dui, :nit, :especialidad, :tipo_usuario, :pass, :estado)');
+        $this->db->bind(':id_docente',null);
         $this->db->bind(':nombres',$datos['nombres']);
         $this->db->bind(':apellidos',$datos['apellidos']);
         $this->db->bind(':fecha_nacimiento',$datos['fecha_nacimiento']);
@@ -38,7 +39,7 @@ class DocenteModel{
     }
 
     public function update($datos){
-        $this->db->query('UPDATE tipo_modulo SET nombres=:nombres, apellidos=:apellidos, fecha_nacimiento=:fecha_nacimiento, sexo=:sexo, dui=:dui, nit=:nit, especialidad=:especialidad, tipo_usuario=:tipo_usuario, pass=:pass, estado=:estado WHERE id_participante = :id ');
+        $this->db->query('UPDATE docente SET nombres=:nombres, apellidos=:apellidos, fecha_nacimiento=:fecha_nacimiento, sexo=:sexo, dui=:dui, nit=:nit, especialidad=:especialidad, tipo_usuario=:tipo_usuario, pass=:pass, estado=:estado WHERE id_participante = :id ');
         $this->db->bind(':id', $datos['id']);
         $this->db->bind(':nombres',$datos['nombres']);
         $this->db->bind(':apellidos',$datos['apellidos']);

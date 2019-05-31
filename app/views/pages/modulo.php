@@ -37,7 +37,12 @@ require_once RUTA_APP . '/views/include/header.php';
                             <th>Descripcion</th>
                             <th>Duracion horas</th>
                             <th>TipoModulo</th>
-                            <th>Evaluaciones</th>
+                            <th>Evaluacion 1</th>
+                            <th>Evaluacion 2</th>
+                            <th>Evaluacion 3</th>
+                            <th>Evaluacion 4</th>
+                            <th>Evaluacion 5</th>
+                            <th>Evaluacion 6</th>
                             <th>Estado</th>
                             <th colspan="2">Acciones</th>
                         </tr>
@@ -50,10 +55,15 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$modulos->descripcion_modulo</td>
                                 <td>$modulos->horas_modulo</td>
                                 <td>$modulos->tipo_modulo</td>
-                                <td>$modulos->evaluaciones</td>
+                                <td>$modulos->evaluacion1</td>
+                                <td>$modulos->evaluacion2</td>
+                                <td>$modulos->evaluacion3</td>
+                                <td>$modulos->evaluacion4</td>
+                                <td>$modulos->evaluacion5</td>
+                                <td>$modulos->evaluacion6</td>
                                 <td>$modulos->estado</td>
                                 <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><a href='' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</a></td>
+                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"modulo/delete/$modulos->id_modulo\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }
@@ -89,10 +99,10 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="mhoras" class="mrg-spr-ex">Horas del modulo:</label>
                         <input type="text" name="mhoras" placeholder="Escribe las horas del modulo" 
-                        class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{1,64}'> 
+                        class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü0-9 ]{1,64}'> 
 
-                        <label for="ctipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
-								<select class="form-control select2"  name="csede" required>
+                        <label for="mtipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
+								<select class="form-control select2"  name="mtipo_modulo" required>
                                     <option value="">Selecciona un tipo de modulo</option>    
                                         <?php
                                             foreach ($datos['tipoModulo'] as $tm) {
@@ -105,21 +115,41 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="mestado" id="mestado1" value="1" required>
                                         Activo
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado2" value="0" required>
+                                        <input class="form-check-input" type="radio" name="mestado" id="mestado2" value="0" required>
                                         Inactivo
                                     </label>
                                 </div>         
                             </div>
 
-                        <label for="mevaluacions" class="mrg-spr-ex">Cantidad de evaluaciones:</label>
-                        <input type="number" name="mevaluaciones" placeholder="Escribe la cantidad de evaluaciones del modulo" 
-                        class="form-control " min="0" max="10" step="1" required>
+                        <label for="mevaluacion1" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 1:</label>
+                        <input type="number" name="mevaluacion1" placeholder="Escribe el porcentaje de la evaluacion 1" 
+                        class="form-control " min="1" max="100" step="1" required>
+
+                        <label for="mevaluacion2" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 2:</label>
+                        <input type="number" name="mevaluacion2" placeholder="Escribe el porcentaje de la evaluacion 2" 
+                        class="form-control " min="1" max="100" step="1">
+
+                        <label for="mevaluacion3" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 3:</label>
+                        <input type="number" name="mevaluacion3" placeholder="Escribe el porcentaje de la evaluacion 3" 
+                        class="form-control " min="1" max="100" step="1">
+
+                        <label for="mevaluacion4" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 4:</label>
+                        <input type="number" name="mevaluacion4" placeholder="Escribe el porcentaje de la evaluacion 4" 
+                        class="form-control " min="1" max="100" step="1">
+
+                        <label for="mevaluacion5" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion5:</label>
+                        <input type="number" name="mevaluacion5" placeholder="Escribe el porcentaje de la evaluacion5" 
+                        class="form-control " min="1" max="100" step="1">
+
+                        <label for="mevaluacion6" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 6:</label>
+                        <input type="number" name="mevaluacion6" placeholder="Escribe el porcentaje de la evaluacion 6" 
+                        class="form-control " min="1" max="100" step="1">
             
         </div>
         

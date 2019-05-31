@@ -18,13 +18,19 @@ class ModuloModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO modulo  VALUES(:id_modulo, :nombre_modulo, :descripcion_modulo, :horas_modulo, :tipo_modulo, :evaluaciones)');
-        $this->db->bind(':id', $datos['id_modulo']);
+        $this->db->query('INSERT INTO modulo  VALUES(:id_modulo, :nombre_modulo, :descripcion_modulo, :horas_modulo, :tipo_modulo, :evaluacion1, :evaluacion2, :evaluacion3, :evaluacion4, :evaluacion5, :evaluacion6, :estado)');
+        $this->db->bind(':id_modulo', $datos['id_modulo']);
         $this->db->bind(':nombre_modulo',$datos['nombre_modulo']);
         $this->db->bind(':descripcion_modulo', $datos['descripcion_modulo']);
         $this->db->bind(':horas_modulo', $datos['horas_modulo']);
         $this->db->bind(':tipo_modulo',$datos['tipo_modulo']);
-        $this->db->bind(':evaluaciones', $datos['evaluaciones']);
+        $this->db->bind(':evaluacion1', $datos['evaluacion1']);
+        $this->db->bind(':evaluacion2', $datos['evaluacion2']);
+        $this->db->bind(':evaluacion3', $datos['evaluacion3']);
+        $this->db->bind(':evaluacion4', $datos['evaluacion4']);
+        $this->db->bind(':evaluacion5', $datos['evaluacion5']);
+        $this->db->bind(':evaluacion6', $datos['evaluacion6']);
+        $this->db->bind(':estado', $datos['estado']);
         if ($this->db->execute()){
             return true;
         }else{
@@ -33,13 +39,19 @@ class ModuloModel{
     }
 
     public function update($datos){
-        $this->db->query('UPDATE modulo SET nombre = :nombre, estado = :estado WHERE id_modulo = :id ');
+        $this->db->query('UPDATE modulo SET nombre_modulo = :nombre_modulo, descripcion_modulo = :descripcion_modulo, horas_modulo=:horas_modulo, tipo_modulo=:tipo_modulo, evaluacion1=:evaluacion1, evaluacion2=:evaluacion2, evaluacion3=:evaluacion3, evaluacion4=:evaluacion4, evaluacion4=:evaluacion4, evaluacion6=:evaluacion6, estado = :estado WHERE id_modulo = :id ');
         $this->db->bind(':id', $datos['id_modulo']);
         $this->db->bind(':nombre_modulo',$datos['nombre_modulo']);
         $this->db->bind(':descripcion_modulo', $datos['descripcion_modulo']);
         $this->db->bind(':horas_modulo', $datos['horas_modulo']);
         $this->db->bind(':tipo_modulo',$datos['tipo_modulo']);
-        $this->db->bind(':evaluaciones', $datos['evaluaciones']);
+        $this->db->bind(':evaluacion1', $datos['evaluacion1']);
+        $this->db->bind(':evaluacion2', $datos['evaluacion2']);
+        $this->db->bind(':evaluacion3', $datos['evaluacion3']);
+        $this->db->bind(':evaluacion4', $datos['evaluacion4']);
+        $this->db->bind(':evaluacion5', $datos['evaluacion5']);
+        $this->db->bind(':evaluacion6', $datos['evaluacion6']);
+        $this->db->bind(':estado', $datos['estado']);
         if($this->db->execute()){
             return true;
         }else{

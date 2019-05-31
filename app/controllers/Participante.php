@@ -78,10 +78,21 @@ class Participante extends Controller
        }
 
 
+    
+    }
 
 
 
-
+    public function delete($id){
+        if (isset($id)){
+            if($this->participanteModel->delete($id)){
+                redireccionar('participante');
+            }else{
+                die("Error al eliminar los datos");
+            }
+        }else{
+            $this->index();
+        }
     }
 
 }

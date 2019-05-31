@@ -62,8 +62,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$cursos->nivel</td>
                                 <td>$cursos->fecha_inicio</td>
                                 <td>$cursos->fecha_fin</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit' ></span> >Editar</a></td>
-                                <td><button type='button' class='btn btn-danger' onclick ='hola($cursos->id_curso);'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span>Editar</a></td>
+                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"curso/delete/$cursos->id_curso\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }
@@ -74,7 +74,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
         </div>
     </div>
-
+    
 <!-- El modal para agregar un nuevo curso -->
 <div class="modal fade" id="agregarCurso">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
@@ -104,7 +104,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="cduracion" class="mrg-spr-ex">Duracion del curso:</label>
                         <input type="text" name="cduracion" placeholder="Escribe la duracion Ej. 12 semanas" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9 ]{1,64}'>
 
                         <label for="csede" class="mrg-spr-ex">Sede del curso:</label>
 								<select class="form-control select2"  name="csede" required>    
@@ -158,42 +158,6 @@ require_once RUTA_APP . '/views/include/header.php';
       </div>
     </div>
 </div>
-
-
-<script>
-  function hola(x){  
-    const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: 'btn btn-success',
-    cancelButton: 'btn btn-danger'
-  },
-  buttonsStyling: false,
-})
-y=false;
-swalWithBootstrapButtons.fire({
-  title: '¿Estas seguro?',
-  text: "Esta accion no puede ser desecha",
-  type: 'warning',
-  showCancelButton: true,
-  confirmButtonText: 'Si, estoy seguro!',
-  cancelButtonText: 'No, cancelar!',
-  reverseButtons: true
-}).then((result) => {
-  if (result.value) {
-    swalWithBootstrapButtons.fire('Borrado','El registro fue eliminado','success');
-    
-  } else if (
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    swalWithBootstrapButtons.fire(
-      'Cancelado',
-      'La operacion fue cancelada',
-      'error'
-    )
-  }
-})
-  }
-</script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

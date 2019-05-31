@@ -44,8 +44,23 @@ class Docente extends Controller
                die("Error al insertar los datos");
            }
        }
-
-
-
    }
+   public function delete($id)
+   {
+        if (isset($id))
+        {
+            if($this->docenteModel->delete($id))
+            {
+                redireccionar('docente');
+            }
+            else
+            {
+                die("Error al eliminar los datos");
+            }
+        }
+        else
+        {
+            $this->index();
+        }
+    }
 }

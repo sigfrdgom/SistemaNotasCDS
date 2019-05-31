@@ -77,7 +77,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 >
                                 <span class='fa fa-plus-square-o bigfonts'><span class='fa fa-edit'></span> Editar</td>
 
-                                <td><a href='' class='btn btn-danger'><span class='fa bigfonts'><span class='fa fa-trash'></span> Eliminar</a></td>
+                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"participante/delete/$participantes->id_participante\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }
@@ -198,6 +198,7 @@ require_once RUTA_APP . '/views/include/header.php';
       </div>
     </div>
 </div>
+
 
 
 

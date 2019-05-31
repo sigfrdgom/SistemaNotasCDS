@@ -38,26 +38,21 @@ class TipoModulo extends Controller{
         }
     }
 
-    public function update($id){
-        if ($_SERVER['REQUEST_METHOD'] == 'PUT'){
+    public function update(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $datos = [
+                'id_tipo_modulo' => $_POST['id_tipo_modulo'],
                 'nombre' => trim($_POST['nombreTipoModulo']),
                 'estado' => trim($_POST['estado'])
             ];
+            var_dump($datos);
             if($this->tipoModuloModel->update($datos)){
                 redireccionar('tipoModulo');
             }else{
                 die("Error al Actualizar los datos");
             }
         }else{
-            //Obtener la informacion de la entidad
-            $info = $this->tipoModuloModel->findById($id);
-            $datos = [
-                'id_tipo_modulo' => $info['id_tipo_modulo'],
-                'nombre' => $info['nombre'],
-                'estado' => $info['estado']
-            ];
-            $this->view('pages/tipoModulo', $datos);
+            $this->index();
         }
     }
 

@@ -140,7 +140,7 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-book"></i><span> Notas </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/notas"><i class="fa fa-fw fa-book"></i><span> Notas </span> </a>
                     </li>
 
                     <li class="submenu">

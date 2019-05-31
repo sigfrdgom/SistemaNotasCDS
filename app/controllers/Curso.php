@@ -48,21 +48,21 @@ class Curso extends Controller
 
    public function delete($id)
    {
-    if (isset($id))
-    {
-        if($this->cursoModel->delete($id))
+        if (isset($id))
         {
-            redireccionar('curso');
+            if($this->cursoModel->delete($id))
+            {
+                redireccionar('curso');
+            }
+            else
+            {
+                die("Error al eliminar los datos");
+            }
         }
         else
         {
-            die("Error al eliminar los datos");
+            $this->index();
         }
     }
-    else
-    {
-        $this->index();
-    }
-}
 
 }

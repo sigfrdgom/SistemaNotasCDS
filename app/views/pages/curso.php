@@ -104,7 +104,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="cduracion" class="mrg-spr-ex">Duracion del curso:</label>
                         <input type="text" name="cduracion" placeholder="Escribe la duracion Ej. 12 semanas" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9 ]{1,64}'>
 
                         <label for="csede" class="mrg-spr-ex">Sede del curso:</label>
 								<select class="form-control select2"  name="csede" required>    

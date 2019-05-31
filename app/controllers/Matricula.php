@@ -48,4 +48,24 @@ class Matricula extends Controller
            }
        }
    }
+
+   public function delete($id)
+   {
+        if (isset($id))
+        {
+            if($this->matriculaModel->delete($id))
+            {
+                redireccionar('matricula');
+            }
+            else
+            {
+                die("Error al eliminar los datos");
+            }
+        }
+        else
+        {
+            $this->index();
+        }
+    }
+
 }

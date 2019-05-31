@@ -50,7 +50,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$porcentajesCursos->porcentaje</td>
                                 <td>$porcentajesCursos->observacion</td>
                                 <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><a id='btn_eliminar2' href='porcentajeCurso/delete/$porcentajesCursos->id_porcentajes_curso' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</a></td>
+                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"porcentajeCurso/delete/$porcentajesCursos->id_porcentajes_curso\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }
@@ -60,6 +60,7 @@ require_once RUTA_APP . '/views/include/header.php';
             </div>
 
         </div>
+
     </div>
 
 <div class="modal fade" id="agregarPorcentaje">
@@ -117,7 +118,11 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
 </div>
 
+
+
 <?php
 /*Importacion de Footer de la aplicacion */
 require_once RUTA_APP . '/views/include/footer.php';
 ?>
+
+

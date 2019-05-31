@@ -107,19 +107,19 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo1" value="MASCULINO" required>
+                                        <input class="form-check-input" type="radio" name="dsexo" id="rsexo1" value="MASCULINO" required>
                                         Masculino
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo2" value="FEMENINO" required>
+                                        <input class="form-check-input" type="radio" name="dsexo" id="rsexo2" value="FEMENINO" required>
                                         Femenimo
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo3" value="INEDFINIDO" required>
+                                        <input class="form-check-input" type="radio" name="dsexo" id="rsexo3" value="INEDFINIDO" required>
                                         Indefinido
                                     </label>
                                 </div>         
@@ -141,20 +141,20 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="dtipo" id="tipo1" value="ADMINISTRADOR" required>
+                                        <input class="form-check-input" type="radio" name="dtipo_usuario" id="tipo1" value="ADMINISTRADOR" required>
                                         Adimistrador
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="dtipo" id="tipo2" value="DOCENTE" required>
+                                        <input class="form-check-input" type="radio" name="dtipo_usuario" id="tipo2" value="DOCENTE" required>
                                         Docente
                                     </label>
                                 </div>         
                             </div>
 
                         <label for="ppass" class="mrg-spr-ex">Ingresa un password para el participante:</label>
-                        <input type="password" name="ppass" placeholder="Escribe un password para el participante" 
+                        <input type="password" name="dpass" placeholder="Escribe un password para el participante" 
                         class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'>
 
                         <!-- <label for="ppassc" class="mrg-spr-ex">Confirma el password para el participante:</label>
@@ -165,13 +165,13 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="destado" id="destado1" value="1" required>
                                         Activo
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado2" value="0" required>
+                                        <input class="form-check-input" type="radio" name="destado" id="destado2" value="0" required>
                                         Inactivo
                                     </label>
                                 </div>         

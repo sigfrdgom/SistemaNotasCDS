@@ -91,7 +91,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="cnombre" class="mrg-spr-ex">Nombre del curso: </label>
                         <input type="text" name="cnombre" placeholder="Escribe el nombre del curso" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,64}'>
 
                         <label for="ccohorte" class="mrg-spr-ex">Cohorte del curso:</label>
                         <input type="text" name="ccohorte" placeholder="Escribe el cohorte Ej. Cohorte 9" 
@@ -105,7 +105,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <input type="text" name="cduracion" placeholder="Escribe la duracion Ej. 12 semanas" 
                         class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
-                        <label for="cfecha_fin" class="mrg-spr-ex">Sede del curso:</label>
+                        <label for="csede" class="mrg-spr-ex">Sede del curso:</label>
 								<select class="form-control select2"  name="csede" required>    
                                     <option value="">Selecciona una sede</option>
                                     <option value="AHUACHAPAN">Ahuchapan</option>

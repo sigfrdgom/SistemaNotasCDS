@@ -15,4 +15,37 @@ class Docente extends Controller
         ];
         $this->view('pages/docente', $datos);
     }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+           $datos = [
+               'id_docente' => null,
+               'nombres' => trim($_POST['dnombres']),
+               'apellidos' => trim($_POST['dapellidos']),
+               'fecha_nacimiento' => trim($_POST['dfechanacimiento']),
+               'sexo' => trim($_POST['dsexo']),
+               'dui' => trim($_POST['ddui']),
+               'nit' => trim($_POST['dnit']),
+               'especialidad' => trim($_POST['despecialidad']),
+               'tipo_usuario' => trim($_POST['dtipo_usuario']),
+               'pass' => trim($_POST['dpass']),
+               'estado' => trim($_POST['destado'])
+           ];
+           var_dump($datos);
+           if($this->docenteModel->create($datos))
+           {
+               redireccionar('docente');
+
+           }
+           else
+           {
+               die("Error al insertar los datos");
+           }
+       }
+
+
+
+   }
 }

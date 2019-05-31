@@ -24,4 +24,28 @@ class Matricula extends Controller
         ];
         $this->view('pages/matricula', $datos);
     }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+           $datos = [
+               'id_matricula' => null,
+               'id_curso' => trim($_POST['mid_curso']),
+               'id_participante' => trim($_POST['mid_participante']),
+               'estado' => trim($_POST['mestado']),
+               'observaciones' => trim($_POST['mobservaciones'])
+           ];
+           var_dump($datos);
+           if($this->matriculaModel->create($datos))
+           {
+               redireccionar('matricula');
+
+           }
+           else
+           {
+               die("Error al insertar los datos");
+           }
+       }
+   }
 }

@@ -27,4 +27,28 @@ class ModulosCurso extends Controller
         ];
         $this->view('pages/modulosCurso', $datos);
     }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+           $datos = [
+               'id_modulos_curso' => null,
+               'id_curso' => trim($_POST['mcid_curso']),
+               'id_modulo' => trim($_POST['mcid_modulo']),
+               'id_docente' => trim($_POST['mcid_docente']),
+               'observaciones' => trim($_POST['mcobservaciones'])
+           ];
+           var_dump($datos);
+           if($this->modulosCursoModel->create($datos))
+           {
+               redireccionar('modulosCurso');
+
+           }
+           else
+           {
+               die("Error al insertar los datos");
+           }
+       }
+   }
 }

@@ -41,7 +41,7 @@ class ParticipanteModel{
     }
 
     public function update($datos){
-        $this->db->query('UPDATE tipo_modulo SET nombres=:nombres, apellidos=:apellidos, fecha_nacimiento=:fecha_nacimiento, sexo=:sexo, dui=:dui, nit=:nit, carnet_minoridad=:carnet_minoridad, direccion=:direccion, telefono=:telefono, email=:email, pass=:pass, estado=:estado WHERE id_participante = :id ;');
+        $this->db->query('UPDATE participante SET nombres=:nombres, apellidos=:apellidos, fecha_nacimiento=:fecha_nacimiento, sexo=:sexo, dui=:dui, nit=:nit, carnet_minoridad=:carnet_minoridad, direccion=:direccion, telefono=:telefono, email=:email, estado=:estado WHERE id_participante=:id;');
         $this->db->bind(':id', $datos['id']);
         $this->db->bind(':nombres',$datos['nombres']);
         $this->db->bind(':apellidos',$datos['apellidos']);
@@ -53,7 +53,7 @@ class ParticipanteModel{
         $this->db->bind(':direccion',$datos['direccion']);
         $this->db->bind(':telefono',$datos['telefono']);
         $this->db->bind(':email',$datos['email']);
-        $this->db->bind(':pass',$datos['pass']);
+        // $this->db->bind(':pass',$datos['pass']);
         $this->db->bind(':estado',$datos['estado']);
         if($this->db->execute()){
             return true;

@@ -19,6 +19,7 @@ class ModulosCursoModel{
 
     public function create($datos){
         $this->db->query('INSERT INTO modulos_curso VALUES(:id_modulos_curso, :id_curso, :id_modulo, :id_docente, :observaciones) ;');
+        $this->db->bind(':id_modulos_curso', $datos['id_modulos_curso']);
         $this->db->bind(':id_curso',$datos['id_curso']);
         $this->db->bind(':id_modulo',$datos['id_modulo']);
         $this->db->bind(':id_docente',$datos['id_docente']);

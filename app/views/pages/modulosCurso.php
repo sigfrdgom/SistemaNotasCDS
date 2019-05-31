@@ -75,10 +75,10 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/porcentajeCurso/create"data-parsley-validate novalidate >
+                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
 
-                        <label for="mccurso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mcurso" required>
+                        <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
+							<select class="form-control select2"  name="mcid_curso" required>
                                 <option value="">Selecciona un curso</option>    
                                     <?php
                                         foreach ($datos['curso'] as $curso) {
@@ -87,8 +87,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
 
-                        <label for="mcmodulo" class="mrg-spr-ex">Modulo:</label>
-							<select class="form-control select2"  name="mcmodulo" required>
+                        <label for="mcid_modulo" class="mrg-spr-ex">Modulo:</label>
+							<select class="form-control select2"  name="mcid_modulo" required>
                                 <option value="">Selecciona un modulo</option>    
                                     <?php
                                         foreach ($datos['modulo'] as $m) {
@@ -97,8 +97,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
 
-                        <label for="mcdocente" class="mrg-spr-ex">Docente:</label>
-							<select class="form-control select2"  name="mcdocente" required>
+                        <label for="mcid_docente" class="mrg-spr-ex">Docente:</label>
+							<select class="form-control select2"  name="mcid_docente" required>
                                 <option value="">Selecciona un docente</option>    
                                     <?php
                                         foreach ($datos['docente'] as $d) {
@@ -107,8 +107,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
 
-                        <label for="mCobservacion" class="mrg-spr-ex">Observación deL modulo en el curso:</label>
-                        <input type="text" name="mCobservacion" placeholder="Escribe una observación para la matricula" 
+                        <label for="mcobservacion" class="mrg-spr-ex">Observación deL modulo en el curso:</label>
+                        <input type="text" name="mcobservaciones" placeholder="Escribe una observación para la matricula" 
                         class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
             
         </div>

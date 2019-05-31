@@ -49,4 +49,39 @@ class Participante extends Controller
     }
 
 
+    public function update(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+           $datos = [
+               'id' => trim($_POST['pdid']),
+               'nombres' => trim($_POST['pdnombres']),
+               'apellidos' => trim($_POST['pdapellidos']),
+               'fecha_nacimiento' => trim($_POST['pdfechanacimiento']),
+               'sexo' => trim($_POST['pdsexo']),
+               'dui' => trim($_POST['pddui']),
+               'nit' => trim($_POST['pdnit']),
+               'carnet_minoridad' => trim($_POST['pdcarnet_minoridad']),
+               'direccion' => trim($_POST['pddireccion']),
+               'telefono' => trim($_POST['pdtelefono']),
+               'email' => trim($_POST['pdemail']),
+            // 'pass' => trim($_POST['ppass']),
+               'estado' => trim($_POST['pdestado'])
+
+
+           ];
+           var_dump($datos);
+           if($this->participanteModel->update($datos)){
+               redireccionar('participante');
+
+           }else{
+               die("Error al actualizar los datos");
+           }
+       }
+
+
+
+
+
+
+    }
+
 }

@@ -51,6 +51,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tbody>
                     <?php
                     foreach ($datos['curso'] as $cursos) {
+                    
                         echo "<tr>
                                 <td>$cursos->nombre_curso</td>
                                 <td>$cursos->cohorte</td>
@@ -61,8 +62,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$cursos->nivel</td>
                                 <td>$cursos->fecha_inicio</td>
                                 <td>$cursos->fecha_fin</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><a href='' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</a></td>
+                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit' ></span> >Editar</a></td>
+                                <td><button type='button' class='btn btn-danger' onclick ='hola($cursos->id_curso);'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }
@@ -149,7 +150,7 @@ require_once RUTA_APP . '/views/include/header.php';
         <!-- Modal footer -->
         <div class="modal-footer">
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante">
+                <input type="button"  class="btn btn-warning" value="Actualizar" name="actualizar_participante" >
             </form>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
@@ -157,6 +158,42 @@ require_once RUTA_APP . '/views/include/header.php';
       </div>
     </div>
 </div>
+
+
+<script>
+  function hola(x){  
+    const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false,
+})
+y=false;
+swalWithBootstrapButtons.fire({
+  title: '¿Estas seguro?',
+  text: "Esta accion no puede ser desecha",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Si, estoy seguro!',
+  cancelButtonText: 'No, cancelar!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    swalWithBootstrapButtons.fire('Borrado','El registro fue eliminado','success');
+    
+  } else if (
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelado',
+      'La operacion fue cancelada',
+      'error'
+    )
+  }
+})
+  }
+</script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

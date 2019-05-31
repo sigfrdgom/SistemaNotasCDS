@@ -44,9 +44,25 @@ class Curso extends Controller
                die("Error al insertar los datos");
            }
        }
-
-
-
    }
+
+   public function delete($id)
+   {
+    if (isset($id))
+    {
+        if($this->cursoModel->delete($id))
+        {
+            redireccionar('curso');
+        }
+        else
+        {
+            die("Error al eliminar los datos");
+        }
+    }
+    else
+    {
+        $this->index();
+    }
+}
 
 }

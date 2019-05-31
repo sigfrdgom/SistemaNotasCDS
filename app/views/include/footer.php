@@ -57,6 +57,26 @@
             });
 
     }
+
+    function menjaseBaja(ruta){
+        return swal({
+            title: "¿Esta seguro de dar de baja el registro?",
+            text: "Una vez dado de baja, tendras que gestionarlo de otra forma",
+            icon: "warning",
+            buttons: ["Cancelar", "Si"],
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("El registro se ha dado de baja!", {
+                        icon: "success",
+                    }).then((ok) => {
+                        window.location.href = ruta;
+                    });
+                }
+            });
+
+    }
 </script>
 <!-- END Java Script for this page -->
 

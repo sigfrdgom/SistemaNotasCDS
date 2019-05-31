@@ -62,7 +62,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$cursos->nivel</td>
                                 <td>$cursos->fecha_inicio</td>
                                 <td>$cursos->fecha_fin</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit' ></span> >Editar</a></td>
+                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span>Editar</a></td>
                                 <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"curso/delete/$cursos->id_curso\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";

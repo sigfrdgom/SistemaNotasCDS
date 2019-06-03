@@ -41,7 +41,8 @@ class Core
             call_user_func_array([$this->controladorActual, $this->metodoActual], $this->parametros);
 
         } else {
-            echo "Error la pagina no existe";
+            require_once '../app/controllers/errores.php';
+            $this->controladorActual = new Errores();
         }
 
     }

@@ -28,13 +28,14 @@
     <!-- Swwet alert 2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     
-    
-    
     <!-- JAVASCRIPT and JQUERY for this page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="<?php echo RUTA_URL ?>/js/modalParticipante.js" ></script>
     <!-- JAVASCRIPT and JQUERY for this page -->
     
+    <!-- Other CSS -->
+    <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
+
     
     <style>
 
@@ -91,7 +92,7 @@
             <ul class="list-inline float-right mb-0">
 
                 <li class="list-inline-item dropdown notif">
-                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
                         <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">

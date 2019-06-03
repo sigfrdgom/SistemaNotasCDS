@@ -17,3 +17,23 @@ function menjaseEliminar(ruta){
         });
 
 }
+
+function menjaseBaja(ruta){
+    return swal({
+        title: "¿Esta seguro de dar de baja?",
+        text: "Una vez dado de baja, deberas gestionar este usuario de forma complicada!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDown) => {
+            if (willDown) {
+                swal("El registro se ha dado de baja!", {
+                    icon: "success",
+                }).then((ok) => {
+                    window.location.href = ruta;
+                });
+            }
+        });
+
+}

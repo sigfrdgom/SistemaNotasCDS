@@ -45,6 +45,7 @@ class Docente extends Controller
            }
        }
    }
+
    public function delete($id)
    {
         if (isset($id))
@@ -56,6 +57,25 @@ class Docente extends Controller
             else
             {
                 die("Error al eliminar los datos");
+            }
+        }
+        else
+        {
+            $this->index();
+        }
+    }
+
+    public function down($id)
+   {
+        if (isset($id))
+        {
+            if($this->docenteModel->updateDown($id))
+            {
+                redireccionar('docente');
+            }
+            else
+            {
+                die("Error al dar de baja el usuario");
             }
         }
         else

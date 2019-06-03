@@ -19,6 +19,13 @@ require_once RUTA_APP . '/views/include/header.php';
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo usuario
                     </button>
 
+                    <a href="#" 
+                            title="Agregar Usuario"  data-toggle="popover" data-trigger="focus"
+                            data-content="Sirve para agregar un nuevo usuario al sistema.">
+                        <i class="fa fa-fw fa-question-circle pop-help"></i>
+                    </a>
+                    
+
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
@@ -46,7 +53,14 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th class='secret'>Tipo Usuario</th>
                         <th class='secret'>Password</th>
                         <th>Estado</th>
-                        <th colspan="2">Acciones</th>
+                        <th colspan="2">Acciones
+                            <a href="#" 
+                                title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
+                                data-content="Sirven para modificar informacion de un usuario del sistema o darlo de baja">
+                            <i class="fa fa-fw fa-question-circle pop-help"></i>
+                            </a>
+                             
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -64,7 +78,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret'>$docentes->pass</td>
                                 <td>".($docentes->estado == 1?'ACTIVO':'INACTIVO')."</td>
                                 <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"docente/delete/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td><button id='btn_eliminar3' onclick='menjaseBaja(\"docente/down/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                                 </tr>
                                 ";
                     }
@@ -153,7 +167,12 @@ require_once RUTA_APP . '/views/include/header.php';
                                 </div>         
                             </div>
 
-                        <label for="ppass" class="mrg-spr-ex">Ingresa un password para el participante:</label>
+                        <label for="ppass" class="mrg-spr-ex">Ingresa un password para el usuario:</label>
+                        <a href="#" 
+                                title="Sobre password"  data-toggle="popover" data-trigger="focus"
+                                data-content="Ingresa un password que sea seguro, que lleve mayusculas y minisculas, algunos caracteres especiales estan permitidos">
+                            <i class="fa fa-fw fa-question-circle pop-help"></i>
+                            </a>
                         <input type="password" name="dpass" placeholder="Escribe un password para el participante" 
                         class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'>
 
@@ -161,11 +180,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <input type="password" name="ppassc" placeholder="Confirma el password para el participante" 
                         class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'> -->
 
-                        <label class="mrg-spr-ex" >Estado del participante:</label>
-                            <div style="margin-left:2em;">
+                        <label class="mrg-spr-ex secret" >Estado del usuario:</label>
+                            <div style="margin-left:2em;" class='secret'>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="destado" id="destado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="destado" id="destado1" value="1" required checked>
                                         Activo
                                     </label>
                                 </div>

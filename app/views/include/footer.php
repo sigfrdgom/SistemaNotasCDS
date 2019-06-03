@@ -51,6 +51,11 @@
 <script src="<?php echo RUTA_URL ?>/assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
 <script src="<?php echo RUTA_URL ?>/assets/plugins/counterup/jquery.counterup.min.js"></script>
 
+<script>
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+    });
+</script>
 
 </body>
 </html>

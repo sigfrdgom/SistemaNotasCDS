@@ -31,8 +31,8 @@ class TipoModuloModel{
 
     public function update($datos){
         $this->db->query('UPDATE tipo_modulo SET nombre = :nombre, estado = :estado WHERE id_tipo_modulo = :id ');
-        $this->db->bind(':id', $datos['id_tipo_modulo']);
-        $this->db->bind(':nombre'. $datos['nombre']);
+        $this->db->bind(':id', $datos['id_tipo_modulo'],1);
+        $this->db->bind(':nombre', $datos['nombre']);
         $this->db->bind(':estado', $datos['estado']);
         if($this->db->execute()){
             return true;

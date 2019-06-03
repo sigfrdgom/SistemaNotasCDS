@@ -8,8 +8,9 @@ $(document).ready(function(){
         }).get();
         console.log(data);
         $('#frmTipoModulo').attr('action', 'tipoModulo/update');
-        //alert('the action is: ' + $('#frmTipoModulo').attr('method'));
-        $('#idTipoModulo').val(data[0]);
-        $('#idEstado').val(data[1]);
+        //alert('the action is: ' + $('#frmTipoModulo').attr('method'));}
+        $('#id_idTipoModulo').val(data[0]);
+        $('#idTipoModulo').val(data[1]);
+        $('#idEstado').val(data[2]);
     });
 });

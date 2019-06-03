@@ -2,22 +2,23 @@
 
 class Core
 {
-    protected $controladorActual = 'Paginas';
+    protected $controladorActual = 'Index';
     protected $metodoActual = 'index';
     protected $parametros = [];
 
     //Constructor de la clase
-    public function __construct()
-    {
-        //print_r($this->getUrl());
+    public function __construct(){
+
         $url = $this->getUrl();
+        //Comprobar si la URL esta vacia y redireccionar
+        $url[0] = isset($url[0])? $url[0] : $this->controladorActual;
 
         //buscar en controladores si el controlador existe
         if (file_exists('../app/controllers/' . ucwords($url [0] . '.php'))) {
             //Si existe se setea como controlador por defecto
             $this->controladorActual = ucwords($url[0]);
 
-            //unset indice
+            //Destruir la variable en el indice espeficiado
             unset($url[0]);
 
             //comprobar que el controlador existe
@@ -29,14 +30,11 @@ class Core
                 if (method_exists($this->controladorActual, $url[1])) {
                     //verificar el metodo
                     $this->metodoActual = $url[1];
-                    //unset indice
+                    //Destruir la variable en el indice espeficiado
                     unset($url[1]);
                 }
             }
-            //comprobar que parametro es correcto
-            //echo $this->metodoActual ;
-
-            //obtener los parametros
+            //Obtener los parametros
             $this->parametros = $url ? array_values($url) : [];
 
             //llamar callback con parametros array
@@ -46,13 +44,10 @@ class Core
             echo "Error la pagina no existe";
         }
 
-
     }
 
     public function getUrl()
     {
-        //echo $_GET['url'];
-
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);

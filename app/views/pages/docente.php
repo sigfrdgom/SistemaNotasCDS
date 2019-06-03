@@ -38,13 +38,13 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tr>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Fecha Nacimiento</th>
-                        <th>Sexo</th>
+                        <th class='secret'>Fecha Nacimiento</th>
+                        <th class='secret'>Sexo</th>
                         <th>DUI</th>
-                        <th>NIT</th>
+                        <th class='secret'>NIT</th>
                         <th>Especialidad</th>
-                        <th>Tipo Usuario</th>
-                        <th>Password</th>
+                        <th class='secret'>Tipo Usuario</th>
+                        <th class='secret'>Password</th>
                         <th>Estado</th>
                         <th colspan="2">Acciones</th>
                     </tr>
@@ -55,14 +55,14 @@ require_once RUTA_APP . '/views/include/header.php';
                         echo "<tr>
                                 <td>$docentes->nombres</td>
                                 <td>$docentes->apellidos</td>
-                                <td>$docentes->fecha_nacimiento</td>
-                                <td>$docentes->sexo</td>
+                                <td class='secret'>$docentes->fecha_nacimiento</td>
+                                <td class='secret'>$docentes->sexo</td>
                                 <td>$docentes->dui</td>
-                                <td>$docentes->nit</td>
+                                <td class='secret'>$docentes->nit</td>
                                 <td>$docentes->especialidad</td>
-                                <td>$docentes->tipo_usuario</td>
-                                <td>$docentes->pass</td>
-                                <td>$docentes->estado</td>
+                                <td class='secret'>$docentes->tipo_usuario</td>
+                                <td class='secret'>$docentes->pass</td>
+                                <td>".($docentes->estado == 1?'ACTIVO':'INACTIVO')."</td>
                                 <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                                 <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"docente/delete/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>

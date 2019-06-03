@@ -25,13 +25,14 @@
     <!-- Swwet alert 2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     
-    
-    
     <!-- JAVASCRIPT and JQUERY for this page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="<?php echo RUTA_URL ?>/js/modalParticipante.js" ></script>
     <!-- JAVASCRIPT and JQUERY for this page -->
     
+    <!-- Other CSS -->
+    <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
+
     
     <style>
 

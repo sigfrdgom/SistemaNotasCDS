@@ -80,8 +80,8 @@ require_once RUTA_APP . '/views/include/header.php';
                             <td class='secret'>$docentes->tipo_usuario</td>
                             <td class='secret'>$docentes->pass</td>
                             <td>".($docentes->estado == 1?'ACTIVO':'INACTIVO')."</td>
-                            <td><button type='button' class='btn btn-warning btn_modal_editar' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
-                            <td><button id='btn_eliminar3' onclick='menjaseBaja(\"docente/down/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button>
+                            <td class='shrink'><button type='button' class='btn btn-warning btn_modal_editar' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
+                            <td class='shrink'><button id='btn_eliminar3' onclick='menjaseBaja(\"docente/down/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button>
                            
                             </td>
                             

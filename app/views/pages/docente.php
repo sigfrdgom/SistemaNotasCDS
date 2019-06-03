@@ -27,7 +27,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     
 
                 <ol class="breadcrumb float-right">
-                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item">Inicio</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
                 </ol>
                 <div class="clearfix"></div>
@@ -43,6 +43,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <table class="table table-bordered table-hover display">
                     <thead>
                     <tr>
+                        <th class='secret'>ID</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
                         <th class='secret'>Fecha Nacimiento</th>
@@ -67,6 +68,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <?php
                     foreach ($datos['docente'] as $docentes) {
                         echo "<tr>
+                                <td class='secret'>$docentes->id_docente</td>
                                 <td>$docentes->nombres</td>
                                 <td>$docentes->apellidos</td>
                                 <td class='secret'>$docentes->fecha_nacimiento</td>
@@ -77,7 +79,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret'>$docentes->tipo_usuario</td>
                                 <td class='secret'>$docentes->pass</td>
                                 <td>".($docentes->estado == 1?'ACTIVO':'INACTIVO')."</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
+                                <td><button type='button' class='btn btn-warning btn_modal_editar' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
                                 <td><button id='btn_eliminar3' onclick='menjaseBaja(\"docente/down/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                                 </tr>
                                 ";
@@ -104,16 +106,18 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="modal-body">
                     <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/docente/create"data-parsley-validate novalidate >
 
+                        <input type="hidden" name="id_usuario" id="0">
+
                         <label for="dnombres" class="mrg-spr-ex">Nombres del usuario: </label>
-                        <input type="text" name="dnombres" placeholder="Escribe los nombres del usuario" 
+                        <input type="text" name="dnombres" id="1" placeholder="Escribe los nombres del usuario" 
                         class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
                         <label for="dapellidos" class="mrg-spr-ex">Apellidos del usuario:</label>
-                        <input type="text" name="dapellidos" placeholder="Escribe los apellidos del usuario" 
+                        <input type="text" name="dapellidos" id="2" placeholder="Escribe los apellidos del usuario" 
                         class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{1,64}'> 
 
                         <label for="dfecha_nacimiento" class="mrg-spr-ex">Fecha de nacimiento del usuario:</label>
-                        <input type="date" name="dfechanacimiento" placeholder="DD/MM/AAAA" class="form-control" required
+                        <input type="date" name="dfechanacimiento" id="3" placeholder="DD/MM/AAAA" class="form-control" required
                         min="<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 65 year  -3 month"));?>" 
                         max="<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 18 year  -3 month"));?>"> 
                         
@@ -140,15 +144,15 @@ require_once RUTA_APP . '/views/include/header.php';
                             </div>
 
                         <label for="ddui" class="mrg-spr-ex">DUI del usuario:</label>
-                        <input type="text" name="ddui" id="ddui" placeholder="Ingresa el DUI Ej. 0123456-0" 
+                        <input type="text" name="ddui" id="5" placeholder="Ingresa el DUI Ej. 0123456-0" 
                         class="form-control pad-extra-input"  pattern='[0-9]{8}[-]{1}[0-9]{1}' required>
                         
                         <label for="dnit" class="mrg-spr-ex">NIT del usuario:</label>
-                        <input type="text" name="dnit" id="dnit" placeholder="Ingresa el NIT Ej. 0210-010101-100-1" 
+                        <input type="text" name="dnit" id="6" placeholder="Ingresa el NIT Ej. 0210-010101-100-1" 
                         class="form-control pad-extra-input" pattern='[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{3}[-]{1}[0-9]{1}' required>
 
                         <label for="despecialidad" class="mrg-spr-ex">Especialidad del usuario:</label>
-                        <input type="text" name="despecialidad" placeholder="Escribe la especialidad del usuario" 
+                        <input type="text" name="despecialidad" id="7" placeholder="Escribe la especialidad del usuario" 
                         class="form-control pad-extra-input" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9/.#, ]{1,64}'>
 
                         <label class="mrg-spr-ex" >Tipo de usuario:</label>

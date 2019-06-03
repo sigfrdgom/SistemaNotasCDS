@@ -40,7 +40,7 @@ class DocenteModel{
 
     public function update($datos){
         $this->db->query('UPDATE docente SET nombres=:nombres, apellidos=:apellidos, fecha_nacimiento=:fecha_nacimiento, sexo=:sexo, dui=:dui, nit=:nit, especialidad=:especialidad, tipo_usuario=:tipo_usuario, pass=:pass, estado=:estado WHERE id_docente = :id ');
-        $this->db->bind(':id', $datos['id']);
+        $this->db->bind(':id', $datos['id_docente']);
         $this->db->bind(':nombres',$datos['nombres']);
         $this->db->bind(':apellidos',$datos['apellidos']);
         $this->db->bind(':fecha_nacimiento',$datos['fecha_nacimiento']);
@@ -70,7 +70,7 @@ class DocenteModel{
 
     public function updateDown($datos){
         $this->db->query('UPDATE docente SET estado=0 WHERE id_docente = :id ');
-        $this->db->bind(':id', $datos['id']);
+         $this->db->bind(':id', $datos['id']);
         if($this->db->execute()){
             return true;
         }else{

@@ -43,15 +43,15 @@ require_once RUTA_APP . '/views/include/header.php';
                         <tbody>
                         <?php
                         foreach ($datos['TipoModulo'] as $tipoModelos) {
-                            echo "<tr>
-                                <td>$tipoModelos->nombre</td>
-                                <td>$tipoModelos->estado</td>
+                            ?>
+                                <tr>
+                                <td style="display:none;"><?php echo $tipoModelos->id_tipo_modulo ?></td>
+                                <td><?php echo  $tipoModelos->nombre ?></td>
+                                <td><?php echo ($tipoModelos->estado ==1)? "activo" : "Inactivo"; ?></td>
                                 <td><button class=' btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"tipoModulo/delete/$tipoModelos->id_tipo_modulo\")' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td><button id='btn_eliminar2' onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo?>")' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
-                                ";
-                        }
-                        ?>
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -73,8 +73,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="modal-body">
                             <form method="POST" id="frmTipoModulo" action="<?php echo RUTA_URL ?>/tipoModulo/create" data-parsley-validate
                                   novalidate>
+
+                                <input type="hidden" id="id_idTipoModulo" name="id_tipo_modulo">
+
                                 <div class="form-group">
-                                    <label for="idTipoModulo">Nombre de Tipo<span class="text-danger">*</span></label>
+                                    <label for="nombreTipoModulo">Nombre de Tipo<span class="text-danger">*</span></label>
                                     <input type="text" name="nombreTipoModulo" data-parsley-trigger="change" required
                                            placeholder="Ingrese el nombre de usuario" class="form-control"
                                            id="idTipoModulo">
@@ -82,8 +85,10 @@ require_once RUTA_APP . '/views/include/header.php';
 
                                 <div class="form-group">
                                     <label for="idEstado">Estado<span class="text-danger">*</span></label>
-                                    <input type="text" name="estado" data-parsley-trigger="change" required
-                                           placeholder="Estado" class="form-control" id="idEstado">
+                                    <select name="estado" id="idEstado" placeholder="Estado" class="form-control" data-parsley-trigger="change" required>
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
+                                    </select>
                                 </div>
 
                         </div>

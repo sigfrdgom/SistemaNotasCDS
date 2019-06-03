@@ -21,7 +21,62 @@ $(document).ready(function(){
         var data = $tr.children("td").map(function(){
             return $(this).text();
         }).get();
-            $('#did').val(data[0]);
+            $('#id').val(data[0]);
+            $('#mnombre').val(data[1]);
+            $('#mdescripcion').val(data[2]);
+            $('#mhoras').val(data[3]);
+            
+            
+            $("#mti option[value='"+data[4]+"']").attr("selected", true);
+
+            $('#me1').val(data[5]);
+            $('#me2').val(data[6]);
+            $('#me3').val(data[7]);
+            $('#me4').val(data[8]);
+            $('#me5').val(data[9]);
+            $('#me6').val(data[10]);
+            
+           
+            if (data[11]=="ACTIVO") {
+                document.getElementById("mestado1").checked= true;
+            } else {
+                document.getElementById("mestado2").checked= true;
+            }
+            $('#10').val(data[10]);
+            
+        document.getElementById('mod').setAttribute('action','/SistemaNotasCDS/modulo/update');
+        document.getElementById('mdfmod').style.display= 'inline';
+        document.getElementById('aggmod').style.display= 'none';
+        
+    });
+});
+
+//Para limpiar el modal de usuarios
+$("#cancelmdlmodulo").click(function(event) {
+    $("#mod")[0].reset();
+});
+
+$("#ivkmdl").click(function(event) {
+    $("#mod")[0].reset();
+    document.getElementById('mdfmod').style.display= 'none';
+    document.getElementById('aggmod').style.display= 'inline';
+});
+
+
+
+
+
+
+
+
+$(document).ready(function(){
+    $(document).on('click', '.btn_modal_editar', function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function(){
+            return $(this).text();
+        }).get();
+
+            $('#mid').val(data[0]);
             $('#dnombres').val(data[1]);
             $('#dapellidos').val(data[2]);
             $('#dfecha').val(data[3]);

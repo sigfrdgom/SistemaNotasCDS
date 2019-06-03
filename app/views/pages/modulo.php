@@ -13,7 +13,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModulo">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo
                     </button>
                 <ol class="breadcrumb float-right">
@@ -33,6 +33,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <table class="table table-bordered table-hover display">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripcion</th>
                             <th>Duracion horas</th>
@@ -51,6 +52,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <?php
                     foreach ($datos['modulo'] as $modulos) {
                         echo "<tr>
+                                <td>$modulos->id_modulo</td>
                                 <td>$modulos->nombre_modulo</td>
                                 <td>$modulos->descripcion_modulo</td>
                                 <td>$modulos->horas_modulo</td>
@@ -61,9 +63,9 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$modulos->evaluacion4</td>
                                 <td>$modulos->evaluacion5</td>
                                 <td>$modulos->evaluacion6</td>
-                                <td>$modulos->estado</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"modulo/delete/$modulos->id_modulo\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td>".($modulos->estado == 1?'ACTIVO':'INACTIVO')."</td>
+                                <td class='shrink'><button type='button' class='btn btn-warning btn_modal_editar' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                                <td class='shrink'><button id='btn_baja' onclick='menjaseBaja(\"modulo/down/$modulos->id_modulo\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                                 </tr>
                                 ";
                     }
@@ -74,39 +76,42 @@ require_once RUTA_APP . '/views/include/header.php';
         </div>
     </div>
 
-
+    <!-- <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"modulo/delete/$modulos->id_modulo\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td> -->
 <div class="modal fade" id="agregarModulo">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo modulo</h4>
+        <h4 class="modal-title" style="margin: 0% auto;" id="aggmod">Agregar un nuevo modulo</h4>
+          <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfmod">Modificar un modulo</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/modulo/create"data-parsley-validate novalidate >
+                    <form  id="mod" method="POST" action="<?php echo RUTA_URL ?>/modulo/create"data-parsley-validate novalidate >
+
+                        <input type="hidden" name="mid" id="id">
 
                         <label for="mnombre" class="mrg-spr-ex">Nombre del modulo: </label>
-                        <input type="text" name="mnombre" placeholder="Escribe el nombre del modulo" 
+                        <input type="text" name="mnombre" id="mnombre" placeholder="Escribe el nombre del modulo" 
                         class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
                         <label for="mdescripcion" class="mrg-spr-ex">Descripcion del modulo:</label>
-                        <input type="text" name="mdescripcion" placeholder="Escribe la descripcion del modulo" 
+                        <input type="text" name="mdescripcion" id="mdescripcion" placeholder="Escribe la descripcion del modulo" 
                         class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,255}'>
 
                         <label for="mhoras" class="mrg-spr-ex">Horas del modulo:</label>
-                        <input type="text" name="mhoras" placeholder="Escribe las horas del modulo" 
+                        <input type="text" name="mhoras"  id="mhoras" placeholder="Escribe las horas del modulo" 
                         class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü0-9 ]{1,64}'> 
 
                         <label for="mtipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
-								<select class="form-control select2"  name="mtipo_modulo" required>
+								<select class="form-control select2" id="mti" name="mtipo_modulo" required>
                                     <option value="">Selecciona un tipo de modulo</option>    
                                         <?php
                                             foreach ($datos['tipoModulo'] as $tm) {
-                                                echo " <option value='$tm->id_tipo_modulo'>$tm->nombre</option>";
+                                                echo " <option value='$tm->id_tipo_modulo' >$tm->nombre</option>";
                                             }
                                         ?>
 								</select>
@@ -128,28 +133,28 @@ require_once RUTA_APP . '/views/include/header.php';
                             </div>
 
                         <label for="mevaluacion1" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 1:</label>
-                        <input type="number" name="mevaluacion1" placeholder="Escribe el porcentaje de la evaluacion 1" 
-                        class="form-control " min="1" max="100" step="1" required>
+                        <input type="number" name="mevaluacion1" id="me1" placeholder="Escribe el porcentaje de la evaluacion 1" 
+                        class="form-control " min="0" max="100" step="1" required>
 
                         <label for="mevaluacion2" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 2:</label>
-                        <input type="number" name="mevaluacion2" placeholder="Escribe el porcentaje de la evaluacion 2" 
-                        class="form-control " min="1" max="100" step="1">
+                        <input type="number" name="mevaluacion2"  id="me2" placeholder="Escribe el porcentaje de la evaluacion 2" 
+                        class="form-control " min="0" max="100" step="1">
 
                         <label for="mevaluacion3" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 3:</label>
-                        <input type="number" name="mevaluacion3" placeholder="Escribe el porcentaje de la evaluacion 3" 
-                        class="form-control " min="1" max="100" step="1">
+                        <input type="number" name="mevaluacion3"  id="me3" placeholder="Escribe el porcentaje de la evaluacion 3" 
+                        class="form-control " min="0" max="100" step="1">
 
                         <label for="mevaluacion4" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 4:</label>
-                        <input type="number" name="mevaluacion4" placeholder="Escribe el porcentaje de la evaluacion 4" 
-                        class="form-control " min="1" max="100" step="1">
+                        <input type="number" name="mevaluacion4"  id="me4" placeholder="Escribe el porcentaje de la evaluacion 4" 
+                        class="form-control " min="0" max="100" step="1">
 
                         <label for="mevaluacion5" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion5:</label>
-                        <input type="number" name="mevaluacion5" placeholder="Escribe el porcentaje de la evaluacion5" 
-                        class="form-control " min="1" max="100" step="1">
+                        <input type="number" name="mevaluacion5"  id="me5" placeholder="Escribe el porcentaje de la evaluacion5" 
+                        class="form-control " min="0" max="100" step="1">
 
                         <label for="mevaluacion6" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 6:</label>
-                        <input type="number" name="mevaluacion6" placeholder="Escribe el porcentaje de la evaluacion 6" 
-                        class="form-control " min="1" max="100" step="1">
+                        <input type="number" name="mevaluacion6"  id="me6" placeholder="Escribe el porcentaje de la evaluacion 6" 
+                        class="form-control " min="0" max="100" step="1">
             
         </div>
         
@@ -158,7 +163,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
                 <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante">
             </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"  id="cancelmdlmodulo">Cancelar</button>
         </div>
       </div>
     </div>

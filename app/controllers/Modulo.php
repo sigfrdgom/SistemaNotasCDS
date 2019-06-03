@@ -55,6 +55,39 @@ class Modulo extends Controller
        }
    }
 
+
+   public function update()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+           $datos = [
+               'id_modulo' => trim($_POST['mid']),
+               'nombre_modulo' => trim($_POST['mnombre']),
+               'descripcion_modulo' => trim($_POST['mdescripcion']),
+               'horas_modulo' => trim($_POST['mhoras']),
+               'tipo_modulo' => trim($_POST['mtipo_modulo']),
+               'evaluacion1' => trim($_POST['mevaluacion1']),
+               'evaluacion2' => trim($_POST['mevaluacion2']),
+               'evaluacion3' => trim($_POST['mevaluacion3']),
+               'evaluacion4' => trim($_POST['mevaluacion4']),
+               'evaluacion5' => trim($_POST['mevaluacion5']),
+               'evaluacion6' => trim($_POST['mevaluacion6']),
+               'estado' => trim($_POST['mestado'])
+               
+           ];
+           var_dump($datos);
+           if($this->moduloModel->update($datos))
+           {
+               redireccionar('modulo');
+
+           }
+           else
+           {
+               die("Error al insertar los datos");
+           }
+       }
+   }
+
    public function delete($id)
    {
         if (isset($id))
@@ -73,4 +106,23 @@ class Modulo extends Controller
             $this->index();
         }
     }
+
+    public function down($id)
+    {
+         if (isset($id))
+         {
+             if($this->moduloModel->updateDown($id))
+             {
+                 redireccionar('modulo');
+             }
+             else
+             {
+                 die("Error al dar de baja el modulo");
+             }
+         }
+         else
+         {
+             $this->index();
+         }
+     }
 }

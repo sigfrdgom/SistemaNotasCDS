@@ -17,6 +17,9 @@
 
     <!-- Custom CSS -->
     <link href="<?php echo RUTA_URL ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
+    
+    <!-- CSS General para la pagina-->
+    <link href="<?php echo RUTA_URL ?>/css/general.css" rel="stylesheet" type="text/css">
 
     <!-- BEGIN CSS for this page -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>

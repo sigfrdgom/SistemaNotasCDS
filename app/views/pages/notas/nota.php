@@ -14,9 +14,9 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarNota">
-                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo nota
-                    </button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarNota">
+                    <span class='fa fa-plus-square-o bigfonts'></span> Nuevo nota
+                </button>
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>

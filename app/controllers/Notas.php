@@ -1,7 +1,9 @@
 <?php
+
 class Notas extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         //Cargar Modelos de la paginas;
         $this->notaModel = $this->model('NotaModel');
         $this->modulosCursoModel = $this->model('ModulosCursoModel');
@@ -10,7 +12,8 @@ class Notas extends Controller
         $this->moduloModel = $this->model('ModuloModel');
     }
 
-    public function index(){
+    public function index()
+    {
         $descripcion = "Vista que muestra todos los cursos";
         $cursos = $this->cursoModel->orderByFechaDesc();
         $datos = [
@@ -21,18 +24,25 @@ class Notas extends Controller
         $this->view('pages/notas/mostrarCurso', $datos);
     }
 
-    public function modulos($idCurso){
-            $descripcion = "Vista que muestra todos los Modulos del curso";
-            $modulos = $this->moduloModel->findbyIdCurso($idCurso);
-            $datos = [
-                'titulo' => "Modulos del curso",
-                'descripcion' => $descripcion,
-                'modulos' => $modulos
-            ];
-            $this->view('pages/notas/mostrarModulos', $datos);
+    public function modulos($idCurso)
+    {
+        $descripcion = "Vista que muestra todos los Modulos del curso";
+        $modulos = $this->moduloModel->findbyIdCurso($idCurso);
+        $datos = [
+            'titulo' => "Modulos del curso",
+            'descripcion' => $descripcion,
+            'modulos' => $modulos
+        ];
+        $this->view('pages/notas/mostrarModulos', $datos);
     }
 
-    public function notas(){
+    public function calificaciones()
+    {
+
+    }
+
+    public function notas()
+    {
         $nota = $this->notaModel->findAll();
         $modulosCurso = $this->modulosCursoModel->findAll();
         $participante = $this->participanteModel->findAll();
@@ -42,8 +52,8 @@ class Notas extends Controller
             'titulo' => "Nota",
             'descripcion' => $descripcion,
             'nota' => $nota,
-            'moduloCurso' => $modulosCurso ,
-            'participante' => $participante 
+            'moduloCurso' => $modulosCurso,
+            'participante' => $participante
         ];
         $this->view('pages/notas/nota', $datos);
     }

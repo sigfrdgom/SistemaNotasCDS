@@ -71,5 +71,10 @@ class ParticipanteModel{
             return false;
         }
     }
+
+    public function participanteByModulo(){
+        $this->db->query("SELECT * FROM participante ;");
+        return $this->db->findAll();
+    }
 }
 ?>

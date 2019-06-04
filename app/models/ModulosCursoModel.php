@@ -40,8 +40,8 @@ class ModulosCursoModel{
     }
 
     public function update($datos){
-        $this->db->query('UPDATE modulos_curso SET id_curso=:id_curso, id_modulos=:id_modulos, id_docente=:id_docente, observaciones=:observaciones WHERE id_modulos_curso = :id ;');
-        $this->db->bind(':id_modulos_curso',$datos['id_modulos_curso']);
+        $this->db->query('UPDATE modulos_curso SET id_curso=:id_curso, id_modulo=:id_modulo, id_docente=:id_docente, observaciones=:observaciones WHERE id_modulos_curso = :id ;');
+        $this->db->bind(':id',$datos['id_modulos_curso']);
         $this->db->bind(':id_curso',$datos['id_curso']);
         $this->db->bind(':id_modulo',$datos['id_modulo']);
         $this->db->bind(':id_docente',$datos['id_docente']);

@@ -39,12 +39,12 @@ require_once RUTA_APP . '/views/include/header.php';
                 <table class="table table-bordered table-hover display">
                     <thead>
                     <tr>
-                        <th>IDMC</th>
-                        <th>ID Curso</th>
+                        <th class='secret'>IDMC</th>
+                        <th class='secret'>ID Curso</th>
                         <th>Curso</th>
-                        <th>ID Modulo</th>
+                        <th class='secret'>ID Modulo</th>
                         <th>Modulo</th>
-                        <th>ID docente</th>
+                        <th class='secret'>ID docente</th>
                         <th>Docente</th>
                         <th>Observaciones</th>
                         <th colspan="2">Acciones
@@ -60,12 +60,12 @@ require_once RUTA_APP . '/views/include/header.php';
                     <?php
                     foreach ($datos['modulosCurso'] as $modulosCursos) {
                         echo "<tr>
-                                <td>$modulosCursos->id_modulos_curso</td>
-                                <td>$modulosCursos->id_curso</td>
+                                <td class='secret'>$modulosCursos->id_modulos_curso</td>
+                                <td class='secret'>$modulosCursos->id_curso</td>
                                 <td>$modulosCursos->nombre_curso</td>
-                                <td>$modulosCursos->id_modulo</td>
+                                <td class='secret'>$modulosCursos->id_modulo</td>
                                 <td>$modulosCursos->nombre_modulo</td>
-                                <td>$modulosCursos->id_docente</td>
+                                <td class='secret'>$modulosCursos->id_docente</td>
                                 <td>$modulosCursos->nombre</td>
                                 <td>$modulosCursos->observaciones</td>
                                 <td class='shrink'><button type='button' class='btn btn-warning btn_editar_mc' data-toggle='modal' data-target='#editarModulosCurso'><span class='fa fa-edit'></span> Editar</button></td>
@@ -172,7 +172,7 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="mmm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
+                    <form  id="mmm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/update" data-parsley-validate novalidate >
 
                     <input type="hidden" name="idmc" id="idmc">
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>

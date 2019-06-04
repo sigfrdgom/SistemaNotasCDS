@@ -175,7 +175,7 @@ $(document).ready(function(){
             $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
             $('#mcobservaciones').val(data[7]);
         
-        document.getElementById('prt').setAttribute('action','/SistemaNotasCDS/modulosCurso/update');
+        // document.getElementById('prt').setAttribute('action','/SistemaNotasCDS/modulosCurso/update');
        
     });
 });

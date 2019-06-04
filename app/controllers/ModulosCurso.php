@@ -11,7 +11,7 @@ class ModulosCurso extends Controller
     }
 
     public function index(){
-        $modulosCurso = $this->modulosCursoModel->findAll();
+        $modulosCurso = $this->modulosCursoModel->findForTable();
         $docente = $this->docenteModel->findAll();
         $curso = $this->cursoModel->findAll();
         $modulo = $this->moduloModel->findAll();
@@ -51,4 +51,43 @@ class ModulosCurso extends Controller
            }
        }
    }
+
+
+   public function delete($id)
+   {
+        if (isset($id))
+        {
+            if($this->moduloModel->delete($id))
+            {
+                redireccionar('modulosCurso');
+            }
+            else
+            {
+                die("Error al eliminar los datos");
+            }
+        }
+        else
+        {
+            $this->index();
+        }
+    }
+
+    public function down($id)
+    {
+         if (isset($id))
+         {
+             if($this->moduloModel->updateDown($id))
+             {
+                 redireccionar('modulosCurso');
+             }
+             else
+             {
+                 die("Error al dar de baja el modulo");
+             }
+         }
+         else
+         {
+             $this->index();
+         }
+     }
 }

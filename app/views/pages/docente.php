@@ -107,7 +107,7 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="modal-body">
                     <form  id="dct" method="POST" action="<?php echo RUTA_URL ?>/docente/create" data-parsley-validate novalidate >
 
-                        <input type="text" name="did" id="did">
+                        <input type="hidden" name="did" id="did">
 
                         <label for="dnombres" class="mrg-spr-ex">Nombres del usuario: </label>
                         <input type="text" name="dnombres" id="dnombres" placeholder="Escribe los nombres del usuario" 

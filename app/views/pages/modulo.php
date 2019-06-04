@@ -64,7 +64,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$modulos->evaluacion5</td>
                                 <td>$modulos->evaluacion6</td>
                                 <td>".($modulos->estado == 1?'ACTIVO':'INACTIVO')."</td>
-                                <td class='shrink'><button type='button' class='btn btn-warning btn_modal_editar' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                                <td class='shrink'><button type='button' class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
                                 <td class='shrink'><button id='btn_baja' onclick='menjaseBaja(\"modulo/down/$modulos->id_modulo\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                                 </tr>
                                 ";

@@ -15,8 +15,9 @@ $(document).ready(function(){
     });
 });
 
+
 $(document).ready(function(){
-    $(document).on('click', '.btn_modal_editar', function(){
+    $(document).on('click', '.btn_editar_modulo', function(){
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function(){
             return $(this).text();
@@ -70,7 +71,7 @@ $("#ivkmdl").click(function(event) {
 
 
 $(document).ready(function(){
-    $(document).on('click', '.btn_modal_editar', function(){
+    $(document).on('click', '.btn_editar_usuario', function(){
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function(){
             return $(this).text();

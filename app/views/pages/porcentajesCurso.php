@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <div class="breadcrumb-holder">
                     <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarPorcentaje">
+                    <button  id="ivkprt" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarPorcentaje">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo porcentaje curso
                     </button>
                     <ol class="breadcrumb float-right">
@@ -34,7 +34,10 @@ require_once RUTA_APP . '/views/include/header.php';
                     <table class="table table-bordered table-hover display">
                         <thead>
                         <tr>
+                            <th class='secret'>ID curso</th>
+                            <th class='secret'>ID curso</th>
                             <th>Curso</th>
+                            <th class='secret'>ID tipo</th>
                             <th>Tipo modulo</th>
                             <th>Porcentaje</th>
                             <th>Observaciones</th>
@@ -45,12 +48,15 @@ require_once RUTA_APP . '/views/include/header.php';
                         <?php
                         foreach ($datos['porcentajesCurso'] as $porcentajesCursos) {
                             echo "<tr>
-                                <td>$porcentajesCursos->id_curso</td>
-                                <td>$porcentajesCursos->id_tipo_modulo</td>
+                                <td class='secret'>$porcentajesCursos->id_porcentajes_curso</td>
+                                <td class='secret'>$porcentajesCursos->id_curso</td>
+                                <td>$porcentajesCursos->nombre_curso</td>
+                                <td class='secret'>$porcentajesCursos->id_tipo_modulo</td>
+                                <td>$porcentajesCursos->nombre</td>
                                 <td>$porcentajesCursos->porcentaje</td>
                                 <td>$porcentajesCursos->observacion</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"porcentajeCurso/delete/$porcentajesCursos->id_porcentajes_curso\")' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><button type='button' class='btn btn-warning btn_editar_porcentajes' data-toggle='modal' data-target='#agregarPorcentaje'><span class='fa fa-edit'></span> Editar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"porcentajeCurso/delete/$porcentajesCursos->id_porcentajes_curso\")' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                         }
@@ -69,7 +75,8 @@ require_once RUTA_APP . '/views/include/header.php';
 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo porcentaje</h4>
+                        <h4 class="modal-title" style="margin: 0% auto;" id="aggprt">Agregar un nuevo porcentaje</h4>
+                        <h4 class="modal-title" style="margin: 0% auto;" id="mdfprt">Modificar un porcentaje</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
@@ -78,8 +85,10 @@ require_once RUTA_APP . '/views/include/header.php';
                         <form id="prt" method="POST" action="<?php echo RUTA_URL ?>/porcentajeCurso/create"
                               data-parsley-validate novalidate>
 
+                            <input type="hidden" name="porid" id="porid">
+
                             <label for="pcidCurso" class="mrg-spr-ex">Curso:</label>
-                            <select class="form-control select2" name="pid_curso" required>
+                            <select class="form-control select2" id="pidc" name="pid_curso" required>
                                 <option name="oid_curso">Selecciona un curso</option>
                                 <?php
                                 foreach ($datos['curso'] as $curso) {
@@ -89,7 +98,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             </select>
 
                             <label for="pctipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
-                            <select class="form-control select2" name="pid_tipo_modulo" required>
+                            <select class="form-control select2" id="pidtm" name="pid_tipo_modulo" required>
                                 <option name="oid_tipo_modulo">Selecciona un tipo de modulo</option>
                                 <?php
                                 foreach ($datos['tipoModulo'] as $tm) {
@@ -99,21 +108,20 @@ require_once RUTA_APP . '/views/include/header.php';
                             </select>
 
                             <label for="mevaluacions" class="mrg-spr-ex">Porcentaje a asignar:</label>
-                            <input type="number" name="pporcentaje" placeholder="Escribe el porcentaje. Ej. 25.0"
+                            <input type="number" name="pporcentaje" id="pporcentaje" placeholder="Escribe el porcentaje. Ej. 25.0"
                                    class="form-control " min="1.0" max="100.0" step="0.1" required>
 
                             <label for="mdescripcion" class="mrg-spr-ex">Observación:</label>
-                            <input type="text" name="pobservacion" placeholder="Escribe una observación"
+                            <input type="text" name="pobservacion" id="pobservacion" placeholder="Escribe una observación"
                                    class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
 
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success" value="Guardar" name="guardar_participante">
-                        <input type="submit" class="btn btn-warning" value="Actualizar" name="actualizar_participante">
+                        <input type="submit" class="btn btn-success" value="Guardar cambios" name="guardar_participante">
                         </form>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="canclermdlporentaje" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>

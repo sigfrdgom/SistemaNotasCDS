@@ -92,11 +92,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="cnombre" class="mrg-spr-ex">Nombre del curso: </label>
                         <input type="text" name="cnombre" placeholder="Escribe el nombre del curso" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,64}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü#, ]{1,64}'>
 
                         <label for="ccohorte" class="mrg-spr-ex">Cohorte del curso:</label>
                         <input type="text" name="ccohorte" placeholder="Escribe el cohorte Ej. Cohorte 9" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9 ]{1,64}'>
 
                         <label for="cdescripcion" class="mrg-spr-ex">Descripcion del curso:</label>
                         <input type="text" name="cdescripcion" placeholder="Escribe la descripcion del curso" 

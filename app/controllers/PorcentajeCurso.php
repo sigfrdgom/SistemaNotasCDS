@@ -9,7 +9,7 @@ class PorcentajeCurso extends Controller
     }
 
     public function index(){
-        $porcentajesCurso = $this->porcentajesCursoModel->findAll();
+        $porcentajesCurso = $this->porcentajesCursoModel->findForTable();
         $tipoModulo = $this->tipoModuloModel->findAll();
         $curso = $this->cursoModel->findAll();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
@@ -26,6 +26,7 @@ class PorcentajeCurso extends Controller
     public function create(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $datos = [
+                'id_porcentaje_curso' => null,
                 'id_curso' => trim($_POST['pid_curso']),
                 'id_tipo_modulo' => trim($_POST['pid_tipo_modulo']),
                 'porcentaje' => trim($_POST['pporcentaje']),
@@ -33,6 +34,26 @@ class PorcentajeCurso extends Controller
             ];
             var_dump($datos);
             if($this->porcentajesCursoModel->create($datos)){
+                redireccionar('porcentajeCurso');
+            }else{
+                die("Error al insertar los datos");
+            }
+        }else{
+            $this->index();
+        }
+    }
+
+    public function update(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $datos = [
+                'id_porcentajes_curso' => trim($_POST['porid']),
+                'id_curso' => trim($_POST['pid_curso']),
+                'id_tipo_modulo' => trim($_POST['pid_tipo_modulo']),
+                'porcentaje' => trim($_POST['pporcentaje']),
+                'observacion' => trim($_POST['pobservacion'])
+            ];
+            var_dump($datos);
+            if($this->porcentajesCursoModel->update($datos)){
                 redireccionar('porcentajeCurso');
             }else{
                 die("Error al insertar los datos");

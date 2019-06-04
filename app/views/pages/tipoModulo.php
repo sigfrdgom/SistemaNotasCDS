@@ -32,7 +32,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
             <div class="card card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover display">
+                    <table class="table table-sm table-bordered table-hover display">
                         <thead>
                         <tr>
                             <th>Nombre</th>
@@ -48,8 +48,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td style="display:none;"><?php echo $tipoModelos->id_tipo_modulo ?></td>
                                 <td><?php echo  $tipoModelos->nombre ?></td>
                                 <td><?php echo ($tipoModelos->estado ==1)? "activo" : "Inactivo"; ?></td>
-                                <td><button class=' btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo?>")' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td><button class='centrado btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
+                                <td><button id='btn_eliminar2' onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo?>")' class='centrado btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                         <?php } ?>
                         </tbody>

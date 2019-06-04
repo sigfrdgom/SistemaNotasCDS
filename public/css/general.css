@@ -1,0 +1,12 @@
+/*Centrado del titulo de las tablas*/
+th{
+    text-align: center;
+}
+text-centrado{
+    text-align: center;
+}
+.centrado{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}

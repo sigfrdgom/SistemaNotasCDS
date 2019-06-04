@@ -11,7 +11,7 @@ class ModulosCurso extends Controller
     }
 
     public function index(){
-        $modulosCurso = $this->modulosCursoModel->findAll();
+        $modulosCurso = $this->modulosCursoModel->findForTable();
         $docente = $this->docenteModel->findAll();
         $curso = $this->cursoModel->findAll();
         $modulo = $this->moduloModel->findAll();
@@ -51,4 +51,66 @@ class ModulosCurso extends Controller
            }
        }
    }
+   
+   public function update()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+           $datos = [
+               'id_modulos_curso' => trim($_POST['idmc']),
+               'id_curso' => trim($_POST['mcid_curso']),
+               'id_modulo' => trim($_POST['mcid_modulo']),
+               'id_docente' => trim($_POST['mcid_docente']),
+               'observaciones' => trim($_POST['mcobservaciones'])
+           ];
+           var_dump($datos);
+           if($this->modulosCursoModel->update($datos))
+           {
+               redireccionar('modulosCurso');
+
+           }
+           else
+           {
+               die("Error al insertar los datos");
+           }
+       }
+   }
+
+   public function delete($id)
+   {
+        if (isset($id))
+        {
+            if($this->modulosCursoModel->delete($id))
+            {
+                redireccionar('modulosCurso');
+            }
+            else
+            {
+                die("Error al eliminar los datos");
+            }
+        }
+        else
+        {
+            $this->index();
+        }
+    }
+
+    public function down($id)
+    {
+         if (isset($id))
+         {
+             if($this->moduloModel->updateDown($id))
+             {
+                 redireccionar('modulosCurso');
+             }
+             else
+             {
+                 die("Error al dar de baja el modulo");
+             }
+         }
+         else
+         {
+             $this->index();
+         }
+     }
 }

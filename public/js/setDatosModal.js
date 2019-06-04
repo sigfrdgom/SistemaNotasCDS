@@ -158,3 +158,35 @@ $("#ivkprt").click(function(event) {
     document.getElementById('mdfprt').style.display= 'none';
     document.getElementById('aggprt').style.display= 'inline';
 });
+
+
+
+// Para los modulos por curso
+$(document).ready(function(){
+    $(document).on('click', '.btn_editar_mc', function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function(){
+            return $(this).text();
+        }).get();
+
+            $('#idmc').val(data[0]);
+            $("#mcid_curso option[value='"+data[1]+"']").attr("selected", true);
+            $("#mcid_modulo option[value='"+data[3]+"']").attr("selected", true);
+            $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
+            $('#mcobservaciones').val(data[7]);
+        
+        // document.getElementById('prt').setAttribute('action','/SistemaNotasCDS/modulosCurso/update');
+       
+    });
+});
+
+//Para limpiar el modal de usuarios
+$("#canclermdlmc").click(function(event) {
+    $("#prt")[0].reset();
+});
+
+$("#ivkmmm").click(function(event) {
+    $("#mm")[0].reset();
+   
+});
+

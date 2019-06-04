@@ -15,8 +15,9 @@ $(document).ready(function(){
     });
 });
 
+
 $(document).ready(function(){
-    $(document).on('click', '.btn_modal_editar', function(){
+    $(document).on('click', '.btn_editar_modulo', function(){
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function(){
             return $(this).text();
@@ -64,19 +65,14 @@ $("#ivkmdl").click(function(event) {
 
 
 
-
-
-
-
-
 $(document).ready(function(){
-    $(document).on('click', '.btn_modal_editar', function(){
+    $(document).on('click', '.btn_editar_usuario', function(){
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function(){
             return $(this).text();
         }).get();
 
-            $('#mid').val(data[0]);
+            $('#did').val(data[0]);
             $('#dnombres').val(data[1]);
             $('#dapellidos').val(data[2]);
             $('#dfecha').val(data[3]);
@@ -127,3 +123,38 @@ $("#ivkmdl").click(function(event) {
 });
 
 
+
+// Para los porcentajes de los cursos
+$(document).ready(function(){
+    $(document).on('click', '.btn_editar_porcentajes', function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function(){
+            return $(this).text();
+        }).get();
+
+            $('#porid').val(data[0]);
+            $("#pidc option[value='"+data[1]+"']").attr("selected", true);
+            $('#pporcentaje').val(data[5]);
+            $('#pobservacion').val(data[6]);
+
+           
+            $("#pidtm option[value='"+data[3]+"']").attr("selected", true);
+
+            
+        document.getElementById('prt').setAttribute('action','/SistemaNotasCDS/porcentajeCurso/update');
+        document.getElementById('mdfprt').style.display= 'inline';
+        document.getElementById('aggprt').style.display= 'none';
+        
+    });
+});
+
+//Para limpiar el modal de usuarios
+$("#canclermdlporentaje").click(function(event) {
+    $("#prt")[0].reset();
+});
+
+$("#ivkprt").click(function(event) {
+    $("#prt")[0].reset();
+    document.getElementById('mdfprt').style.display= 'none';
+    document.getElementById('aggprt').style.display= 'inline';
+});

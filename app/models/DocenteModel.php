@@ -70,7 +70,7 @@ class DocenteModel{
 
     public function updateDown($datos){
         $this->db->query('UPDATE docente SET estado=0 WHERE id_docente = :id ');
-         $this->db->bind(':id', $datos['id']);
+         $this->db->bind(':id', $datos);
         if($this->db->execute()){
             return true;
         }else{

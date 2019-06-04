@@ -48,7 +48,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th>Apellidos</th>
                         <th class='secret'>Fecha Nacimiento</th>
                         <th class='secret'>Sexo</th>
-                        <th>DUI</th>
+                        <th class='secret'>DUI</th>
                         <th class='secret'>NIT</th>
                         <th>Especialidad</th>
                         <th class='secret'>Tipo Usuario</th>
@@ -74,13 +74,13 @@ require_once RUTA_APP . '/views/include/header.php';
                             <td>$docentes->apellidos</td>
                             <td class='secret'>$docentes->fecha_nacimiento</td>
                             <td class='secret'>$docentes->sexo</td>
-                            <td>$docentes->dui</td>
+                            <td class='secret'>$docentes->dui</td>
                             <td class='secret'>$docentes->nit</td>
                             <td>$docentes->especialidad</td>
                             <td class='secret'>$docentes->tipo_usuario</td>
                             <td class='secret'>$docentes->pass</td>
                             <td>".($docentes->estado == 1?'ACTIVO':'INACTIVO')."</td>
-                            <td class='shrink'><button type='button' class='btn btn-warning btn_modal_editar' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
+                            <td class='shrink'><button type='button' class='btn btn-warning btn_editar_usuario' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
                             <td class='shrink'><button id='btn_eliminar3' onclick='menjaseBaja(\"docente/down/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                             </tr>
                             ";
@@ -107,7 +107,7 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="modal-body">
                     <form  id="dct" method="POST" action="<?php echo RUTA_URL ?>/docente/create" data-parsley-validate novalidate >
 
-                        <input type="hidden" name="did" id="did">
+                        <input type="text" name="did" id="did">
 
                         <label for="dnombres" class="mrg-spr-ex">Nombres del usuario: </label>
                         <input type="text" name="dnombres" id="dnombres" placeholder="Escribe los nombres del usuario" 

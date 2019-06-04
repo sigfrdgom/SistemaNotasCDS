@@ -13,9 +13,14 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo
                     </button>
+                    <a href="#" 
+                            title="Agregar Modulo"  data-toggle="popover" data-trigger="focus"
+                            data-content="Sirve para agregar un nuevo modulo para poder ser usuadp en los cursos que se imparten.">
+                        <i class="fa fa-fw fa-question-circle pop-help"></i>
+                    </a>
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
@@ -33,11 +38,11 @@ require_once RUTA_APP . '/views/include/header.php';
                 <table class="table table-bordered table-hover display">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th class='secret'>ID</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Duracion horas</th>
-                            <th>TipoModulo</th>
+                            <th class='secret'>Descripcion</th>
+                            <th class='secret'>Duracion horas</th>
+                            <th class='secret'>TipoModulo</th>
                             <th>Evaluacion 1</th>
                             <th>Evaluacion 2</th>
                             <th>Evaluacion 3</th>
@@ -45,18 +50,25 @@ require_once RUTA_APP . '/views/include/header.php';
                             <th>Evaluacion 5</th>
                             <th>Evaluacion 6</th>
                             <th>Estado</th>
-                            <th colspan="2">Acciones</th>
+                            <th colspan="2">Acciones
+                                <a href="#" 
+                                    title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
+                                    data-content="Sirven para modificar informacion de un Modulo o darlo de baja">
+                                <i class="fa fa-fw fa-question-circle pop-help"></i>
+                                </a>
+
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
                     foreach ($datos['modulo'] as $modulos) {
                         echo "<tr>
-                                <td>$modulos->id_modulo</td>
+                                <td class='secret'>$modulos->id_modulo</td>
                                 <td>$modulos->nombre_modulo</td>
-                                <td>$modulos->descripcion_modulo</td>
-                                <td>$modulos->horas_modulo</td>
-                                <td>$modulos->tipo_modulo</td>
+                                <td class='secret'>$modulos->descripcion_modulo</td>
+                                <td class='secret'>$modulos->horas_modulo</td>
+                                <td class='secret'>$modulos->tipo_modulo</td>
                                 <td>$modulos->evaluacion1</td>
                                 <td>$modulos->evaluacion2</td>
                                 <td>$modulos->evaluacion3</td>
@@ -64,7 +76,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$modulos->evaluacion5</td>
                                 <td>$modulos->evaluacion6</td>
                                 <td>".($modulos->estado == 1?'ACTIVO':'INACTIVO')."</td>
-                                <td class='shrink'><button type='button' class='btn btn-warning btn_modal_editar' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                                <td class='shrink'><button type='button' class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
                                 <td class='shrink'><button id='btn_baja' onclick='menjaseBaja(\"modulo/down/$modulos->id_modulo\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                                 </tr>
                                 ";
@@ -132,27 +144,27 @@ require_once RUTA_APP . '/views/include/header.php';
                                 </div>         
                             </div>
 
-                        <label for="mevaluacion1" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 1:</label>
+                        <label for="mevaluacion1" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 1:</label>
                         <input type="number" name="mevaluacion1" id="me1" placeholder="Escribe el porcentaje de la evaluacion 1" 
                         class="form-control " min="0" max="100" step="1" required>
 
-                        <label for="mevaluacion2" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 2:</label>
+                        <label for="mevaluacion2" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 2:</label>
                         <input type="number" name="mevaluacion2"  id="me2" placeholder="Escribe el porcentaje de la evaluacion 2" 
                         class="form-control " min="0" max="100" step="1">
 
-                        <label for="mevaluacion3" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 3:</label>
+                        <label for="mevaluacion3" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 3:</label>
                         <input type="number" name="mevaluacion3"  id="me3" placeholder="Escribe el porcentaje de la evaluacion 3" 
                         class="form-control " min="0" max="100" step="1">
 
-                        <label for="mevaluacion4" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 4:</label>
+                        <label for="mevaluacion4" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 4:</label>
                         <input type="number" name="mevaluacion4"  id="me4" placeholder="Escribe el porcentaje de la evaluacion 4" 
                         class="form-control " min="0" max="100" step="1">
 
-                        <label for="mevaluacion5" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion5:</label>
+                        <label for="mevaluacion5" class="mrg-spr-ex">Porcentaje a asignar a evaluacion5:</label>
                         <input type="number" name="mevaluacion5"  id="me5" placeholder="Escribe el porcentaje de la evaluacion5" 
                         class="form-control " min="0" max="100" step="1">
 
-                        <label for="mevaluacion6" class="mrg-spr-ex">Porcentaje a asiganar a evaluacion 6:</label>
+                        <label for="mevaluacion6" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 6:</label>
                         <input type="number" name="mevaluacion6"  id="me6" placeholder="Escribe el porcentaje de la evaluacion 6" 
                         class="form-control " min="0" max="100" step="1">
             
@@ -160,8 +172,7 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal footer -->
         <div class="modal-footer">
-                <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante">
+                <input type="submit"  class="btn btn-success" value="Guardar Cambios" name="guardar_participante">
             </form>
             <button type="button" class="btn btn-danger" data-dismiss="modal"  id="cancelmdlmodulo">Cancelar</button>
         </div>

@@ -11,6 +11,12 @@ class PorcentajesCursoModel{
         return $this->db->findAll();
     }
 
+    public function findForTable(){
+        $this->db->query("SELECT pm.id_porcentajes_curso, pm.id_curso, c.nombre_curso, pm.id_tipo_modulo, tm.nombre, pm.porcentaje, pm.observacion 
+        FROM porcentajes_curso pm JOIN curso c ON pm.id_curso=c.id_curso JOIN tipo_modulo tm ON pm.id_tipo_modulo=tm.id_tipo_modulo;");
+        return $this->db->findAll();
+    }
+
     public function findById($id = ""){
         $this->db->query("SELECT * FROM  WHERE id_porcentajes_curso = :id");
         $this->db->bind(':id',$id);
@@ -32,7 +38,7 @@ class PorcentajesCursoModel{
     }
 
     public function update($datos){
-        $this->db->query('UPDATE porcentajes_curso SET nombre = :nombre, estado = :estado WHERE id_porcentajes_curso = :id ');
+        $this->db->query('UPDATE porcentajes_curso SET id_curso = :id_curso, id_tipo_modulo = :id_tipo_modulo , porcentaje = :porcentaje , observacion = :observacion WHERE id_porcentajes_curso = :id ');
         $this->db->bind(':id', $datos['id_porcentajes_curso']);
         $this->db->bind(':id_curso',$datos['id_curso']);
         $this->db->bind(':id_tipo_modulo', $datos['id_tipo_modulo']);

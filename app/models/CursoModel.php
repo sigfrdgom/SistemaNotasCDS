@@ -64,6 +64,12 @@ class CursoModel{
             return false;
         }
     }
+
+    public function orderByFechaDesc(){
+        $this->db->query("SELECT * FROM curso ORDER BY fecha_inicio DESC");
+        return $this->db->findAll();
+    }
+
 }
 
 ?>

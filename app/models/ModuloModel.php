@@ -71,12 +71,18 @@ class ModuloModel{
     
     public function updateDown($datos){
         $this->db->query('UPDATE modulo SET estado=0 WHERE id_modulo = :id ');
-         $this->db->bind(':id', $datos['id']);
+        $this->db->bind(':id', $datos['id']);
         if($this->db->execute()){
             return true;
         }else{
             return false;
         }
+    }
+
+    public function findbyIdCurso($id = ""){
+        $this->db->query("SELECT * FROM modulo m JOIN modulos_curso mc ON m.id_modulo=mc.id_modulo WHERE mc.id_curso=:id;");
+        $this->db->bind(':id', $id);
+        return $this->db->findAll();
     }
 }
 ?>

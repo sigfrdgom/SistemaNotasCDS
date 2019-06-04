@@ -7,6 +7,29 @@ class Notas extends Controller
         $this->modulosCursoModel = $this->model('ModulosCursoModel');
         $this->participanteModel = $this->model('ParticipanteModel');
         $this->cursoModel = $this->model('CursoModel');
+        $this->moduloModel = $this->model('ModuloModel');
+    }
+
+    public function index(){
+        $descripcion = "Vista que muestra todos los cursos";
+        $cursos = $this->cursoModel->orderByFechaDesc();
+        $datos = [
+            'titulo' => "Mostrar Cursos",
+            'descripcion' => $descripcion,
+            'cursos' => $cursos,
+        ];
+        $this->view('pages/notas/mostrarCurso', $datos);
+    }
+
+    public function modulos($idCurso){
+            $descripcion = "Vista que muestra todos los Modulos del curso";
+            $modulos = $this->moduloModel->findbyIdCurso($idCurso);
+            $datos = [
+                'titulo' => "Modulos del curso",
+                'descripcion' => $descripcion,
+                'modulos' => $modulos
+            ];
+            $this->view('pages/notas/mostrarModulos', $datos);
     }
 
     public function notas(){
@@ -25,14 +48,5 @@ class Notas extends Controller
         $this->view('pages/notas/nota', $datos);
     }
 
-    public function index(){
-        $descripcion = "Vista que muestra todos los cursos";
-        $cursos = $this->cursoModel->findAll();
-        $datos = [
-            'titulo' => "Mostrar Cursos",
-            'descripcion' => $descripcion,
-            'cursos' => $cursos,
-        ];
-        $this->view('pages/notas/mostrarCurso', $datos);
-    }
+
 }

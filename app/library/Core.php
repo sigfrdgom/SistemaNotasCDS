@@ -43,6 +43,7 @@ class Core
         } else {
             require_once '../app/controllers/errores.php';
             $this->controladorActual = new Errores();
+            $this->controladorActual->error404();
         }
 
     }

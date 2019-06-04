@@ -3,11 +3,14 @@
 class Errores extends Controller
 {
     public function __construct() {
-        //Cargar Modelos de la paginas;
-        $this->index();
+        //Cargar al inciar la clase de la paginas;
     }
 
-    public function index(){
+    public function error404(){
         $this->view('pages/errores/error404');
+    }
+
+    public function  error500(){
+        $this->view('pages/errores/error500');
     }
 }

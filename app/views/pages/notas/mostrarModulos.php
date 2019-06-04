@@ -41,15 +41,18 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="card-columns">
                 <?php } ?>
                 <div class="card p-2" style="width: 16rem;">
+                    <form action="<?php echo constant('RUTA_URL') ?>/notas/calificaciones" method="post">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $modulos->nombre_modulo ?></h5>
                         <p class="card-text"><?php echo $modulos->descripcion_modulo ?></p>
-                        <a href="<?php echo constant('RUTA_URL') ?>/notas/modulos"
-                           class="btn btn-primary">Ver Modulos</a>
+                        <input type="hidden" name="id_curso" value="<?php echo $datos['id_curso'] ?>">
+                        <input type="hidden" name="id_modulo" value="<?php echo $modulos->id_modulo ?>">
+                        <button type="submit" class="btn btn-primary">Ver Modulos</button>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Inicio: <?php echo $modulos->horas_modulo ?></small>
                     </div>
+                    </form>
                 </div>
 
                 <?php

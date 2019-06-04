@@ -13,10 +13,6 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="col-xl-12">
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
-                <!-- El boton para agregar a traves de un modal -->
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarNota">
-                    <span class='fa fa-plus-square-o bigfonts'></span> Nuevo nota
-                </button>
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
@@ -30,6 +26,16 @@ require_once RUTA_APP . '/views/include/header.php';
     <div class="row">
 
         <div class="card card-body">
+
+            <?php
+            if (empty($datos['modulos'])) {
+                ?>
+                <div class="card ">
+                    <h2 class="centrado">No hay registros</h2>
+                </div>
+                <?php
+            } else {
+            ?>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover display">
                     <thead>
@@ -44,19 +50,20 @@ require_once RUTA_APP . '/views/include/header.php';
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($datos['nota'] as $modulos) {
-                        echo "<tr>
-                                <td>$modulos->id_participante</td>
-                                <td>$modulos->id_modulos_curso</td>
-                                <td>$modulos->notas_modulo</td>
-                                <td>$modulos->nota_final</td>
-                                <td>$modulos->observaciones</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><a href='' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</a></td>
-                                </tr>
-                                ";
-                    }
-                    ?>
+                    foreach ($datos['participantes'] as $modulos) {
+                        ?>
+                        <tr>
+                            <td>$modulos->id_participante</td>
+                            <td>$modulos->id_modulos_curso</td>
+                            <td>$modulos->notas_modulo</td>
+                            <td>$modulos->nota_final</td>
+                            <td>$modulos->observaciones</td>
+                            <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
+                            <td><a href='' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</a>
+                            </td>
+                        </tr>
+                    <?php }
+                    } ?>
                     </tbody>
                 </table>
             </div>
@@ -76,10 +83,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/porcentajeCurso/create"data-parsley-validate novalidate >
+                    <form id="prt" method="POST" action="<?php echo RUTA_URL ?>/porcentajeCurso/create"
+                          data-parsley-validate novalidate>
 
                         <label for="nparticipante" class="mrg-spr-ex">Participante:</label>
-                        <select class="form-control select2"  name="nparticipante" required>
+                        <select class="form-control select2" name="nparticipante" required>
                             <option value="">Selecciona un participante</option>
                             <?php
                             foreach ($datos['participante'] as $p) {
@@ -89,7 +97,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         </select>
 
                         <label for="nmcurso" class="mrg-spr-ex">Curso:</label>
-                        <select class="form-control select2"  name="nmcurso" required>
+                        <select class="form-control select2" name="nmcurso" required>
                             <option value="">Selecciona un curso</option>
                             <?php
                             foreach ($datos['moduloCurso'] as $mc) {
@@ -114,8 +122,8 @@ require_once RUTA_APP . '/views/include/header.php';
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                    <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante">
+                    <input type="submit" class="btn btn-success" value="Guardar" name="guardar_participante">
+                    <input type="submit" class="btn btn-warning" value="Actualizar" name="actualizar_participante">
                     </form>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>

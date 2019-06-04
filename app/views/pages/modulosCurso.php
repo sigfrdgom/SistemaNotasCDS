@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarModulosCurso">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarModulosCurso" id="ivkmmm">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo por curso
                     </button>
                     <a href="#" 
@@ -94,8 +94,8 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
-
+                    <form  id="mm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
+                        
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
 							<select class="form-control select2"  name="mcid_curso" required>
                                 <option value="">Selecciona un curso</option>    
@@ -122,7 +122,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         foreach ($datos['modulo'] as $m) {
                                             echo "  <div class='form-check'>
                                                         <label class='form-check-label'>
-                                                            <input class='form-check-input' type='checkbox' name='dtipo_usuario' value='$m->id_modulo'>
+                                                            <input class='form-check-input' type='checkbox' name='modulos' value='$m->id_modulo'>
                                                             $m->nombre_modulo
                                                         </label>
                                                     </div>
@@ -142,7 +142,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
 
-                        <label for="mcobservacion" class="mrg-spr-ex">Observación deL modulo en el curso:</label>
+                        <label for="mcobservacion" class="mrg-spr-ex">Observación del modulo en el curso:</label>
                         <input type="text" name="mcobservaciones" placeholder="Escribe una observación para la matricula" 
                         class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
             
@@ -172,10 +172,11 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
+                    <form  id="mmm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
 
+                    <input type="hidden" name="idmc" id="idmc">
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mcid_curso" required>
+							<select class="form-control select2"  name="mcid_curso" id="mcid_curso" required>
                                 <option value="">Selecciona un curso</option>    
                                     <?php
                                         foreach ($datos['curso'] as $curso) {
@@ -185,7 +186,7 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
 
                         <label for="mcid_modulo" class="mrg-spr-ex">Modulo:</label>
-							<select class="form-control select2"  name="mcid_modulo" required>
+							<select class="form-control select2"  name="mcid_modulo" id="mcid_modulo" required>
                                 <option value="">Selecciona un modulo</option>    
                                     <?php
                                         foreach ($datos['modulo'] as $m) {
@@ -195,7 +196,7 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
 
                         <label for="mcid_docente" class="mrg-spr-ex">Docente:</label>
-							<select class="form-control select2"  name="mcid_docente" required>
+							<select class="form-control select2"  name="mcid_docente"  id="mcid_docente" required>
                                 <option value="">Selecciona un docente</option>    
                                     <?php
                                         foreach ($datos['docente'] as $d) {
@@ -205,7 +206,7 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
 
                         <label for="mcobservacion" class="mrg-spr-ex">Observación deL modulo en el curso:</label>
-                        <input type="text" name="mcobservaciones" placeholder="Escribe una observación para la matricula" 
+                        <input type="text" name="mcobservaciones" id="mcobservaciones" placeholder="Escribe una observación para la matricula" 
                         class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
             
         </div>
@@ -213,9 +214,8 @@ require_once RUTA_APP . '/views/include/header.php';
         <!-- Modal footer -->
         <div class="modal-footer">
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante">
             </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" id="canclermdlmc">Cancelar</button>
         </div>
       </div>
     </div>

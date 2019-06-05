@@ -60,12 +60,12 @@ require_once RUTA_APP . '/views/include/header.php';
                         <tr>
                             <td><?php echo $participantes->nombres?></td>
                             <td><?php echo $participantes->apellidos?></td>
-                            <td><input type="text" name="nota1" class="input-nota" ></td>
-                            <td><input type="text" name="nota2" class="input-nota" ></td>
-                            <td><input type="text" name="nota3" class="input-nota" ></td>
-                            <td><input type="text" name="nota4" class="input-nota" ></td>
-                            <td><input type="text" name="nota5" class="input-nota" ></td>
-                            <td><input type="text" name="nota6" class="input-nota" ></td>
+                            <td><?php echo $participantes->nota1?></td>
+                            <td><?php echo $participantes->nota2?></td>
+                            <td><?php echo $participantes->nota3?></td>
+                            <td><?php echo $participantes->nota4?></td>
+                            <td><?php echo $participantes->nota5?></td>
+                            <td><?php echo $participantes->nota6?></td>
                             <td><input type="text" name="observaciones" id=""></td>
                             <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                             </td>

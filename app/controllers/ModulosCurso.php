@@ -36,6 +36,7 @@ class ModulosCurso extends Controller
                'id_modulos_curso' => null,
                'id_curso' => trim($_POST['mcid_curso']),
                'id_modulo' => trim($_POST['mcid_modulo']),
+               //'id_modulo' => $_POST['mcid_modulo'],
                'id_docente' => trim($_POST['mcid_docente']),
                'observaciones' => trim($_POST['mcobservaciones'])
            ];
@@ -43,7 +44,6 @@ class ModulosCurso extends Controller
            if($this->modulosCursoModel->create($datos))
            {
                redireccionar('modulosCurso');
-
            }
            else
            {

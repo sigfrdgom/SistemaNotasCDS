@@ -114,7 +114,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="mobservacion" class="mrg-spr-ex">Observación de matricula:</label>
                         <input type="text" name="mobservaciones" placeholder="Escribe una observación para la matricula" 
-                        class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
+                        class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü,. ]{1,128}'>
             
         </div>
         

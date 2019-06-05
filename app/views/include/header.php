@@ -38,8 +38,7 @@
 
     
     <style>
-
-        .mrg-spr-ex{
+        .mrg-spr-ex {
             margin-top:1.25em;
         }
         .parsley-error {
@@ -72,7 +71,7 @@
         .form-section.current {
             display: inherit;
         }
-</style>
+    </style>
 </head>
 
 <body class="adminbody">

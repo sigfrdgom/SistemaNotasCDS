@@ -140,15 +140,15 @@
                 <ul>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-user"></i><span> Cursos </span> </a>
+                        <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-fw fa-user"></i><span> Cursos </span> </a>
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-book"></i><span> Modulos </span> </a>
+                        <a href="<?php echo RUTA_URL?>/modulo"><i class="fa fa-fw fa-book"></i><span> Modulos </span> </a>
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>
+                        <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>
                     </li>
 
                     <li class="submenu">

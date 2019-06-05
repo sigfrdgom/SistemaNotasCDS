@@ -25,29 +25,40 @@ require_once RUTA_APP . '/views/include/header.php';
 
             <div class="card-deck">
                 <?php
+                if (empty($datos['modulos'])){
+                    ?>
+                    <div class="card ">
+                        <h2 class="centrado">No hay registros</h2>
+                    </div>
+                    <?php
+                }else{
                 $c = 0;
                 foreach ($datos['modulos'] as $modulos) {
-                    if ($c % 5 == 0 && $c != 0) {
-                        echo "</div>
-                <br/>
-                <div class=\"card-deck\">
-                ";
-                    }
-                    ?>
-                    <div class="card p-2" style="width: 16rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $modulos->nombre_modulo ?></h5>
-                            <p class="card-text"><?php echo $modulos->descripcion_modulo ?></p>
-                            <a href="<?php echo constant('RUTA_URL') ?>/notas/modulos"
-                               class="btn btn-primary">Ver Modulos</a>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Inicio: <?php echo $modulos->horas_modulo ?></small>
-                        </div>
+                if ($c % 5 == 0 && $c != 0) {
+                ?>
+            </div>
+            <br/>
+            <div class="card-columns">
+                <?php } ?>
+                <div class="card p-2" style="width: 16rem;">
+                    <form action="<?php echo constant('RUTA_URL') ?>/notas/calificaciones" method="post">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $modulos->nombre_modulo ?></h5>
+                        <p class="card-text"><?php echo $modulos->descripcion_modulo ?></p>
+                        <input type="hidden" name="id_curso" value="<?php echo $datos['id_curso'] ?>">
+                        <input type="hidden" name="id_modulo" value="<?php echo $modulos->id_modulo ?>">
+                        <button type="submit" class="btn btn-primary">Ver Modulos</button>
                     </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Inicio: <?php echo $modulos->horas_modulo ?></small>
+                    </div>
+                    </form>
+                </div>
 
-                    <?php
-                    $c++;
+                <?php
+                $c++;
+                }
+
                 } ?>
             </div>
             <br/>

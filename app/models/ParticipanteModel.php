@@ -71,5 +71,12 @@ class ParticipanteModel{
             return false;
         }
     }
+
+    public function participantesByModulo($datos){
+        $this->db->query("SELECT * FROM participante p INNER JOIN matricula m ON p.id_participante=m.id_participante INNER JOIN curso c ON m.id_curso=c.id_curso INNER JOIN modulos_curso mc ON c.id_curso=mc.id_curso WHERE mc.id_modulo=:id_modulo AND mc.id_curso=:id_curso;");
+        $this->db->bind(':id_curso', $datos['id_curso']);
+        $this->db->bind(':id_modulo', $datos['id_modulo']);
+        return $this->db->findAll();
+    }
 }
 ?>

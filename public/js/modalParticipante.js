@@ -72,11 +72,7 @@ function mostrarpd(){
   //   }
   
     $(document).ready(function() {
-  
-      $(".actu").click(function() {
-  
-       
-  
+        $(".actu").click(function() {
         var dp0 = "";
         var dp1 = "";
         var dp2 = "";
@@ -91,9 +87,7 @@ function mostrarpd(){
         var dp11 = "";
         var dp12 = "";
         
-        
-  
-  
+
         // Obtenemos todos los valores contenidos en los <td> de la fila
         // seleccionada
         $(this).parents("tr").find(".dp0").each(function() {

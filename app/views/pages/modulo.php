@@ -95,9 +95,9 @@ require_once RUTA_APP . '/views/include/header.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-        <h4 class="modal-title" style="margin: 0% auto;" id="aggmod">Agregar un nuevo modulo</h4>
-          <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfmod">Modificar un modulo</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="margin: 0% auto;" id="aggmod">Agregar un nuevo modulo</h4>
+            <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfmod">Modificar un modulo</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->

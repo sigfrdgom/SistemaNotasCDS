@@ -11,12 +11,59 @@ function menjaseEliminar(ruta){
                 swal("El registro se eliminado!", {
                     icon: "success",
                 }).then((ok) => {
+                    // const tipoModulo = this.dataset.tipoModulo;
+                  
+                  
                     window.location.href = ruta;
                 });
             }
         });
 
 }
+
+
+
+
+// const tipoModulo = this.dataset.tipoModulo;
+        
+//         const confirm = window.confirm("¿Deseas eliminar el Pedido " + id_Pedido + "?");
+
+//         if(confirm){
+//             // solicitud AJAX
+//             httpRequest("http://localhost/examen_mvc/consulta2/eliminarPedido/"+tipoModulo, function(){
+//                 console.log(this.responseText);
+//                 // document.querySelector("#respuesta").innerHTML = this.responseText;
+
+//                 const tbody = document.querySelector("#tbody-pedido");
+//                 const fila  = document.querySelector("#fila-" + tipoModulo);
+
+//                 tbody.removeChild(fila);
+//             });
+
+
+
+
+
+function httpRequest(url, callback){
+    const http = new XMLHttpRequest();
+    http.open("GET", url);
+    http.send();
+
+    http.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            callback.apply(http);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 
 function menjaseBaja(ruta){
     return swal({

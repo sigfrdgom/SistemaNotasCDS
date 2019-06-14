@@ -1,3 +1,5 @@
+
+//actualizar tipo_modulo
 $(document).ready(function(){
     $(document).on('click', '.btn_modal_editar', function(){
         $('#agregarTipoModulo').modal('show');
@@ -11,17 +13,18 @@ $(document).ready(function(){
         //alert('the action is: ' + $('#frmTipoModulo').attr('method'));}
         $('#id_idTipoModulo').val(data[0]);
         $('#idTipoModulo').val(data[1]);
-        $('#idEstado').val(data[2]);
+        $("#idEstado option[value='"+data[2]+"']").attr("selected", true);
+        // $('#idEstado').val(data[2]);
     });
 });
 
 
+//Actualizar Modulo
 $(document).ready(function(){
     $(document).on('click', '.btn_editar_modulo', function(){
         $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function(){
-            return $(this).text();
-        }).get();
+        var data = $tr.children("td").map(function(){return $(this).text();}).get();
+
             $('#id').val(data[0]);
             $('#mnombre').val(data[1]);
             $('#mdescripcion').val(data[2]);
@@ -52,6 +55,9 @@ $(document).ready(function(){
     });
 });
 
+
+
+
 //Para limpiar el modal de usuarios
 $("#cancelmdlmodulo").click(function(event) {
     $("#mod")[0].reset();
@@ -69,13 +75,13 @@ $(document).ready(function(){
     $(document).on('click', '.btn_editar_usuario', function(){
         $tr = $(this).closest('tr');
         var data = $tr.children("td").map(function(){
-            return $(this).text();
-        }).get();
+            return $(this).text();}).get();
 
             $('#did').val(data[0]);
             $('#dnombres').val(data[1]);
             $('#dapellidos').val(data[2]);
             $('#dfecha').val(data[3]);
+
             //El valor del sexo
             $('#4').val(data[4]);
             if (data[4] == "MASCULINO") {
@@ -88,14 +94,17 @@ $(document).ready(function(){
             $('#ddui').val(data[5]);
             $('#dnit').val(data[6]);
             $('#despecialidad').val(data[7]);
+            
             // El valor de tipo usuario
             if (data[8]=="ADMINISTRADOR") {
                 document.getElementById("tipo1").checked= true;
             } else {
                 document.getElementById("tipo2").checked= true;
             }
+            
             // el password
             $('#dpass').val(data[9]);
+            
             //el estado
             if (data[10]=="ACTIVO") {
                 document.getElementById("destado1").checked= true;
@@ -110,6 +119,8 @@ $(document).ready(function(){
         
     });
 });
+
+
 
 //Para limpiar el modal de usuarios
 $("#cancelmdldocente").click(function(event) {

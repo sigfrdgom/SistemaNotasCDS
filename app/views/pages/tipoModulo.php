@@ -15,7 +15,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                     <!-- El boton para agregar a traves de un modal -->
                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarTipoModulo">
-                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo porcentaje curso
+                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo Tipo Modulo
                     </button>
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">Home</li>
@@ -40,16 +40,20 @@ require_once RUTA_APP . '/views/include/header.php';
                             <th colspan="2">Acciones</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody-tipoModulo">
                         <?php
                         foreach ($datos['TipoModulo'] as $tipoModelos) {
                             ?>
-                                <tr>
+                                <tr id="fila-.<?php echo $tipoModelos->id_tipo_modulo;?>">
                                 <td style="display:none;"><?php echo $tipoModelos->id_tipo_modulo ?></td>
                                 <td><?php echo  $tipoModelos->nombre ?></td>
                                 <td><?php echo ($tipoModelos->estado ==1)? "Activo" : "Inactivo"; ?></td>
                                 <td><button class='centrado btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo?>")' class='centrado btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                
+                                <td><button id='btn_eliminar2' data-tipoModulo="<?php echo $tipoModelos->id_tipo_modulo;?>"
+                                onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo;?>")' 
+                                class='centrado btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                
                                 </tr>
                         <?php } ?>
                         </tbody>
@@ -65,7 +69,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo usuario</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo Tipo Modulo</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -96,7 +100,6 @@ require_once RUTA_APP . '/views/include/header.php';
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-success" value="Guardar" name="guardar_tipo_modulo">
-                            <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_tipo_modulo">
                             </form>
                             <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>

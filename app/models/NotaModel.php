@@ -55,5 +55,13 @@ class NotaModel{
         }
     }
 
+    public function findByCursoModulo($id_curso, $id_modulo){
+        $this->db->query("SELECT * FROM nota n INNER JOIN modulos_curso mc ON n.id_modulos_curso=mc.id_modulos_curso INNER JOIN modulo m ON mc.id_modulo=m.id_modulo INNER JOIN curso c ON mc.id_curso=c.id_curso;");
+        $this->db->bind(':id',$id_curso);
+        $this->db->bind(':id',$id_modulo);
+        return $this->db->findAll();
+    }
+
+
 }
 ?>

@@ -24,17 +24,17 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
     <!-- end row -->
 
-    <div class="row">
-
+    <div class="row margen-abajo-card">
         <div class="card card-body">
-            <?php if (isset($_POST['nota1'])) {
-                var_dump($_POST['nota1']);
-                var_dump($_POST['nota2']);
-                var_dump($_POST['nota3']);
-                var_dump($_POST['nota4']);
-                var_dump($_POST['nota5']);
-                var_dump($_POST['nota6']);
-            } ?>
+            <div class="col-xl-12">
+            <a href="<?php echo constant('RUTA_URL')?>/notas/ingresarNotas/<?php echo $datos['id_curso']?>/<?php echo $datos['id_modulo']?>" class="btn btn-success "><label for="">Ingresar Notas</label></a>
+                </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="card card-body">
 
             <?php
             if (empty($datos['participantes'])) {
@@ -46,45 +46,42 @@ require_once RUTA_APP . '/views/include/header.php';
             } else {
             ?>
             <div class="table-responsive">
-                <form method="POST">
-                    <table class="table table-sm table-bordered table-hover display">
-                        <thead>
+                <table class="table table-sm table-bordered table-hover display">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Nota1</th>
+                        <th>Nota2</th>
+                        <th>Nota3</th>
+                        <th>Nota4</th>
+                        <th>Nota5</th>
+                        <th>Nota6</th>
+                        <th>Observaciones</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($datos['participantes'] as $participantes) {
+                        ?>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Nota1</th>
-                            <th>Nota2</th>
-                            <th>Nota3</th>
-                            <th>Nota4</th>
-                            <th>Nota5</th>
-                            <th>Nota6</th>
-                            <th>Observaciones</th>
-                            <th colspan="2">Acciones</th>
+                            <td><?php echo $participantes->nombres?></td>
+                            <td><?php echo $participantes->apellidos?></td>
+                            <td><?php echo $participantes->nota1 ?></td>
+                            <td><?php echo $participantes->nota2 ?></td>
+                            <td><?php echo $participantes->nota3 ?></td>
+                            <td><?php echo $participantes->nota4 ?></td>
+                            <td><?php echo $participantes->nota5 ?></td>
+                            <td><?php echo $participantes->nota6 ?></td>
+                            <td><?php echo $participantes->observaciones ?></td>
+                            <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
+                            </td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        foreach ($datos['participantes'] as $participantes) {
-                            ?>
-                            <tr>
-                                <td><?php echo $participantes->nombres ?></td>
-                                <td><?php echo $participantes->apellidos ?></td>
-                                <td><input type="text" name="nota1[]" class="input-nota"></td>
-                                <td><input type="text" name="nota2[]" class="input-nota"></td>
-                                <td><input type="text" name="nota3[]" class="input-nota"></td>
-                                <td><input type="text" name="nota4[]" class="input-nota"></td>
-                                <td><input type="text" name="nota5[]" class="input-nota"></td>
-                                <td><input type="text" name="nota6[]" class="input-nota"></td>
-                                <td><input type="text" name="observaciones[]" id=""></td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                </td>
-                            </tr>
-                        <?php }
-                        } ?>
-                        </tbody>
-                    </table>
-                    <button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
-                </form>
+                    <?php }
+                    } ?>
+                    </tbody>
+                </table>
             </div>
 
         </div>

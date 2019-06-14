@@ -38,12 +38,12 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tr>
                         <th>Nombre</th>
                         <th>Cohorte</th>
-                        <th>Descripcion</th>
+                        <th class='secret'>Descripcion</th>
                         <th>Duracion</th>
                         <th>Sede</th>
                         <th>Estado</th>
                         <th>Nivel</th>
-                        <th>Inicio</th>
+                        <th class='secret'>Inicio</th>
                         <th>Fin</th>
                         <th colspan="2">Acciones</th>
                     </tr>
@@ -55,15 +55,15 @@ require_once RUTA_APP . '/views/include/header.php';
                         echo "<tr>
                                 <td>$cursos->nombre_curso</td>
                                 <td>$cursos->cohorte</td>
-                                <td>$cursos->descripcion</td>
+                                <td class='secret'>$cursos->descripcion</td>
                                 <td>$cursos->duracion</td>
                                 <td>$cursos->sede</td>
-                                <td>$cursos->estado</td>
+                                <td>".($cursos->estado == 1?'ACTIVO':'INACTIVO')."</td>
                                 <td>$cursos->nivel</td>
-                                <td>$cursos->fecha_inicio</td>
+                                <td class='secret'>$cursos->fecha_inicio</td>
                                 <td>$cursos->fecha_fin</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span>Editar</a></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"curso/delete/$cursos->id_curso\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span>Editar</a></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"curso/delete/$cursos->id_curso\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }

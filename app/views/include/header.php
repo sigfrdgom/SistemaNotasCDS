@@ -164,13 +164,13 @@
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/tipoModulo">Tipo Modulo</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/notas">Notas</a></li>
+                            <!-- <li><a href="<?php //echo RUTA_URL ?>/notas">Notas</a></li> -->
                             <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/curso">Cursos</a></li>
+                            <!-- <li><a href="<?php //echo RUTA_URL ?>/curso">Cursos</a></li> -->
                             <li><a href="<?php echo RUTA_URL ?>/modulosCurso">Modulos por cursos</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/porcentajeCurso">Porcentaje modulos</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/participante">Participantes</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/docente">Docentes</a></li>
+                            <!-- <li><a href="<?php //echo RUTA_URL ?>/participante">Participantes</a></li> -->
+                            <!-- <li><a href="<?php //echo RUTA_URL ?>/docente">Docentes</a></li> -->
 
                         </ul>
                     </li>

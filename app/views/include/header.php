@@ -146,6 +146,10 @@
                     <li class="submenu">
                         <a href="<?php echo RUTA_URL?>/modulo"><i class="fa fa-fw fa-book"></i><span> Modulos </span> </a>
                     </li>
+                    
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL?>/docente"><i class="fa fa-fw fa-user"></i><span> Usuarios </span> </a>
+                    </li>
 
                     <li class="submenu">
                         <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>

@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarMatricula">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarMatricula">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo matricula
                     </button>
                 <ol class="breadcrumb float-right">

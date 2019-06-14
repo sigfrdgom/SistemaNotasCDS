@@ -83,7 +83,7 @@
 
         <!-- LOGO -->
         <div class="headerbar-left">
-            <a href="index" class="logo "><img alt="Logo" class="img-logo" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
+            <a href="index" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
         </div>
 
         <nav class="navbar-custom">
@@ -135,12 +135,12 @@
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
-                <a href="index" ><img alt="Logo" class="img-fgk" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
+                <a href="index" ><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
 
                 <ul>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-fw fa-user"></i><span> Cursos </span> </a>
+                        <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-graduation-cap bigfont"></i><span> Cursos </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -148,7 +148,7 @@
                     </li>
                     
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL?>/docente"><i class="fa fa-fw fa-user"></i><span> Usuarios </span> </a>
+                        <a href="<?php echo RUTA_URL?>/docente"><i class="fa fa-id-badge bigfonts"></i><span> Usuarios </span> </a>
                     </li>
 
                     <li class="submenu">

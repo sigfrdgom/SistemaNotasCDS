@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarMatricula">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarMatricula">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo matricula
                     </button>
                 <ol class="breadcrumb float-right">
@@ -49,8 +49,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td>$notas->id_participante</td>
                                 <td>$notas->estado</td>
                                 <td>$notas->observaciones</td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"matricula/delete/$notas->id_matricula\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"matricula/delete/$notas->id_matricula\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }
@@ -114,7 +114,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="mobservacion" class="mrg-spr-ex">Observación de matricula:</label>
                         <input type="text" name="mobservaciones" placeholder="Escribe una observación para la matricula" 
-                        class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
+                        class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü,. ]{1,128}'>
             
         </div>
         

@@ -106,31 +106,31 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
 
-                        <!-- <label for="mcid_modulo" class="mrg-spr-ex">Modulo:</label>
+                        <label for="mcid_modulo" class="mrg-spr-ex">Modulo:</label>
 							<select class="form-control select2"  name="mcid_modulo" required>
                                 <option value="">Selecciona un modulo</option>    
                                     <?php
-                                        // foreach ($datos['modulo'] as $m) {
-                                        //     echo " <option value='$m->id_modulo'>$m->nombre_modulo </option>";
-                                        // }
-                                    ?>
-                            </select> -->
-                            
-                        <label class="mrg-spr-ex" for="mmselect" >Modulos disponibles para agregar al curso:</label>
-                            <div style="margin-left:2em;" id="mmselect">
-                            <?php
                                         foreach ($datos['modulo'] as $m) {
-                                            echo "  <div class='form-check'>
-                                                        <label class='form-check-label'>
-                                                            <input class='form-check-input' type='checkbox' name='modulos' value='$m->id_modulo'>
-                                                            $m->nombre_modulo
-                                                        </label>
-                                                    </div>
-
-                                            ";
+                                            echo " <option value='$m->id_modulo'>$m->nombre_modulo </option>";
                                         }
                                     ?>
-                            </div>
+                            </select>
+                            
+                        <!-- <label class="mrg-spr-ex" for="mmselect" >Modulos disponibles para agregar al curso:</label>
+                            <div style="margin-left:2em;" id="mmselect">
+                            <?php
+                                        // foreach ($datos['modulo'] as $m) {
+                                        //     echo "  <div class='form-check'>
+                                        //                 <label class='form-check-label'>
+                                        //                     <input class='form-check-input' type='checkbox' name='mcid_modulo[]' value='$m->id_modulo'>
+                                        //                     $m->nombre_modulo
+                                        //                 </label>
+                                        //             </div>
+
+                                        //     ";
+                                        // }
+                                    ?>
+                            </div> -->
 
                         <label for="mcid_docente" class="mrg-spr-ex">Docente:</label>
 							<select class="form-control select2"  name="mcid_docente" required>
@@ -151,7 +151,6 @@ require_once RUTA_APP . '/views/include/header.php';
         <!-- Modal footer -->
         <div class="modal-footer">
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante">
             </form>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>

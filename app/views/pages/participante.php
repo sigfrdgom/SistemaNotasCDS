@@ -17,7 +17,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;  </h1>
 
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarParticipante">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarParticipante">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo participante
                     </button>
 
@@ -38,17 +38,17 @@ require_once RUTA_APP . '/views/include/header.php';
                 <table class="table table-bordered table-hover display">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th class='secret'>ID</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Fecha Nacimiento</th>
-                        <th>Sexo</th>
-                        <th>DUI</th>
-                        <th>NIT</th>
-                        <th>Carnet</th>
-                        <th>Direccion</th>
-                        <th>Telefono</th>
-                        <th>Email</th>
+                        <th class='secret'>Fecha Nacimiento</th>
+                        <th class='secret'>Sexo</th>
+                        <th >DUI</th>
+                        <th class='secret'>NIT</th>
+                        <th class='secret'>Carnet</th>
+                        <th class='secret'>Direccion</th>
+                        <th class='secret'>Telefono</th>
+                        <th class='secret'>Email</th>
                         <!-- <th>Password</th> -->
                         <th>Estado</th>
                         <th colspan="2">Acciones</th>
@@ -59,25 +59,24 @@ require_once RUTA_APP . '/views/include/header.php';
                     //  <td class='bsecreto dp11'>$participantes->pass</td>
                     foreach ($datos['participante'] as $participantes) {
                         echo "<tr>
-                                <td class='bsecreto dp0'>$participantes->id_participante</td>
-                                <td class='bsecreto dp1'>$participantes->nombres</td>
-                                <td class='bsecreto dp2'>$participantes->apellidos</td>
-                                <td class='bsecreto dp3'>$participantes->fecha_nacimiento</td>
-                                <td class='bsecreto dp4'>$participantes->sexo</td>
-                                <td class='bsecreto dp5'>$participantes->dui</td>
-                                <td class='bsecreto dp6'>$participantes->nit</td>
-                                <td class='bsecreto dp7'>$participantes->carnet_minoridad</td>
-                                <td class='bsecreto dp8'>$participantes->direccion</td>
-                                <td class='bsecreto dp9'>$participantes->telefono</td>
-                                <td class='bsecreto dp10'>$participantes->email</td>
+                                <td class='secret dp0'>$participantes->id_participante</td>
+                                <td class=' dp1'>$participantes->nombres</td>
+                                <td class=' dp2'>$participantes->apellidos</td>
+                                <td class='secret dp3'>$participantes->fecha_nacimiento</td>
+                                <td class='secret dp4'>$participantes->sexo</td>
+                                <td class=' dp5'>$participantes->dui</td>
+                                <td class='secret dp6'>$participantes->nit</td>
+                                <td class='secret dp7'>$participantes->carnet_minoridad</td>
+                                <td class='secret dp8'>$participantes->direccion</td>
+                                <td class='secret dp9'>$participantes->telefono</td>
+                                <td class='secret dp10'>$participantes->email</td>
                                
                                 <td class='bsecreto dp12'>$participantes->estado</td>
                                 
-                                <td> <button type='button' value='Detalles' class='actu btn btn-warning' data-toggle='modal' data-target='#myModalActualizar' 
-                                >
-                                <span class='fa fa-plus-square-o bigfonts'><span class='fa fa-edit'></span> Editar</td>
+                                <td class='shrink'> <button type='button' value='Detalles' class='actu btn btn-warning ' data-toggle='modal' data-target='#myModalActualizar' >
+                                <span class='fa fa-edit'></span> Editar</td>
 
-                                <td><button id='btn_eliminar2' onclick='menjaseEliminar(\"participante/delete/$participantes->id_participante\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"participante/delete/$participantes->id_participante\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
                                 ";
                     }

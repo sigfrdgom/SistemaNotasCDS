@@ -108,11 +108,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="mnombre" class="mrg-spr-ex">Nombre del modulo: </label>
                         <input type="text" name="mnombre" id="mnombre" placeholder="Escribe el nombre del modulo" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,64}'>
 
                         <label for="mdescripcion" class="mrg-spr-ex">Descripcion del modulo:</label>
                         <input type="text" name="mdescripcion" id="mdescripcion" placeholder="Escribe la descripcion del modulo" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,255}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,255}'>
 
                         <label for="mhoras" class="mrg-spr-ex">Horas del modulo:</label>
                         <input type="text" name="mhoras"  id="mhoras" placeholder="Escribe las horas del modulo" 

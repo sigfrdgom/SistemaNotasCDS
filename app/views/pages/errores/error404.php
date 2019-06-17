@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/error404.css">
+<link rel="stylesheet" href="<?php echo constant('RUTA_URL')?>/css/error404.css">
 <div id="clouds">
             <div class="cloud x1"></div>
             <div class="cloud x1_5"></div>

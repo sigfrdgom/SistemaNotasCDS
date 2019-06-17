@@ -24,13 +24,15 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
     <!-- end row -->
 
+    <?php if(!empty($datos['participantes'])) {?>
     <div class="row margen-abajo-card">
         <div class="card card-body">
             <div class="col-xl-12">
-            <a href="<?php echo constant('RUTA_URL')?>/notas/ingresarNotas/<?php echo $datos['id_curso']?>/<?php echo $datos['id_modulo']?>" class="btn btn-success "><label for="">Ingresar Notas</label></a>
+            <a href="<?php echo constant('RUTA_URL')?>/notas/ingresarNotas/<?php echo $datos['id_curso']?>/<?php echo $datos['id_modulo']?>" class="btn btn-success ">Ingresar Notas</a>
                 </div>
         </div>
     </div>
+    <?php } ?>
 
 
     <div class="row">

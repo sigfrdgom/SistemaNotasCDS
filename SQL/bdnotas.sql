@@ -24,6 +24,10 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP DATABASE IF EXISTS notas;
+CREATE DATABASE notas;
+USE notas;
+
 --
 -- Estructura de tabla para la tabla `curso`
 --

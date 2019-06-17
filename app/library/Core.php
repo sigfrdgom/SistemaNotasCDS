@@ -5,6 +5,8 @@ class Core
     protected $controladorActual = 'Index';
     protected $metodoActual = 'index';
     protected $parametros = [];
+    private $ruta_controllers = '../app/controllers/';
+    private $ruta_services = '../app/services/';
 
     //Constructor de la clase
     public function __construct(){
@@ -13,8 +15,13 @@ class Core
         //Comprobar si la URL esta vacia y redireccionar
         $url[0] = isset($url[0])? $url[0] : $this->controladorActual;
 
+
+        if (file_exists($this->ruta_services . ucwords($url [0] . '.php'))) {
+            $this->ruta_controllers = $this->ruta_services;
+            $this->metodoActual = 'findAll';
+        }
         //buscar en controladores si el controlador existe
-        if (file_exists('../app/controllers/' . ucwords($url [0] . '.php'))) {
+        if (file_exists($this->ruta_controllers . ucwords($url [0] . '.php'))) {
             //Si existe se setea como controlador por defecto
             $this->controladorActual = ucwords($url[0]);
 
@@ -22,7 +29,7 @@ class Core
             unset($url[0]);
 
             //comprobar que el controlador existe
-            require_once '../app/controllers/' . $this->controladorActual . '.php';
+            require_once $this->ruta_controllers . $this->controladorActual . '.php';
             $this->controladorActual = new $this->controladorActual;
 
             //verificar la segunda parte de la url que seria el método

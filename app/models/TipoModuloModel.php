@@ -12,7 +12,7 @@ class TipoModuloModel{
     }
 
     public function findById($id = ""){
-        $this->db->query("SELECT * FROM  WHERE id_tipo_modulo = :id");
+        $this->db->query("SELECT * FROM tipo_modulo WHERE id_tipo_modulo = :id");
         $this->db->bind(':id',$id);
         return $this->db->findOne();
     }

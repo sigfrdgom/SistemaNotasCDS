@@ -69,84 +69,24 @@ require_once RUTA_APP . '/views/include/header.php';
                             <tr>
                                 <td><?php echo $participantes->nombres ?></td>
                                 <td><?php echo $participantes->apellidos ?></td>
-                                <td><input type="text" name="nota1[]" class="input-nota"></td>
-                                <td><input type="text" name="nota2[]" class="input-nota"></td>
-                                <td><input type="text" name="nota3[]" class="input-nota"></td>
-                                <td><input type="text" name="nota4[]" class="input-nota"></td>
-                                <td><input type="text" name="nota5[]" class="input-nota"></td>
-                                <td><input type="text" name="nota6[]" class="input-nota"></td>
+                                <td><input type="text" name="nota1[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td><input type="text" name="nota2[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td><input type="text" name="nota3[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td><input type="text" name="nota4[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td><input type="text" name="nota5[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td><input type="text" name="nota6[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
                                 <td><input type="text" name="observaciones[]" id=""></td>
                                 <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                                 </td>
                             </tr>
-                        <?php }
-                        } ?>
+                        <?php } ?>
                         </tbody>
                     </table>
                     <button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
                 </form>
+                <?php } ?>
             </div>
 
-        </div>
-    </div>
-
-    <div class="modal fade" id="agregarNota">
-        <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title" style="margin: 0% auto;">Agregar una nota</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form id="prt" method="POST" action="<?php echo RUTA_URL ?>/porcentajeCurso/create"
-                          data-parsley-validate novalidate>
-
-                        <label for="nparticipante" class="mrg-spr-ex">Participante:</label>
-                        <select class="form-control select2" name="nparticipante" required>
-                            <option value="">Selecciona un participante</option>
-                            <?php
-                            foreach ($datos['participante'] as $p) {
-                                echo " <option value='$p->id_participante'>$p->nombres $p->apellidos  </option>";
-                            }
-                            ?>
-                        </select>
-
-                        <label for="nmcurso" class="mrg-spr-ex">Curso:</label>
-                        <select class="form-control select2" name="nmcurso" required>
-                            <option value="">Selecciona un curso</option>
-                            <?php
-                            foreach ($datos['moduloCurso'] as $mc) {
-                                echo " <option value='$mc->id_modulos_curso'>$mc->observaciones</option>";
-                            }
-                            ?>
-                        </select>
-
-                        <label for="nnotas" class="mrg-spr-ex">Notas modulo:</label>
-                        <input type="text" name="nnotas" placeholder="Escribe una observación para la matricula"
-                               class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü,. ]{1,128}'>
-
-                        <label for="nfinal" class="mrg-spr-ex">Nota final:</label>
-                        <input type="number" name="nfinal" placeholder="Escribe el porcentaje. Ej. 25.0"
-                               class="form-control " min="0.0" max="10.0" step="0.1" required>
-
-                        <label for="nobservacion" class="mrg-spr-ex">Observación de matricula:</label>
-                        <input type="text" name="nobservacion" placeholder="Escribe una observación para la matricula"
-                               class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
-
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-success" value="Guardar" name="guardar_participante">
-                    <input type="submit" class="btn btn-warning" value="Actualizar" name="actualizar_participante">
-                    </form>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
         </div>
     </div>
 

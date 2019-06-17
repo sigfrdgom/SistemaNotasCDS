@@ -19,6 +19,11 @@ class TipoModuloRest extends GenericAPI
         return parent::findById($id);
     }
 
+    public function findByRange($inicio, $maxResult)
+    {
+        return parent::findByRange($inicio, $maxResult);
+    }
+
     public function create()
     {
         return parent::create();

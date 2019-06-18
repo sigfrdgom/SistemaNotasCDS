@@ -12,9 +12,16 @@ class ModuloModel{
     }
 
     public function findById($id = ""){
-        $this->db->query("SELECT * FROM  WHERE id_modulo = :id");
+        $this->db->query("SELECT * FROM modulo WHERE id_modulo = :id");
         $this->db->bind(':id',$id);
         return $this->db->findOne();
+    }
+
+    public function findByRange($inicio, $maxResult){
+        $this->db->query("SELECT * FROM modulo LIMIT :inicio, :maxResult");
+        $this->db->bind(':inicio',$inicio, PDO::PARAM_INT);
+        $this->db->bind(':maxResult',$maxResult, PDO::PARAM_INT);
+        return $this->db->findAll();
     }
 
     public function create($datos){

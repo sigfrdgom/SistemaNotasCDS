@@ -12,9 +12,16 @@ class CursoModel{
     }
 
     public function findById($id = ""){
-        $this->db->query("SELECT * FROM  WHERE id_curso = :id");
+        $this->db->query("SELECT * FROM curso WHERE id_curso = :id");
         $this->db->bind(':id',$id);
         return $this->db->findOne();
+    }
+
+    public function findByRange($inicio, $maxResult){
+        $this->db->query("SELECT * FROM curso LIMIT :inicio, :maxResult");
+        $this->db->bind(':inicio',$inicio, PDO::PARAM_INT);
+        $this->db->bind(':maxResult',$maxResult, PDO::PARAM_INT);
+        return $this->db->findAll();
     }
 
     public function create($datos){

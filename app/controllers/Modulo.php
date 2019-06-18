@@ -125,4 +125,16 @@ class Modulo extends Controller
              $this->index();
          }
      }
+
+     public function  findById($id)
+     {
+        if(isset($id))
+        {
+            return $this->ModuloModel->findById($id);
+        }
+        else
+        {
+            die("Error al buscar el dato");
+        }
+    }
 }

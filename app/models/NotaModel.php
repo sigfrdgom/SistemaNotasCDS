@@ -17,6 +17,13 @@ class NotaModel{
         return $this->db->findOne();
     }
 
+    public function findByRange($inicio, $maxResult){
+        $this->db->query("SELECT * FROM nota LIMIT :inicio, :maxResult");
+        $this->db->bind(':inicio',$inicio, PDO::PARAM_INT);
+        $this->db->bind(':maxResult',$maxResult, PDO::PARAM_INT);
+        return $this->db->findAll();
+    }
+
     public function create($datos){
         $this->db->query('INSERT INTO nota VALUES(:id_nota, :id_participante, :id_modulos_curso, :nota1, :nota2, :nota3, :nota4, :nota5, :nota6, :observaciones) ;');
         $this->db->bind(':id_nota',null);

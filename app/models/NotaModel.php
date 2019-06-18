@@ -18,11 +18,16 @@ class NotaModel{
     }
 
     public function create($datos){
-        $this->db->query('INSERT INTO nota VALUES(:id_nota, :id_participante, :id_modulos_curso, :notas_modulo, :nota_final, :observaciones) ;');
-        $this->db->bind(':id_participante',null);
+        $this->db->query('INSERT INTO nota VALUES(:id_nota, :id_participante, :id_modulos_curso, :nota1, :nota2, :nota3, :nota4, :nota5, :nota6, :observaciones) ;');
+        $this->db->bind(':id_nota',null);
+        $this->db->bind(':id_participante',$datos['id_participante']);
         $this->db->bind(':id_modulos_curso',$datos['id_modulos_curso']);
-        $this->db->bind(':notas_modulo',$datos['notas_modulo']);
-        $this->db->bind(':nota_final',$datos['notas_final']);
+        $this->db->bind(':nota1',$datos['nota1']);
+        $this->db->bind(':nota2',$datos['nota2']);
+        $this->db->bind(':nota3',$datos['nota3']);
+        $this->db->bind(':nota4',$datos['nota4']);
+        $this->db->bind(':nota5',$datos['nota5']);
+        $this->db->bind(':nota6',$datos['nota6']);
         $this->db->bind(':observaciones',$datos['observaciones']);
         if ($this->db->execute()){
             return true;

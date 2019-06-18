@@ -46,7 +46,7 @@ require_once RUTA_APP . '/views/include/header.php';
             } else {
             ?>
             <div class="table-responsive">
-                <form method="POST">
+                <form action="<?php echo constant('RUTA_URL')?>/notas/create/<?php echo $datos['id_curso'] ?>/<?php echo $datos['id_curso'] ?>" method="POST">
                     <table class="table table-sm table-bordered table-hover display">
                         <thead>
                         <tr>
@@ -67,8 +67,8 @@ require_once RUTA_APP . '/views/include/header.php';
                         foreach ($datos['participantes'] as $participantes) {
                             ?>
                             <tr>
-                                <td><?php echo $participantes->nombres ?></td>
-                                <td><?php echo $participantes->apellidos ?></td>
+                                <td><?php echo $participantes->nombres ?><input type="hidden" name="id_nota[]" value="<?php echo $participantes->id_nota ?>"></td>
+                                <td><?php echo $participantes->apellidos ?><input type="hidden" name="id_participante[]" value="<?php echo $participantes->id_participante ?>"></td>
                                 <td><input type="text" name="nota1[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
                                 <td><input type="text" name="nota2[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
                                 <td><input type="text" name="nota3[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>

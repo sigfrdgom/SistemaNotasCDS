@@ -62,5 +62,12 @@ class ModulosCursoModel{
             return false;
         }
     }
+
+    public function findByCursoModulo($id_curso, $id_modulo){
+        $this->db->query("SELECT * FROM modulos_curso WHERE id_curso=:id_curso AND id_modulo=:id_modulo;");
+        $this->db->bind(':id_curso',$id_curso);
+        $this->db->bind(':id_modulo',$id_modulo);
+        return $this->db->findOne();
+    }
 }
 ?>

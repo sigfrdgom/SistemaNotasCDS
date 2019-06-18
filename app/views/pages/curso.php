@@ -49,26 +49,26 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th colspan="2">Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody-table">
                     <?php
-                    foreach ($datos['curso'] as $cursos) {
+                    foreach ($datos['curso'] as $cursos) { ?>
                     
-                        echo "<tr>
-                                <td class='secret'>$cursos->id_curso</td>
-                                <td>$cursos->nombre_curso</td>
-                                <td>$cursos->cohorte</td>
-                                <td class='secret'>$cursos->descripcion</td>
-                                <td class='secret'>$cursos->duracion</td>
-                                <td>$cursos->sede</td>
-                                <td>".($cursos->estado == 1?'ACTIVO':'INACTIVO')."</td>
-                                <td>$cursos->nivel</td>
-                                <td class='secret'>$cursos->fecha_inicio</td>
-                                <td>$cursos->fecha_fin</td>
+                        <tr id='fila-<?php echo $cursos->id_curso; ?>'>
+                                <td class='secret'><?php echo $cursos->id_curso; ?></td>
+                                <td><?php echo $cursos->nombre_curso ?></td>
+                                <td><?php echo $cursos->cohorte; ?></td>
+                                <td class='secret'><?php echo $cursos->descripcion ?> </td>
+                                <td class='secret'><?php echo $cursos->duracion ?></td>
+                                <td><?php echo $cursos->sede ?></td> 
+                                <td><?php echo ($cursos->estado == 1? "ACTIVO":"INACTIVO") ?></td>
+                                <td><?php echo $cursos->nivel ?></td>
+                                <td class='secret'><?php echo $cursos->fecha_inicio ?></td>
+                                <td><?php echo $cursos->fecha_fin; ?></td>
                                 <td class='shrink'><button type='button' class='btn btn-warning btn_editar_curso' data-toggle='modal' data-target='#agregarCurso'><span class='fa fa-edit'></span> Editar</button></td>
-                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseBaja(\"curso/updateDown/$cursos->id_curso\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('curso/updateDown/<?php echo $cursos->id_curso ?>', <?php echo $cursos->id_curso ?>)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span>Dar baja</button></td>
                                 </tr>
-                                ";
-                    }
+                                
+                                <?php }
                     ?>
                     </tbody>
                 </table>

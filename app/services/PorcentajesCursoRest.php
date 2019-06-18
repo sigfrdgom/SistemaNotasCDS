@@ -1,12 +1,12 @@
 <?php
 
-class PorcentajesModuloRest extends GenericAPI
+class PorcentajesCursoRest extends GenericAPI
 {
 
     public function __construct()
     {
-        $this->model = $this->model('PorcentajesModuloModel');
-        $this->url = constant('RUTA_URL') . "/PorcentajesModuloRest";
+        $this->model = $this->model('PorcentajesCursoModel');
+        $this->url = constant('RUTA_URL') . "/PorcentajesCursoRest";
     }
 
     public function findAll()

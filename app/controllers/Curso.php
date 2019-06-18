@@ -65,4 +65,12 @@ class Curso extends Controller
         }
     }
 
+    public function findById($id){
+        if(isset($id)){
+            return $this->cursoModel->findById($id);
+        }else{
+            die("Error al buscar el dato");
+        }
+    }
+
 }

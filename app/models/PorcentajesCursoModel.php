@@ -25,7 +25,7 @@ class PorcentajesCursoModel{
     }
 
     public function findById($id = ""){
-        $this->db->query("SELECT * FROM  WHERE id_porcentajes_curso = :id");
+        $this->db->query("SELECT * FROM porcentajes_curso WHERE id_porcentajes_curso = :id");
         $this->db->bind(':id',$id);
         return $this->db->findOne();
     }

@@ -12,7 +12,7 @@ class ModuloModel{
     }
 
     public function findById($id = ""){
-        $this->db->query("SELECT * FROM  WHERE id_modulo = :id");
+        $this->db->query("SELECT * FROM modulo WHERE id_modulo = :id");
         $this->db->bind(':id',$id);
         return $this->db->findOne();
     }

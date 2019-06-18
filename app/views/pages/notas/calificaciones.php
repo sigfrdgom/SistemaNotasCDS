@@ -27,14 +27,6 @@ require_once RUTA_APP . '/views/include/header.php';
     <div class="row">
 
         <div class="card card-body">
-            <?php if (isset($_POST['nota1'])) {
-                var_dump($_POST['nota1']);
-                var_dump($_POST['nota2']);
-                var_dump($_POST['nota3']);
-                var_dump($_POST['nota4']);
-                var_dump($_POST['nota5']);
-                var_dump($_POST['nota6']);
-            } ?>
 
             <?php
             if (empty($datos['participantes'])) {
@@ -46,7 +38,9 @@ require_once RUTA_APP . '/views/include/header.php';
             } else {
             ?>
             <div class="table-responsive">
-                <form action="<?php echo constant('RUTA_URL')?>/notas/create/<?php echo $datos['id_curso'] ?>/<?php echo $datos['id_curso'] ?>" method="POST">
+                <form action="<?php echo constant('RUTA_URL')?>/notas/create" method="POST">
+                    <input type="hidden" name="id_curso" value="<?php echo $datos['id_curso'] ?>">
+                    <input type="hidden" name="id_modulo" value="<?php echo $datos['id_modulo'] ?>">
                     <table class="table table-sm table-bordered table-hover display">
                         <thead>
                         <tr>
@@ -67,16 +61,16 @@ require_once RUTA_APP . '/views/include/header.php';
                         foreach ($datos['participantes'] as $participantes) {
                             ?>
                             <tr>
-                                <td><?php echo $participantes->nombres ?><input type="hidden" name="id_nota[]" value="<?php echo $participantes->id_nota ?>"></td>
-                                <td><?php echo $participantes->apellidos ?><input type="hidden" name="id_participante[]" value="<?php echo $participantes->id_participante ?>"></td>
-                                <td><input type="text" name="nota1[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td><input type="text" name="nota2[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td><input type="text" name="nota3[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td><input type="text" name="nota4[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td><input type="text" name="nota5[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td><input type="text" name="nota6[]" class="input-nota" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td><input type="text" name="observaciones[]" id=""></td>
-                                <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
+                                <td class="td-center"><?php echo $participantes->nombres ?><input type="hidden" name="id_nota[]" value="<?php echo $participantes->id_nota ?>"><input type="hidden" name="id_modulos_curso[]" value="<?php echo $participantes->id_modulos_curso ?>"></td>
+                                <td class="td-center"><?php echo $participantes->apellidos ?><input type="hidden" name="id_participante[]" value="<?php echo $participantes->id_participante ?>"></td>
+                                <td class="td-center"><input type="text" name="nota1[]" class="input-nota" value="<?php echo $participantes->nota1 ?>" pattern="^[0-9]+([.][0-9]+)?$" ></td>
+                                <td class="td-center"><input type="text" name="nota2[]" class="input-nota" value="<?php echo $participantes->nota2 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td class="td-center"><input type="text" name="nota3[]" class="input-nota" value="<?php echo $participantes->nota3 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td class="td-center"><input type="text" name="nota4[]" class="input-nota" value="<?php echo $participantes->nota4 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td class="td-center"><input type="text" name="nota5[]" class="input-nota" value="<?php echo $participantes->nota5 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td class="td-center"><input type="text" name="nota6[]" class="input-nota" value="<?php echo $participantes->nota6 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
+                                <td class="td-center"><input type="text" name="observaciones[]" value="<?php echo $participantes->observaciones ?>" id=""></td>
+                                <td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                                 </td>
                             </tr>
                         <?php } ?>

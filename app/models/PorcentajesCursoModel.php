@@ -11,6 +11,13 @@ class PorcentajesCursoModel{
         return $this->db->findAll();
     }
 
+    public function findByRange($inicio, $maxResult){
+        $this->db->query("SELECT * FROM porcentajes_curso LIMIT :inicio, :maxResult");
+        $this->db->bind(':inicio',$inicio, PDO::PARAM_INT);
+        $this->db->bind(':maxResult',$maxResult, PDO::PARAM_INT);
+        return $this->db->findAll();
+    }
+
     public function findForTable(){
         $this->db->query("SELECT pm.id_porcentajes_curso, pm.id_curso, c.nombre_curso, pm.id_tipo_modulo, tm.nombre, pm.porcentaje, pm.observacion 
         FROM porcentajes_curso pm JOIN curso c ON pm.id_curso=c.id_curso JOIN tipo_modulo tm ON pm.id_tipo_modulo=tm.id_tipo_modulo;");

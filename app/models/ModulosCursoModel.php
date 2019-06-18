@@ -11,6 +11,14 @@ class ModulosCursoModel{
         return $this->db->findAll();
     }
 
+
+    public function findByRange($inicio, $maxResult){
+        $this->db->query("SELECT * FROM modulos_curso LIMIT :inicio, :maxResult");
+        $this->db->bind(':inicio',$inicio, PDO::PARAM_INT);
+        $this->db->bind(':maxResult',$maxResult, PDO::PARAM_INT);
+        return $this->db->findAll();
+    }
+
     public function findForTable(){
         $this->db->query("SELECT mc.id_modulos_curso , mc.id_curso, c.nombre_curso, mc.id_modulo, m.nombre_modulo, mc.id_docente, concat(d.nombres,' ',d.apellidos) as nombre, mc.observaciones 
         FROM modulos_curso mc JOIN  curso c ON mc.id_curso=c.id_curso 

@@ -17,6 +17,13 @@ class CursoModel{
         return $this->db->findOne();
     }
 
+    public function findByRange($inicio, $maxResult){
+        $this->db->query("SELECT * FROM curso LIMIT :inicio, :maxResult");
+        $this->db->bind(':inicio',$inicio, PDO::PARAM_INT);
+        $this->db->bind(':maxResult',$maxResult, PDO::PARAM_INT);
+        return $this->db->findAll();
+    }
+
     public function create($datos){
         $this->db->query('INSERT INTO curso VALUES(:id_curso, :nombre_curso, :cohorte, :descripcion, :duracion, :sede, :estado, :nivel, :fecha_inicio, :fecha_fin)');
         $this->db->bind(':id_curso', $datos['id_curso']);

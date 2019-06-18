@@ -45,7 +45,7 @@ class CursoModel{
 
     public function update($datos){
         $this->db->query('UPDATE curso SET nombre_curso = :nombre_curso, cohorte = :cohorte, descripcion = :descripcion,  duracion= :duracion, sede=:sede, estado=:estado, nivel=:nivel, fecha_inicio=:fecha_inicio, fecha_fin=:fecha_fin WHERE id_curso = :id ');
-        $this->db->bind(':id_curso', $datos['id_curso']);
+        $this->db->bind(':id', $datos['id_curso']);
         $this->db->bind(':nombre_curso', $datos['nombre_curso']);
         $this->db->bind(':cohorte', $datos['cohorte']);
         $this->db->bind(':descripcion', $datos['descripcion']);
@@ -77,6 +77,15 @@ class CursoModel{
         return $this->db->findAll();
     }
 
+    public function updateDown($datos){
+        $this->db->query('UPDATE curso SET estado=0 WHERE id_curso = :id ');
+         $this->db->bind(':id', $datos);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>

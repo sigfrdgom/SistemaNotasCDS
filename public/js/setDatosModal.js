@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 
 
-//Para limpiar el modal de usuarios
+//Para limpiar el modal de modulo
 $("#cancelmdlmodulo").click(function(event) {
     $("#mod")[0].reset();
 });
@@ -70,7 +70,7 @@ $("#ivkmdl").click(function(event) {
 });
 
 
-
+// Para actualizar usuario
 $(document).ready(function(){
     $(document).on('click', '.btn_editar_usuario', function(){
         $tr = $(this).closest('tr');
@@ -159,7 +159,7 @@ $(document).ready(function(){
     });
 });
 
-//Para limpiar el modal de usuarios
+//Para limpiar el modal de porcentajes
 $("#canclermdlporentaje").click(function(event) {
     $("#prt")[0].reset();
 });
@@ -191,7 +191,7 @@ $(document).ready(function(){
     });
 });
 
-//Para limpiar el modal de usuarios
+//Para limpiar el modal de modulos curso
 $("#canclermdlmc").click(function(event) {
     $("#prt")[0].reset();
 });
@@ -201,3 +201,50 @@ $("#ivkmmm").click(function(event) {
    
 });
 
+
+
+
+// Para actualizar el curso
+$(document).ready(function(){
+    $(document).on('click', '.btn_editar_curso', function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function(){
+            return $(this).text();}).get();
+
+            $('#cid').val(data[0]);
+            $('#cnombre').val(data[1]);
+            $('#ccohorte').val(data[2]);
+            $('#cdescripcion').val(data[3]);
+            $('#cduracion').val(data[4]);
+
+            $("#csede option[value='"+data[5]+"']").attr("selected", true);
+
+            if (data[6]=="ACTIVO") {
+                document.getElementById("cestado1").checked= true;
+            } else {
+                document.getElementById("cestado2").checked= true;
+            }
+
+            $('#cnivel').val(data[7]);
+            $('#cfecha_inicio').val(data[8]);
+            $('#cfecha_fin').val(data[9]);
+           
+        document.getElementById('curso').setAttribute('action','/SistemaNotasCDS/curso/update');
+        document.getElementById('mdfcurso').style.display= 'inline';
+        document.getElementById('aggcurso').style.display= 'none';
+        
+    });
+});
+
+
+
+//Para limpiar el modal de usuarios
+$("#cancelmdlcurso").click(function(event) {
+    $("#curso")[0].reset();
+});
+
+$("#ivkcurso").click(function(event) {
+    $("#curso")[0].reset();
+    document.getElementById('mdfcurso').style.display= 'none';
+    document.getElementById('aggcurso').style.display= 'inline';
+});

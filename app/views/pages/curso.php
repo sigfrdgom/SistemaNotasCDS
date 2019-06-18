@@ -136,9 +136,31 @@ require_once RUTA_APP . '/views/include/header.php';
                                 </div>         
                             </div>
 
-                        <label for="cnivel" class="mrg-spr-ex">Nivel del curso:</label>
+                        <label class="mrg-spr-ex" >Nivel del curso:</label>
+                            <div style="margin-left:2em;">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="cnivel" id="cnivel1" value="1" required>
+                                        Nivel 1
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="cnivel" id="cnivel2" value="2" required>
+                                        Nivel 2
+                                    </label>
+                                </div> 
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="cnivel" id="cnivel3" value="3" required>
+                                        Nivel 3
+                                    </label>
+                                </div>         
+                            </div>
+
+                        <!-- <label for="cnivel" class="mrg-spr-ex">Nivel del curso:</label>
                         <input type="text" name="cnivel" id="cnivel" placeholder="Ingresa el nivel del curso" 
-                        class="form-control"  pattern='[1-3]{1}' required>
+                        class="form-control"  pattern='[1-3]{1}' required> -->
 
                         <label for="cfecha_inicio" class="mrg-spr-ex">Fecha de inicio del curso:</label>
                         <input type="date" name="cfecha_inicio" id="cfecha_inicio" placeholder="DD/MM/AAAA" class="form-control" required

@@ -225,7 +225,18 @@ $(document).ready(function(){
                 document.getElementById("cestado2").checked= true;
             }
 
-            $('#cnivel').val(data[7]);
+            if (data[7]=="1") {
+                document.getElementById("cnivel1").checked= true;
+            } else if(data[7]=="2") {
+                document.getElementById("cnivel2").checked= true;
+            } else{
+                document.getElementById("cnivel3").checked= true;
+            }
+
+    
+
+
+
             $('#cfecha_inicio').val(data[8]);
             $('#cfecha_fin').val(data[9]);
            

@@ -32,56 +32,55 @@ class Notas extends Controller
             'titulo' => "Modulos del curso",
             'descripcion' => $descripcion,
             'modulos' => $modulos,
-            'id_curso' => $idCurso
+            'id_curso' => trim($idCurso)
         ];
         $this->view('pages/notas/mostrarModulos', $datos);
     }
 
-    public function calificaciones()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $datos = [
-                'id_curso' => trim($_POST['id_curso']),
-                'id_modulo' => trim($_POST['id_modulo'])
-            ];
-            $descripcion = "Vista que manera de ingregar notas";
-            $participantes = $this->participanteModel->participantesByModulo($datos);
-            $datos = [
-                'titulo' => "Calificaciones",
-                'descripcion' => $descripcion,
-                'participantes' => $participantes,
-                'id_curso' => $datos['id_curso'],
-                'id_modulo' => $datos['id_modulo']
-            ];
-            $this->view('pages/notas/mostrarCalificaciones', $datos);
-        }
-    }
-
-    public function ingresarNotas($param1, $param2)
+    public function calificaciones($id_curso, $id_modulo)
     {
         $datos = [
-            'id_curso' => $param1,
-            'id_modulo' => $param2
+            'id_curso' => trim($id_curso),
+            'id_modulo' => trim($id_modulo)
         ];
         $descripcion = "Vista que manera de ingregar notas";
-        $participantes = $this->participanteModel->participantesByModulo($datos);
+        $participantes = $this->notaModel->findNotasEstudiantes($datos);
         $datos = [
             'titulo' => "Calificaciones",
             'descripcion' => $descripcion,
             'participantes' => $participantes,
-            'id_curso' => $param1,
-            'id_modulo' => $param2
+            'id_curso' => $datos['id_curso'],
+            'id_modulo' => $datos['id_modulo']
+        ];
+        $this->view('pages/notas/mostrarCalificaciones', $datos);
+    }
+
+    public function ingresarNotas($id_curso, $id_modulo)
+    {
+        $datos = [
+            'id_curso' => trim($id_curso),
+            'id_modulo' => trim($id_modulo)
+        ];
+        $descripcion = "Vista que manera de ingregar notas";
+        $participantes = $this->notaModel->findNotasEstudiantes($datos);
+        $datos = [
+            'titulo' => "Calificaciones",
+            'descripcion' => $descripcion,
+            'participantes' => $participantes,
+            'id_curso' => $id_curso,
+            'id_modulo' => $id_modulo
         ];
         $this->view('pages/notas/calificaciones', $datos);
     }
 
-    public function create($id_curso, $id_modulo)
+    public function create()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $datos = [
                 'id_nota' => $_POST['id_nota'],
                 'id_participante' => $_POST['id_participante'],
+                'id_modulos_curso' => $_POST['id_modulos_curso'],
                 'nota1' => $_POST['nota1'],
                 'nota1' => $_POST['nota1'],
                 'nota2' => $_POST['nota2'],
@@ -90,15 +89,15 @@ class Notas extends Controller
                 'nota5' => $_POST['nota5'],
                 'nota6' => $_POST['nota6'],
                 'observaciones' => $_POST['observaciones'],
+                'id_curso' => trim($_POST['id_curso']),
+                'id_modulo' => trim($_POST['id_modulo'])
             ];
-
-            $modulo_curso = $this->modulosCursoModel->findByCursoModulo($id_curso, $id_modulo);
-            var_dump($modulo_curso);
 
             for ($i = 0; $i < sizeof($datos); $i++) {
                 $entity = [
+                    'id_nota' => $datos['id_nota'][$i],
                     'id_participante' => $datos['id_participante'][$i],
-                    'id_modulos_curso' => $modulo_curso['id_modulos_curso'],
+                    'id_modulos_curso' => $datos['id_modulos_curso'][$i],
                     'nota1' => $datos['nota1'][$i],
                     'nota2' => $datos['nota2'][$i],
                     'nota3' => $datos['nota3'][$i],
@@ -108,29 +107,13 @@ class Notas extends Controller
                     'observaciones' => $datos['observaciones'][$i],
                 ];
 
-                if($this->notaModel->create($entity)){
-                    //redireccionar('tipoModulo');
-                }else{
+                if ($this->notaModel->replace($entity)) {
+                    redireccionar('notas/calificaciones/' . $datos['id_curso'] . '/' . $datos['id_modulo']);
+                } else {
                     die("Error al insertar los datos");
                 }
             }
 
-                /*
-                if($this->notaModel->create($valores)){
-                    redireccionar('tipoModulo');
-                }else{
-                    die("Error al insertar los datos");
-                }
-                */
-            /*
-
-        }else{
-            $datos = [
-                'nombre' => '',
-                'estado' => ''
-            ];
-            $this->view('pages/tipoModulo', $datos);
-                    */
         }
     }
 

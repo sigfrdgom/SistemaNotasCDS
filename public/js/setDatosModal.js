@@ -19,7 +19,11 @@ $(document).ready(function(){
 });
 
 
+
+
+// ------------------------------------------------------------------------------------------------
 //Actualizar Modulo
+// ------------------------------------------------------------------------------------------------
 $(document).ready(function(){
     $(document).on('click', '.btn_editar_modulo', function(){
         $tr = $(this).closest('tr');
@@ -30,33 +34,44 @@ $(document).ready(function(){
             $('#mdescripcion').val(data[2]);
             $('#mhoras').val(data[3]);
             
-            
             $("#mti option[value='"+data[4]+"']").attr("selected", true);
 
             $('#me1').val(data[5]);
-            $('#me2').val(data[6]);
-            $('#me3').val(data[7]);
-            $('#me4').val(data[8]);
-            $('#me5').val(data[9]);
-            $('#me6').val(data[10]);
-            
-           
-            if (data[11]=="ACTIVO") {
+
+            for (let index = 2; index <= 6 ; index++) 
+            {
+                if (data[index+4] == "---")
+                {
+                    document.getElementById("me"+index).style.display= 'none';
+                    document.getElementById("me"+index).value = "0.0";
+                    document.getElementById("mel"+index).style.display= 'none';
+                } 
+                else 
+                {
+                    document.getElementById("me"+index).style.display= 'block';
+                    document.getElementById("me"+index).value = data[index+4];
+                    document.getElementById("mel"+index).style.display= 'block';
+                }  
+            }
+
+            if (data[11]=="ACTIVO")
+            {
                 document.getElementById("mestado1").checked= true;
-            } else {
+            } 
+            else 
+            {
                 document.getElementById("mestado2").checked= true;
             }
+            
             $('#10').val(data[10]);
             
         document.getElementById('mod').setAttribute('action','/SistemaNotasCDS/modulo/update');
         document.getElementById('mdfmod').style.display= 'inline';
         document.getElementById('aggmod').style.display= 'none';
+        document.getElementById('counter').style.display= 'none';
         
     });
 });
-
-
-
 
 //Para limpiar el modal de modulo
 $("#cancelmdlmodulo").click(function(event) {
@@ -67,10 +82,14 @@ $("#ivkmdl").click(function(event) {
     $("#mod")[0].reset();
     document.getElementById('mdfmod').style.display= 'none';
     document.getElementById('aggmod').style.display= 'inline';
+    document.getElementById('counter').style.display= 'block';
 });
+// ------------------------------------------------------------------------------------------------
 
 
+// ------------------------------------------------------------------------------------------------
 // Para actualizar usuario
+// ------------------------------------------------------------------------------------------------
 $(document).ready(function(){
     $(document).on('click', '.btn_editar_usuario', function(){
         $tr = $(this).closest('tr');
@@ -132,10 +151,13 @@ $("#ivkmdl").click(function(event) {
     document.getElementById('mdfdct').style.display= 'none';
     document.getElementById('aggdct').style.display= 'inline';
 });
+// ------------------------------------------------------------------------------------------------
 
 
 
+// ------------------------------------------------------------------------------------------------
 // Para los porcentajes de los cursos
+// ------------------------------------------------------------------------------------------------
 $(document).ready(function(){
     $(document).on('click', '.btn_editar_porcentajes', function(){
         $tr = $(this).closest('tr');
@@ -169,10 +191,13 @@ $("#ivkprt").click(function(event) {
     document.getElementById('mdfprt').style.display= 'none';
     document.getElementById('aggprt').style.display= 'inline';
 });
+// ------------------------------------------------------------------------------------------------
 
 
 
+// ------------------------------------------------------------------------------------------------
 // Para los modulos por curso
+// ------------------------------------------------------------------------------------------------
 $(document).ready(function(){
     $(document).on('click', '.btn_editar_mc', function(){
         $tr = $(this).closest('tr');
@@ -200,11 +225,14 @@ $("#ivkmmm").click(function(event) {
     $("#mm")[0].reset();
    
 });
+// ------------------------------------------------------------------------------------------------
 
 
 
 
+// ------------------------------------------------------------------------------------------------
 // Para actualizar el curso
+// ------------------------------------------------------------------------------------------------
 $(document).ready(function(){
     $(document).on('click', '.btn_editar_curso', function(){
         $tr = $(this).closest('tr');
@@ -233,10 +261,6 @@ $(document).ready(function(){
                 document.getElementById("cnivel3").checked= true;
             }
 
-    
-
-
-
             $('#cfecha_inicio').val(data[8]);
             $('#cfecha_fin').val(data[9]);
            
@@ -259,3 +283,4 @@ $("#ivkcurso").click(function(event) {
     document.getElementById('mdfcurso').style.display= 'none';
     document.getElementById('aggcurso').style.display= 'inline';
 });
+// ------------------------------------------------------------------------------------------------

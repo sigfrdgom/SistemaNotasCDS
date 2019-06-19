@@ -46,7 +46,7 @@ class ModuloModel{
     }
 
     public function update($datos){
-        $this->db->query('UPDATE modulo SET nombre_modulo = :nombre_modulo, descripcion_modulo = :descripcion_modulo, horas_modulo=:horas_modulo, tipo_modulo=:tipo_modulo, evaluacion1=:evaluacion1, evaluacion2=:evaluacion2, evaluacion3=:evaluacion3, evaluacion4=:evaluacion4, evaluacion4=:evaluacion4, evaluacion6=:evaluacion6, estado = :estado WHERE id_modulo = :id ');
+        $this->db->query('UPDATE modulo SET nombre_modulo = :nombre_modulo, descripcion_modulo = :descripcion_modulo, horas_modulo=:horas_modulo, tipo_modulo=:tipo_modulo, evaluacion1=:evaluacion1, evaluacion2=:evaluacion2, evaluacion3=:evaluacion3, evaluacion4=:evaluacion4, evaluacion5=:evaluacion5, evaluacion6=:evaluacion6, estado = :estado WHERE id_modulo = :id ');
         $this->db->bind(':id', $datos['id_modulo']);
         $this->db->bind(':nombre_modulo',$datos['nombre_modulo']);
         $this->db->bind(':descripcion_modulo', $datos['descripcion_modulo']);

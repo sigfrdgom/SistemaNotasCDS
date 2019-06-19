@@ -1,4 +1,4 @@
-function menjaseEliminar(ruta){
+function menjaseEliminar(ruta, dato){
     return swal({
         title: "Esta seguro de eliminar el registro?",
         text: "Una vez eliminado, ya no podras recobrar la información!",
@@ -11,37 +11,23 @@ function menjaseEliminar(ruta){
                 swal("El registro se eliminado!", {
                     icon: "success",
                 }).then((ok) => {
-                    // const tipoModulo = this.dataset.tipoModulo;
+                    
+                    controlador = dato;
+                    httpRequest("http://localhost/SistemaNotasCDS/"+ruta, function(){
+                    console.log(this.responseText);
+                    const tbody = document.querySelector("#tbody-table");
+                    const fila  = document.querySelector("#fila-"+controlador);
+                    
+                    console.log("holaaaa");
+                    tbody.removeChild(fila);
+                                    });
                   
-                  
-                    window.location.href = ruta;
+                    
                 });
             }
         });
 
 }
-
-
-
-
-// const tipoModulo = this.dataset.tipoModulo;
-        
-//         const confirm = window.confirm("¿Deseas eliminar el Pedido " + id_Pedido + "?");
-
-//         if(confirm){
-//             // solicitud AJAX
-//             httpRequest("http://localhost/examen_mvc/consulta2/eliminarPedido/"+tipoModulo, function(){
-//                 console.log(this.responseText);
-//                 // document.querySelector("#respuesta").innerHTML = this.responseText;
-
-//                 const tbody = document.querySelector("#tbody-pedido");
-//                 const fila  = document.querySelector("#fila-" + tipoModulo);
-
-//                 tbody.removeChild(fila);
-//             });
-
-
-
 
 
 function httpRequest(url, callback){
@@ -65,7 +51,7 @@ function httpRequest(url, callback){
 
 
 
-function menjaseBaja(ruta){
+function menjaseBaja(ruta, dato=null){
     return swal({
         title: "¿Esta seguro de dar de baja?",
         text: "Una vez dado de baja, deberas gestionar este usuario de forma complicada!",
@@ -78,6 +64,7 @@ function menjaseBaja(ruta){
                 swal("El registro se ha dado de baja!", {
                     icon: "success",
                 }).then((ok) => {
+                                                       
                     window.location.href = ruta;
                 });
             }

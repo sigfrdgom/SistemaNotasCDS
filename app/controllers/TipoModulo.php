@@ -59,12 +59,12 @@ class TipoModulo extends Controller{
     public function delete($id){
         if (isset($id)){
             if($this->tipoModuloModel->delete($id)){
-                redireccionar('tipoModulo');
+                // redireccionar('tipoModulo');
             }else{
                 die("Error al eliminar los datos");
             }
         }else{
-            $this->index();
+            // $this->index();
         }
     }
 

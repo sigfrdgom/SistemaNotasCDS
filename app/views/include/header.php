@@ -24,6 +24,7 @@
     <!-- BEGIN CSS for this page -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
     <!-- END CSS for this page -->
+    <!-- END CSS for this page -->
 
     <!-- Swwet alert 2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

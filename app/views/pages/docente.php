@@ -40,7 +40,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
         <div class="card card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover display">
+                <table class="table table-bordered table-hover display" id="ajaxTabla">
                     <thead>
                     <tr>
                         <th class='secret'>ID</th>
@@ -64,28 +64,29 @@ require_once RUTA_APP . '/views/include/header.php';
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="#tbody-table">
                     <?php
                     foreach ($datos['docente'] as $docentes)
-                    {
-                        echo "<tr>
-                            <td class='secret'>$docentes->id_docente</td>
-                            <td>$docentes->nombres</td>
-                            <td>$docentes->apellidos</td>
-                            <td class='secret'>$docentes->fecha_nacimiento</td>
-                            <td class='secret'>$docentes->sexo</td>
-                            <td class='secret'>$docentes->dui</td>
-                            <td class='secret'>$docentes->nit</td>
-                            <td>$docentes->especialidad</td>
-                            <td class='secret'>$docentes->tipo_usuario</td>
-                            <td class='secret'>$docentes->pass</td>
-                            <td>".($docentes->estado == 1?'ACTIVO':'INACTIVO')."</td>
+                    { ?>
+                        <tr id="fila-<?php echo $docentes->id_docente;?>">
+                            <td class="secret"><?php echo $docentes->id_docente;?></td>
+                            <td><?php echo $docentes->nombres ?></td>
+                            <td><?php echo $docentes->apellidos?></td>
+                            <td class="secret"><?php echo $docentes->fecha_nacimiento?></td>
+                            <td class="secret"><?php echo $docentes->sexo ?></td>
+                            <td class="secret"><?php echo $docentes->dui?></td>
+                            <td class="secret"><?php echo $docentes->nit ?></td>
+                            <td><?php echo $docentes->especialidad ?></td>
+                            <td class="secret"><?php echo $docentes->tipo_usuario?></td>
+                            <td class="secret"><?php echo $docentes->pass ?></td>
+                            <td><?php if($docentes->estado ==1) {
+                                echo 'ACTIVO';}else{ echo 'INACTIVO';} ?></td>
                             <td class='shrink'><button type='button' class='btn btn-warning btn_editar_usuario' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
-                            <td class='shrink'><button id='btn_eliminar3' onclick='menjaseBaja(\"docente/down/$docentes->id_docente\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
+                            <td class='shrink'><button id='btn_eliminar3' onclick='menjaseBaja("docente/down/<?php echo $docentes->id_docente?>", <?php echo $docentes->id_docente?>)' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                             </tr>
                             ";
-                    }
-                    ?>
+                            <?php } ?>
+                   
                     </tbody>
                 </table>
             </div>

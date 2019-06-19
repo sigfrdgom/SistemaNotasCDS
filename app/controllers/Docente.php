@@ -63,10 +63,10 @@ class Docente extends Controller
               'pass' => trim($_POST['dpass']),
               'estado' => trim($_POST['destado'])
           ];
-          var_dump($datos);
+        //   var_dump($datos);
           if($this->docenteModel->update($datos))
           {
-              redireccionar('docente');
+               redireccionar('docente');
 
           }
           else

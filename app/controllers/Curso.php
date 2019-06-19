@@ -73,4 +73,51 @@ class Curso extends Controller
         }
     }
 
+    public function update()
+   {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+       $datos = [
+           'id_curso' => trim($_POST['cid']),
+           'nombre_curso' => trim($_POST['cnombre']),
+           'cohorte' => trim($_POST['ccohorte']),
+           'descripcion' => trim($_POST['cdescripcion']),
+           'duracion' => trim($_POST['cduracion']),
+           'sede' => trim($_POST['csede']),
+           'estado' => trim($_POST['cestado']),
+           'nivel' => trim($_POST['cnivel']),
+           'fecha_inicio' => trim($_POST['cfecha_inicio']),
+           'fecha_fin' => trim($_POST['cfecha_fin'])
+       ];
+       var_dump($datos);
+       if($this->cursoModel->update($datos))
+       {
+           redireccionar('curso');
+
+       }
+       else
+       {
+           die("Error al actualizar los datos");
+       }
+   }
+  }
+
+  public function updateDown($id)
+   {
+        if (isset($id))
+        {
+            if($this->cursoModel->updateDown($id))
+            {
+                redireccionar('curso');
+            }
+            else
+            {
+                die("Error al dar de baja el curso");
+            }
+        }
+        else
+        {
+            $this->index();
+        }
+    }
 }

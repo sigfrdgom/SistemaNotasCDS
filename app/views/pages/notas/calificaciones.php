@@ -38,7 +38,7 @@ require_once RUTA_APP . '/views/include/header.php';
             } else {
             ?>
             <div class="table-responsive">
-                <form action="<?php echo constant('RUTA_URL')?>/notas/create" method="POST">
+                <form action="<?php echo constant('RUTA_URL')?>/notas/create" method="POST" class="was-validated">
                     <input type="hidden" name="id_curso" value="<?php echo $datos['id_curso'] ?>">
                     <input type="hidden" name="id_modulo" value="<?php echo $datos['id_modulo'] ?>">
                     <table class="table table-sm table-bordered table-hover display">
@@ -63,13 +63,13 @@ require_once RUTA_APP . '/views/include/header.php';
                             <tr>
                                 <td class="td-center"><?php echo $participantes->nombres ?><input type="hidden" name="id_nota[]" value="<?php echo $participantes->id_nota ?>"><input type="hidden" name="id_modulos_curso[]" value="<?php echo $participantes->id_modulos_curso ?>"></td>
                                 <td class="td-center"><?php echo $participantes->apellidos ?><input type="hidden" name="id_participante[]" value="<?php echo $participantes->id_participante ?>"></td>
-                                <td class="td-center"><input type="text" name="nota1[]" class="input-nota" value="<?php echo $participantes->nota1 ?>" pattern="^[0-9]+([.][0-9]+)?$" ></td>
-                                <td class="td-center"><input type="text" name="nota2[]" class="input-nota" value="<?php echo $participantes->nota2 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td class="td-center"><input type="text" name="nota3[]" class="input-nota" value="<?php echo $participantes->nota3 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td class="td-center"><input type="text" name="nota4[]" class="input-nota" value="<?php echo $participantes->nota4 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td class="td-center"><input type="text" name="nota5[]" class="input-nota" value="<?php echo $participantes->nota5 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td class="td-center"><input type="text" name="nota6[]" class="input-nota" value="<?php echo $participantes->nota6 ?>" pattern="^[0-9]+([.][0-9]+)?$"></td>
-                                <td class="td-center"><input type="text" name="observaciones[]" value="<?php echo $participantes->observaciones ?>" id=""></td>
+                                <td class="td-center"><input type="text" name="nota1[]" value="<?php echo $participantes->nota1 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
+                                <td class="td-center"><input type="text" name="nota2[]" value="<?php echo $participantes->nota2 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
+                                <td class="td-center"><input type="text" name="nota3[]" value="<?php echo $participantes->nota3 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
+                                <td class="td-center"><input type="text" name="nota4[]" value="<?php echo $participantes->nota4 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
+                                <td class="td-center"><input type="text" name="nota5[]" value="<?php echo $participantes->nota5 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
+                                <td class="td-center"><input type="text" name="nota6[]" value="<?php echo $participantes->nota6 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
+                                <td class="td-center"><input type="text" name="observaciones[]" value="<?php echo $participantes->observaciones ?>" onkeypress="textonly()"></td>
                                 <td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                                 </td>
                             </tr>
@@ -83,6 +83,16 @@ require_once RUTA_APP . '/views/include/header.php';
 
         </div>
     </div>
+
+        <script>
+            function validar_nota(event){
+                if(event.value > 10.00) {
+                    event.value = "10.00";
+                }
+            }
+        </script>
+
+        <script src="<?php echo constant('RUTA_URL')?>/js/validations.js"></script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

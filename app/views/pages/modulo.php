@@ -69,12 +69,12 @@ require_once RUTA_APP . '/views/include/header.php';
                             <td class='secret'><?php echo $modulos->descripcion_modulo ?></td>
                             <td class='secret'><?php echo $modulos->horas_modulo ?></td>
                             <td class='secret'><?php echo $modulos->tipo_modulo ?></td>
-                            <td><?php echo $modulos->evaluacion1 ?></td>
-                            <td><?php echo $modulos->evaluacion2 ?></td>
-                            <td><?php echo $modulos->evaluacion3 ?></td>
-                            <td><?php echo $modulos->evaluacion4 ?></td>
-                            <td><?php echo $modulos->evaluacion5 ?></td>
-                            <td><?php echo $modulos->evaluacion6 ?></td>
+                            <td><?php echo $modulos->evaluacion1?></td>
+                            <td><?php echo ($modulos->evaluacion2 == 0.0?'---': $modulos->evaluacion2) ?></td>
+                            <td><?php echo ($modulos->evaluacion3 == 0.0?'---': $modulos->evaluacion3) ?></td>
+                            <td><?php echo ($modulos->evaluacion4 == 0.0?'---': $modulos->evaluacion4) ?></td>
+                            <td><?php echo ($modulos->evaluacion5 == 0.0?'---': $modulos->evaluacion5) ?></td>
+                            <td><?php echo ($modulos->evaluacion6 == 0.0?'---': $modulos->evaluacion6) ?></td>
                             <td><?php echo ($modulos->estado == 1?'ACTIVO':'INACTIVO') ?></td>
                             <td class='shrink'><button  class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
                             
@@ -104,7 +104,7 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="mod" method="POST" action="<?php echo RUTA_URL ?>/modulo/create"data-parsley-validate novalidate >
+                    <form  id="mod" method="POST" action="<?php echo RUTA_URL ?>/modulo/create"data-parsley-validate novalidate  onsubmit="return validarPorcentajes();">
 
                         <input type="hidden" name="mid" id="id">
 
@@ -148,34 +148,36 @@ require_once RUTA_APP . '/views/include/header.php';
                         
                         <div id="counter">
                         <label class="mrg-spr-ex" >Cantidad de evaluaciones del modulo:</label>
-                        <div style="margin-left:2em;">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="meval" id="meval1" value="0" required checked onclick="moduloEval(1)">
-                                        1
-                                    </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="meval" id="meval2" value="0" required onclick="moduloEval(2)">
-                                        2
-                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="meval" id="meval3" value="0" required onclick="moduloEval(3)">
-                                        3
-                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="meval" id="meval4" value="0" required onclick="moduloEval(4)">
-                                        4
-                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="meval" id="meval5" value="0" required onclick="moduloEval(5)">
-                                        5
-                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="meval" id="meval6" value="0" required onclick="moduloEval(6)">
-                                        6
-                                    </label>
-                                </div>   
+                            <div style="margin-left:2em;">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="meval" id="meval1" value="0" required checked onclick="moduloEval(1)">
+                                            1
+                                        </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="meval" id="meval2" value="0" required onclick="moduloEval(2)">
+                                            2
+                                        </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="meval" id="meval3" value="0" required onclick="moduloEval(3)">
+                                            3
+                                        </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="meval" id="meval4" value="0" required onclick="moduloEval(4)">
+                                            4
+                                        </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="meval" id="meval5" value="0" required onclick="moduloEval(5)">
+                                            5
+                                        </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="meval" id="meval6" value="0" required onclick="moduloEval(6)">
+                                            6
+                                        </label>
+                                    </div>   
+                            </div>
                         </div>
+
 
                         <label for="mevaluacion1" class="mrg-spr-ex" id="mel1">Porcentaje a asignar a evaluacion 1:</label>
                         <input type="number" name="mevaluacion1" id="me1" placeholder="Escribe el porcentaje de la evaluacion 1" 

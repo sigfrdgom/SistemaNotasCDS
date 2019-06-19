@@ -24,6 +24,11 @@ class MatriculaModel{
         return $this->db->findAll();
     }
 
+    public function findForTable(){
+        $this->db->query("SELECT m.id_matricula, c.id_curso, c.nombre_curso, p.id_participante, concat(p.nombres,' ',p.apellidos) AS nombre, m.estado, m.observaciones FROM matricula m JOIN curso c ON m.id_curso=c.id_curso JOIN participante p ON p.id_participante=m.id_participante");
+        return $this->db->findAll();
+    }
+
     public function create($datos){
         $this->db->query('INSERT INTO matricula VALUES(:id_matricula, :id_curso, :id_participante, :estado, :observaciones) ;');
         $this->db->bind(':id_matricula', $datos['id_matricula']);

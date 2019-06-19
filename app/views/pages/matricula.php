@@ -34,27 +34,30 @@ require_once RUTA_APP . '/views/include/header.php';
                 <table class="table table-bordered table-hover display">
                     <thead>
                     <tr>
+                        <th class='secret'>ID Matricula</th>
+                        <th class='secret'>ID Curso</th>
                         <th>Curso</th>
+                        <th  class='secret'> ID Participante</th>
                         <th>Participante</th>
-                        <th>estado</th>
+                        <th>Estado</th>
                         <th>Observaciones</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    foreach ($datos['matricula'] as $notas) {
-                        echo "<tr>
-                                <td>$notas->id_curso</td>
-                                <td>$notas->id_participante</td>
-                                <td>$notas->estado</td>
-                                <td>$notas->observaciones</td>
+                    <?php foreach ($datos['matricula'] as $matricula) { ?>
+                        <tr>
+                                <td  class='secret'><?php echo $matricula->id_matricula ?></td>
+                                <td  class='secret'><?php echo $matricula->id_curso ?></td>
+                                <td><?php echo $matricula->nombre_curso ?></td>
+                                <td  class='secret'><?php echo $matricula->id_participante ?></td>
+                                <td><?php echo $matricula->nombre ?></td>
+                                <td><?php echo ($matricula->estado == 1? "ACTIVO":"INACTIVO") ?></td>
+                                <td><?php echo $matricula->observaciones ?></td>
                                 <td class='shrink'><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"matricula/delete/$notas->id_matricula\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"matricula/delete/$matricula->id_matricula\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
-                                ";
-                    }
-                    ?>
+                    <?php } ?>
                     </tbody>
                 </table>
             </div>

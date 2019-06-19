@@ -10,7 +10,7 @@ class Matricula extends Controller
     }
 
     public function index(){
-        $matricula = $this->matriculaModel->findAll();
+        $matricula = $this->matriculaModel->findForTable();
         $participante = $this->participanteModel->findAll();
         $curso = $this->cursoModel->findAll();
         

@@ -62,26 +62,28 @@ require_once RUTA_APP . '/views/include/header.php';
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($datos['modulo'] as $modulos) {
-                        echo "<tr>
-                                <td class='secret'>$modulos->id_modulo</td>
-                                <td>$modulos->nombre_modulo</td>
-                                <td class='secret'>$modulos->descripcion_modulo</td>
-                                <td class='secret'>$modulos->horas_modulo</td>
-                                <td class='secret'>$modulos->tipo_modulo</td>
-                                <td>$modulos->evaluacion1</td>
-                                <td>$modulos->evaluacion2</td>
-                                <td>$modulos->evaluacion3</td>
-                                <td>$modulos->evaluacion4</td>
-                                <td>$modulos->evaluacion5</td>
-                                <td>$modulos->evaluacion6</td>
-                                <td>".($modulos->estado == 1?'ACTIVO':'INACTIVO')."</td>
-                                <td class='shrink'><button type='button' class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
-                                <td class='shrink'><button id='btn_baja' onclick='menjaseBaja(\"modulo/down/$modulos->id_modulo\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
-                                </tr>
-                                ";
-                    }
-                    ?>
+                    foreach ($datos['modulo'] as $modulos) {  ?>
+                        <tr>
+                            <td class='secret'><?php echo $modulos->id_modulo ?></td>
+                            <td><?php echo $modulos->nombre_modulo ?></td>
+                            <td class='secret'><?php echo $modulos->descripcion_modulo ?></td>
+                            <td class='secret'><?php echo $modulos->horas_modulo ?></td>
+                            <td class='secret'><?php echo $modulos->tipo_modulo ?></td>
+                            <td><?php echo $modulos->evaluacion1 ?></td>
+                            <td><?php echo $modulos->evaluacion2 ?></td>
+                            <td><?php echo $modulos->evaluacion3 ?></td>
+                            <td><?php echo $modulos->evaluacion4 ?></td>
+                            <td><?php echo $modulos->evaluacion5 ?></td>
+                            <td><?php echo $modulos->evaluacion6 ?></td>
+                            <td><?php echo ($modulos->estado == 1?'ACTIVO':'INACTIVO') ?></td>
+                            <td class='shrink'><button  class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                            
+                            <td class='shrink'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
+                                onclick='menjaseBaja("<?php echo "modulo/down/$modulos->id_modulo;"?>")' 
+                                class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button></td>
+                        </tr>
+                               
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -132,7 +134,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="mestado" id="mestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="mestado" id="mestado1" value="1" required checked>
                                         Activo
                                     </label>
                                 </div>
@@ -143,30 +145,61 @@ require_once RUTA_APP . '/views/include/header.php';
                                     </label>
                                 </div>         
                             </div>
+                        
+                        <div id="counter">
+                        <label class="mrg-spr-ex" >Cantidad de evaluaciones del modulo:</label>
+                        <div style="margin-left:2em;">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="meval" id="meval1" value="0" required checked onclick="moduloEval(1)">
+                                        1
+                                    </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="meval" id="meval2" value="0" required onclick="moduloEval(2)">
+                                        2
+                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="meval" id="meval3" value="0" required onclick="moduloEval(3)">
+                                        3
+                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="meval" id="meval4" value="0" required onclick="moduloEval(4)">
+                                        4
+                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="meval" id="meval5" value="0" required onclick="moduloEval(5)">
+                                        5
+                                    </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="meval" id="meval6" value="0" required onclick="moduloEval(6)">
+                                        6
+                                    </label>
+                                </div>   
+                        </div>
 
-                        <label for="mevaluacion1" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 1:</label>
+                        <label for="mevaluacion1" class="mrg-spr-ex" id="mel1">Porcentaje a asignar a evaluacion 1:</label>
                         <input type="number" name="mevaluacion1" id="me1" placeholder="Escribe el porcentaje de la evaluacion 1" 
                         class="form-control " min="0" max="100" step="1" required>
 
-                        <label for="mevaluacion2" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 2:</label>
+                        <label for="mevaluacion2" class="mrg-spr-ex" id="mel2">Porcentaje a asignar a evaluacion 2:</label>
                         <input type="number" name="mevaluacion2"  id="me2" placeholder="Escribe el porcentaje de la evaluacion 2" 
-                        class="form-control " min="0" max="100" step="1">
+                        class="form-control " min="0" max="100" step="1"  value="0.0">
 
-                        <label for="mevaluacion3" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 3:</label>
+                        <label for="mevaluacion3" class="mrg-spr-ex" id="mel3">Porcentaje a asignar a evaluacion 3:</label>
                         <input type="number" name="mevaluacion3"  id="me3" placeholder="Escribe el porcentaje de la evaluacion 3" 
-                        class="form-control " min="0" max="100" step="1">
+                        class="form-control " min="0" max="100" step="1"  value="0.0">
 
-                        <label for="mevaluacion4" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 4:</label>
+                        <label for="mevaluacion4" class="mrg-spr-ex" id="mel4">Porcentaje a asignar a evaluacion 4:</label>
                         <input type="number" name="mevaluacion4"  id="me4" placeholder="Escribe el porcentaje de la evaluacion 4" 
-                        class="form-control " min="0" max="100" step="1">
+                        class="form-control " min="0" max="100" step="1"  value="0.0">
 
-                        <label for="mevaluacion5" class="mrg-spr-ex">Porcentaje a asignar a evaluacion5:</label>
+                        <label for="mevaluacion5" class="mrg-spr-ex" id="mel5">Porcentaje a asignar a evaluacion5:</label>
                         <input type="number" name="mevaluacion5"  id="me5" placeholder="Escribe el porcentaje de la evaluacion5" 
-                        class="form-control " min="0" max="100" step="1">
+                        class="form-control " min="0" max="100" step="1"  value="0.0">
 
-                        <label for="mevaluacion6" class="mrg-spr-ex">Porcentaje a asignar a evaluacion 6:</label>
+                        <label for="mevaluacion6" class="mrg-spr-ex" id="mel6">Porcentaje a asignar a evaluacion 6:</label>
                         <input type="number" name="mevaluacion6"  id="me6" placeholder="Escribe el porcentaje de la evaluacion 6" 
-                        class="form-control " min="0" max="100" step="1">
+                        class="form-control " min="0" max="100" step="1" value="0.0">
             
         </div>
         

@@ -57,5 +57,7 @@
     });
 </script>
 
+<script src="<?php echo RUTA_URL ?>/js/modulosData.js"></script>
+
 </body>
 </html>

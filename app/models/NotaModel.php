@@ -24,6 +24,11 @@ class NotaModel{
         return $this->db->findAll();
     }
 
+    public function count(){
+        $this->db->query("SELECT COUNT(*) AS n_registros FROM nota;");
+        return $this->db->findAll();
+    }
+
     public function create($datos){
         $this->db->query('INSERT INTO nota VALUES(:id_nota, :id_participante, :id_modulos_curso, :nota1, :nota2, :nota3, :nota4, :nota5, :nota6, :observaciones) ;');
         $this->db->bind(':id_nota',null);

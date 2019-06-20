@@ -1,11 +1,11 @@
 
 //actualizar tipo_modulo
-$(document).ready(function(){
-    $(document).on('click', '.btn_modal_editar', function(){
+$(document).ready(function () {
+    $(document).on('click', '.btn_modal_editar', function () {
         $('#agregarTipoModulo').modal('show');
         $tr = $(this).closest('tr');
 
-        var data = $tr.children("td").map(function(){
+        var data = $tr.children("td").map(function () {
             return $(this).text();
         }).get();
         console.log(data);
@@ -13,7 +13,7 @@ $(document).ready(function(){
         //alert('the action is: ' + $('#frmTipoModulo').attr('method'));}
         $('#id_idTipoModulo').val(data[0]);
         $('#idTipoModulo').val(data[1]);
-        $("#idEstado option[value='"+data[2]+"']").attr("selected", true);
+        $("#idEstado option[value='" + data[2] + "']").attr("selected", true);
         // $('#idEstado').val(data[2]);
     });
 });
@@ -24,65 +24,60 @@ $(document).ready(function(){
 // ------------------------------------------------------------------------------------------------
 //Actualizar Modulo
 // ------------------------------------------------------------------------------------------------
-$(document).ready(function(){
-    $(document).on('click', '.btn_editar_modulo', function(){
+$(document).ready(function () {
+    $(document).on('click', '.btn_editar_modulo', function () {
         $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function(){return $(this).text();}).get();
+        var data = $tr.children("td").map(function () { return $(this).text(); }).get();
 
-            $('#id').val(data[0]);
-            $('#mnombre').val(data[1]);
-            $('#mdescripcion').val(data[2]);
-            $('#mhoras').val(data[3]);
-            
-            $("#mti option[value='"+data[4]+"']").attr("selected", true);
+        $('#id').val(data[0]);
+        $('#mnombre').val(data[1]);
+        $('#mdescripcion').val(data[2]);
+        $('#mhoras').val(data[3]);
 
-            $('#me1').val(data[5]);
+        $("#mti option[value='" + data[4] + "']").attr("selected", true);
 
-            for (let index = 2; index <= 6 ; index++) 
-            {
-                if (data[index+4] == "---")
-                {
-                    document.getElementById("me"+index).style.display= 'none';
-                    document.getElementById("me"+index).value = "0.0";
-                    document.getElementById("mel"+index).style.display= 'none';
-                } 
-                else 
-                {
-                    document.getElementById("me"+index).style.display= 'block';
-                    document.getElementById("me"+index).value = data[index+4];
-                    document.getElementById("mel"+index).style.display= 'block';
-                }  
+        $('#me1').val(data[5]);
+
+        for (let index = 2; index <= 6; index++) {
+            if (data[index + 4] == "---") {
+                document.getElementById("me" + index).style.display = 'none';
+                document.getElementById("me" + index).value = "0.0";
+                document.getElementById("mel" + index).style.display = 'none';
             }
-
-            if (data[11]=="ACTIVO")
-            {
-                document.getElementById("mestado1").checked= true;
-            } 
-            else 
-            {
-                document.getElementById("mestado2").checked= true;
+            else {
+                document.getElementById("me" + index).style.display = 'block';
+                document.getElementById("me" + index).value = data[index + 4];
+                document.getElementById("mel" + index).style.display = 'block';
             }
-            
-            $('#10').val(data[10]);
-            
-        document.getElementById('mod').setAttribute('action','/SistemaNotasCDS/modulo/update');
-        document.getElementById('mdfmod').style.display= 'inline';
-        document.getElementById('aggmod').style.display= 'none';
-        document.getElementById('counter').style.display= 'none';
-        
+        }
+
+        if (data[11] == "ACTIVO") {
+            document.getElementById("mestado1").checked = true;
+        }
+        else {
+            document.getElementById("mestado2").checked = true;
+        }
+
+        $('#10').val(data[10]);
+
+        document.getElementById('mod').setAttribute('action', '/SistemaNotasCDS/modulo/update');
+        document.getElementById('mdfmod').style.display = 'inline';
+        document.getElementById('aggmod').style.display = 'none';
+        document.getElementById('counter').style.display = 'none';
+
     });
 });
 
 //Para limpiar el modal de modulo
-$("#cancelmdlmodulo").click(function(event) {
+$("#cancelmdlmodulo").click(function (event) {
     $("#mod")[0].reset();
 });
 
-$("#ivkmdl").click(function(event) {
+$("#ivkmdl").click(function (event) {
     $("#mod")[0].reset();
-    document.getElementById('mdfmod').style.display= 'none';
-    document.getElementById('aggmod').style.display= 'inline';
-    document.getElementById('counter').style.display= 'block';
+    document.getElementById('mdfmod').style.display = 'none';
+    document.getElementById('aggmod').style.display = 'inline';
+    document.getElementById('counter').style.display = 'block';
 });
 // ------------------------------------------------------------------------------------------------
 
@@ -90,66 +85,67 @@ $("#ivkmdl").click(function(event) {
 // ------------------------------------------------------------------------------------------------
 // Para actualizar usuario
 // ------------------------------------------------------------------------------------------------
-$(document).ready(function(){
-    $(document).on('click', '.btn_editar_usuario', function(){
+$(document).ready(function () {
+    $(document).on('click', '.btn_editar_usuario', function () {
         $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function(){
-            return $(this).text();}).get();
+        var data = $tr.children("td").map(function () {
+            return $(this).text();
+        }).get();
 
-            $('#did').val(data[0]);
-            $('#dnombres').val(data[1]);
-            $('#dapellidos').val(data[2]);
-            $('#dfecha').val(data[3]);
+        $('#did').val(data[0]);
+        $('#dnombres').val(data[1]);
+        $('#dapellidos').val(data[2]);
+        $('#dfecha').val(data[3]);
 
-            //El valor del sexo
-            $('#4').val(data[4]);
-            if (data[4] == "MASCULINO") {
-                document.getElementById("rsexo1").checked= true;
-            } else if (data[4]=="FEMENINO") {
-                document.getElementById("rsexo2").checked= true;
-            } else {
-                document.getElementById("rsexo3").checked= true;
-            }
-            $('#ddui').val(data[5]);
-            $('#dnit').val(data[6]);
-            $('#despecialidad').val(data[7]);
-            
-            // El valor de tipo usuario
-            if (data[8]=="ADMINISTRADOR") {
-                document.getElementById("tipo1").checked= true;
-            } else {
-                document.getElementById("tipo2").checked= true;
-            }
-            
-            // el password
-            $('#dpass').val(data[9]);
-            
-            //el estado
-            if (data[10]=="ACTIVO") {
-                document.getElementById("destado1").checked= true;
-            } else {
-                document.getElementById("destado2").checked= true;
-            }
-            $('#10').val(data[10]);
-            
-        document.getElementById('dct').setAttribute('action','/SistemaNotasCDS/docente/update');
-        document.getElementById('mdfdct').style.display= 'inline';
-        document.getElementById('aggdct').style.display= 'none';
-        
+        //El valor del sexo
+        $('#4').val(data[4]);
+        if (data[4] == "MASCULINO") {
+            document.getElementById("rsexo1").checked = true;
+        } else if (data[4] == "FEMENINO") {
+            document.getElementById("rsexo2").checked = true;
+        } else {
+            document.getElementById("rsexo3").checked = true;
+        }
+        $('#ddui').val(data[5]);
+        $('#dnit').val(data[6]);
+        $('#despecialidad').val(data[7]);
+
+        // El valor de tipo usuario
+        if (data[8] == "ADMINISTRADOR") {
+            document.getElementById("tipo1").checked = true;
+        } else {
+            document.getElementById("tipo2").checked = true;
+        }
+
+        // el password
+        $('#dpass').val(data[9]);
+
+        //el estado
+        if (data[10] == "ACTIVO") {
+            document.getElementById("destado1").checked = true;
+        } else {
+            document.getElementById("destado2").checked = true;
+        }
+        $('#10').val(data[10]);
+
+        document.getElementById('dct').setAttribute('action', '/SistemaNotasCDS/docente/update');
+        document.getElementById('mdfdct').style.display = 'inline';
+        document.getElementById('aggdct').style.display = 'none';
+
     });
 });
 
 
 
 //Para limpiar el modal de usuarios
-$("#cancelmdldocente").click(function(event) {
+$("#cancelmdldocente").click(function (event) {
     $("#dct")[0].reset();
 });
 
-$("#ivkmdl").click(function(event) {
+$("#ivkmdl").click(function (event) {
     $("#dct")[0].reset();
-    document.getElementById('mdfdct').style.display= 'none';
-    document.getElementById('aggdct').style.display= 'inline';
+    document.getElementById('mdfdct').style.display = 'none';
+    document.getElementById('aggdct').style.display = 'inline';
 });
 // ------------------------------------------------------------------------------------------------
 
@@ -158,38 +154,38 @@ $("#ivkmdl").click(function(event) {
 // ------------------------------------------------------------------------------------------------
 // Para los porcentajes de los cursos
 // ------------------------------------------------------------------------------------------------
-$(document).ready(function(){
-    $(document).on('click', '.btn_editar_porcentajes', function(){
+$(document).ready(function () {
+    $(document).on('click', '.btn_editar_porcentajes', function () {
         $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function(){
+        var data = $tr.children("td").map(function () {
             return $(this).text();
         }).get();
 
-            $('#porid').val(data[0]);
-            $("#pidc option[value='"+data[1]+"']").attr("selected", true);
-            $('#pporcentaje').val(data[5]);
-            $('#pobservacion').val(data[6]);
+        $('#porid').val(data[0]);
+        $("#pidc option[value='" + data[1] + "']").attr("selected", true);
+        $('#pporcentaje').val(data[5]);
+        $('#pobservacion').val(data[6]);
 
-           
-            $("#pidtm option[value='"+data[3]+"']").attr("selected", true);
 
-            
-        document.getElementById('prt').setAttribute('action','/SistemaNotasCDS/porcentajeCurso/update');
-        document.getElementById('mdfprt').style.display= 'inline';
-        document.getElementById('aggprt').style.display= 'none';
-        
+        $("#pidtm option[value='" + data[3] + "']").attr("selected", true);
+
+
+        document.getElementById('prt').setAttribute('action', '/SistemaNotasCDS/porcentajeCurso/update');
+        document.getElementById('mdfprt').style.display = 'inline';
+        document.getElementById('aggprt').style.display = 'none';
+
     });
 });
 
 //Para limpiar el modal de porcentajes
-$("#canclermdlporentaje").click(function(event) {
+$("#canclermdlporentaje").click(function (event) {
     $("#prt")[0].reset();
 });
 
-$("#ivkprt").click(function(event) {
+$("#ivkprt").click(function (event) {
     $("#prt")[0].reset();
-    document.getElementById('mdfprt').style.display= 'none';
-    document.getElementById('aggprt').style.display= 'inline';
+    document.getElementById('mdfprt').style.display = 'none';
+    document.getElementById('aggprt').style.display = 'inline';
 });
 // ------------------------------------------------------------------------------------------------
 
@@ -198,10 +194,10 @@ $("#ivkprt").click(function(event) {
 // ------------------------------------------------------------------------------------------------
 // Para los modulos por curso
 // ------------------------------------------------------------------------------------------------
-$(document).ready(function(){
-    $(document).on('click', '.btn_editar_mc', function(){
+$(document).ready(function () {
+    $(document).on('click', '.btn_editar_mc', function () {
         $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function(){
+        var data = $tr.children("td").map(function () {
             return $(this).text();
         }).get();
 
@@ -211,19 +207,21 @@ $(document).ready(function(){
             $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
             $('#mcobservaciones').val(data[7]);
         
-        // document.getElementById('prt').setAttribute('action','/SistemaNotasCDS/modulosCurso/update');
+        document.getElementById('mm').setAttribute('action','/SistemaNotasCDS/modulosCurso/update');
        
     });
 });
 
 //Para limpiar el modal de modulos curso
 $("#canclermdlmc").click(function(event) {
+    $("#mm")[0].reset();
+$("#canclermdlmc").click(function (event) {
     $("#prt")[0].reset();
 });
 
-$("#ivkmmm").click(function(event) {
+$("#ivkmmm").click(function (event) {
     $("#mm")[0].reset();
-   
+
 });
 // ------------------------------------------------------------------------------------------------
 
@@ -233,54 +231,230 @@ $("#ivkmmm").click(function(event) {
 // ------------------------------------------------------------------------------------------------
 // Para actualizar el curso
 // ------------------------------------------------------------------------------------------------
-$(document).ready(function(){
-    $(document).on('click', '.btn_editar_curso', function(){
+$(document).ready(function () {
+    $(document).on('click', '.btn_editar_curso', function () {
         $tr = $(this).closest('tr');
-        var data = $tr.children("td").map(function(){
-            return $(this).text();}).get();
+        var data = $tr.children("td").map(function () {
+            return $(this).text();
+        }).get();
 
-            $('#cid').val(data[0]);
-            $('#cnombre').val(data[1]);
-            $('#ccohorte').val(data[2]);
-            $('#cdescripcion').val(data[3]);
-            $('#cduracion').val(data[4]);
+        $('#cid').val(data[0]);
+        $('#cnombre').val(data[1]);
+        $('#ccohorte').val(data[2]);
+        $('#cdescripcion').val(data[3]);
+        $('#cduracion').val(data[4]);
 
-            $("#csede option[value='"+data[5]+"']").attr("selected", true);
+        $("#csede option[value='" + data[5] + "']").attr("selected", true);
 
-            if (data[6]=="ACTIVO") {
-                document.getElementById("cestado1").checked= true;
-            } else {
-                document.getElementById("cestado2").checked= true;
-            }
+        if (data[6] == "ACTIVO") {
+            document.getElementById("cestado1").checked = true;
+        } else {
+            document.getElementById("cestado2").checked = true;
+        }
 
-            if (data[7]=="1") {
-                document.getElementById("cnivel1").checked= true;
-            } else if(data[7]=="2") {
-                document.getElementById("cnivel2").checked= true;
-            } else{
-                document.getElementById("cnivel3").checked= true;
-            }
+        if (data[7] == "1") {
+            document.getElementById("cnivel1").checked = true;
+        } else if (data[7] == "2") {
+            document.getElementById("cnivel2").checked = true;
+        } else {
+            document.getElementById("cnivel3").checked = true;
+        }
 
-            $('#cfecha_inicio').val(data[8]);
-            $('#cfecha_fin').val(data[9]);
-           
-        document.getElementById('curso').setAttribute('action','/SistemaNotasCDS/curso/update');
-        document.getElementById('mdfcurso').style.display= 'inline';
-        document.getElementById('aggcurso').style.display= 'none';
-        
+        $('#cfecha_inicio').val(data[8]);
+        $('#cfecha_fin').val(data[9]);
+
+        document.getElementById('curso').setAttribute('action', '/SistemaNotasCDS/curso/update');
+        document.getElementById('mdfcurso').style.display = 'inline';
+        document.getElementById('aggcurso').style.display = 'none';
+
     });
 });
 
 
 
-//Para limpiar el modal de usuarios
-$("#cancelmdlcurso").click(function(event) {
+//Para limpiar el modal de CURSOS
+$("#cancelmdlcurso").click(function (event) {
     $("#curso")[0].reset();
 });
 
-$("#ivkcurso").click(function(event) {
+$("#ivkcurso").click(function (event) {
     $("#curso")[0].reset();
-    document.getElementById('mdfcurso').style.display= 'none';
-    document.getElementById('aggcurso').style.display= 'inline';
+    document.getElementById('mdfcurso').style.display = 'none';
+    document.getElementById('aggcurso').style.display = 'inline';
 });
 // ------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------
+// // Para actualizar participante
+// ------------------------------------------------------------------------------------------------
+
+$(document).ready(function () {
+    $(document).on('click', '.btn_editar_participante', function () {
+        $tr = $(this).closest('tr');
+        var data = $tr.children('td').map(function () { return $(this).text(); }).get();
+
+        document.getElementById('password').style.display= 'none';
+
+        $('#id').val(data[0]);
+        $('#nombres').val(data[1]);
+        $('#apellidos').val(data[2]);
+        $('#fecha_nacimiento').val(data[3]);
+
+        //El valor del sexo
+        if (data[4] == "MASCULINO") {
+            document.getElementById("sexo1").checked = true;
+        } else if (data[4] == "FEMENINO") {
+            document.getElementById("sexo2").checked = true;
+        } else {
+            document.getElementById("sexo3").checked = true;
+        }
+        $('#dui').val(data[5]);
+        $('#nit').val(data[6]);
+        $('#carnet_minoridad').val(data[7]);
+
+        $('#direccion').val(data[8]);
+        $('#telefono').val(data[9]);
+        $('#email').val(data[10]);
+
+        if (data[11] == 1) {
+            document.getElementById("estado1").checked = true;
+        } else {
+            document.getElementById("estado2").checked = true;
+        }
+
+        $('#pass').val(data[12]);
+
+
+        document.getElementById('actualizar').setAttribute('action', '/SistemaNotasCDS/participante/update');
+        document.getElementById('mdfp').style.display = 'inline';
+        document.getElementById('aggp').style.display = 'none';
+
+    });
+});
+
+
+
+//Para limpiar el modal participante
+$("#cancelparticipante").click(function (event) {
+    $("#actualizar")[0].reset();
+    document.getElementById('password').style.display = 'inline';
+
+});
+
+$("#participanteReset").click(function (event) {
+    $("#actualizar")[0].reset();
+    document.getElementById('mdfp').style.display = 'none';
+    document.getElementById('aggp').style.display = 'inline';
+    document.getElementById('password').style.display = 'inline';
+});
+// ------------------------------------------------------------------------------------------------
+
+
+
+
+// ------------------------------------------------------------------------------------------------
+// Para la matricula
+// ------------------------------------------------------------------------------------------------
+$(document).ready(function(){
+    $(document).on('click', '.btn_editar_matricula', function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function(){
+            return $(this).text();
+        }).get();
+
+            $('#mid_matricula').val(data[0]);
+            $("#mid_curso option[value='"+data[1]+"']").attr("selected", true);
+            $("#mid_participante option[value='"+data[3]+"']").attr("selected", true);
+            if (data[6]=="ACTIVO") {
+                document.getElementById("mestado1").checked= true;
+            } else {
+                document.getElementById("mestado2").checked= true;
+            }
+            $('#mobservaciones').val(data[6]);
+
+
+            // $("#mcid_modulo option[value='"+data[3]+"']").attr("selected", true);
+            // $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
+            
+        
+        document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/update');
+       
+    });
+});
+
+//Para limpiar el modal de modulos curso
+$("#canclermdlmc").click(function(event) {
+    $("#matricula")[0].reset();
+});
+
+$("#ivkmmm").click(function(event) {
+    $("#matricula")[0].reset();
+   
+});
+// ------------------------------------------------------------------------------------------------
+
+
+//VALIDANDO CARNET, NIT O DUI EN AGREGAR
+$(document).ready(function () {
+
+        $('#dui').attr('required',true);
+        $('#nit').attr("required",true);
+        $('#carnet_minoridad').attr("required",true);
+
+        $('#dui, #nit, #carnet_minoridad').keyup(function () {
+            $('#dui').attr('required',true);
+            $('#nit').attr("required",true);
+            $('#carnet_minoridad').attr("required",true);
+                var reqdui = $('#dui').val().length == 10;
+                var reqnit = $('#nit').val().length == 17;
+                var reqcarnet = $('#carnet_minoridad').val().length == 7;
+
+                if (reqdui) {
+                    $('#nit').removeAttr("required");
+                    $('#carnet_minoridad').removeAttr("required");
+                }
+
+                if (reqnit) {
+                    $('#dui').removeAttr("required");
+                    $('#carnet_minoridad').removeAttr("required");
+                }
+                if (reqcarnet) {
+                    $('#nit').removeAttr("required");
+                    $('#dui').removeAttr("required");
+                }
+
+        });
+    });
+
+    //VALIDANDO CARNET, NIT O DUI EN ACTUALIZAR
+function validando() {
+
+    $('#dui').attr('required', true);
+    $('#nit').attr("required", true);
+    $('#carnet_minoridad').attr("required", true);
+    var reqdui = $('#dui').val().length == 10;
+    var reqnit = $('#nit').val().length == 17;
+    var reqcarnet = $('#carnet_minoridad').val().length == 7;
+
+    if (reqdui) {
+        $('#nit').removeAttr("required");
+        $('#carnet_minoridad').removeAttr("required");
+    }
+
+    if (reqnit) {
+        $('#dui').removeAttr("required");
+        $('#carnet_minoridad').removeAttr("required");
+    }
+    if (reqcarnet) {
+        $('#nit').removeAttr("required");
+        $('#dui').removeAttr("required");
+    }
+
+}

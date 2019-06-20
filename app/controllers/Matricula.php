@@ -10,7 +10,7 @@ class Matricula extends Controller
     }
 
     public function index(){
-        $matricula = $this->matriculaModel->findAll();
+        $matricula = $this->matriculaModel->findForTable();
         $participante = $this->participanteModel->findAll();
         $curso = $this->cursoModel->findAll();
         
@@ -36,18 +36,48 @@ class Matricula extends Controller
                'estado' => trim($_POST['mestado']),
                'observaciones' => trim($_POST['mobservaciones'])
            ];
-           var_dump($datos);
-           if($this->matriculaModel->create($datos))
-           {
-               redireccionar('matricula');
-
+                $bandera=$this->comprobar();
+              var_dump($bandera);
+           if ($bandera) {
+                    if($this->matriculaModel->create($datos))
+                    {
+                        redireccionar('matricula');
+                    }
+                    else
+                    {
+                        die("Error al insertar los datos");
+                    }
+           }else{
+                echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese cruso');</script>";
+                redireccionar('matricula');
            }
-           else
-           {
-               die("Error al insertar los datos");
-           }
+           
        }
    }
+
+   public function update()
+   {
+       if ($_SERVER['REQUEST_METHOD'] == 'POST')
+       {
+          $datos = [
+              'id_matricula' => trim($_POST['mid_matricula']),
+              'id_curso' => trim($_POST['mid_curso']),
+              'id_participante' => trim($_POST['mid_participante']),
+              'estado' => trim($_POST['mestado']),
+              'observaciones' => trim($_POST['mobservaciones'])
+          ];
+          var_dump($datos);
+          if($this->matriculaModel->update($datos))
+          {
+              redireccionar('matricula');
+
+          }
+          else
+          {
+              die("Error al insertar los datos");
+          }
+      }
+  }
 
    public function delete($id)
    {
@@ -67,5 +97,42 @@ class Matricula extends Controller
             $this->index();
         }
     }
+
+    public function down($id)
+    {
+         if (isset($id))
+         {
+             if($this->matriculaModel->updateDown($id))
+             {
+                 redireccionar('matricula');
+             }
+             else
+             {
+                 die("Error al dar de baja la matricula");
+             }
+         }
+         else
+         {
+             $this->index();
+         }
+    }
+
+    public function comprobar()
+   {
+       if ($_SERVER['REQUEST_METHOD'] == 'POST')
+       {
+          $datos = [
+              'id_curso' => trim($_POST['mid_curso']),
+              'id_participante' => trim($_POST['mid_participante'])
+          ];  
+          $bandera = $this->matriculaModel->comprobar($datos);
+      }
+      if ($bandera[0]->n_registros == 0) {
+            return TRUE;
+      } else {
+            return FALSE;
+      }
+      
+  }
 
 }

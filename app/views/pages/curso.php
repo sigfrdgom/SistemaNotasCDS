@@ -19,6 +19,12 @@ require_once RUTA_APP . '/views/include/header.php';
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo curso
                     </button>
 
+                    <a href="#" 
+                            title="Agregar Curso"  data-toggle="popover" data-trigger="focus"
+                            data-content="Sirve para agregar un nuevo curso para poder asignarle modulos y realizar la matricula de participantes en ellos.">
+                        <i class="fa fa-fw fa-question-circle pop-help"></i>
+                    </a>
+
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
@@ -46,7 +52,13 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th>Nivel</th>
                         <th class='secret'>Inicio</th>
                         <th>Fin</th>
-                        <th colspan="2">Acciones</th>
+                        <th colspan="2">Acciones
+                            <a href="#" 
+                                title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
+                                data-content="Sirven para modificar informacion de un curso o darlo de baja">
+                            <i class="fa fa-fw fa-question-circle pop-help"></i>
+                            </a>
+                        </th>
                     </tr>
                     </thead>
                     <tbody id="tbody-table">

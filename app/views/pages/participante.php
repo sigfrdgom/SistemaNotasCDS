@@ -17,7 +17,8 @@ require_once RUTA_APP . '/views/include/header.php';
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;  </h1>
 
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarParticipante">
+                    <button type="button" class="btn btn-outline-success"
+                    data-toggle="modal" data-target="#agregarParticipante" id="participanteReset">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo participante
                     </button>
 
@@ -57,30 +58,31 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tbody>
                     <?php
                     //  <td class='bsecreto dp11'>$participantes->pass</td>
-                    foreach ($datos['participante'] as $participantes) {
-                        echo "<tr>
-                                <td class='secret dp0'>$participantes->id_participante</td>
-                                <td class=' dp1'>$participantes->nombres</td>
-                                <td class=' dp2'>$participantes->apellidos</td>
-                                <td class='secret dp3'>$participantes->fecha_nacimiento</td>
-                                <td class='secret dp4'>$participantes->sexo</td>
-                                <td class=' dp5'>$participantes->dui</td>
-                                <td class='secret dp6'>$participantes->nit</td>
-                                <td class='secret dp7'>$participantes->carnet_minoridad</td>
-                                <td class='secret dp8'>$participantes->direccion</td>
-                                <td class='secret dp9'>$participantes->telefono</td>
-                                <td class='secret dp10'>$participantes->email</td>
-                               
-                                <td class='bsecreto dp12'>$participantes->estado</td>
+                    foreach ($datos['participante'] as $participantes) { ?>
+                        <tr>
+                                <td class='secret dp0'><?php echo $participantes->id_participante ?></td>
+                                <td class=' dp1'><?php echo $participantes->nombres ?></td>
+                                <td class=' dp2'><?php echo $participantes->apellidos ?></td>
+                                <td class='secret dp3'><?php echo $participantes->fecha_nacimiento ?></td>
+                                <td class='secret dp4'><?php echo $participantes->sexo ?></td>
+                                <td class=' dp5'><?php echo $participantes->dui ?></td>
+                                <td class='secret dp6'><?php echo $participantes->nit ?></td>
+                                <td class='secret dp7'><?php echo $participantes->carnet_minoridad ?></td>
+                                <td class='secret dp8'><?php echo $participantes->direccion ?></td>
+                                <td class='secret dp9'><?php echo $participantes->telefono ?></td>
+                                <td class='secret dp10'><?php echo $participantes->email ?></td>
                                 
-                                <td class='shrink'> <button type='button' value='Detalles' class='actu btn btn-warning ' data-toggle='modal' data-target='#myModalActualizar' >
+                               
+                                <td><?php echo ($participantes->estado == 1? "ACTIVO":"INACTIVO") ?></td>
+                                <td class='secret dp12'><?php echo $participantes->pass ?></td>
+                                
+                                <td class='shrink'> <button type='button' value='Detalles' class='btn_editar_participante btn btn-warning ' data-toggle='modal' data-target='#agregarParticipante'>
                                 <span class='fa fa-edit'></span> Editar</td>
 
-                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"participante/delete/$participantes->id_participante\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('Participante/updateDown/<?php echo $participantes->id_participante;?>', null)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
                                 </tr>
-                                ";
-                    }
-                    ?>
+                                
+                                <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -94,24 +96,27 @@ require_once RUTA_APP . '/views/include/header.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo participante</h4>
+        <h4 class="modal-title" style="margin: 0% auto;" id="aggp">Agregar un nuevo Participante</h4>
+        <h4 class="modal-title" style="margin: 0% auto;" id="mdfp">Modificar un Participante</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/participante/create"data-parsley-validate novalidate >
+                    <form  id="actualizar" method="POST" action="<?php echo RUTA_URL ?>/participante/create"data-parsley-validate novalidate>
+                        <section id="demo" onclick='validando()'>
+                        <input type="hidden" name="id" id="id">
 
-                        <label for="pnombres" class="mrg-spr-ex">Nombres del participante: </label>
-                        <input type="text" name="pnombres" placeholder="Escribe los nombres del participante" 
+                        <label for="nombres" class="mrg-spr-ex">Nombres del participante: </label>
+                        <input type="text" name="nombres" id="nombres" placeholder="Escribe los nombres del participante" 
                         class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
                         <label for="papellidos" class="mrg-spr-ex">Apellidos del participante:</label>
-                        <input type="text" name="papellidos" placeholder="Escribe los apellidos del participante" 
+                        <input type="text" name="apellidos" id="apellidos" placeholder="Escribe los apellidos del participante" 
                         class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{1,64}'> 
 
-                        <label for="pfecha_nacimiento" class="mrg-spr-ex">Fecha de nacimiento del participante:</label>
-                        <input type="date" name="pfechanacimiento" placeholder="DD/MM/AAAA" class="form-control" required
+                        <label for="fecha_nacimiento" class="mrg-spr-ex">Fecha de nacimiento del participante:</label>
+                        <input type="date" name="fecha_nacimiento" placeholder="DD/MM/AAAA" id="fecha_nacimiento"  class="form-control" required
                         min="<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 29 year  -3 month"));?>" 
                         max="<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 16 year  -3 month"));?>"> 
                         
@@ -119,67 +124,71 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo1" value="MASCULINO" required>
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo1" value="MASCULINO" required>
                                         Masculino
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo2" value="FEMENINO" required>
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo2" value="FEMENINO" required>
                                         Femenimo
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="psexo" id="rsexo3" value="INEDFINIDO" required>
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo3" value="INDEFINIDO" required>
                                         Indefinido
                                     </label>
                                 </div>         
                             </div>
 
-                        <label for="pdui" class="mrg-spr-ex">DUI del participante:</label>
-                        <input type="text" name="pdui" id="pdui" placeholder="Ingresa si posee Ej. 0123456-0" 
+
+                        <label for="dui" class="mrg-spr-ex">DUI del participante:</label>
+                        <input type="text" name="dui" id="dui" placeholder="Ingresa si posee Ej. 0123456-0" 
                         class="form-control pad-extra-input"  pattern='[0-9]{8}[-]{1}[0-9]{1}' required>
                         
-                        <label for="pnit" class="mrg-spr-ex">NIT del participante:</label>
-                        <input type="text" name="pnit" id="pnit" placeholder="Ingresa si posee Ej. 0210-010101-100-1" 
+                        <label for="nit" class="mrg-spr-ex">NIT del participante:</label>
+                        <input type="text" name="nit" id="nit" placeholder="Ingresa si posee Ej. 0210-010101-100-1" 
                         class="form-control pad-extra-input" pattern='[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{3}[-]{1}[0-9]{1}' required>
                         
-                        <label for="pcarnet_minoridad" class="mrg-spr-ex">Carnet de minoridad del participante:</label>
-                        <input type="text" name="pcarnet_minoridad" id="pcarnet" placeholder="Ingresa si posee Ej. 1234567" 
+                        <label for="carnet_minoridad" class="mrg-spr-ex">Carnet de minoridad del participante:</label>
+                        <input type="text" name="carnet_minoridad" id="carnet_minoridad" placeholder="Ingresa si posee Ej. 1234567" 
                         class="form-control pad-extra-input" pattern='[0-9]{7}' required>
                         
-                        <label for="pdireccion" class="mrg-spr-ex">Direccion del participante:</label>
-                        <input type="text" name="pdireccion" placeholder="Escribe la direccion del participante" 
+                        <label for="direccion" class="mrg-spr-ex">Direccion del participante:</label>
+                        <input type="text" name="direccion" id="direccion" placeholder="Escribe la direccion del participante" 
                         class="form-control pad-extra-input" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9/.#, ]{1,64}'>
 
-                        <label for="pdtelefono" class=" mrg-spr-ex">Telefono del participante:</label>
-                        <input type="text" name="ptelefono" id="ptelefono" placeholder="Escribe el telefono del participante" 
+                        <label for="telefono" class=" mrg-spr-ex">Telefono del participante:</label>
+                        <input type="text" name="telefono" id="telefono" placeholder="Escribe el telefono del participante" 
                         class="form-control   fgk-dis-ctrl" required pattern='[0-9]{4}[-]{1}[0-9]{4}'>
                         
-                        <label for="pemail" class="mrg-spr-ex">Email del participante:</label>
-                        <input type="email" name="pemail" placeholder="Escribe el email del participante" 
+                        <label for="email" class="mrg-spr-ex">Email del participante:</label>
+                        <input type="email" name="email" id="email" placeholder="Escribe el email del participante" 
                         class="form-control pad-extra-input" required pattern='[0-9a-zA-Z-_@.]{1,255}'>
-
-                        <label for="ppass" class="mrg-spr-ex">Ingresa un password para el participante:</label>
-                        <input type="password" name="ppass" placeholder="Escribe un password para el participante" 
+                    
+                        <div id="password">
+                        <label for="pass" class="mrg-spr-ex">Ingresa un password para el participante:</label>
+                        <input type="password" name="pass" id="pass" placeholder="Escribe un password para el participante" 
                         class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'>
 
-                        <!-- <label for="ppassc" class="mrg-spr-ex">Confirma el password para el participante:</label>
-                        <input type="password" name="ppassc" placeholder="Confirma el password para el participante" 
-                        class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'> -->
 
-                        <label class="mrg-spr-ex" >Estado del participante:</label>
-                            <div style="margin-left:2em;">
+                        </div>
+
+                        
+
+                        
+                            <div style="margin-left:2em;" hidden='true' id="SeteoEstado">
+                            <label class="mrg-spr-ex" >Estado del participante:</label>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="estado" id="estado1" value="1"  checked> 
                                         Activo
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pestado" id="pestado2" value="0" required>
+                                        <input class="form-check-input" type="radio" name="estado" id="estado2" value="0">
                                         Inactivo
                                     </label>
                                 </div>         
@@ -189,128 +198,9 @@ require_once RUTA_APP . '/views/include/header.php';
         <!-- Modal footer -->
         <div class="modal-footer">
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                
+                </section>
             </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        </div>
-        
-      </div>
-    </div>
-</div>
-
-
-
-
-
-<div class="modal fade" id="myModalActualizar">
-    <div class="modal-dialog modal-xl  modal-dialog-scrollable">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;">Actualizar un participante</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-                    <form  id="actualizar" method="POST" action="<?php echo RUTA_URL ?>/participante/update" data-parsley-validate novalidate >
-
-                        
-                        <label for="pdid" class="mrg-spr-ex">ID del participante: </label>
-                        <input type="hidden" name="pdid" id="pdid" placeholder="Escribe los nombres del participante" 
-                        class="form-control">
-                        
-                        <label for="pdnombres" class="mrg-spr-ex">Nombres del participante: </label>
-                        <input type="text" name="pdnombres" id="pdnombres" placeholder="Escribe los nombres del participante" 
-                        class="form-control " required pattern='[a-zA-zÑñ ]{1,64}'>
-
-                        <label for="pdapellidos" class="mrg-spr-ex">Apellidos del participante:</label>
-                        <input type="text" name="pdapellidos" id="pdapellidos" placeholder="Escribe los apellidos del participante" 
-                        class="form-control " required pattern='[a-zA-zÑn ]{1,64}'> 
-
-                        <label for="pdfecha_nacimiento" class="mrg-spr-ex">Fecha de nacimiento del participante:</label>
-                        <input type="date" name="pdfechanacimiento" id="pdfechanacimiento" placeholder="DD/MM/AAAA" class="form-control" required
-                        min="//<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 29 year  -3 month"));?>" 
-                        max="<?php echo  date("Y-m-d",strtotime(date("Y-m-d")."- 16 year  -3 month"));?>"> 
-                        
-                        <label class="mrg-spr-ex" >Sexo del participante:</label>
-                            <div style="margin-left:2em;">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pdsexo" id="pdsexo1" value="MASCULINO" required>
-                                        Masculino
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pdsexo" id="pdsexo2" value="FEMENINO" required>
-                                        Femenimo
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pdsexo" id="pdsexo3" value="INEDFINIDO" required>
-                                        Indefinido
-                                    </label>
-                                </div>         
-                            </div>
-
-                        <label for="pddui" class="mrg-spr-ex">DUI del participante:</label>
-                        <input type="text" name="pddui" id="pddui" placeholder="Ingresa si posee Ej. 0123456-0" 
-                        class="form-control pad-extra-input"  pattern='[0-9]{8}[-]{1}[0-9]{1}'>
-                        
-                        <label for="pdnit" class="mrg-spr-ex">NIT del participante:</label>
-                        <input type="text" name="pdnit" id="pdnit" placeholder="Ingresa si posee Ej. 0210-010101-100-1" 
-                        class="form-control pad-extra-input" pattern='[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{3}[-]{1}[0-9]{1}'>
-                        
-                        <label for="pdcarnet_minoridad" class="mrg-spr-ex">Carnet de minoridad del participante:</label>
-                        <input type="text" name="pdcarnet_minoridad" id="pdcarnet_minoridad" placeholder="Ingresa si posee Ej. 1234567" 
-                        class="form-control pad-extra-input" pattern='[0-9]{7}'>
-                        
-                        <label for="pddireccion" class="mrg-spr-ex">Direccion del participante:</label>
-                        <input type="text" name="pddireccion" id="pddireccion" placeholder="Escribe la direccion del participante" 
-                        class="form-control pad-extra-input" required pattern='[a-zA-z0-9/.#, ]{1,64}'>
-
-                        <label for="pdtelefono" class=" mrg-spr-ex">Telefono del participante:</label>
-                        <input type="text" name="pdtelefono" id="pdtelefono" placeholder="Escribe el telefono del participante" 
-                        class="form-control   fgk-dis-ctrl" required pattern='[0-9]{4}[-]{1}[0-9]{4}'>
-                        
-                        <label for="pdemail" class="mrg-spr-ex">Email del participante:</label>
-                        <input type="email" name="pdemail" id="pdemail" placeholder="Escribe el email del participante" 
-                        class="form-control pad-extra-input" required pattern='[0-9a-zA-Z-_@.]{1,255}'>
-
-                        <!-- <label for="pdpass" class="mrg-spr-ex">Ingresa un password para el participante:</label>
-                        <input type="hidden" name="pdpass" id="pdpass" placeholder="Escribe un password para el participante" 
-                        class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'> -->
-
-                        
-
-                        <label class="mrg-spr-ex" >Estado del participante:</label>
-                            <div style="margin-left:2em;">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pdestado" id="pdestado1" value="1" required>
-                                        Activo
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="pdestado" id="pdestado2" value="0" required>
-                                        Inactivo
-                                    </label>
-                                </div>         
-                            </div>
-                    
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-                <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante" 
-                 id="actualizar_participante">
-                 <!-- onclick='activarpdid()' -->
-            </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelparticipante">Cancelar</button>
         </div>
         
       </div>

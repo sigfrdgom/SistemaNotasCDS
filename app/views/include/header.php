@@ -84,7 +84,7 @@
 
         <!-- LOGO -->
         <div class="headerbar-left">
-            <a href="index" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
+            <a href="<?php echo RUTA_URL ?>" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
         </div>
 
         <nav class="navbar-custom">
@@ -92,7 +92,7 @@
             <ul class="list-inline float-right mb-0">
 
                 <li class="list-inline-item dropdown notif">
-                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
                         <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">

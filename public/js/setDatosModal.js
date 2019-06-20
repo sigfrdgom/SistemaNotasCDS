@@ -211,14 +211,14 @@ $(document).ready(function(){
             $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
             $('#mcobservaciones').val(data[7]);
         
-        // document.getElementById('prt').setAttribute('action','/SistemaNotasCDS/modulosCurso/update');
+        document.getElementById('mm').setAttribute('action','/SistemaNotasCDS/modulosCurso/update');
        
     });
 });
 
 //Para limpiar el modal de modulos curso
 $("#canclermdlmc").click(function(event) {
-    $("#prt")[0].reset();
+    $("#mm")[0].reset();
 });
 
 $("#ivkmmm").click(function(event) {
@@ -282,5 +282,49 @@ $("#ivkcurso").click(function(event) {
     $("#curso")[0].reset();
     document.getElementById('mdfcurso').style.display= 'none';
     document.getElementById('aggcurso').style.display= 'inline';
+});
+// ------------------------------------------------------------------------------------------------
+
+
+
+
+// ------------------------------------------------------------------------------------------------
+// Para la matricula
+// ------------------------------------------------------------------------------------------------
+$(document).ready(function(){
+    $(document).on('click', '.btn_editar_matricula', function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function(){
+            return $(this).text();
+        }).get();
+
+            $('#mid_matricula').val(data[0]);
+            $("#mid_curso option[value='"+data[1]+"']").attr("selected", true);
+            $("#mid_participante option[value='"+data[3]+"']").attr("selected", true);
+            if (data[6]=="ACTIVO") {
+                document.getElementById("mestado1").checked= true;
+            } else {
+                document.getElementById("mestado2").checked= true;
+            }
+            $('#mobservaciones').val(data[6]);
+
+
+            // $("#mcid_modulo option[value='"+data[3]+"']").attr("selected", true);
+            // $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
+            
+        
+        document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/update');
+       
+    });
+});
+
+//Para limpiar el modal de modulos curso
+$("#canclermdlmc").click(function(event) {
+    $("#matricula")[0].reset();
+});
+
+$("#ivkmmm").click(function(event) {
+    $("#matricula")[0].reset();
+   
 });
 // ------------------------------------------------------------------------------------------------

@@ -45,7 +45,7 @@ class MatriculaModel{
 
     public function update($datos){
         $this->db->query('UPDATE matricula SET id_curso=:id_curso, id_participante=:id_participante, estado=:estado, observaciones=:observaciones WHERE id_matricula = :id ;');
-        $this->db->bind(':id_matricula',$datos['id_matricula']);
+        $this->db->bind(':id',$datos['id_matricula']);
         $this->db->bind(':id_curso',$datos['id_curso']);
         $this->db->bind(':id_participante',$datos['id_participante']);
         $this->db->bind(':estado',$datos['estado']);
@@ -65,6 +65,24 @@ class MatriculaModel{
         }else{
             return false;
         }
+    }
+
+    public function updateDown($datos){
+        $this->db->query('UPDATE matricula SET estado=0 WHERE id_matricula = :id ');
+        $this->db->bind(':id', $datos['id']);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function comprobar($datos){
+        $this->db->query('SELECT count(id_matricula) as n_registros FROM matricula WHERE id_curso = :id_curso AND id_participante= :id_participante ;');
+        $this->db->bind(':id_curso',$datos['id_curso']);
+        $this->db->bind(':id_participante',$datos['id_participante']);
+        return $this->db->findAll();
+    
     }
 }
 ?>

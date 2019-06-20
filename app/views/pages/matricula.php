@@ -15,7 +15,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarMatricula">
-                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo matricula
+                        <span class='fa fa-plus-square-o bigfonts'></span> Nueva matricula
                     </button>
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
@@ -37,7 +37,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th class='secret'>ID Matricula</th>
                         <th class='secret'>ID Curso</th>
                         <th>Curso</th>
-                        <th  class='secret'> ID Participante</th>
+                        <th class='secret' > ID Participante</th>
                         <th>Participante</th>
                         <th>Estado</th>
                         <th>Observaciones</th>
@@ -47,15 +47,15 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tbody>
                     <?php foreach ($datos['matricula'] as $matricula) { ?>
                         <tr>
-                                <td  class='secret'><?php echo $matricula->id_matricula ?></td>
-                                <td  class='secret'><?php echo $matricula->id_curso ?></td>
+                                <td class='secret' ><?php echo $matricula->id_matricula ?></td>
+                                <td class='secret' ><?php echo $matricula->id_curso ?></td>
                                 <td><?php echo $matricula->nombre_curso ?></td>
-                                <td  class='secret'><?php echo $matricula->id_participante ?></td>
+                                <td class='secret' ><?php echo $matricula->id_participante ?></td>
                                 <td><?php echo $matricula->nombre ?></td>
                                 <td><?php echo ($matricula->estado == 1? "ACTIVO":"INACTIVO") ?></td>
                                 <td><?php echo $matricula->observaciones ?></td>
-                                <td class='shrink'><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
-                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"matricula/delete/$matricula->id_matricula\")' class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><button  class='btn btn-warning btn_editar_matricula' data-toggle='modal' data-target='#agregarMatricula'><span class='fa fa-edit'></span> Editar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('matricula/down/<?php echo $matricula->id_matricula ?>')" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
                                 </tr>
                     <?php } ?>
                     </tbody>
@@ -77,10 +77,12 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="prt" method="POST" action="<?php echo RUTA_URL ?>/matricula/create"data-parsley-validate novalidate >
+                    <form  id="matricula" method="POST" action="<?php echo RUTA_URL ?>/matricula/create"data-parsley-validate novalidate >
 
-                        <label for="mparticipante" class="mrg-spr-ex">Participante:</label>
-							<select class="form-control select2"  name="mid_participante" required>
+                        <input type="hidden" name="mid_matricula" id="mid_matricula">
+
+                        <label for="mid_participante" class="mrg-spr-ex">Participante:</label>
+							<select class="form-control select2"  name="mid_participante" id="mid_participante" required>
                                 <option value="">Selecciona un participante</option>    
                                     <?php
                                         foreach ($datos['participante'] as $p) {
@@ -89,12 +91,12 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
                         
-                        <label for="mcurso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mid_curso" required>
+                        <label for="mid_curso" class="mrg-spr-ex">Curso:</label>
+							<select class="form-control select2"  name="mid_curso" id="mid_curso" required>
                                 <option value="">Selecciona un curso</option>    
                                     <?php
                                         foreach ($datos['curso'] as $curso) {
-                                            echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso</option>";
+                                            echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso , Nivel $curso->nivel</option>";
                                         }
                                     ?>
 							</select>
@@ -103,20 +105,20 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="mestado" id="pestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="mestado" id="mestado1" value="1" required checked>
                                         Activa
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="mestado" id="pestado2" value="0" required>
+                                        <input class="form-check-input" type="radio" name="mestado" id="mestado2" value="0" required>
                                         Inactiva
                                     </label>
                                 </div>         
                             </div>
 
-                        <label for="mobservacion" class="mrg-spr-ex">Observación de matricula:</label>
-                        <input type="text" name="mobservaciones" placeholder="Escribe una observación para la matricula" 
+                        <label for="mobservaciones" class="mrg-spr-ex">Observación de matricula:</label>
+                        <input type="text" name="mobservaciones" id="mobservaciones" placeholder="Escribe una observación para la matricula" 
                         class="form-control " pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü,. ]{1,128}'>
             
         </div>

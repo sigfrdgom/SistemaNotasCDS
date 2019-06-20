@@ -135,4 +135,34 @@ class Matricula extends Controller
       
   }
 
+  public function upgrade($id_curso)
+  {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST')
+      {
+            $bandera = $this->matriculaModel->comprobarUpgrade($id_curso);
+            var_dump($bandera);
+            $id_upgrade= $bandera[0]->id_curso;
+
+            echo "--------------->".$id_upgrade;
+            $datos = [
+                'id_matricula' => null,
+                'id_curso' => $id_upgrade,
+                'id_participante' => trim($_POST['mid_participante']),
+                'estado' => trim($_POST['mestado']),
+                'observaciones' => trim($_POST['mobservaciones'])
+            ];
+
+            if($this->matriculaModel->create($datos))
+                    {
+                        // redireccionar('matricula');
+                    }
+                    else
+                    {
+                        die("Error al insertar los datos");
+                    }
+     }
+ }
+
+ 
+
 }

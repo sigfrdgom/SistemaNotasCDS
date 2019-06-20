@@ -370,29 +370,30 @@ $(document).ready(function(){
             $('#mid_matricula').val(data[0]);
             $("#mid_curso option[value='"+data[1]+"']").attr("selected", true);
             $("#mid_participante option[value='"+data[3]+"']").attr("selected", true);
-            if (data[6]=="ACTIVO") {
+            if (data[5]=="ACTIVO") {
                 document.getElementById("mestado1").checked= true;
             } else {
                 document.getElementById("mestado2").checked= true;
             }
             $('#mobservaciones').val(data[6]);
 
-
-            // $("#mcid_modulo option[value='"+data[3]+"']").attr("selected", true);
-            // $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
-            
         
-        document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/update');
+        document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/update/');
+        document.getElementById('aggmatricula').style.display = 'none';
+        document.getElementById('edtmatricula').style.display = 'inline';
        
     });
 });
 
-//Para limpiar el modal de modulos curso
-$("#canclermdlmc").click(function(event) {
+//Para limpiar el modal de matricula
+$("#cancelar_matricula").click(function(event) {
     $("#matricula")[0].reset();
 });
 
-$("#ivkmmm").click(function(event) {
+$("#ivkmatricula").click(function(event) {
+    
+    document.getElementById('aggmatricula').style.display = 'block';
+    document.getElementById('edtmatricula').style.display = 'none';
     $("#matricula")[0].reset();
    
 });

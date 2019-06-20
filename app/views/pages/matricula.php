@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarMatricula">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarMatricula" id="ivkmatricula">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nueva matricula
                     </button>
                 <ol class="breadcrumb float-right">
@@ -54,8 +54,9 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td><?php echo $matricula->nombre ?></td>
                                 <td><?php echo ($matricula->estado == 1? "ACTIVO":"INACTIVO") ?></td>
                                 <td><?php echo $matricula->observaciones ?></td>
-                                <td class='shrink'><button  class='btn btn-warning btn_editar_matricula' data-toggle='modal' data-target='#agregarMatricula'><span class='fa fa-edit'></span> Editar</button></td>
-                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('matricula/down/<?php echo $matricula->id_matricula ?>')" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
+                                <td class='shrink'><button  class='btn btn-warning btn_editar_matricula' data-toggle='modal' data-target='#agregarMatricula'><span class='fa fa-edit'></span> Gestionar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('matricula/down/<?php echo $matricula->id_matricula ?>')" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Finalizar</button></td>
+
                                 </tr>
                     <?php } ?>
                     </tbody>
@@ -71,7 +72,8 @@ require_once RUTA_APP . '/views/include/header.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;">Agregar una matricula</h4>
+          <h4 class="modal-title" style="margin: 0% auto;" id="aggmatricula">Agregar una matricula</h4>
+          <h4 class="modal-title" style="margin: 0% auto;" id="edtmatricula">Gestionar matricula</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -126,9 +128,9 @@ require_once RUTA_APP . '/views/include/header.php';
         <!-- Modal footer -->
         <div class="modal-footer">
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                <input type="submit"  class="btn btn-warning" value="Actualizar" name="actualizar_participante">
+                <button  class="btn btn-info" value="Promover" name="actualizar_participante" onclick="validarUpgrade(<?php $curso->id_curso ?>)"> Promover</button>
             </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelar_matricula">Cancelar</button>
         </div>
       </div>
     </div>

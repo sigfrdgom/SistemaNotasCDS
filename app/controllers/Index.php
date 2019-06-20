@@ -7,6 +7,7 @@ class Index extends Controller
         $this->docenteModel = $this->model('DocenteModel');
         $this->notaModel = $this->model('NotaModel');
         $this->cursoModel = $this->model('CursoModel');
+        $this->moduloModel = $this->model('ModuloModel');
     }
 
     /*Vista Principal*/
@@ -16,6 +17,7 @@ class Index extends Controller
         $n_usuarios = $this->docenteModel->count();
         $n_notas = $this->notaModel->count();
         $n_cursos = $this->cursoModel->count();
+        $n_modulos = $this->moduloModel->count();
         $descripcion = "";
         $datos = [
             'titulo' => "Inicio",
@@ -25,6 +27,7 @@ class Index extends Controller
             'n_usuarios' => $n_usuarios[0]->n_registros,
             'n_notas' => $n_notas[0]->n_registros,
             'n_cursos' => $n_cursos[0]->n_registros,
+            'n_modulos' => $n_modulos[0]->n_registros,
         ];
 
         $this->view('pages/inicio', $datos);

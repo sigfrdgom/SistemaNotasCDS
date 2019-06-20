@@ -29,8 +29,12 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="card card-body">
             <div class="col-xl-12">
             <a href="<?php echo constant('RUTA_URL')?>/notas/ingresarNotas/<?php echo $datos['id_curso']?>/<?php echo $datos['id_modulo']?>" class="btn btn-primary ">Actualizar Notas</a>
-                <input type="text" name="busqueda" class="float-right" >
-
+                <div class="input-group mb-1 float-right col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control float-right " placeholder="Busqueda" aria-label="Busqueda" aria-describedby="basic-addon1">
+                </div>
             </div>
         </div>
     </div>

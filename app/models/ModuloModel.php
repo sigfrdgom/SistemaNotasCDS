@@ -24,6 +24,11 @@ class ModuloModel{
         return $this->db->findAll();
     }
 
+    public function count(){
+        $this->db->query("SELECT COUNT(*) AS n_registros FROM modulo;");
+        return $this->db->findAll();
+    }
+
     public function create($datos){
         $this->db->query('INSERT INTO modulo  VALUES(:id_modulo, :nombre_modulo, :descripcion_modulo, :horas_modulo, :tipo_modulo, :evaluacion1, :evaluacion2, :evaluacion3, :evaluacion4, :evaluacion5, :evaluacion6, :estado)');
         $this->db->bind(':id_modulo', $datos['id_modulo']);

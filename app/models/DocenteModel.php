@@ -24,6 +24,11 @@ class DocenteModel{
         return $this->db->findAll();
     }
 
+    public function count(){
+        $this->db->query("SELECT COUNT(*) AS n_registros FROM docente ;");
+        return $this->db->findAll();
+    }
+
 
     public function create($datos){
         $this->db->query('INSERT INTO docente VALUES(:id_docente, :nombres, :apellidos, :fecha_nacimiento, :sexo, :dui, :nit, :especialidad, :tipo_usuario, :pass, :estado)');

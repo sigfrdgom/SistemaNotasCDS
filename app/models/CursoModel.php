@@ -24,6 +24,12 @@ class CursoModel{
         return $this->db->findAll();
     }
 
+    public function count(){
+        $this->db->query("SELECT COUNT(*) AS n_registros FROM curso;");
+        return $this->db->findAll();
+    }
+
+
     public function create($datos){
         $this->db->query('INSERT INTO curso VALUES(:id_curso, :nombre_curso, :cohorte, :descripcion, :duracion, :sede, :estado, :nivel, :fecha_inicio, :fecha_fin)');
         $this->db->bind(':id_curso', $datos['id_curso']);

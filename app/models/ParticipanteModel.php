@@ -24,6 +24,11 @@ class ParticipanteModel{
         return $this->db->findAll();
     }
 
+    public function count(){
+        $this->db->query("SELECT COUNT(id_participante) AS n_registros FROM participante;");
+        return $this->db->findAll();
+    }
+
     public function create($datos){
         $this->db->query('INSERT INTO participante VALUES(:id_participante, :nombres, :apellidos, :fecha_nacimiento, :sexo, :dui, :nit, :carnet_minoridad, :direccion, :telefono, :email, :pass, :estado) ;');
         $this->db->bind(':id_participante',null);
@@ -86,7 +91,6 @@ class ParticipanteModel{
         $this->db->bind(':id_modulo', $datos['id_modulo']);
         return $this->db->findAll();
     }
-
 
 }
 ?>

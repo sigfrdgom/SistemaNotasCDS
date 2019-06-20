@@ -10,7 +10,7 @@ class Participante extends Controller
         $participante = $this->participanteModel->findAll();
         $descripcion = "Vista que muestra todos las participantes que existen";
         $datos = [
-            'titulo' => "participante",
+            'titulo' => "Participantes",
             'descripcion' => $descripcion,
             'participante' => $participante
         ];
@@ -20,18 +20,19 @@ class Participante extends Controller
     public function create(){
          if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $datos = [
-                'nombres' => trim($_POST['pnombres']),
-                'apellidos' => trim($_POST['papellidos']),
-                'fecha_nacimiento' => trim($_POST['pfechanacimiento']),
-                'sexo' => trim($_POST['psexo']),
-                'dui' => trim($_POST['pdui']),
-                'nit' => trim($_POST['pnit']),
-                'carnet_minoridad' => trim($_POST['pcarnet_minoridad']),
-                'direccion' => trim($_POST['pdireccion']),
-                'telefono' => trim($_POST['ptelefono']),
-                'email' => trim($_POST['pemail']),
-                'pass' => trim($_POST['ppass']),
-                'estado' => trim($_POST['pestado'])
+                'nombres' => trim($_POST['nombres']),
+                'apellidos' => trim($_POST['apellidos']),
+                'fecha_nacimiento' => trim($_POST['fecha_nacimiento']),
+                'sexo' => trim($_POST['sexo']),
+                'dui' => trim($_POST['dui']),
+                'nit' => trim($_POST['nit']),
+                'carnet_minoridad' => trim($_POST['carnet_minoridad']),
+                'direccion' => trim($_POST['direccion']),
+                'telefono' => trim($_POST['telefono']),
+                'email' => trim($_POST['email']),
+                'pass' => trim($_POST['pass']),
+                // 'estado' => trim($_POST['pestado'])
+                'estado' => 1
 
 
             ];
@@ -52,19 +53,20 @@ class Participante extends Controller
     public function update(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
            $datos = [
-               'id' => trim($_POST['pdid']),
-               'nombres' => trim($_POST['pdnombres']),
-               'apellidos' => trim($_POST['pdapellidos']),
-               'fecha_nacimiento' => trim($_POST['pdfechanacimiento']),
-               'sexo' => trim($_POST['pdsexo']),
-               'dui' => trim($_POST['pddui']),
-               'nit' => trim($_POST['pdnit']),
-               'carnet_minoridad' => trim($_POST['pdcarnet_minoridad']),
-               'direccion' => trim($_POST['pddireccion']),
-               'telefono' => trim($_POST['pdtelefono']),
-               'email' => trim($_POST['pdemail']),
+               'id' => trim($_POST['id']),
+               'nombres' => trim($_POST['nombres']),
+               'apellidos' => trim($_POST['apellidos']),
+               'fecha_nacimiento' => trim($_POST['fecha_nacimiento']),
+               'sexo' => trim($_POST['sexo']),
+               'dui' => trim($_POST['dui']),
+               'nit' => trim($_POST['nit']),
+               'carnet_minoridad' => trim($_POST['carnet_minoridad']),
+               'direccion' => trim($_POST['direccion']),
+               'telefono' => trim($_POST['telefono']),
+               'email' => trim($_POST['email']),
             // 'pass' => trim($_POST['ppass']),
-               'estado' => trim($_POST['pdestado'])
+            // 'estado' => trim($_POST['estado'])
+                'estado' => 1
 
 
            ];
@@ -94,5 +96,26 @@ class Participante extends Controller
             $this->index();
         }
     }
+
+
+    public function updateDown($id)
+   {
+        if (isset($id))
+        {
+            if($this->participanteModel->updateDown($id))
+            {
+                redireccionar('participante');
+            }
+            else
+            {
+                die("Error al dar de baja el participante");
+            }
+        }
+        else
+        {
+            $this->index();
+        }
+    }
+
 
 }

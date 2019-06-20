@@ -84,7 +84,6 @@ require_once RUTA_APP . '/views/include/header.php';
                             <td class='shrink'><button type='button' class='btn btn-warning btn_editar_usuario' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
                             <td class='shrink'><button id='btn_eliminar3' onclick='menjaseBaja("docente/down/<?php echo $docentes->id_docente?>", <?php echo $docentes->id_docente?>)' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
                             </tr>
-                            ";
                             <?php } ?>
                    
                     </tbody>

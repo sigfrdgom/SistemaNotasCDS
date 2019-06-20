@@ -92,5 +92,16 @@ class ParticipanteModel{
         return $this->db->findAll();
     }
 
+    public function updateDown($datos){
+        $this->db->query('UPDATE participante SET estado=0 WHERE id_participante = :id ');
+         $this->db->bind(':id', $datos);
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
 }
 ?>

@@ -31,6 +31,8 @@
     
     <!-- JAVASCRIPT and JQUERY for this page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script src="<?php echo RUTA_URL ?>/js/setDatosModal.js"></script>
     <script src="<?php echo RUTA_URL ?>/js/modalParticipante.js" ></script>
     <!-- JAVASCRIPT and JQUERY for this page -->
     

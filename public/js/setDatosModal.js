@@ -215,8 +215,6 @@ $(document).ready(function () {
 //Para limpiar el modal de modulos curso
 $("#canclermdlmc").click(function(event) {
     $("#mm")[0].reset();
-$("#canclermdlmc").click(function (event) {
-    $("#prt")[0].reset();
 });
 
 $("#ivkmmm").click(function (event) {

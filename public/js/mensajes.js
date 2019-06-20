@@ -71,3 +71,11 @@ function menjaseBaja(ruta, dato=null){
         });
 
 }
+
+function activacionEstado(){
+    document.getElementById('seteoEstado').style.display= 'inline';
+}
+
+function desactivarEstado(){
+    document.getElementById('seteoEstado').style.display= 'none';
+}

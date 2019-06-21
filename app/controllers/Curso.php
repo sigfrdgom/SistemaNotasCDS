@@ -8,11 +8,15 @@ class Curso extends Controller
 
     public function index(){
         $curso = $this->cursoModel->findAll();
+
+        $cantidadParticipantes =$this->cursoModel;
+
         $descripcion = "Vista que muestra todos los cursos que existen";
         $datos = [
             'titulo' => "Curso",
             'descripcion' => $descripcion,
-            'curso' => $curso
+            'curso' => $curso,
+            'cantidadParticipantes' => $cantidadParticipantes
         ];
         $this->view('pages/curso', $datos);
     }
@@ -120,4 +124,20 @@ class Curso extends Controller
             $this->index();
         }
     }
+
+
+
+    public function countParticipante($id){
+        if(isset($id)){
+            return $this->cursoModel->countParticipante($id);
+        }else{
+            die("Error al buscar el dato");
+        }
+    }
+
+
+
+
+
+
 }

@@ -9,7 +9,7 @@ class Docente extends Controller
         $docente = $this->docenteModel->findAll();
         $descripcion = "Vista que muestra todos los docentes que existen";
         $datos = [
-            'titulo' => "Docente",
+            'titulo' => "Usuarios",
             'descripcion' => $descripcion,
             'docente' => $docente
         ];
@@ -95,7 +95,7 @@ class Docente extends Controller
         }
     }
 
-    public function down($id)
+    public function updateDown($id)
    {
         if (isset($id))
         {

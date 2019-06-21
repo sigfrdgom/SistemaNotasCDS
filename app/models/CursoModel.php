@@ -92,6 +92,16 @@ class CursoModel{
             return false;
         }
     }
+
+
+
+    public function countParticipante($id = ""){
+        $this->db->query("SELECT COUNT(*) as participantes  FROM curso c inner join matricula m ON c.id_curso=m.id_curso inner join participante p ON m.id_participante=p.id_participante where c.id_curso=:id;");
+        $this->db->bind(':id',$id);
+        return $this->db->findAll();
+    }
+
+
 }
 
 ?>

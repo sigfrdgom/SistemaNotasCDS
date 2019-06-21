@@ -33,7 +33,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                     </div>
-                    <input type="text" class="form-control float-right " placeholder="Busqueda" aria-label="Busqueda" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda" data-id-curso="<?php echo $datos['id_curso']?>" data-id-modulo="<?php echo $datos['id_modulo']?>"  aria-label="Busqueda" aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th colspan="2">Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="contenido">
                     <?php
                     foreach ($datos['participantes'] as $participantes) {
                         ?>
@@ -154,6 +154,8 @@ require_once RUTA_APP . '/views/include/header.php';
             </div>
         </div>
     </div>
+
+    <script src="<?php echo RUTA_URL ?>/js/views/notas.js"></script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

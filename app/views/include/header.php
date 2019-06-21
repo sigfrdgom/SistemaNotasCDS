@@ -7,7 +7,7 @@
 
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?php echo RUTA_URL; ?>/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo RUTA_URL; ?>/img/icons/test.png">
 
     <!-- Bootstrap CSS -->
     <link href="<?php echo RUTA_URL ?>/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />

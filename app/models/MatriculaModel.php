@@ -25,7 +25,7 @@ class MatriculaModel{
     }
 
     public function findForTable(){
-        $this->db->query("SELECT m.id_matricula, c.id_curso, c.nombre_curso, p.id_participante, concat(p.nombres,' ',p.apellidos) AS nombre, m.estado, m.observaciones FROM matricula m JOIN curso c ON m.id_curso=c.id_curso JOIN participante p ON p.id_participante=m.id_participante");
+        $this->db->query("SELECT m.id_matricula, c.id_curso, c.nombre_curso, c.nivel, p.id_participante, concat(p.nombres,' ',p.apellidos) AS nombre, m.estado, m.observaciones FROM matricula m JOIN curso c ON m.id_curso=c.id_curso JOIN participante p ON p.id_participante=m.id_participante");
         return $this->db->findAll();
     }
 
@@ -86,7 +86,7 @@ class MatriculaModel{
 
     // SELECT c1.id_curso FROM curso c1, curso c2 WHERE c2.nombre_curso=c1.nombre_curso AND c2.cohorte=c1.cohorte AND c2.nivel=(c1.nivel=((3)+1))
     public function comprobarUpgrade($datos){
-        $this->db->query('SELECT c1.id_curso FROM curso c1, curso c2 WHERE c2.nombre_curso=c1.nombre_curso AND c2.cohorte=c1.cohorte AND c2.nivel=(c1.nivel=((:id)+1))');
+        $this->db->query('SELECT c2.id_curso FROM curso c1, curso c2 WHERE c2.nombre_curso=c1.nombre_curso AND c2.cohorte=c1.cohorte AND c2.nivel=(c1.nivel + 1) AND c1.id_curso=:id');
         $this->db->bind(':id',$datos);
         return $this->db->findAll();
     }

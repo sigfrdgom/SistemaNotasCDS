@@ -49,7 +49,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <tr>
                                 <td class='secret' ><?php echo $matricula->id_matricula ?></td>
                                 <td class='secret' ><?php echo $matricula->id_curso ?></td>
-                                <td><?php echo $matricula->nombre_curso ?></td>
+                                <td><?php echo $matricula->nombre_curso.", nivel ".$matricula->nivel ?></td>
                                 <td class='secret' ><?php echo $matricula->id_participante ?></td>
                                 <td><?php echo $matricula->nombre ?></td>
                                 <td><?php echo ($matricula->estado == 1? "ACTIVO":"INACTIVO") ?></td>
@@ -79,7 +79,7 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="matricula" method="POST" action="<?php echo RUTA_URL ?>/matricula/create"data-parsley-validate novalidate >
+                    <form  id="matricula" method="POST" action="<?php echo RUTA_URL ?>/matricula/create" data-parsley-validate novalidate >
 
                         <input type="hidden" name="mid_matricula" id="mid_matricula">
 
@@ -128,7 +128,7 @@ require_once RUTA_APP . '/views/include/header.php';
         <!-- Modal footer -->
         <div class="modal-footer">
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
-                <button  class="btn btn-info" value="Promover" name="actualizar_participante" onclick="validarUpgrade(<?php $curso->id_curso ?>)"> Promover</button>
+                <button  class="btn btn-info" value="Promover" name="actualizar_participante" onclick="validarUpgrade()"> Promover</button>
             </form>
             <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelar_matricula">Cancelar</button>
         </div>

@@ -457,3 +457,12 @@ function validando() {
     }
 
 }
+
+// Esta aca por prueba
+function validarUpgrade() {
+    var valor= document.getElementById('mid_curso').value;
+    document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/upgrade/'+valor);
+    alert('/SistemaNotasCDS/matricula/upgrade/'+valor);
+    
+    document.getElementById("matricula").submit();
+}

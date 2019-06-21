@@ -137,16 +137,11 @@ class Matricula extends Controller
 
   public function upgrade($id)
   {
-    
             $bandera = $this->matriculaModel->comprobarUpgrade($id);
-            
-            var_dump($bandera);
-            
+            // var_dump($bandera);
             if (isset($bandera[0])) {
-                
                 $id_upgrade= $bandera[0]->id_curso;
-
-                echo "--------------->".$id_upgrade;
+                // echo "--------------->".$id_upgrade;
                 $bandera2=$this->comprobarUpgrade($id_upgrade);
                 if ($bandera2) {
                     $datos = [
@@ -167,8 +162,6 @@ class Matricula extends Controller
                 }else {
                     redireccionar('matricula');
                 }
-
-
             } else {
                 echo "<script> alert('No existe posibilidad de upgrade')</script>";
                 redireccionar('matricula');

@@ -44,6 +44,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tr>
                         <th class='secret'>ID</th>
                         <th>Nombre</th>
+                        <th>Numero participantes</th>
                         <th>Cohorte</th>
                         <th class='secret'>Descripcion</th>
                         <th class='secret'>Duracion</th>
@@ -63,11 +64,19 @@ require_once RUTA_APP . '/views/include/header.php';
                     </thead>
                     <tbody id="tbody-table">
                     <?php
+                     
                     foreach ($datos['curso'] as $cursos) { ?>
                     
-                        <tr id='fila-<?php echo $cursos->id_curso; ?>'>
+                        <tr id='fila-<?php echo $cursos->id_curso; ?>' class="center">
                                 <td class='secret'><?php echo $cursos->id_curso; ?></td>
                                 <td><?php echo $cursos->nombre_curso ?></td>
+
+                                <td><?php  $conteo=$datos['cantidadParticipantes']->countParticipante($cursos->id_curso);
+                                echo $conteo[0]->participantes;
+                                
+                                
+                                ?></td>
+                                
                                 <td><?php echo $cursos->cohorte; ?></td>
                                 <td class='secret'><?php echo $cursos->descripcion ?> </td>
                                 <td class='secret'><?php echo $cursos->duracion ?></td>

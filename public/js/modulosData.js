@@ -37,3 +37,4 @@ function validarPorcentajes(){
         return false;
     }
 }
+

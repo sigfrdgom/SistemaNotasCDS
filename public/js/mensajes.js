@@ -18,7 +18,7 @@ function menjaseEliminar(ruta, dato){
                     const tbody = document.querySelector("#tbody-table");
                     const fila  = document.querySelector("#fila-"+controlador);
                     
-                    console.log("holaaaa");
+                    // console.log("holaaaa");
                     tbody.removeChild(fila);
                                     });
                   

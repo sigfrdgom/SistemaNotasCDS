@@ -135,4 +135,62 @@ class Matricula extends Controller
       
   }
 
+  public function upgrade($id)
+  {
+    
+            $bandera = $this->matriculaModel->comprobarUpgrade($id);
+            
+            var_dump($bandera);
+            
+            if (isset($bandera[0])) {
+                
+                $id_upgrade= $bandera[0]->id_curso;
+
+                echo "--------------->".$id_upgrade;
+                $bandera2=$this->comprobarUpgrade($id_upgrade);
+                if ($bandera2) {
+                    $datos = [
+                        'id_matricula' => null,
+                        'id_curso' => $id_upgrade,
+                        'id_participante' => trim($_POST['mid_participante']),
+                        'estado' => trim($_POST['mestado']),
+                        'observaciones' => trim($_POST['mobservaciones'])
+                    ];
+                        if($this->matriculaModel->create($datos))
+                        {
+                            redireccionar('matricula');
+                        }
+                        else
+                        {
+                            die("Error al insertar los datos");
+                        }
+                }else {
+                    redireccionar('matricula');
+                }
+
+
+            } else {
+                echo "<script> alert('No existe posibilidad de upgrade')</script>";
+                redireccionar('matricula');
+            }
+ }
+
+ public function comprobarUpgrade($idCurso)
+   {
+       if ($_SERVER['REQUEST_METHOD'] == 'POST')
+       {
+          $datos = [
+              'id_curso' => $idCurso,
+              'id_participante' => trim($_POST['mid_participante'])
+          ];  
+          $bandera = $this->matriculaModel->comprobar($datos);
+      }
+      if ($bandera[0]->n_registros == 0) {
+            return TRUE;
+      } else {
+            return FALSE;
+      }
+      
+  }
+
 }

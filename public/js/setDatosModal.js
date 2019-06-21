@@ -238,28 +238,29 @@ $(document).ready(function () {
 
         $('#cid').val(data[0]);
         $('#cnombre').val(data[1]);
-        $('#ccohorte').val(data[2]);
-        $('#cdescripcion').val(data[3]);
-        $('#cduracion').val(data[4]);
+        
+        $('#ccohorte').val(data[3]);
+        $('#cdescripcion').val(data[4]);
+        $('#cduracion').val(data[5]);
 
-        $("#csede option[value='" + data[5] + "']").attr("selected", true);
+        $("#csede option[value='" + data[6] + "']").attr("selected", true);
 
-        if (data[6] == "ACTIVO") {
+        if (data[7] == "ACTIVO") {
             document.getElementById("cestado1").checked = true;
         } else {
             document.getElementById("cestado2").checked = true;
         }
 
-        if (data[7] == "1") {
+        if (data[8] == "1") {
             document.getElementById("cnivel1").checked = true;
-        } else if (data[7] == "2") {
+        } else if (data[8] == "2") {
             document.getElementById("cnivel2").checked = true;
         } else {
             document.getElementById("cnivel3").checked = true;
         }
 
-        $('#cfecha_inicio').val(data[8]);
-        $('#cfecha_fin').val(data[9]);
+        $('#cfecha_inicio').val(data[9]);
+        $('#cfecha_fin').val(data[10]);
 
         document.getElementById('curso').setAttribute('action', '/SistemaNotasCDS/curso/update');
         document.getElementById('mdfcurso').style.display = 'inline';
@@ -298,7 +299,7 @@ $(document).ready(function () {
         $tr = $(this).closest('tr');
         var data = $tr.children('td').map(function () { return $(this).text(); }).get();
 
-        document.getElementById('password').style.display= 'none';
+        // document.getElementById('password').style.display= 'none';
 
         $('#id').val(data[0]);
         $('#nombres').val(data[1]);
@@ -370,29 +371,30 @@ $(document).ready(function(){
             $('#mid_matricula').val(data[0]);
             $("#mid_curso option[value='"+data[1]+"']").attr("selected", true);
             $("#mid_participante option[value='"+data[3]+"']").attr("selected", true);
-            if (data[6]=="ACTIVO") {
+            if (data[5]=="ACTIVO") {
                 document.getElementById("mestado1").checked= true;
             } else {
                 document.getElementById("mestado2").checked= true;
             }
             $('#mobservaciones').val(data[6]);
 
-
-            // $("#mcid_modulo option[value='"+data[3]+"']").attr("selected", true);
-            // $("#mcid_docente option[value='"+data[5]+"']").attr("selected", true);
-            
         
-        document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/update');
+        document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/update/');
+        document.getElementById('aggmatricula').style.display = 'none';
+        document.getElementById('edtmatricula').style.display = 'inline';
        
     });
 });
 
-//Para limpiar el modal de modulos curso
-$("#canclermdlmc").click(function(event) {
+//Para limpiar el modal de matricula
+$("#cancelar_matricula").click(function(event) {
     $("#matricula")[0].reset();
 });
 
-$("#ivkmmm").click(function(event) {
+$("#ivkmatricula").click(function(event) {
+    
+    document.getElementById('aggmatricula').style.display = 'block';
+    document.getElementById('edtmatricula').style.display = 'none';
     $("#matricula")[0].reset();
    
 });
@@ -455,4 +457,13 @@ function validando() {
         $('#dui').removeAttr("required");
     }
 
+}
+
+// Esta aca por prueba
+function validarUpgrade() {
+    var valor= document.getElementById('mid_curso').value;
+    document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/upgrade/'+valor);
+    alert('/SistemaNotasCDS/matricula/upgrade/'+valor);
+    
+    document.getElementById("matricula").submit();
 }

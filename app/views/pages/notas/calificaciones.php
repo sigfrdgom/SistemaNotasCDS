@@ -53,7 +53,6 @@ require_once RUTA_APP . '/views/include/header.php';
                             <th>Nota5</th>
                             <th>Nota6</th>
                             <th>Observaciones</th>
-                            <th colspan="2">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -70,7 +69,6 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class="td-center"><input type="text" name="nota5[]" value="<?php echo $participantes->nota5 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
                                 <td class="td-center"><input type="text" name="nota6[]" value="<?php echo $participantes->nota6 ?>" class="input-nota custom-control-indicator" min="1" max="10" title="Ingrese un número en 0.00 y 10.00" maxlength="5" onkeypress="decimalonly();" onkeyup="validar_nota(this);" pattern="^[0-9]+([.][0-9]+)?$" ></td>
                                 <td class="td-center"><input type="text" name="observaciones[]" value="<?php echo $participantes->observaciones ?>" onkeypress="textonly()"></td>
-                                <td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -85,14 +83,9 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
 
         <script>
-            function validar_nota(event){
-                if(event.value > 10.00) {
-                    event.value = "10.00";
-                }
-            }
+
         </script>
 
-        <script src="<?php echo constant('RUTA_URL')?>/js/validations.js"></script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

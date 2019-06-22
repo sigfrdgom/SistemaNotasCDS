@@ -30,3 +30,9 @@ function searchText(evt) {
         if(theEvent.preventDefault) theEvent.preventDefault();
     }
 }
+
+function validar_nota(event){
+    if(event.value > 10.00) {
+        event.value = "10.00";
+    }
+}

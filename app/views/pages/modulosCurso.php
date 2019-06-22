@@ -101,7 +101,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <option value="">Selecciona un curso</option>    
                                     <?php
                                         foreach ($datos['curso'] as $curso) {
-                                            echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso</option>";
+                                            echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso , nivel $curso->nivel </option>";
                                         }
                                     ?>
 							</select>

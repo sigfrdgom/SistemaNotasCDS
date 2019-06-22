@@ -139,8 +139,13 @@ class Notas extends Controller
         $id_curso = $_POST['id_curso'];
         $busqueda = $_POST['busqueda'];
 
+        $datos = [
+            'id_curso' => trim($id_curso),
+            'id_modulo' => trim($id_modulo)
+        ];
+
         if($busqueda == null || $busqueda== ""){
-            $notas = $this->notaModel->findAll();
+            $notas = $this->notaModel->findNotasEstudiantes($datos);
         }else{
             $notas = $this->notaModel->findByParticipante($id_curso, $id_modulo, $busqueda);
         }

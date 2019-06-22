@@ -24,6 +24,23 @@ class Notas extends Controller
         $this->view('pages/notas/mostrarCurso', $datos);
     }
 
+    public function notas()
+    {
+        $nota = $this->notaModel->findAll();
+        $modulosCurso = $this->modulosCursoModel->findAll();
+        $participante = $this->participanteModel->findAll();
+
+        $descripcion = "Vista que muestra todos las notas que existen";
+        $datos = [
+            'titulo' => "Nota",
+            'descripcion' => $descripcion,
+            'nota' => $nota,
+            'moduloCurso' => $modulosCurso,
+            'participante' => $participante
+        ];
+        $this->view('pages/notas/nota', $datos);
+    }
+
     public function modulos($idCurso)
     {
         $descripcion = "Vista que muestra todos los Modulos del curso";
@@ -117,23 +134,20 @@ class Notas extends Controller
         }
     }
 
+    public function buscarNotas(){
+        $id_modulo = $_POST['id_modulo'];
+        $id_curso = $_POST['id_curso'];
+        $busqueda = $_POST['busqueda'];
 
-    public function notas()
-    {
-        $nota = $this->notaModel->findAll();
-        $modulosCurso = $this->modulosCursoModel->findAll();
-        $participante = $this->participanteModel->findAll();
-
-        $descripcion = "Vista que muestra todos las notas que existen";
+        if($busqueda == null || $busqueda== ""){
+            $notas = $this->notaModel->findAll();
+        }else{
+            $notas = $this->notaModel->findByParticipante($id_curso, $id_modulo, $busqueda);
+        }
         $datos = [
-            'titulo' => "Nota",
-            'descripcion' => $descripcion,
-            'nota' => $nota,
-            'moduloCurso' => $modulosCurso,
-            'participante' => $participante
+            'notas' => $notas,
         ];
-        $this->view('pages/notas/nota', $datos);
+        $this->view('pages/notas/buscarNotas', $datos);
     }
-
 
 }

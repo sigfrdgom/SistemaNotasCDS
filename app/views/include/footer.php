@@ -34,7 +34,7 @@
 <!-- App js -->
 <script src="<?php echo RUTA_URL ?>/assets/js/pikeadmin.js"></script>
 <!-- BEGIN Java Script for this page -->
-<script src="assets/plugins/parsleyjs/parsley.min.js"></script>
+<script src="<?php echo RUTA_URL ?>/assets/plugins/parsleyjs/parsley.min.js"></script>
 <!-- Sweet alert --->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<?php echo RUTA_URL ?>/js/mensajes.js"></script>
@@ -58,6 +58,7 @@
 </script>
 
 <script src="<?php echo RUTA_URL ?>/js/modulosData.js"></script>
+<script src="<?php echo constant('RUTA_URL')?>/js/validations.js"></script>
 
 </body>
 </html>

@@ -25,7 +25,7 @@ class ModulosCurso extends Controller
             'curso' =>$curso,
             'modulo' =>$modulo
         ];
-        $this->view('pages/modulosCurso', $datos);
+        $this->view('pages/modulosCurso/modulosCurso', $datos);
     }
 
     public function create()
@@ -43,7 +43,7 @@ class ModulosCurso extends Controller
            var_dump($datos);
            if($this->modulosCursoModel->create($datos))
            {
-               redireccionar('modulosCurso');
+               redireccionar('modulosCurso/modulosCurso');
            }
            else
            {
@@ -66,7 +66,7 @@ class ModulosCurso extends Controller
            var_dump($datos);
            if($this->modulosCursoModel->update($datos))
            {
-               redireccionar('modulosCurso');
+               redireccionar('modulosCurso/modulosCurso');
 
            }
            else
@@ -82,7 +82,7 @@ class ModulosCurso extends Controller
         {
             if($this->modulosCursoModel->delete($id))
             {
-                redireccionar('modulosCurso');
+                redireccionar('modulosCurso/modulosCurso');
             }
             else
             {
@@ -101,7 +101,7 @@ class ModulosCurso extends Controller
          {
              if($this->moduloModel->updateDown($id))
              {
-                 redireccionar('modulosCurso');
+                 redireccionar('modulosCurso/modulosCurso');
              }
              else
              {

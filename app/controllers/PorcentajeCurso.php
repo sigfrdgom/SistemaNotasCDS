@@ -74,4 +74,23 @@ class PorcentajeCurso extends Controller
             $this->index();
         }
     }
+
+    public function porcentajes(){
+        $porcentajesCurso = $this->porcentajesCursoModel->findForTable();
+        $tipoModulo = $this->tipoModuloModel->findAll();
+        $curso = $this->cursoModel->findAll();
+        $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
+        $datos = [
+            'titulo' => "Porcentajes de los Curso",
+            'descripcion' => $descripcion,
+            'porcentajesCurso' => $porcentajesCurso,
+            'tipoModulo' => $tipoModulo,
+            'curso' => $curso
+        ];
+        $this->view('pages/porcentajesCurso/porcentajes', $datos);
+    }
+
+    public function buscarCurso(){
+
+    }
 }

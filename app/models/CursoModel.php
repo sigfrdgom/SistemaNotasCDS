@@ -107,6 +107,11 @@ class CursoModel{
         return $this->db->findAll();
     }
 
+    public function cursoSinPorcentaje(){
+        $this->db->query("SELECT c.id_curso, c.nombre_curso FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NULL");
+        return $this->db->findAll();
+    }
+
 }
 
 ?>

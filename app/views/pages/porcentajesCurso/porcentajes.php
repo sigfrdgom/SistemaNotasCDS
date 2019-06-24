@@ -25,14 +25,19 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="row margen-abajo-card">
             <div class="card card-body">
                 <div class="col-xl-12">
-                    <form>
+                    <form method="POST">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-form-label">Seleccione un curso: </label>
                             <div class="input-group mb-1 float-right col-sm-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-                                </div>
-                                <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda" aria-describedby="basic-addon1" required>
+                                <select name="id_curso" class="form-control">
+                                    <?php foreach ($datos['cursoSinPorcentaje'] AS $item){?>
+                                        <?php if($item->nombre_curso){ ?>
+                                            <option value="<?php echo $item->id_curso ?>"><?php echo $item->nombre_curso ?></option>
+                                        <?php } else{?>
+                                            <option disabled ><?php echo "No existen cursos disponibles"?></option>
+                                    <?php }
+                                    } ?>
+                                </select>
                             </div>
 
                         </div>
@@ -44,6 +49,37 @@ require_once RUTA_APP . '/views/include/header.php';
                 </div>
             </div>
         </div>
+
+        <?php if(isset($_POST['id_curso'])){
+            echo $_POST['id_curso'];
+        } ?>
+
+        <div class="row margen-abajo-card">
+            <div class="card card-body">
+                <div class="col-xl-12">
+                    <form method="POST">
+
+                        <table class="table table-sm table-bordered table-hover display">
+                            <thead>
+                            <th>Curso</th>
+                            <?php foreach ($datos['tipoModulo'] as $item){ ?>
+                                <th><?php echo $item->nombre ?></th>
+                            <?php } ?>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                        <button type="submit" class="btn btn-primary my-1">Seleccionar</button>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
 
 <?php
 /*Importacion de Footer de la aplicacion */

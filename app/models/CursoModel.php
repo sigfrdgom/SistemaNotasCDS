@@ -7,7 +7,7 @@ class CursoModel{
     }
 
     public function findAll(){
-        $this->db->query("SELECT * FROM curso;");
+        $this->db->query("SELECT * FROM curso ORDER BY cohorte ASC;");
         return $this->db->findAll();
     }
 

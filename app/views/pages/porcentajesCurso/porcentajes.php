@@ -63,10 +63,19 @@ require_once RUTA_APP . '/views/include/header.php';
                             <thead>
                             <th>Curso</th>
                             <?php foreach ($datos['tipoModulo'] as $item){ ?>
-                                <th><?php echo $item->nombre ?></th>
+                                <th><input type="hidden" name="id_tipoModulo[]" value="<?php echo $item->id_tipo_modulo ?>"><?php echo $item->nombre ?></th>
                             <?php } ?>
                             </thead>
-                            <tbody>
+                            <tbody id="table-content ">
+                            <td>La curacao para vivir mejo</td>
+                            <?php foreach ($datos['tipoModulo'] as $item){ ?>
+                                <td><div class="input-group">
+                                        <input type="text" class="form-control text-centrado porcentaje" maxlength="5" onkeypress="decimalonly()" onkeyup="validar_porcentaje(this);sumar()" aria-label="Ingrese un porcentaje" pattern="^[0-9]+([.][0-9]+)?$" >
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div></td>
+                            <?php } ?>
 
                             </tbody>
                         </table>
@@ -80,8 +89,9 @@ require_once RUTA_APP . '/views/include/header.php';
             </div>
         </div>
 
-
 <?php
 /*Importacion de Footer de la aplicacion */
 require_once RUTA_APP . '/views/include/footer.php';
 ?>
+        <script src="<?php echo RUTA_URL ?>/js/views/porcentajeModulo.js"></script>
+

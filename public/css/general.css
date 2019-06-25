@@ -2,7 +2,7 @@
 th{
     text-align: center;
 }
-.td-center{
+td-center{
     text-align: center;
 }
 .text-centrado{
@@ -19,4 +19,7 @@ th{
 }
 .margen-abajo-card{
     margin-bottom: 10px;
+}
+.input-porcent{
+    width: 25px;
 }

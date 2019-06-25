@@ -36,3 +36,9 @@ function validar_nota(event){
         event.value = "10.00";
     }
 }
+
+function validar_porcentaje(event) {
+    if(event.value > 100.0) {
+        event.value = "100.0";
+    }
+}

@@ -93,14 +93,24 @@ class CursoModel{
         }
     }
 
-
-
     public function countParticipante($id = ""){
         $this->db->query("SELECT COUNT(*) as participantes  FROM curso c inner join matricula m ON c.id_curso=m.id_curso inner join participante p ON m.id_participante=p.id_participante where c.id_curso=:id;");
         $this->db->bind(':id',$id);
         return $this->db->findAll();
     }
 
+    public function buscarCurso($busqueda){
+        //SELECT * FROM curso WHERE nombre_curso LIKE '%C%' LIMIT 0, 10
+        $this->db->query("SELECT * FROM curso WHERE nombre_curso LIKE :busqueda LIMIT 0, 10");
+        $busqueda = "%{$busqueda}%";
+        $this->db->bind(':busqueda', $busqueda, PDO::PARAM_STR);
+        return $this->db->findAll();
+    }
+
+    public function cursoSinPorcentaje(){
+        $this->db->query("SELECT c.id_curso, c.nombre_curso FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NULL");
+        return $this->db->findAll();
+    }
 
 }
 

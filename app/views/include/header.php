@@ -163,6 +163,10 @@
                     </li>
 
                     <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/porcentajeCurso/porcentajes"><i class="fa fa-fw fa-book"></i><span> Porcentajes Curso </span> </a>
+                    </li>
+
+                    <li class="submenu">
                         <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/tipoModulo">Tipo Modulo</a></li>

@@ -36,7 +36,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
         <div class="card card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover display">
+                <table class="table table-sm table-bordered table-hover display">
                     <thead>
                     <tr>
                         <th class='secret'>ID</th>

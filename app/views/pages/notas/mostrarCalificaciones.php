@@ -65,6 +65,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th>Nota4</th>
                         <th>Nota5</th>
                         <th>Nota6</th>
+                        <th>Promedio</th>
                         <th>Observaciones</th>
                         <th colspan="2">Acciones</th>
                     </tr>
@@ -82,6 +83,10 @@ require_once RUTA_APP . '/views/include/header.php';
                             <td class="td-center"><?php echo $participantes->nota4 ?></td>
                             <td class="td-center"><?php echo $participantes->nota5 ?></td>
                             <td class="td-center"><?php echo $participantes->nota6 ?></td>
+                            <td class="td-center"><?php
+                                $promedio =($participantes->nota1+ $participantes->nota2+$participantes->nota3+$participantes->nota4+$participantes->nota5+$participantes->nota6)/6;
+                                echo round($promedio,2);
+                                ?></td>
                             <td class="td-center"><?php echo $participantes->observaciones ?></td>
                             <td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                             </td>

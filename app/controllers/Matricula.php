@@ -22,7 +22,7 @@ class Matricula extends Controller
             'participante' => $participante ,
             'curso' => $curso ,
         ];
-        $this->view('pages/matricula', $datos);
+        $this->view('pages/matricula/matriculasCurso', $datos);
     }
 
     public function create()

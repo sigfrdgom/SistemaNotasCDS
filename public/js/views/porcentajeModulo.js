@@ -1,3 +1,5 @@
+$('#alert-error').hide();
+$('#alert-warning').hide();
 window.addEventListener('DOMContentLoaded', listener);
 
 function listener() {
@@ -17,6 +19,17 @@ function sumar() {
         }
     });
 
-    //alert(total);
-    console.log(cont);
+    if(total> 100){
+        $('#alert-error').show();
+        document.getElementById('total_danger').innerHTML=total;
+        console.log("La suma de los totales de swer 100");
+    }else{
+        $('#alert-error').hide();
+    }
+    if (total > 0 && total<100){
+        $('#alert-warning').show();
+        document.getElementById('total_warning').innerHTML=total;
+    }else{
+        $('#alert-warning').hide();
+    }
 }

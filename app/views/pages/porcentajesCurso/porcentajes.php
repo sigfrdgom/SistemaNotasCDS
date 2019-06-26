@@ -41,7 +41,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             </div>
 
                         </div>
-                        <button type="submit" class="btn btn-primary my-1">Seleccionar</button>
+                        <button type="submit" class="btn btn-primary my-1"><i class='fa fa-send'></i> Seleccionar</button>
 
                         </form>
 
@@ -49,10 +49,6 @@ require_once RUTA_APP . '/views/include/header.php';
                 </div>
             </div>
         </div>
-
-        <?php if(isset($_POST['id_curso'])){
-            echo $_POST['id_curso'];
-        } ?>
 
         <div class="row margen-abajo-card">
             <div class="card card-body">
@@ -70,7 +66,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <td>La curacao para vivir mejo</td>
                             <?php foreach ($datos['tipoModulo'] as $item){ ?>
                                 <td><div class="input-group">
-                                        <input type="text" class="form-control text-centrado porcentaje" maxlength="5" onkeypress="decimalonly()" onkeyup="validar_porcentaje(this);sumar()" aria-label="Ingrese un porcentaje" pattern="^[0-9]+([.][0-9]+)?$" >
+                                        <input type="text" class="form-control text-centrado porcentaje" maxlength="5" onkeypress="decimalonly()" onkeyup="filterFloat(this);sumar()" aria-label="Ingrese un porcentaje" pattern="^[0-9]+([.][0-9]+)?$" >
                                         <div class="input-group-append">
                                             <span class="input-group-text">%</span>
                                         </div>
@@ -80,16 +76,28 @@ require_once RUTA_APP . '/views/include/header.php';
                             </tbody>
                         </table>
 
-                        <button type="submit" class="btn btn-primary my-1">Seleccionar</button>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert-error">
+                            <strong>Error en los porcentajes</strong> La sumatoria debe ser de 100%. El porcentaje total actual es de: <label id="total_danger"></label>%.
+                        </div>
+
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert-warning">
+                            <strong>Revisar Pocentajes</strong> La sumatoria de los porcentajes es menor de 100%. El porcentaje total actual es de: <label id="total_warning"></label>%.
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary my-1"><i class='fa fa-save'></i> Guardar</button>
 
                     </form>
+
+
 
 
                 </div>
             </div>
         </div>
 
-<?php
+
+        <?php
 /*Importacion de Footer de la aplicacion */
 require_once RUTA_APP . '/views/include/footer.php';
 ?>

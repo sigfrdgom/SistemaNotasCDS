@@ -7,7 +7,7 @@ class PorcentajesCursoModel{
     }
 
     public function findAll(){
-        $this->db->query("SELECT * FROM porcentajes_curso;");
+        $this->db->query("SELECT * FROM porcentajes_curso ORDER BY id_curso ASC;");
         return $this->db->findAll();
     }
 
@@ -20,7 +20,7 @@ class PorcentajesCursoModel{
 
     public function findForTable(){
         $this->db->query("SELECT pm.id_porcentajes_curso, pm.id_curso, c.nombre_curso, pm.id_tipo_modulo, tm.nombre, pm.porcentaje, pm.observacion 
-        FROM porcentajes_curso pm JOIN curso c ON pm.id_curso=c.id_curso JOIN tipo_modulo tm ON pm.id_tipo_modulo=tm.id_tipo_modulo;");
+        FROM porcentajes_curso pm JOIN curso c ON pm.id_curso=c.id_curso JOIN tipo_modulo tm ON pm.id_tipo_modulo=tm.id_tipo_modulo ORDER BY id_curso ASC;");
         return $this->db->findAll();
     }
 

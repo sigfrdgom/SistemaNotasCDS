@@ -76,20 +76,56 @@ class PorcentajeCurso extends Controller
     }
 
     public function porcentajes(){
-        $porcentajesCurso = $this->porcentajesCursoModel->findForTable();
-        $tipoModulo = $this->tipoModuloModel->findAll();
+        $tipoModulo = $this->tipoModuloModel->findActivos();
         $curso = $this->cursoModel->findAll();
         $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
             'titulo' => "Porcentajes de los Curso",
             'descripcion' => $descripcion,
-            'porcentajesCurso' => $porcentajesCurso,
             'tipoModulo' => $tipoModulo,
             'curso' => $curso,
             'cursoSinPorcentaje' => $cursoSinPorcentaje
         ];
         $this->view('pages/porcentajesCurso/porcentajes', $datos);
+    }
+
+    public function mostrarPorcentajes($id_curso){
+        $tipoModulo = $this->tipoModuloModel->findActivos();
+        $curso = $this->cursoModel->findById($id_curso);
+        $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
+        $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
+        $datos = [
+            'titulo' => "Porcentajes de los Curso",
+            'descripcion' => $descripcion,
+            'tipoModulo' => $tipoModulo,
+            'curso' => $curso,
+            'cursoSinPorcentaje' => $cursoSinPorcentaje
+        ];
+        $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
+    }
+
+    public function guardarPorcentajes(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            for ($i = 0; $i < sizeof($_POST['id_tipoModulo']); $i++) {
+                $datos = [
+                    'id_porcentaje_curso' => null,
+                    'id_curso' => trim($_POST['id_curso_text']),
+                    'id_tipo_modulo' => $_POST['id_tipoModulo'][$i],
+                    'porcentaje' => $_POST['porcentajes_curso'][$i],
+                    'observacion' => 'Creado'
+                ];
+                //var_dump($datos);
+                if($this->porcentajesCursoModel->create($datos)){
+                    redireccionar('porcentajeCurso');
+                }else{
+                    die("Error al insertar los datos");
+                }
+            }
+        }else{
+            $this->index();
+        }
     }
 
 }

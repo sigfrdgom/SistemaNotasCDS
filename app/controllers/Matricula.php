@@ -14,7 +14,7 @@ class Matricula extends Controller
         $participante = $this->participanteModel->findAll();
         $curso = $this->cursoModel->findAll();
         
-        $descripcion = "Vista que muestra todos las matriculas que existen";
+        $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
             'titulo' => "Matricula",
             'descripcion' => $descripcion,
@@ -22,8 +22,27 @@ class Matricula extends Controller
             'participante' => $participante ,
             'curso' => $curso ,
         ];
-        $this->view('pages/matricula/matriculasCurso', $datos);
+        $this->view('pages/matricula/matricula', $datos);
     }
+
+
+    public function curso($id_curso){
+        $matricula = $this->matriculaModel->findForTableCurso($id_curso);
+        $participante = $this->participanteModel->findAll();
+        $curso = $this->cursoModel->findAll();
+        
+        $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
+        $datos = [
+            'titulo' => "Matricula",
+            'descripcion' => $descripcion,
+            'matricula' => $matricula,
+            'participante' => $participante ,
+            'curso' => $curso ,
+        ];
+        $this->view('pages/matricula/matriculaCurso', $datos);
+    }
+
+
 
     public function create()
     {
@@ -41,7 +60,7 @@ class Matricula extends Controller
            if ($bandera) {
                     if($this->matriculaModel->create($datos))
                     {
-                        redireccionar('matricula');
+                        redireccionar("matriculaCurso/".$_POST['mid_curso']);
                     }
                     else
                     {
@@ -69,8 +88,7 @@ class Matricula extends Controller
           var_dump($datos);
           if($this->matriculaModel->update($datos))
           {
-              redireccionar('matricula');
-
+            redireccionar("matricula/curso/".$_POST['mid_curso']);
           }
           else
           {

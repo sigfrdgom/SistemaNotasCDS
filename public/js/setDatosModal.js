@@ -381,7 +381,8 @@ $(document).ready(function(){
         
         document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/update/');
         document.getElementById('aggmatricula').style.display = 'none';
-        document.getElementById('edtmatricula').style.display = 'inline';
+        document.getElementById('edtmatricula').style.display = 'block';
+        document.getElementById('btn_promover_matricula').style.display = 'block';
        
     });
 });
@@ -395,6 +396,7 @@ $("#ivkmatricula").click(function(event) {
     
     document.getElementById('aggmatricula').style.display = 'block';
     document.getElementById('edtmatricula').style.display = 'none';
+    document.getElementById('btn_promover_matricula').style.display = 'none';
     $("#matricula")[0].reset();
    
 });

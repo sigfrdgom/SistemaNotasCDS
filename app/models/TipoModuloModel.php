@@ -57,5 +57,10 @@ class TipoModuloModel{
             return false;
         }
     }
+
+    public function findActivos(){
+        $this->db->query("SELECT * FROM tipo_modulo WHERE estado=1;");
+        return $this->db->findAll();
+    }
 }
 ?>

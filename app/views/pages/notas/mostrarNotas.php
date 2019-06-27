@@ -38,7 +38,7 @@ require_once RUTA_APP . '/views/include/header.php';
             } else {
             ?>
             <div class="table-responsive">
-                <table class="table table-sm table-bordered table-hover display">
+                <table class="table table-sm table-bordered table-hover display table-text-center">
                     <thead>
                     <tr>
                         <th>Nombre</th>
@@ -60,12 +60,12 @@ require_once RUTA_APP . '/views/include/header.php';
                         <tr>
                             <td><?php echo $participantes->nombres?></td>
                             <td><?php echo $participantes->apellidos?></td>
-                            <td><?php echo $participantes->nota1?></td>
-                            <td><?php echo $participantes->nota2?></td>
-                            <td><?php echo $participantes->nota3?></td>
-                            <td><?php echo $participantes->nota4?></td>
-                            <td><?php echo $participantes->nota5?></td>
-                            <td><?php echo $participantes->nota6?></td>
+                            <td class="align-middle"><?php echo $participantes->nota1?></td>
+                            <td class="td-center"><?php echo $participantes->nota2?></td>
+                            <td class="td-center"><?php echo $participantes->nota3?></td>
+                            <td class="td-center"><?php echo $participantes->nota4?></td>
+                            <td class="td-center"><?php echo $participantes->nota5?></td>
+                            <td class="td-center"><?php echo $participantes->nota6?></td>
                             <td><input type="text" name="observaciones" id=""></td>
                             <td><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
                             </td>

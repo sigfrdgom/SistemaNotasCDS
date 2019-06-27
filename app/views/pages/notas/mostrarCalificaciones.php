@@ -24,20 +24,24 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
     <!-- end row -->
 
-    <?php if(!empty($datos['participantes'])) {?>
-    <div class="row margen-abajo-card">
-        <div class="card card-body">
-            <div class="col-xl-12">
-            <a href="<?php echo constant('RUTA_URL')?>/notas/ingresarNotas/<?php echo $datos['id_curso']?>/<?php echo $datos['id_modulo']?>" class="btn btn-primary ">Actualizar Notas</a>
-                <div class="input-group mb-1 float-right col-sm-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+    <?php if (!empty($datos['participantes'])) { ?>
+        <div class="row margen-abajo-card">
+            <div class="card card-body">
+                <div class="col-xl-12">
+                    <a href="<?php echo constant('RUTA_URL') ?>/notas/ingresarNotas/<?php echo $datos['id_curso'] ?>/<?php echo $datos['id_modulo'] ?>"
+                       class="btn btn-primary ">Actualizar Notas</a>
+                    <div class="input-group mb-1 float-right col-sm-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                        </div>
+                        <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda"
+                               data-id-curso="<?php echo $datos['id_curso'] ?>"
+                               data-id-modulo="<?php echo $datos['id_modulo'] ?>" aria-label="Busqueda"
+                               aria-describedby="basic-addon1">
                     </div>
-                    <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda" data-id-curso="<?php echo $datos['id_curso']?>" data-id-modulo="<?php echo $datos['id_modulo']?>"  aria-label="Busqueda" aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
-    </div>
     <?php } ?>
 
 
@@ -54,9 +58,31 @@ require_once RUTA_APP . '/views/include/header.php';
             } else {
             ?>
             <div class="table-responsive">
-                <table class="table table-sm table-bordered table-hover display">
+                <table class="table table-sm table-bordered table-hover display table-text-center">
                     <thead>
                     <tr>
+                        <?php
+                        $cont =0;
+                        if($datos['participantes'][0]->evaluacion1){
+                            $cont++;
+                        }
+                        if($datos['participantes'][0]->evaluacion2){
+                            $cont++;
+                        }
+                        if($datos['participantes'][0]->evaluacion3){
+                            $cont++;
+                        }
+                        if($datos['participantes'][0]->evaluacion4){
+                            $cont++;
+                        }
+                        if($datos['participantes'][0]->evaluacion5){
+                            $cont++;
+                        }
+                        if($datos['participantes'][0]->evaluacion6){
+                            $cont++;
+                        }
+                        echo $cont;
+                        ?>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Nota1</th>
@@ -75,23 +101,37 @@ require_once RUTA_APP . '/views/include/header.php';
                     foreach ($datos['participantes'] as $participantes) {
                         ?>
                         <tr>
-                            <td class="td-center"><?php echo $participantes->nombres?></td>
-                            <td class="td-center"><?php echo $participantes->apellidos?></td>
+                            <td class="td-center"><?php echo $participantes->nombres ?></td>
+                            <td class="td-center"><?php echo $participantes->apellidos ?></td>
+                            <?php if ($participantes->evaluacion1){ ?>
                             <td class="td-center"><?php echo $participantes->nota1 ?></td>
+                            <?php } ?>
+                            <?php if ($participantes->evaluacion2){ ?>
                             <td class="td-center"><?php echo $participantes->nota2 ?></td>
+                            <?php } ?>
+                            <?php if ($participantes->evaluacion3){ ?>
                             <td class="td-center"><?php echo $participantes->nota3 ?></td>
+                            <?php } ?>
+                            <?php if ($participantes->evaluacion4){ ?>
                             <td class="td-center"><?php echo $participantes->nota4 ?></td>
+                            <?php } ?>
+                            <?php if ($participantes->evaluacion5){ ?>
                             <td class="td-center"><?php echo $participantes->nota5 ?></td>
+                            <?php } ?>
+                            <?php if ($participantes->evaluacion6){ ?>
                             <td class="td-center"><?php echo $participantes->nota6 ?></td>
-                            <td class="td-center"><?php
-                                $promedio =($participantes->nota1+ $participantes->nota2+$participantes->nota3+$participantes->nota4+$participantes->nota5+$participantes->nota6)/6;
-                                echo round($promedio,2);
-                                ?></td>
+                            <?php } ?>
+                            <th class="td-center"><?php
+                                $promedio = ($participantes->nota1 + $participantes->nota2 + $participantes->nota3 + $participantes->nota4 + $participantes->nota5 + $participantes->nota6) / 6;
+                                echo round($promedio, 2);
+                                ?></th>
                             <td class="td-center"><?php echo $participantes->observaciones ?></td>
-                            <td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span> Editar</a></td>
+                            <td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span>
+                                    Editar</a></td>
                             </td>
                         </tr>
-                    <?php }
+                    <?php
+                    }
                     } ?>
                     </tbody>
                 </table>

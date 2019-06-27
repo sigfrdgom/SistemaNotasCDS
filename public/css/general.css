@@ -6,7 +6,7 @@ td-center{
     text-align: center;
 }
 .text-centrado{
-    text-align: center;
+    text-align: mid;
 }
 .centrado{
     display:block;
@@ -22,4 +22,7 @@ td-center{
 }
 .input-porcent{
     width: 25px;
+}
+.table-text-center th, .table-text-center td {
+    text-align: center;
 }

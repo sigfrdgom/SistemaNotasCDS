@@ -3,7 +3,7 @@
     define('DB_HOST','127.0.0.1');
     define('DB_USER','root');
     define('DB_PASSWORD', '');
-    define('DB_NAME','notasfinal');
+    define('DB_NAME','notas');
     define('DB_CHARSET', 'utf8');
 
     /*Ruta de la aplcacion ejemplo "C:\xampp\htdocs\mvc_template\app";*/

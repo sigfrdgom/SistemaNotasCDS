@@ -10,6 +10,7 @@ class RankingNotas extends Controller
         $this->participanteModel = $this->model('ParticipanteModel');
         $this->cursoModel = $this->model('CursoModel');
         $this->moduloModel = $this->model('ModuloModel');
+        $this->nivelCursoModel = $this->model('NivelCursoModel');
     }
 
     public function index()
@@ -22,6 +23,17 @@ class RankingNotas extends Controller
             'cursos' => $cursos,
         ];
         $this->view('pages/ranking/mostrarCurso', $datos);
+    }
+
+    public function nivel($idCurso)
+    {
+        $nivel = $this->nivelCursoModel->findAll();
+        $datos = [
+            'titulo' => "Niveles del Curso",
+            'nivel' => $nivel,
+            'id_curso' => trim($idCurso)
+        ];
+        $this->view('pages/ranking/mostrarNivel', $datos);
     }
 
 

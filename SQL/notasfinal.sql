@@ -187,8 +187,8 @@ CREATE TABLE `nivel_curso` (
 
 INSERT INTO `nivel_curso` (`id_nivel_curso`, `nivel_curso`, `estado`) VALUES
 (1, 'Nivel 1', 1),
-(2, 'Nivel 2', 2),
-(3, 'Nivel 3', 3);
+(2, 'Nivel 2', 0),
+(3, 'Nivel 3', 0);
 
 -- --------------------------------------------------------
 

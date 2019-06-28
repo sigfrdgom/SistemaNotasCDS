@@ -25,7 +25,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="card-deck">
 
                 <?php
-                if (empty($datos['cursos'])) {
+                if (empty($datos['nivel'])) {
                     ?>
                     <div class="card ">
                         <h2 class="centrado">No hay registros</h2>
@@ -33,7 +33,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <?php
                 } else {
                 $c = 0;
-                foreach ($datos['cursos'] as $cursos) {
+                foreach ($datos['nivel'] as $nivel) {
                 if ($c % 5 == 0 && $c != 0) {
                 ?>
             </div>
@@ -42,13 +42,17 @@ require_once RUTA_APP . '/views/include/header.php';
                 <?php } ?>
                 <div class="card p-2" style="width: 16rem;">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
-                        <p class="card-text"><?php echo $cursos->nombre_curso ?></p>
-                        <a href="<?php echo constant('RUTA_URL') ?>/rankingNotas/nivel/<?php echo $cursos->id_curso ?>"
+                        <h5 class="card-title"><?php echo $nivel->nivel_curso ?></h5>
+                        <a href="<?php echo constant('RUTA_URL') ?>/notas/modulos/<?php echo $nivel->id_nivel_curso ?>"
                            class="btn btn-primary">Nivel</a>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>
+                        <small class="text-muted">Estado: <?php
+                            if ($nivel->estado == 1){
+                                echo "Activo";
+                            } else{
+                                echo "Inactivo";
+                            }?></small>
                     </div>
                 </div>
 

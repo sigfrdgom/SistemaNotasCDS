@@ -67,7 +67,6 @@
     });
 </script>
 
-<script src="<?php echo RUTA_URL ?>/js/modulosData.js"></script>
 <script src="<?php echo constant('RUTA_URL')?>/js/validations.js"></script>
 
 </body>

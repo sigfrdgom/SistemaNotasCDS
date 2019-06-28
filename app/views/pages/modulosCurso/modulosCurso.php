@@ -1,6 +1,7 @@
 <?php
 /*Importacion de Header de la aplicacion*/
 require_once RUTA_APP . '/views/include/header.php';
+
 ?>
 
     <!-- Start content -->
@@ -177,9 +178,9 @@ require_once RUTA_APP . '/views/include/header.php';
 							<select class="form-control select2"  name="mcid_curso" id="mcid_curso" required>
                                 <option value="">Selecciona un curso</option>    
                                     <?php
-                                        foreach ($datos['curso'] as $curso) {
-                                            echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso</option>";
-                                        }
+                                        // foreach ($datos['curso'] as $curso) {
+                                        //     echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso</option>";
+                                        // }
                                     ?>
 							</select>
 

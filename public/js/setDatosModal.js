@@ -19,6 +19,41 @@ $(document).ready(function () {
 });
 
 
+//actualizar NivelCurso
+$(document).ready(function () {
+    $(document).on('click', '.btn_modal_editar', function () {
+        $('#agregarNivelCurso').modal('show');
+        $tr = $(this).closest('tr');
+
+        var data = $tr.children("td").map(function () {
+            return $(this).text();
+        }).get();
+        console.log(data);
+        $('#frmNivelCurso').attr('action', 'nivelCurso/update');
+        //alert('the action is: ' + $('#frmTipoModulo').attr('method'));}
+        $('#id_idNivelCurso').val(data[0]);
+        $('#idNivelCurso').val(data[1]);
+        $("#idEstado option[value='" + data[2] + "']").attr("selected", true);
+        // $('#idEstado').val(data[2]);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ------------------------------------------------------------------------------------------------

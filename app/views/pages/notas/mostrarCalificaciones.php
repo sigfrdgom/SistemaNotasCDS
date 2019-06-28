@@ -61,38 +61,30 @@ require_once RUTA_APP . '/views/include/header.php';
                 <table class="table table-sm table-bordered table-hover display table-text-center">
                     <thead>
                     <tr>
-                        <?php
-                        $cont =0;
-                        if($datos['participantes'][0]->evaluacion1){
-                            $cont++;
-                        }
-                        if($datos['participantes'][0]->evaluacion2){
-                            $cont++;
-                        }
-                        if($datos['participantes'][0]->evaluacion3){
-                            $cont++;
-                        }
-                        if($datos['participantes'][0]->evaluacion4){
-                            $cont++;
-                        }
-                        if($datos['participantes'][0]->evaluacion5){
-                            $cont++;
-                        }
-                        if($datos['participantes'][0]->evaluacion6){
-                            $cont++;
-                        }
-                        echo $cont;
-                        ?>
                         <th>Nombre</th>
                         <th>Apellido</th>
+                        <?php if($datos['participantes'][0]->evaluacion1)  { ?>
                         <th>Nota1</th>
+                        <?php } ?>
+                        <?php if($datos['participantes'][0]->evaluacion2)  { ?>
                         <th>Nota2</th>
+                        <?php } ?>
+                        <?php if($datos['participantes'][0]->evaluacion3)  { ?>
                         <th>Nota3</th>
+                        <?php } ?>
+                        <?php if($datos['participantes'][0]->evaluacion4)  { ?>
                         <th>Nota4</th>
+                        <?php } ?>
+                        <?php if($datos['participantes'][0]->evaluacion5)  { ?>
                         <th>Nota5</th>
+                        <?php } ?>
+                        <?php if($datos['participantes'][0]->evaluacion6)  { ?>
                         <th>Nota6</th>
+                        <?php } ?>
                         <th>Promedio</th>
+                        <?php  ?>
                         <th>Observaciones</th>
+                        <?php  ?>
                         <th colspan="2">Acciones</th>
                     </tr>
                     </thead>

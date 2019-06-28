@@ -163,13 +163,14 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/porcentajeCurso/porcentajes"><i class="fa fa-fw fa-book"></i><span> Porcentajes Curso </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/porcentajeCurso/porcentajes"><i class="fa fa-fw fa-percent"></i><span> Porcentajes Curso </span> </a>
                     </li>
 
                     <li class="submenu">
                         <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/tipoModulo">Tipo Modulo</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/nivelCurso">Niveles del curso</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li>
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/notas">Notas</a></li> -->
                             <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li>

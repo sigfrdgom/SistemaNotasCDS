@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema CDS Notas</title>
 
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?php echo RUTA_URL; ?>/img/icons/test.png">
 
@@ -24,18 +23,7 @@
     <!-- BEGIN CSS for this page -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
     <!-- END CSS for this page -->
-    <!-- END CSS for this page -->
 
-    <!-- Swwet alert 2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    
-    <!-- JAVASCRIPT and JQUERY for this page -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
-    <script src="<?php echo RUTA_URL ?>/js/setDatosModal.js"></script>
-    <script src="<?php echo RUTA_URL ?>/js/modalParticipante.js" ></script>
-    <!-- JAVASCRIPT and JQUERY for this page -->
-    
     <!-- Other CSS -->
     <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 
@@ -181,6 +169,10 @@
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/docente">Docentes</a></li> -->
 
                         </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/rankingNotas"><i class="fa fa-fw fa-scribd"></i><span> Ranking Notas </span> </a>
                     </li>
 
                     <li class="submenu">

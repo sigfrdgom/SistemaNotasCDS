@@ -12,7 +12,7 @@ class NivelCurso extends Controller{
         $datos = [
             'titulo' => "Nivel del Curso",
             'descripcion' => $descripcion,
-            'NivelCurso' => $nivelModulo
+            'nivel_curso' => $nivelModulo
         ];
 
         $this->view('pages/nivelCurso', $datos);

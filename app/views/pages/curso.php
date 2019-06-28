@@ -82,10 +82,15 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret'><?php echo $cursos->duracion ?></td>
                                 <td><?php echo $cursos->sede ?></td> 
                                 <td><?php echo ($cursos->estado == 1? "ACTIVO":"INACTIVO") ?></td>
-                                <td><?php echo $cursos->nivel ?></td>
+                                <!-- <td class="nivel"><?php echo $cursos->nivel ?></td> -->
+                                
+                                <td class="nivel"><? $datoNivel=$datos['obtenerNivel']->findById($cursos->nivel); echo $datoNivel['nivel_curso'];?></td>
+
                                 <td class='secret'><?php echo $cursos->fecha_inicio ?></td>
                                 <td><?php echo $cursos->fecha_fin; ?></td>
-                                <td class='shrink'><button type='button' class='btn btn-warning btn_editar_curso' data-toggle='modal' data-target='#agregarCurso'><span class='fa fa-edit'></span> Editar</button></td>
+                                <td class='shrink'><button type='button' data-nivel="<?php echo $cursos->nivel;?>"
+                                class='btn btn-warning btn_editar_curso' 
+                                data-toggle='modal' data-target='#agregarCurso'><span class='fa fa-edit'></span> Editar</button></td>
                                 <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('curso/updateDown/<?php echo $cursos->id_curso ?>', <?php echo $cursos->id_curso ?>)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span>Dar baja</button></td>
                                 </tr>
                                 
@@ -157,27 +162,15 @@ require_once RUTA_APP . '/views/include/header.php';
                                 </div>         
                             </div>
 
-                        <label class="mrg-spr-ex" >Nivel del curso:</label>
-                            <div style="margin-left:2em;">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="cnivel" id="cnivel1" value="1" required>
-                                        Nivel 1
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="cnivel" id="cnivel2" value="2" required>
-                                        Nivel 2
-                                    </label>
-                                </div> 
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="cnivel" id="cnivel3" value="3" required>
-                                        Nivel 3
-                                    </label>
-                                </div>         
-                            </div>
+                            <label for="cnivel" class="mrg-spr-ex">NIVEL DEL CURSO:</label>
+								<select class="form-control select2"  name="cnivel" id="cnivel" required>
+                                    <option value="">Selecciona el nivel Curso</option>    
+                                        <?php
+                                            foreach ($datos['nivelCurso'] as $tm) {
+                                                echo " <option value='$tm->id_nivel_curso' >$tm->nivel_curso</option>";
+                                            }
+                                        ?>
+								</select>
 
                         <!-- <label for="cnivel" class="mrg-spr-ex">Nivel del curso:</label>
                         <input type="text" name="cnivel" id="cnivel" placeholder="Ingresa el nivel del curso" 

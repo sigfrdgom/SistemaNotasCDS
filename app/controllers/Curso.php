@@ -4,10 +4,14 @@ class Curso extends Controller
     public function __construct() {
         //Cargar Modelos de la paginas;
         $this->cursoModel = $this->model('CursoModel');
+        $this->nivelCursoModel = $this->model('NivelCursoModel');
+        // $this->obtenerNivel = $this->model('NivelCursoModel');
     }
 
     public function index(){
         $curso = $this->cursoModel->findAll();
+        $nivelCurso = $this->nivelCursoModel->findAll();
+        $obtenerNivel = $this->nivelCursoModel;
 
         $cantidadParticipantes =$this->cursoModel;
 
@@ -16,7 +20,9 @@ class Curso extends Controller
             'titulo' => "Curso",
             'descripcion' => $descripcion,
             'curso' => $curso,
-            'cantidadParticipantes' => $cantidadParticipantes
+            'cantidadParticipantes' => $cantidadParticipantes,
+            'nivelCurso' => $nivelCurso,
+            'obtenerNivel' => $obtenerNivel
         ];
         $this->view('pages/curso', $datos);
     }

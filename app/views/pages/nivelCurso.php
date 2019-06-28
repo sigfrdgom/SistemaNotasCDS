@@ -42,7 +42,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         </thead>
                         <tbody id="tbody-table">
                         <?php
-                        foreach ($datos['NivelCurso'] as $nivelCurso) {
+                        foreach ($datos['nivel_curso'] as $nivelCurso) {
                             ?>
                                 <tr id="fila-<?php echo $nivelCurso->id_nivel_curso;?>">
                                 <td style="display:none;"><?php echo $nivelCurso->id_nivel_curso ?></td>
@@ -78,13 +78,13 @@ require_once RUTA_APP . '/views/include/header.php';
                             <form method="POST" id="frmNivelCurso" action="<?php echo RUTA_URL ?>/nivelCurso/create" data-parsley-validate
                                   novalidate>
 
-                                <input type="hidden" id="id_idNivelCurso" name="id_nivel_curso">
+                                <input type="hidden" id="idNivelCurso" name="id_nivel_curso">
 
                                 <div class="form-group">
-                                    <label for="nombreNivelCurso">Nivel del Curso<span class="text-danger">*</span></label>
-                                    <input type="text" name="nombreNivelCurso" data-parsley-trigger="change" required
+                                    <label for="nivel_curso">Nivel del Curso<span class="text-danger">*</span></label>
+                                    <input type="text" name="nivel_curso" data-parsley-trigger="change" required
                                            placeholder="Ingrese el nivel del curso" class="form-control"
-                                           id="idNivelCurso">
+                                           id="nivel_curso">
                                 </div>
 
                                 <div class="form-group">

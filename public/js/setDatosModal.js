@@ -31,8 +31,8 @@ $(document).ready(function () {
         console.log(data);
         $('#frmNivelCurso').attr('action', 'nivelCurso/update');
         //alert('the action is: ' + $('#frmTipoModulo').attr('method'));}
-        $('#id_idNivelCurso').val(data[0]);
-        $('#idNivelCurso').val(data[1]);
+        $('#idNivelCurso').val(data[0]);
+        $('#nivel_curso').val(data[1]);
         $("#idEstado option[value='" + data[2] + "']").attr("selected", true);
         // $('#idEstado').val(data[2]);
     });
@@ -286,13 +286,9 @@ $(document).ready(function () {
             document.getElementById("cestado2").checked = true;
         }
 
-        if (data[8] == "1") {
-            document.getElementById("cnivel1").checked = true;
-        } else if (data[8] == "2") {
-            document.getElementById("cnivel2").checked = true;
-        } else {
-            document.getElementById("cnivel3").checked = true;
-        }
+
+        $("#cnivel option[value='" + data[8] + "']").attr("selected", true);
+
 
         $('#cfecha_inicio').val(data[9]);
         $('#cfecha_fin').val(data[10]);

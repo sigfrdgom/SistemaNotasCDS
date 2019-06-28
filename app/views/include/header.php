@@ -163,7 +163,7 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/porcentajeCurso/porcentajes"><i class="fa fa-fw fa-book"></i><span> Porcentajes Curso </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/porcentajeCurso/porcentajes"><i class="fa fa-fw fa-percent"></i><span> Porcentajes Curso </span> </a>
                     </li>
 
                     <li class="submenu">

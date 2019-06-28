@@ -320,10 +320,8 @@ a {
   margin-bottom: -70px;
   margin-top: 0;
   padding-bottom: 70px;
-  position: absolute; }
-
- 
-
+  position: absolute;
+}
 
 .content-page {
   margin-left: 250px;
@@ -437,7 +435,7 @@ body.adminbody .main-sidebar.left {
 #sidebar-menu > ul > li > a {
   color: #b5b5b5;
   display: block;
-  padding: 12px 12px 15px 12px;
+  padding: 9px 9px 12px 9px;
   font-weight: 400;
   font-size: 0.90rem;
   border-left: 2px solid transparent;  }

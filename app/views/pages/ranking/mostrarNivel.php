@@ -43,7 +43,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <div class="card p-2" style="width: 16rem;">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $nivel->nivel_curso ?></h5>
-                        <a href="<?php echo constant('RUTA_URL') ?>/notas/modulos/<?php echo $nivel->id_nivel_curso ?>"
+                        <a href="<?php echo constant('RUTA_URL') ?>/rankingNotas/ranking"
                            class="btn btn-primary">Nivel</a>
                     </div>
                     <div class="card-footer">

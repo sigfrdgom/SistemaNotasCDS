@@ -64,7 +64,3 @@ require_once RUTA_APP . '/views/include/header.php';
 
     </div>
 
-<?php
-/*Importacion de Footer de la aplicacion */
-require_once RUTA_APP . '/views/include/footer.php';
-?>

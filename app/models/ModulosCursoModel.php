@@ -77,5 +77,11 @@ class ModulosCursoModel{
         $this->db->bind(':id_modulo',$id_modulo);
         return $this->db->findOne();
     }
+
+    public function modulosByCurso($id_curso){
+        $this->db->query("SELECT * FROM modulos_curso mc INNER JOIN modulo mo ON mo.id_modulo=mc.id_modulo WHERE id_curso=:id_curso;");
+        $this->db->bind(':id_curso',$id_curso);
+        return $this->db->findAll();
+    }
 }
 ?>

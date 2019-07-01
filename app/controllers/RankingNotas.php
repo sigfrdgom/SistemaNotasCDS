@@ -36,5 +36,29 @@ class RankingNotas extends Controller
         $this->view('pages/ranking/mostrarNivel', $datos);
     }
 
+    public function ranking(){
+
+        $notas = $this->notaModel->findNotasByCursoModuloNivel(1,1,1,1);
+        $modulos= $this->modulosCursoModel->modulosByCurso(1);
+        $participantes = $this->participanteModel->participantesByCurso(1);
+
+        $matrizModulos = array();
+        $c=0;
+        foreach ($modulos as $modulo){
+            $matrizModulos[$c] = $this->notaModel->findNotasByCursoModuloNivel(1,$modulo->id_modulo,1,1);
+            $c++;
+        }
+
+
+        $datos = [
+            'titulo' => "Ranking de Notas",
+            'notas' => $notas,
+            'modulos' => $modulos,
+            'participantes' => $participantes,
+            'matrizModulos' => $matrizModulos
+        ];
+        $this->view('pages/ranking/rankingNotas', $datos);
+    }
+
 
 }

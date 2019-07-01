@@ -113,4 +113,5 @@ class ModulosCurso extends Controller
              $this->index();
          }
      }
+
 }

@@ -10,6 +10,7 @@ class Curso extends Controller
 
     public function index(){
         $curso = $this->cursoModel->findAll();
+        
         $nivelCurso = $this->nivelCursoModel->findAll();
         $obtenerNivel = $this->nivelCursoModel;
 

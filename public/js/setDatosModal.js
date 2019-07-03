@@ -286,8 +286,9 @@ $(document).ready(function () {
             document.getElementById("cestado2").checked = true;
         }
 
-
-        $("#cnivel option[value='" + data[8] + "']").attr("selected", true);
+        var nivel=this.dataset.nivel;
+        
+        $("#cnivel option[value='" + nivel + "']").attr("selected", true);
 
 
         $('#cfecha_inicio').val(data[9]);

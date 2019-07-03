@@ -39,7 +39,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
         <div class="card card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover display table-center">
+                <table class="table table-bordered table-hover display text-center">
                     <thead>
                     <tr>
                         <th class='secret'>ID</th>
@@ -84,7 +84,8 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td><?php echo ($cursos->estado == 1? "ACTIVO":"INACTIVO") ?></td>
                                 <!-- <td class="nivel"><?php echo $cursos->nivel ?></td> -->
                                 
-                                <td class="nivel"><? $datoNivel=$datos['obtenerNivel']->findById($cursos->nivel); echo $datoNivel['nivel_curso'];?></td>
+                                <td class="nivel"><?php $datoNivel=$datos['obtenerNivel']->findById($cursos->nivel);
+                                echo $datoNivel->nivel_curso ?></td>
 
                                 <td class='secret'><?php echo $cursos->fecha_inicio ?></td>
                                 <td><?php echo $cursos->fecha_fin; ?></td>

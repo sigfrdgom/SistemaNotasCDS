@@ -1,4 +1,16 @@
 
+
+
+
+
+
+
+
+
+
+
+//vamo a intentar algo
+
 //actualizar tipo_modulo
 $(document).ready(function () {
     $(document).on('click', '.btn_modal_editar', function () {

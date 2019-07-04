@@ -1,3 +1,57 @@
+var botones = document.querySelectorAll(".btnEliminartm");
+
+botones.forEach(boton => {
+
+    boton.addEventListener("click", function(){
+
+        return swal({
+            title: "Esta seguro de eliminar el registro?",
+            text: "Una vez eliminado, ya no podras recobrar la información!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("El registro se eliminado!", {
+                        icon: "success",
+                    }).then((ok) => {
+                        
+                        const url=this.dataset.url;
+                        const dato=this.dataset.tipomodulo;
+                        
+                        console.log(url+dato,);
+                        httpRequest(url+""+dato, function(){
+                        console.log(this.responseText);
+                        const tbody = document.querySelector("#tbody-table");
+                        const fila  = document.querySelector("#fila-"+dato);
+                        
+                        // console.log("holaaaa");
+                        tbody.removeChild(fila);
+                                        });
+                      
+                        
+                    });
+                }
+            });
+    
+   
+
+    });
+});
+
+
+function httpRequest(url, callback){
+    const http = new XMLHttpRequest();
+    http.open("GET", url);
+    http.send();
+
+    http.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            callback.apply(http);
+        }
+    }
+}
 
 
 
@@ -7,9 +61,6 @@
 
 
 
-
-
-//vamo a intentar algo
 
 //actualizar tipo_modulo
 $(document).ready(function () {

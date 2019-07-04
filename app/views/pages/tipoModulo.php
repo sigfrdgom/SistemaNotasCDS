@@ -50,11 +50,19 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td><?php echo ($tipoModelos->estado ==1)? "Activo" : "Inactivo"; ?></td>
                                 <td><button class='centrado btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
                                 
-                                <td><button id='btn_eliminar2' 
+                                <!-- <td><button id='btn_eliminar2' 
                                 onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo;?>", <?php echo $tipoModelos->id_tipo_modulo;?>)' 
                                 class='centrado btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 
-                                </tr>
+                                </tr> -->
+
+                                <td><button class="btnEliminartm centrado btn btn-danger" data-url="<?php echo RUTA_URL."/tipoModulo/delete/"?>"
+                                data-tipomodulo="<?php echo $tipoModelos->id_tipo_modulo;?>"><span class='fa fa-trash'></span> Eliminar</button></td>
+                                
+
+
+
+
                         <?php } ?>
                         </tbody>
                     </table>
@@ -78,8 +86,9 @@ require_once RUTA_APP . '/views/include/header.php';
                             <form method="POST" id="frmTipoModulo" action="<?php echo RUTA_URL ?>/tipoModulo/create" data-parsley-validate
                                   novalidate>
 
-                                <input type="hidden" id="id_idTipoModulo" name="id_tipo_modulo">
 
+
+                                <input type="hidden" id="id_idTipoModulo" name="id_tipo_modulo">
                                 <div class="form-group">
                                     <label for="nombreTipoModulo">Nombre de Tipo<span class="text-danger">*</span></label>
                                     <input type="text" name="nombreTipoModulo" data-parsley-trigger="change" required

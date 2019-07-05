@@ -93,16 +93,16 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
                         
-                        <label for="mid_curso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mid_curso" id="mid_curso" required>
+                        <label for="mid_curso" class="mrg-spr-ex secret">Curso:</label>
+							<select class="form-control select2 secret"  name="mid_curso" id="mid_curso" required>
                                 <option value="">Selecciona un curso</option>    
                                     <?php
                                         foreach ($datos['curso'] as $curso) {
-                                            echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso , Nivel $curso->nivel</option>";
+                                            echo " <option value=".$datos['id_curso']." selected>$curso->cohorte , $curso->nombre_curso , Nivel $curso->nivel</option>";
                                         }
                                     ?>
 							</select>
-
+             
                         <label class="mrg-spr-ex" >Estado de la matricula:</label>
                             <div style="margin-left:2em;">
                                 <div class="form-check">

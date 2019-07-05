@@ -11,17 +11,17 @@ class Matricula extends Controller
     }
 
     public function index(){
-        $matricula = $this->matriculaModel->findForTable();
-        $participante = $this->participanteModel->findAll();
-        $curso = $this->cursoModel->findAll();
+        // $matricula = $this->matriculaModel->findForTable();
+        // $participante = $this->participanteModel->findAll();
+        $curso = $this->cursoModel->findByCohorte();
         
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
             'titulo' => "Matricula",
             'descripcion' => $descripcion,
-            'matricula' => $matricula,
-            'participante' => $participante ,
-            'curso' => $curso ,
+            // 'matricula' => $matricula,
+            // 'participante' => $participante ,
+            'curso' => $curso
         ];
         $this->view('pages/matricula/matricula', $datos);
     }
@@ -39,8 +39,20 @@ class Matricula extends Controller
             'matricula' => $matricula,
             'participante' => $participante ,
             'curso' => $curso ,
+            'id_curso' => $id_curso
         ];
         $this->view('pages/matricula/matriculaCurso', $datos);
+    }
+
+    public function nivel($cohorte){
+        $curso = $this->cursoModel->findByNivel($cohorte);
+        $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
+        $datos = [
+            'titulo' => "Matricula",
+            'descripcion' => $descripcion,
+            'curso' => $curso 
+        ];
+        $this->view('pages/matricula/matriculaNivel', $datos);
     }
 
 
@@ -179,6 +191,7 @@ class Matricula extends Controller
                         if($this->matriculaModel->create($datos))
                         {
                             redireccionar("matricula/curso/$id_upgrade");
+                            // redireccionar('matricula');
                         }
                         else
                         {

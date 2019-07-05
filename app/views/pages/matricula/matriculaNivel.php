@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active">Cohortes</li>
+                            <li class="breadcrumb-item active">Notas</li>
                             <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
                         </ol>
                         
@@ -37,7 +37,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     
                     <?php   $c = 0; $x=0;
                     foreach ($datos['curso'] as $cursos) {
-                    if ($c % 4 == 0 ) { $x=1; ?>
+                    if ($c % 3 == 0 ) { $x=1; ?>
                         <div class="card-deck">
                     <?php } ?> 
                     
@@ -45,17 +45,17 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="card p-2" style="width: 16rem;">
                             <div class="card-body" >
                                 <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
-                                <p class="card-text"><?php echo "<b> $cursos->nombre_curso </b> " ?> </p>
-                                    <a href="<?php echo constant('RUTA_URL')."/matricula/nivel/". base64_encode($cursos->cohorte); ?>"
-                                    class="btn btn-primary">Ver niveles</a>
+                                <p class="card-text"><?php echo "<b> $cursos->nombre_curso </b> Nivel $cursos->nivel" ?> </p>
+                                    <a href="<?php echo constant('RUTA_URL') ?>/matricula/curso/<?php echo $cursos->id_curso ?>"
+                                    class="btn btn-primary"  >Ver alumnos</a>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">Sede: <?php echo $cursos->sede ?></small>
+                                <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>
                             </div>
                         </div>
                         <!-- El card -->
 
-                    <?php if ($x == 4) { ?>
+                    <?php if ($x == 3) { ?>
                         </div> <br>
                     <?php } ?>
                    

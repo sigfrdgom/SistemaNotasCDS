@@ -556,11 +556,11 @@ function validando() {
 
 }
 
-// Esta aca por prueba
+/**
+ *  Esta funcion es la encargada de cambiar el action del formulario al presionar el boton promover de matricula
+ * no tocar
+ * */
 function validarUpgrade() {
     var valor= document.getElementById('mid_curso').value;
     document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/upgrade/'+valor);
-    alert('/SistemaNotasCDS/matricula/upgrade/'+valor);
-    
-    document.getElementById("matricula").submit();
 }

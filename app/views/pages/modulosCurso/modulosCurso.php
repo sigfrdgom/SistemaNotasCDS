@@ -225,4 +225,4 @@ require_once RUTA_APP . '/views/include/header.php';
 /*Importacion de Footer de la aplicacion */
 require_once RUTA_APP . '/views/include/footer.php';
 ?>
-<script src="<?php echo RUTA_URL ?>/js/modulosData.js"></script>
+

@@ -55,7 +55,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td><?php echo ($matricula->estado == 1? "ACTIVO":"INACTIVO") ?></td>
                                 <td><?php echo $matricula->observaciones ?></td>
                                 <td class='shrink'><button  class='btn btn-warning btn_editar_matricula' data-toggle='modal' data-target='#agregarMatricula'><span class='fa fa-edit'></span> Gestionar</button></td>
-                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('matricula/down/<?php echo $matricula->id_matricula ?>')" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Finalizar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('../down/<?php echo $matricula->id_matricula ?>')" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Finalizar</button></td>
 
                                 </tr>
                     <?php } ?>

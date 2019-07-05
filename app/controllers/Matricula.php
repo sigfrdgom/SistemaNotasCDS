@@ -6,6 +6,7 @@ class Matricula extends Controller
         $this->matriculaModel = $this->model('MatriculaModel');
         $this->participanteModel = $this->model('ParticipanteModel');
         $this->cursoModel = $this->model('CursoModel');
+        $this->notaModel = $this->model('NotaModel');
 
     }
 
@@ -60,7 +61,7 @@ class Matricula extends Controller
            if ($bandera) {
                     if($this->matriculaModel->create($datos))
                     {
-                        redireccionar("matriculaCurso/".$_POST['mid_curso']);
+                        redireccionar("matricula/curso/".$_POST['mid_curso']);
                     }
                     else
                     {
@@ -171,7 +172,7 @@ class Matricula extends Controller
                     ];
                         if($this->matriculaModel->create($datos))
                         {
-                            redireccionar('matricula');
+                            redireccionar("matricula/curso/$id_upgrade");
                         }
                         else
                         {
@@ -203,5 +204,58 @@ class Matricula extends Controller
       }
       
   }
+
+
+/** 
+ * Este metodo le crea las notas a un participante en un determinado curso, para todos 
+ * los modulos que pertenecen a ese curso en especifico, 
+ * las notas por defecto agregadas son de 0.0 para todas las evaluaciones del modulo
+*/
+public function crearNotas($curso, $participante)
+{
+    if (isset($curso) && isset($participante))
+    {
+        $modulos = $this->matriculaModel->obtenerModulos($curso);
+        echo  "Participante ".$participante."<br>";
+        if (count($modulos) != 0) 
+        {
+            foreach ($modulos as $item) {
+                echo $item->id_modulos_curso."<br>";
+                $datos = [
+                    'id_participante' => $participante,
+                    'id_modulos_curso' => $item->id_modulos_curso,
+                    'nota1' => 0.0,
+                    'nota1' => 0.0,
+                    'nota2' => 0.0,
+                    'nota3' => 0.0,
+                    'nota4' => 0.0,
+                    'nota5' => 0.0,
+                    'nota6' => 0.0,
+                    'observaciones' => "Participante matriculado con exito"
+                ];
+                    if($this->notaModel->create($datos))
+                    {
+                        echo "Participante con notas creadas para el modulo: $item->id_modulos_curso";
+                    }
+                    else
+                    {
+                        die("Error al insertar los datos");
+                    }
+            }
+            redireccionar("notas/modulo/$curso");
+        } 
+        else 
+        {
+        //  Sin registros, deberia de dar una alert y redireccionar
+            echo "sin modulos en el curso";
+            // s$this->index();
+        }
+    }
+    else
+    {
+        //  Sin variables seteadas, deberia de dar una alert y redireccionar 
+        $this->index();
+    }
+}
 
 }

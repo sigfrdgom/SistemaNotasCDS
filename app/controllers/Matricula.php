@@ -49,19 +49,25 @@ class Matricula extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-           $datos = [
-               'id_matricula' => null,
-               'id_curso' => trim($_POST['mid_curso']),
-               'id_participante' => trim($_POST['mid_participante']),
-               'estado' => trim($_POST['mestado']),
-               'observaciones' => trim($_POST['mobservaciones'])
-           ];
+            $curso= trim($_POST['mid_curso']);
+            $participante = trim($_POST['mid_participante']);
+
+            $datos = [
+                'id_matricula' => null,
+                'id_curso' => trim($_POST['mid_curso']),
+                'id_participante' => trim($_POST['mid_participante']),
+                'estado' => trim($_POST['mestado']),
+                'observaciones' => trim($_POST['mobservaciones'])
+            ];
                 $bandera=$this->comprobar();
               var_dump($bandera);
            if ($bandera) {
                     if($this->matriculaModel->create($datos))
                     {
-                        redireccionar("matricula/curso/".$_POST['mid_curso']);
+                       echo "momento de crear notas $curso -- $participante";
+                        // $this.crearNotas($curso, $participante);
+                        redireccionar("matricula/crearNotas/$curso/$participante");
+                        echo "Creo las notas y matriculo";
                     }
                     else
                     {
@@ -69,7 +75,7 @@ class Matricula extends Controller
                     }
            }else{
                 echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese cruso');</script>";
-                redireccionar('matricula');
+                //redireccionar('matricula');
            }
            
        }

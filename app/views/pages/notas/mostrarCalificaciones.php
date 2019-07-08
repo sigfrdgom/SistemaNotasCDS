@@ -85,7 +85,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <?php  ?>
                         <th>Observaciones</th>
                         <?php  ?>
-                        <th colspan="2">Acciones</th>
+                        <!--<th colspan="1">Acciones</th>-->
                     </tr>
                     </thead>
                     <tbody id="contenido">
@@ -95,7 +95,9 @@ require_once RUTA_APP . '/views/include/header.php';
                         <tr>
                             <td class="td-center"><?php echo $participantes->nombres ?></td>
                             <td class="td-center"><?php echo $participantes->apellidos ?></td>
-                            <?php if ($participantes->evaluacion1){ ?>
+                            <?php if ($participantes->evaluacion1){
+
+                                ?>
                             <td class="td-center"><?php echo $participantes->nota1 ?></td>
                             <?php } ?>
                             <?php if ($participantes->evaluacion2){ ?>
@@ -112,15 +114,22 @@ require_once RUTA_APP . '/views/include/header.php';
                             <?php } ?>
                             <?php if ($participantes->evaluacion6){ ?>
                             <td class="td-center"><?php echo $participantes->nota6 ?></td>
-                            <?php } ?>
-                            <th class="td-center"><?php
-                                $promedio = ($participantes->nota1 + $participantes->nota2 + $participantes->nota3 + $participantes->nota4 + $participantes->nota5 + $participantes->nota6) / 6;
+                            <?php }
+                            $promedio = ($participantes->nota1*($participantes->evaluacion1/100)
+                                + $participantes->nota2*($participantes->evaluacion2/100)
+                                + $participantes->nota3*($participantes->evaluacion3/100)
+                                + $participantes->nota4*($participantes->evaluacion4/100)
+                                + $participantes->nota5*($participantes->evaluacion5/100)
+                                + $participantes->nota6*($participantes->evaluacion6/100)
+                            );
+                            ?>
+                            <th class="td-center" <?php echo ($promedio>=6) ? 'style="background: #76D7C4"' : 'style="background: #F9AD96"' ?> ><?php
                                 echo round($promedio, 2);
                                 ?></th>
                             <td class="td-center"><?php echo $participantes->observaciones ?></td>
-                            <td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span>
+                            <!--<td class="td-center"><a href='' class=' btn btn-warning'><span class='fa fa-edit'></span>
                                     Editar</a></td>
-                            </td>
+                            </td>-->
                         </tr>
                     <?php
                     }

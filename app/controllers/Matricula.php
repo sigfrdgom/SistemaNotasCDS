@@ -191,7 +191,11 @@ class Matricula extends Controller
                         if($this->matriculaModel->create($datos))
                         {
                             redireccionar("matricula/curso/$id_upgrade");
-                            // redireccionar('matricula');
+                            // redireccionar('matricula'); echo "momento de crear notas $curso -- $participante";
+                        // $this.crearNotas($curso, $participante);
+                        redireccionar("matricula/crearNotas/$id_upgrade/".$_POST['mid_participante']);
+                        echo "Creo las notas y matriculado en el siguiente nivel";
+
                         }
                         else
                         {
@@ -261,7 +265,7 @@ public function crearNotas($curso, $participante)
                         die("Error al insertar los datos");
                     }
             }
-            redireccionar("notas/modulo/$curso");
+            redireccionar("notas/modulos/$curso");
         } 
         else 
         {

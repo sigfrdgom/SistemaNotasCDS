@@ -11,19 +11,21 @@ class ModulosCurso extends Controller
     }
 
     public function index(){
-        $modulosCurso = $this->modulosCursoModel->findForTable();
-        $docente = $this->docenteModel->findAll();
-        $curso = $this->cursoModel->findAll();
-        $modulo = $this->moduloModel->findAll();
+        // $modulosCurso = $this->modulosCursoModel->findForTable();
+        // $docente = $this->docenteModel->findAll();
+        // $curso = $this->cursoModel->findAll();
+        // $modulo = $this->moduloModel->findAll();
+        $curso = $this->cursoModel->findByCohorte();
 
         $descripcion = "Vista que muestra todos los modulosCurso que existen";
+       
         $datos = [
-            'titulo' => "Modulo",
+            'titulo' => "Modulos por curso",
             'descripcion' => $descripcion,
-            'modulosCurso' => $modulosCurso,
-            'docente' => $docente,
+            // 'modulosCurso' => $modulosCurso,
+            // 'docente' => $docente,
             'curso' =>$curso,
-            'modulo' =>$modulo
+            // 'modulo' =>$modulo
         ];
         $this->view('pages/modulosCurso/modulosCurso', $datos);
     }
@@ -43,7 +45,7 @@ class ModulosCurso extends Controller
            var_dump($datos);
            if($this->modulosCursoModel->create($datos))
            {
-               redireccionar('modulosCurso/modulosCurso');
+               redireccionar("modulosCurso/curso/".$_POST['mcid_curso']);
            }
            else
            {
@@ -114,4 +116,41 @@ class ModulosCurso extends Controller
          }
      }
 
+     public function nivel($cohorte){
+        $curso = $this->cursoModel->findByNivel($cohorte);
+        $descripcion = "Vista que muestra todos las cursos con sus respectivos modulos que existen";
+        $datos = [
+            'titulo' => "Cursos disponibles en el COHORTE",
+            'descripcion' => $descripcion,
+            'curso' => $curso 
+        ];
+        $this->view('pages/modulosCurso/modulosCursoNivel', $datos);
+    }
+
+    public function curso($id_curso){
+        // $matricula = $this->matriculaModel->findForTableCurso($id_curso);
+        // $participante = $this->participanteModel->findAll();
+        $curso = $this->cursoModel->findAll();
+        $modulosCurso = $this->modulosCursoModel->findByNivel($id_curso);
+        $modulo = $this->moduloModel->findAll();
+        $docente = $this->docenteModel->findAll();
+        
+        $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
+        $datos = [
+            'titulo' => "Matricula",
+            'descripcion' => $descripcion,
+            // 'matricula' => $matricula,
+            // 'participante' => $participante ,
+            'modulosCurso' => $modulosCurso,
+            'curso' => $curso ,
+            'id_curso' => $id_curso,
+            'modulo' =>$modulo,
+            'docente' => $docente
+        ];
+        $this->view('pages/modulosCurso/modulosCursoDetalle', $datos);
+    }
+
 }
+
+
+

@@ -1,6 +1,31 @@
 <?php
-/*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+    
+    require_once RUTA_APP . '/views/include/header.php';
+    //Si la sesiones es correcta mostramos la pagina
+    
+    
+    if(isset($_SESSION['tipoUsuario'])==null){
+        echo "<script> alert('No estas autorizado');
+                window.location='index';
+                </script>";exit;
+    }else{
+        if ($_SESSION['tipoUsuario'] != "DOCENTE"){
+        $administrador=$_SESSION['tipoUsuario'];
+        }
+        $usuario=$_SESSION['tipoUsuario'];
+    
+          
+          
+          // con esto chequeamos el tiempo y si la sesion aun es valida
+          /*Importacion de Header de la aplicacion*/
+        
+          
+    
+    }
+        
+
+
+    
 ?>
 
     <!-- Start content -->

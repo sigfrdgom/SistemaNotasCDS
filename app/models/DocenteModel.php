@@ -41,7 +41,7 @@ class DocenteModel{
         $this->db->bind(':nit',$datos['nit']);
         $this->db->bind(':especialidad',$datos['especialidad']);
         $this->db->bind(':tipo_usuario',$datos['tipo_usuario']);
-        $this->db->bind(':pass',$datos['pass']);
+        $this->db->bind(':pass',md5($datos['pass']));
         $this->db->bind(':estado',$datos['estado']);
         
         if ($this->db->execute()){
@@ -62,7 +62,7 @@ class DocenteModel{
         $this->db->bind(':nit',$datos['nit']);
         $this->db->bind(':especialidad',$datos['especialidad']);
         $this->db->bind(':tipo_usuario',$datos['tipo_usuario']);
-        $this->db->bind(':pass',$datos['pass']);
+        $this->db->bind(':pass',md5($datos['pass']));
         $this->db->bind(':estado',$datos['estado']);
         if($this->db->execute()){
             return true;
@@ -89,6 +89,15 @@ class DocenteModel{
         }else{
             return false;
         }
+    }
+
+
+    public function logIn($pass = "", $dui=""){
+        $this->db->query("SELECT * FROM docente WHERE (pass = :pass and  dui = :dui  and estado=1)");
+        // $this->db->bind(':pass',md5($pass));
+        $this->db->bind(':pass',md5($pass));
+        $this->db->bind(':dui',$dui);
+        return $this->db->findOne();
     }
 }
 ?>

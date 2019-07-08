@@ -55,19 +55,26 @@
 
         //Ejecutar la consulta
         public function execute(){
+            try { 
             return $this->stmt->execute();
+        } catch (PDOException $e){return null; }
         }
 
         //Obtener los registros
         public function findAll(){
+        try {
             $this->execute();
             return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e){return null; }
+        
         }
 
         //Obtener un unico registro
         public function findOne(){
+        try {
             $this->execute();
             return $this->stmt->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e){return null; }
         }
 
         //Obtener la cantidad de registros de una tabla

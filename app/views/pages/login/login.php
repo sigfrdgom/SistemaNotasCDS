@@ -1,4 +1,11 @@
 <?php
+// if(isset($_SESSION['tipoUsuario'])!=null){
+// session_destroy();
+// }
+session_cache_limiter('');
+session_cache_expire(60);
+session_start();
+
 /*Importacion de Header de la aplicacion*/
 require_once RUTA_APP . '/views/include/headerLogin.php';
 ?>
@@ -15,13 +22,15 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
                 <img src="<?php echo RUTA_URL ?>/img/fondo/img-01.jpg" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form">
+            <!-- <form class="login100-form validate-form"> -->
+            <form class="login100-form validate-form"  id="formu" method="POST" action="<?php echo RUTA_URL ?>/login/logIn" data-parsley-validate novalidate >
+
 					<span class="login100-form-title">
 						Iniciar Sessión
 					</span>
 
-                <div class="wrap-input100 validate-input" data-validate = "El usuario es requerido, ejemplo: 789456123-9">
-                    <input class="input100" type="text" name="text" placeholder="Usuario">
+                <div class="wrap-input100 validate-input" data-validate = "El DUI es requerido, ejemplo: 789456123-9">
+                    <input class="input100" type="text" name="dui" placeholder="DUI">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -37,9 +46,11 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
+                    <input class="login100-form-btn" type="submit" value="Verificacion" name="validando">
+        
+                    <!-- <button class="login100-form-btn">
                         Iniciar
-                    </button>
+                    </button> -->
                 </div>
 
                 <div class="text-center p-t-12">

@@ -18,8 +18,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <span class='fa fa-plus-square-o bigfonts'></span> Nueva matricula
                     </button>
                 <ol class="breadcrumb float-right">
-                    <li class="breadcrumb-item">Home</li>
-                    <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
+                <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item active">Matricula</li>
+                            <li class="breadcrumb-item active">Cohorte</li>
+                            <li class="breadcrumb-item active"><?php echo $datos['curso']->nombre_curso." Nivel ".$datos['curso']->nivel ?></li>
+                            <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
                 </ol>
                 <div class="clearfix"></div>
             </div>
@@ -36,7 +39,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tr>
                         <th class='secret'>ID Matricula</th>
                         <th class='secret'>ID Curso</th>
-                        <th>Curso</th>
+                        <th class='secret'>Curso</th>
                         <th class='secret' > ID Participante</th>
                         <th>Participante</th>
                         <th>Estado</th>
@@ -49,7 +52,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <tr>
                                 <td class='secret' ><?php echo $matricula->id_matricula ?></td>
                                 <td class='secret' ><?php echo $matricula->id_curso ?></td>
-                                <td><?php echo $matricula->nombre_curso.", nivel ".$matricula->nivel ?></td>
+                                <td class='secret'><?php echo $matricula->nombre_curso.", nivel ".$matricula->nivel ?></td>
                                 <td class='secret' ><?php echo $matricula->id_participante ?></td>
                                 <td><?php echo $matricula->nombre ?></td>
                                 <td><?php echo ($matricula->estado == 1? "ACTIVO":"INACTIVO") ?></td>
@@ -93,13 +96,11 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
                         
-                        <label for="mid_curso" class="mrg-spr-ex secret">Curso:</label>
-							<select class="form-control select2 secret"  name="mid_curso" id="mid_curso" required>
-                                <option value="">Selecciona un curso</option>    
+                        <label for="mid_curso" class="mrg-spr-ex">Curso:</label>
+							<select class="form-control select2"  name="mid_curso" id="mid_curso" required>
+                                <!-- <option value="">Selecciona un curso</option>     -->
                                     <?php
-                                        foreach ($datos['curso'] as $curso) {
-                                            echo " <option value=".$datos['id_curso']." selected>$curso->cohorte , $curso->nombre_curso , Nivel $curso->nivel</option>";
-                                        }
+                                        echo " <option value=".$datos['curso']->id_curso." selected>". $datos['curso']->cohorte." , ". $datos['curso']->nombre_curso." , Nivel ".$datos['curso']->nivel."</option>";
                                     ?>
 							</select>
              

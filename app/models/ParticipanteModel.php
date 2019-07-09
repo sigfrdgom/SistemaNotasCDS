@@ -107,6 +107,12 @@ class ParticipanteModel{
         $this->db->bind(':id_curso', $id_curso);
         return $this->db->findAll();
     }
+    public function participantesByCursoNivel($id_curso, $nivel){
+        $this->db->query('SELECT * FROM participante p INNER JOIN matricula m ON p.id_participante=m.id_participante INNER JOIN curso c ON m.id_curso=c.id_curso WHERE m.id_curso=:id_curso AND c.nivel=:nivel AND p.estado=1 ');
+        $this->db->bind(':id_curso', $id_curso);
+        $this->db->bind(':nivel', $nivel);
+        return $this->db->findAll();
+    }
 
 }
 ?>

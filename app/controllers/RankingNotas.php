@@ -27,7 +27,7 @@ class RankingNotas extends Controller
 
     public function nivel($idCurso)
     {
-        $nivel = $this->nivelCursoModel->findAll();
+        $nivel = $this->nivelCursoModel->findNivelByCurso($idCurso);
         $datos = [
             'titulo' => "Niveles del Curso",
             'nivel' => $nivel,
@@ -43,14 +43,13 @@ class RankingNotas extends Controller
             'nivel' => trim($_POST['nivel'])
         ];
 
-//        $notas = $this->notaModel->findNotasByCursoModuloNivel(1,1,1,1);
-        $modulos= $this->modulosCursoModel->modulosByCurso(1);
-        $participantes = $this->participanteModel->participantesByCurso(1);
+        $modulos= $this->modulosCursoModel->modulosByCurso($datos['id_curso']);
+        $participantes = $this->participanteModel->participantesByCursoNivel($datos['id_curso'], $datos['nivel']);
 
         $matrizModulos = array();
         $c=0;
         foreach ($modulos as $modulo){
-            $matrizModulos[$c] = $this->notaModel->findNotasByCursoModuloNivel(1,$modulo->id_modulo,1,1);
+            $matrizModulos[$c] = $this->notaModel->findNotasByCursoModuloNivel($datos['id_curso'],$modulo->id_modulo,$datos['nivel']);
             $c++;
         }
 

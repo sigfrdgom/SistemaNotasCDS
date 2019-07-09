@@ -39,7 +39,6 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <?php
                             }
                             ?>
-<!--                            <th>Promedio</th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -52,40 +51,33 @@ require_once RUTA_APP . '/views/include/header.php';
                                 ?>
                             </td>
                             <?php
-                            $suma=0;
-                            for ($i=0; $i<sizeof($datos['modulos']); $i++){
+                            $suma = 0;
+                            for ($i = 0; $i < sizeof($datos['modulos']); $i++) {
                                 ?>
                                 <?php
-                                if(isset($datos['matrizModulos'][$i][$c])) {
-                                    ?>
-                                    <td style="background: rgb(130, 224, 170, 0.8);">
-                                    <?php
-//                                    $suma += promedioModulo($datos['matrizModulos'][$i][$c]);
-                                    echo promedioModulo($datos['matrizModulos'][$i][$c]);
+                                if (isset($datos['matrizModulos'][$i][$c])) {
+                                    $prom = promedioModulo($datos['matrizModulos'][$i][$c]);
+                                    if ($prom>6){
+                                        ?>
+                                        <td class="text-center" style="background: rgb(130, 224, 170, 0.8);">
+                                        <?php
                                     }else{
+                                        ?>
+                                        <td class="text-center" style="background: rgb(241, 148, 138, 0.8)">
+                                        <?php
+                                    }
+                                    echo $prom;
+                                } else {
                                     ?>
-                                    <td style="background: rgb(241, 148, 138, 0.8)">
+                                    <td class="text-center" style="background: rgb(241, 148, 138, 0.8)">
                                     <?php
-                                    echo "No";
+                                    echo "Vacío";
                                 }
-                                    ?>
+                                ?>
 
                                 </td>
                                 <?php
                             }
-
-//                            $promedio= $suma/sizeof($datos['modulos']);
-//                            if($promedio>6){
-//                                ?>
-<!--                            <td style="background: rgb(130, 224, 170, 0.8);">-->
-<!--                                --><?php
-//                                echo $promedio;
-//                            }else{
-//                                ?>
-<!--                            <td style="background: rgb(241, 148, 138, 0.8)">-->
-<!--                                --><?php
-//                                echo $promedio;
-//                            }
                             ?>
                             </td>
                             <?php

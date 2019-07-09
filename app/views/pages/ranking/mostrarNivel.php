@@ -43,7 +43,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <div class="card p-2" style="width: 16rem;">
                     <form action="<?php echo constant('RUTA_URL') ?>/rankingNotas/ranking/" method="post">
                     <div class="card-body">
-                        <input type="hidden" name="id_curso" value="<?php echo "1" ?>">
+                        <input type="hidden" name="id_curso" value="<?php echo $datos['id_curso'] ?>">
                         <input type="hidden" name="nivel" value="<?php echo $nivel->id_nivel_curso ?>">
                         <h5 class="card-title"><?php echo $nivel->nivel_curso ?></h5>
                         <button type="submit" class="btn btn-primary">Nivel</button>

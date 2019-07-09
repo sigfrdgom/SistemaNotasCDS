@@ -96,5 +96,11 @@ class ModuloModel{
         $this->db->bind(':id', $id);
         return $this->db->findAll();
     }
+
+    public function findByTipo($id = ""){
+        $this->db->query("SELECT * FROM modulo WHERE tipo_modulo = :id_tipo");
+        $this->db->bind(':id_tipo',$id);
+        return $this->db->findAll();
+    }
 }
 ?>

@@ -564,3 +564,7 @@ function validarUpgrade() {
     var valor= document.getElementById('mid_curso').value;
     document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/upgrade/'+valor);
 }
+
+function mostrar($texto) {
+    alert("Has de mostrar el elemento "+$texto);
+}

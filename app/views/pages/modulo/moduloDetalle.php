@@ -97,7 +97,7 @@ require_once RUTA_APP . '/views/include/header.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-            <h4 class="modal-title" style="margin: 0% auto;" id="aggmod">Agregar un nuevo modulo</h4>
+            <h4 class="modal-title" style="margin: 0% auto;" id="aggmod">Agregar un nuevo modulo de tipo <?php echo "\"".strtolower($datos['tipoModulo']->nombre)."\"" ?></h4>
             <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfmod">Modificar un modulo</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
@@ -122,11 +122,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="mtipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
 								<select class="form-control select2" id="mti" name="mtipo_modulo" required>
-                                    <option value="">Selecciona un tipo de modulo</option>    
+                                    <!-- <option value="">Selecciona un tipo de modulo</option>     -->
                                         <?php
-                                            foreach ($datos['tipoModulo'] as $tm) {
-                                                echo " <option value='$tm->id_tipo_modulo' >$tm->nombre</option>";
-                                            }
+                                            // foreach ($datos['tipoModulo'] as $tm) {
+                                                echo " <option value='".$datos['tipoModulo']->id_tipo_modulo."' >".$datos['tipoModulo']->nombre."</option>";
+                                            // }
                                         ?>
 								</select>
 

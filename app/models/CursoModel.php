@@ -112,8 +112,6 @@ class CursoModel{
         return $this->db->findAll();
     }
 
-    
-
     public function findByCohorte(){
         $this->db->query("SELECT DISTINCT cohorte, nombre_curso, sede from curso ORDER by cohorte ASC");
         return $this->db->findAll();

@@ -2,15 +2,17 @@
 
 <!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
 <?php
-if (session_status() == "PHP_SESSION_ACTIVE") { 
-   
+if ((session_status() == 2)&&$_SESSION['id_sesion']==session_id()) { 
+    
+
 }else{
 
     session_start();
     if(isset($_SESSION['tipoUsuario'])==null){
         echo "<script> alert('No estas autorizado');
-                window.location='index';
-                </script>";exit;
+                window.location='".RUTA_URL."';
+                </script>";
+                exit;
     }
 }
 ?>
@@ -143,7 +145,7 @@ if (session_status() == "PHP_SESSION_ACTIVE") {
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
-                <a href="index" ><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
+                <a href="<?php echo RUTA_URL; ?>/logIn/index"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
 
                 <ul>
 

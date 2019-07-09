@@ -30,6 +30,8 @@ class Index extends Controller
         //     'n_modulos' => $n_modulos[0]->n_registros,
         // ];
 
+        
+
         $this->view('pages/login/login');
     }
 

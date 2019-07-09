@@ -43,6 +43,8 @@ class Docente extends Controller
            {
                die("Error al insertar los datos");
            }
+       }else{
+        redireccionar('docente');
        }
    }
 

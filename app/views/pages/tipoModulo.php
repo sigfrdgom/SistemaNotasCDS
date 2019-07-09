@@ -48,7 +48,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td style="display:none;"><?php echo $tipoModelos->id_tipo_modulo ?></td>
                                 <td><?php echo  $tipoModelos->nombre ?></td>
                                 <td><?php echo ($tipoModelos->estado ==1)? "Activo" : "Inactivo"; ?></td>
-                                <td><button class='centrado btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
+                                <td><button class='btn_modal_editar centrado btn btn-warning' data-tipomodulo="<?php echo $tipoModelos->id_tipo_modulo;?>"><span class='fa fa-edit '></span> Editar</button></td>
                                 
                                 <!-- <td><button id='btn_eliminar2' 
                                 onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo;?>", <?php echo $tipoModelos->id_tipo_modulo;?>)' 

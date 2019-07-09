@@ -3,13 +3,6 @@
 class Login extends Controller
 {
 
-    // public function index(){
-
-    //     $datos = [];
-    //     $this->view('pages/login/login', $datos);
-    // }
-
-
     public function __construct() {
         //Cargar Modelos de la paginas;
         $this->docenteModel = $this->model('DocenteModel');
@@ -20,22 +13,8 @@ class Login extends Controller
         $this->moduloModel = $this->model('ModuloModel');
     }
 
-    public function finalizarSesion()
-    {
-        session_start();
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
-            );
-        }
-           session_destroy();
-           redireccionar('');
-    }
+    public function index(){
 
-    public function logIn()
-    {
         $nombres = array();
         $n_participantes= $this->participanteModel->count();
         $n_usuarios = $this->docenteModel->count();
@@ -53,10 +32,37 @@ class Login extends Controller
             'n_cursos' => $n_cursos[0]->n_registros,
             'n_modulos' => $n_modulos[0]->n_registros,
         ];
+        $this->view('pages/inicio', $datos);
+    
+    
+    }
 
+
+
+    public function finalizarSesion()
+    {
+        echo $_SESSION['id_sesion'];
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+
+        session_abort();
+        session_destroy();
+        echo $_SESSION['id_sesion'];
+        redireccionar('');
+    }
+
+
+
+
+    public function logIn()
+    {
         
-        
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&(session_status() != 2))
         {
            $docente = $this->docenteModel->logIn($_POST['pass'],$_POST['dui']);
   
@@ -67,7 +73,7 @@ class Login extends Controller
                session_cache_limiter('');
                session_start();
                session_cache_expire(60);
-   
+               $_SESSION['id_sesion'] = session_id();
                $_SESSION['tipoUsuario']=$docente->tipo_usuario;
                $_SESSION['nombres'] = $docente->nombres;
                $_SESSION['apellidos'] = $docente->apellidos;
@@ -78,19 +84,27 @@ class Login extends Controller
                echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
                </script>";
    
-               $this->view('pages/inicio', $datos);
+
+                $this->index();
+            //    $this->view('pages/inicio', $datos);
            }
            else
            {
                //DESTRUIR TODA LA SESION Y COOKIES
                $this->finalizarSesion();
-              
-                  redireccionar('');
                die("Error al insertar los datos");
 
            }
+       }else{
+            $this->index();
        }
    }
+
+   
+//    public function index(){
+
+//     $this->view('pages/inicio', $this->datos);
+// }
 
     
 

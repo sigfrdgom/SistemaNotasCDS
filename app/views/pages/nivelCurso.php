@@ -48,7 +48,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td style="display:none;"><?php echo $nivelCurso->id_nivel_curso ?></td>
                                 <td><?php echo  $nivelCurso->nivel_curso ?></td>
                                 <td><?php echo ($nivelCurso->estado ==1)? "Activo" : "Inactivo"; ?></td>
-                                <td><button class='centrado btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
+                                <td><button class='centrado btn btn-warning btn_modal_editarNc'><span class='fa fa-edit '></span> Editar</button></td>
                                 
                                 <td><button id='btn_eliminar2' 
                                 onclick='menjaseEliminar("nivelCurso/delete/<?php echo $nivelCurso->id_nivel_curso;?>", <?php echo $nivelCurso->id_nivel_curso;?>)' 

@@ -54,6 +54,8 @@ class Curso extends Controller
            {
                die("Error al insertar los datos");
            }
+       }else{
+        redireccionar('curso');
        }
    }
 

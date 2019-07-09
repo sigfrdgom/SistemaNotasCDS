@@ -84,6 +84,25 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="modal fade" id="agregarModulosCurso">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
@@ -106,41 +125,49 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
 							</select>
 
-                        <label for="mcid_modulo" class="mrg-spr-ex">Modulo:</label>
-							<select class="form-control select2"  name="mcid_modulo" required>
-                                <option value="">Selecciona un modulo</option>    
-                                    <?php
-                                        foreach ($datos['modulo'] as $m) {
-                                            echo " <option value='$m->id_modulo'>$m->nombre_modulo </option>";
-                                        }
-                                    ?>
-                            </select>
-                            
-                        <!-- <label class="mrg-spr-ex" for="mmselect" >Modulos disponibles para agregar al curso:</label>
-                            <div style="margin-left:2em;" id="mmselect">
-                            <?php
-                                        // foreach ($datos['modulo'] as $m) {
-                                        //     echo "  <div class='form-check'>
-                                        //                 <label class='form-check-label'>
-                                        //                     <input class='form-check-input' type='checkbox' name='mcid_modulo[]' value='$m->id_modulo'>
-                                        //                     $m->nombre_modulo
-                                        //                 </label>
-                                        //             </div>
+                            <label for="tipo_modulo" class="mrg-spr-ex">Tipos de modulos</label>
+                            <div>
+                                <?php foreach ($datos['tipoModulo'] as $m) { ?>
+                                    <hr>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="tipoModulo[]" onclick='mostrar("<?php echo "div-".$m->nombre ?>")'>
+                                        <label class="form-check-label" for="inlineRadio1"><?php echo $m->nombre ?></label>
+                                    </div>
 
-                                        //     ";
-                                        // }
-                                    ?>
-                            </div> -->
+                                
 
-                        <label for="mcid_docente" class="mrg-spr-ex">Docente:</label>
-							<select class="form-control select2"  name="mcid_docente" required>
-                                <option value="">Selecciona un docente</option>    
-                                    <?php
-                                        foreach ($datos['docente'] as $d) {
-                                            echo " <option value='$d->id_docente'>$d->nombres $d->apellidos  </option>";
-                                        }
-                                    ?>
-							</select>
+                                        <?php foreach ($datos['modulo'] as $n) { ?>
+                                        
+                                            <?php if ($n->tipo_modulo == $m->id_tipo_modulo) { ?>
+
+                                                <div class="mx-2 my-1 row">
+
+                                                    <div class="col-4 form-check form-check-inline" >
+                                                        <input class='form-check-input' type='checkbox' name='mcid_modulo[]' value='$n->id_modulo'>
+                                                        <div>
+                                                            <label class="form-check-label" for="mcid_modulo[]"><?php echo $n->nombre_modulo ?></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col">
+                                                        <select class="form-control select2"  name="mcid_docente" required>
+                                                            <option value="">Selecciona el docente </option>    
+                                                                <?php foreach ($datos['docente'] as $d) { ?>
+                                                                       <option value='<?php echo $d->id_docente ?>'><?php echo $d->nombres." ".$d->apellidos ?> </option>
+                                                                <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                            <?php } ?>
+                                        
+                                        <?php } ?>
+                                        
+                                    <hr>                                
+                                <?php } ?>
+                                
+                            </div>
 
                         <label for="mcobservacion" class="mrg-spr-ex">Observación del modulo en el curso:</label>
                         <input type="text" name="mcobservaciones" placeholder="Escribe una observación para la matricula" 
@@ -157,6 +184,27 @@ require_once RUTA_APP . '/views/include/header.php';
       </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div class="modal fade" id="editarModulosCurso">

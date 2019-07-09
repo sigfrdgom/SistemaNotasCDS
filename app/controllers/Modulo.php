@@ -9,7 +9,7 @@ class Modulo extends Controller
     }
 
     public function index(){
-        $modulo = $this->moduloModel->findAll();
+        // $modulo = $this->moduloModel->findAll();
         $tipoModulo = $this->tipoModuloModel->findAll();
             
         
@@ -17,10 +17,10 @@ class Modulo extends Controller
         $datos = [
             'titulo' => "Modulo",
             'descripcion' => $descripcion,
-            'modulo' => $modulo,
+            // 'modulo' => $modulo,
             'tipoModulo' => $tipoModulo
         ];
-        $this->view('pages/modulo', $datos);
+        $this->view('pages/modulo/modulo', $datos);
     }
 
     public function create()
@@ -136,5 +136,20 @@ class Modulo extends Controller
         {
             die("Error al buscar el dato");
         }
+    }
+
+    public function detalle($id_tipo){
+        $modulo = $this->moduloModel->findByTipo($id_tipo);
+        $tipoModulo = $this->tipoModuloModel->findById($id_tipo);
+            
+        
+        $descripcion = "Vista que muestra todos los modulos que existen";
+        $datos = [
+            'titulo' => "Tipos de modulo \"".strtolower($tipoModulo->nombre)."\"",
+            'descripcion' => $descripcion,
+            'modulo' => $modulo,
+            'tipoModulo' => $tipoModulo
+        ];
+        $this->view('pages/modulo/moduloDetalle', $datos);
     }
 }

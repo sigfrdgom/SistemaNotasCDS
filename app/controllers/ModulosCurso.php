@@ -8,6 +8,7 @@ class ModulosCurso extends Controller
         $this->docenteModel = $this->model('DocenteModel');
         $this->cursoModel = $this->model('CursoModel');
         $this->moduloModel = $this->model('ModuloModel');
+        $this->tipoModuloModel = $this->model('TipoModuloModel');
 
     }
 
@@ -126,6 +127,7 @@ class ModulosCurso extends Controller
         $modulo = $this->moduloModel->findAll();
         $docente = $this->docenteModel->findAll();
         $modulosCurso = $this->modulosCursoModel->findByNivel($id_curso);
+        $tipoModulo = $this->tipoModuloModel->findAll();
         
         $descripcion = "Vista que muestra todos las modulos pertenecientes a un curso";
         $datos = [
@@ -134,7 +136,8 @@ class ModulosCurso extends Controller
             'modulosCurso' => $modulosCurso,
             'curso' => $curso,
             'modulo' =>$modulo,
-            'docente' => $docente
+            'docente' => $docente,
+            'tipoModulo' => $tipoModulo
         ];
         $this->view('pages/modulosCurso/modulosCursoDetalle', $datos);
     }

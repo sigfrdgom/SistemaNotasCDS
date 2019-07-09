@@ -64,22 +64,22 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <?php if($datos['participantes'][0]->evaluacion1)  { ?>
-                        <th>Nota1</th>
+                        <th>Nota1 (<?php echo $datos['participantes'][0]->evaluacion1 ?>%)</th>
                         <?php } ?>
                         <?php if($datos['participantes'][0]->evaluacion2)  { ?>
-                        <th>Nota2</th>
+                        <th>Nota2 (<?php echo $datos['participantes'][0]->evaluacion2 ?>%)</th>
                         <?php } ?>
                         <?php if($datos['participantes'][0]->evaluacion3)  { ?>
-                        <th>Nota3</th>
+                        <th>Nota3 (<?php echo $datos['participantes'][0]->evaluacion3 ?>%)</th>
                         <?php } ?>
                         <?php if($datos['participantes'][0]->evaluacion4)  { ?>
-                        <th>Nota4</th>
+                        <th>Nota4 (<?php echo $datos['participantes'][0]->evaluacion4 ?>%)</th>
                         <?php } ?>
                         <?php if($datos['participantes'][0]->evaluacion5)  { ?>
-                        <th>Nota5</th>
+                        <th>Nota5 (<?php echo $datos['participantes'][0]->evaluacion5 ?>%)</th>
                         <?php } ?>
                         <?php if($datos['participantes'][0]->evaluacion6)  { ?>
-                        <th>Nota6</th>
+                        <th>Nota6 (<?php echo $datos['participantes'][0]->evaluacion6 ?>%)</th>
                         <?php } ?>
                         <th>Promedio</th>
                         <?php  ?>

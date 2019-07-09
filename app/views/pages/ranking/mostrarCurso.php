@@ -38,7 +38,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 ?>
             </div>
             <br/>
-            <div class=\"card-columns\">
+            <div class="card-columns">
                 <?php } ?>
                 <div class="card p-2" style="width: 16rem;">
                     <div class="card-body">

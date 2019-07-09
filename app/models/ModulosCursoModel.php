@@ -84,13 +84,13 @@ class ModulosCursoModel{
         return $this->db->findAll();
     }
 
-    public function findByNivel($id_curso){
+    public function findByNivel($id_curso)
+    {
         $this->db->query("SELECT mc.id_modulos_curso , mc.id_curso, c.nombre_curso, mc.id_modulo, m.nombre_modulo, mc.id_docente, concat(d.nombres,' ',d.apellidos) as nombre, mc.observaciones 
-        FROM modulos_curso mc JOIN  curso c ON mc.id_curso=c.id_curso 
-        JOIN modulo m ON mc.id_modulo = m.id_modulo
-        JOIN docente d ON mc.id_docente=d.id_docente
-        WHERE mc.id_curso=:id_curso");
-
+            FROM modulos_curso mc JOIN  curso c ON mc.id_curso=c.id_curso 
+            JOIN modulo m ON mc.id_modulo = m.id_modulo
+            JOIN docente d ON mc.id_docente=d.id_docente
+            WHERE mc.id_curso=:id_curso");
         $this->db->bind(':id_curso',$id_curso);
         return $this->db->findAll();
     }

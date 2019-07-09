@@ -30,11 +30,11 @@ class Matricula extends Controller
     public function curso($id_curso){
         $matricula = $this->matriculaModel->findForTableCurso($id_curso);
         $participante = $this->participanteModel->findAll();
-        $curso = $this->cursoModel->findAll();
+        $curso = $this->cursoModel->findById($id_curso);
         
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
-            'titulo' => "Matricula",
+            'titulo' => "Participantes matriculados",
             'descripcion' => $descripcion,
             'matricula' => $matricula,
             'participante' => $participante ,
@@ -48,7 +48,7 @@ class Matricula extends Controller
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
-            'titulo' => "Matricula",
+            'titulo' => "Niveles",
             'descripcion' => $descripcion,
             'curso' => $curso 
         ];

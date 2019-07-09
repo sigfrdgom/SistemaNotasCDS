@@ -14,12 +14,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
+                            <li class="breadcrumb-item active">Modulos por curso</li>
                             <li class="breadcrumb-item active">Cohortes</li>
-                            <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
                         </ol>
                         
                         <div class="clearfix">
-
                         </div>
                     </div>
                 </div>
@@ -47,7 +46,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
                                 <p class="card-text"><?php echo "<b> $cursos->nombre_curso </b> " ?> </p>
                                     <a href="<?php echo constant('RUTA_URL')."/modulosCurso/nivel/". base64_encode($cursos->cohorte); ?>"
-                                    class="btn btn-primary">Ver niveles</a>
+                                    class="btn btn-primary btn-block">Ver niveles</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Sede: <?php echo $cursos->sede ?></small>

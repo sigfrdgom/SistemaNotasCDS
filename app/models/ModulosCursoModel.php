@@ -90,7 +90,6 @@ class ModulosCursoModel{
         JOIN modulo m ON mc.id_modulo = m.id_modulo
         JOIN docente d ON mc.id_docente=d.id_docente
         WHERE mc.id_curso=:id_curso");
-
         $this->db->bind(':id_curso',$id_curso);
         return $this->db->findAll();
     }

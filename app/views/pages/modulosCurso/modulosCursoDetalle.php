@@ -14,16 +14,18 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarModulosCurso" id="ivkmmm">
-                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo por curso
+                    <button type="button" class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarModulosCurso" id="ivkmmm">
+                        <span class='fa fa-plus-square-o bigfonts'></span> Agregar modulo
                     </button>
                     <a href="#" 
                             title="Agregar Modulos a un curso"  data-toggle="popover" data-trigger="focus"
-                            data-content="Sirve para agregar un modulo a un curso para poder ser impartido por un docnete en especifico que se asignara.">
+                            data-content="Sirve para agregar un modulo a un curso para poder ser impartido por un docente en especifico que se asignara.">
                         <i class="fa fa-fw fa-question-circle pop-help"></i>
                     </a>
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Cohorte</li>
+                    <li class="breadcrumb-item active">Niveles COHORTE</li>
                     <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
                 </ol>
                 <div class="clearfix"></div>
@@ -41,7 +43,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <tr>
                         <th class='secret'>IDMC</th>
                         <th class='secret'>ID Curso</th>
-                        <th>Curso</th>
+                        <th class='secret'>Curso</th>
                         <th class='secret'>ID Modulo</th>
                         <th>Modulo</th>
                         <th class='secret'>ID docente</th>
@@ -62,7 +64,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         echo "<tr>
                                 <td class='secret'>$modulosCursos->id_modulos_curso</td>
                                 <td class='secret'>$modulosCursos->id_curso</td>
-                                <td>$modulosCursos->nombre_curso</td>
+                                <td class='secret'>$modulosCursos->nombre_curso</td>
                                 <td class='secret'>$modulosCursos->id_modulo</td>
                                 <td>$modulosCursos->nombre_modulo</td>
                                 <td class='secret'>$modulosCursos->id_docente</td>
@@ -88,7 +90,7 @@ require_once RUTA_APP . '/views/include/header.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;">Agregar un modulo al curso</h4>
+          <h4 class="modal-title" style="margin: 0% auto;">Agregar un modulo al curso <?php echo $datos['curso']->nombre_curso ?></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -98,11 +100,9 @@ require_once RUTA_APP . '/views/include/header.php';
                         
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
 							<select class="form-control select2"  name="mcid_curso" required>
-                                <option value="">Selecciona un curso</option>    
+                                <!-- <option value="">Selecciona un curso</option>     -->
                                     <?php
-                                        foreach ($datos['curso'] as $curso) {
-                                            echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso , nivel $curso->nivel </option>";
-                                        }
+                                        echo " <option value='".$datos['curso']->id_curso."'>".$datos['curso']->cohorte." ,".$datos['curso']->nombre_curso." , nivel ".$datos['curso']->nivel."</option>";
                                     ?>
 							</select>
 
@@ -165,7 +165,7 @@ require_once RUTA_APP . '/views/include/header.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;">Editar un modulo al curso</h4>
+          <h4 class="modal-title" style="margin: 0% auto;">Editar un modulo al curso <?php echo $datos['curso']->nombre_curso ?></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -176,11 +176,14 @@ require_once RUTA_APP . '/views/include/header.php';
                     <input type="hidden" name="idmc" id="idmc">
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
 							<select class="form-control select2"  name="mcid_curso" id="mcid_curso" required>
-                                <option value="">Selecciona un curso</option>    
+                                <!-- <option value="">Selecciona un curso</option>     -->
                                     <?php
                                         // foreach ($datos['curso'] as $curso) {
                                         //     echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso</option>";
                                         // }
+                                
+                                        echo " <option value='".$datos['curso']->id_curso."'>".$datos['curso']->cohorte." ,".$datos['curso']->nombre_curso." , nivel ".$datos['curso']->nivel."</option>";
+                                    
                                     ?>
 							</select>
 

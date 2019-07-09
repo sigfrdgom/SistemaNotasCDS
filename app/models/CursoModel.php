@@ -120,10 +120,8 @@ class CursoModel{
     }
 
     public function findByNivel($cohorte){
-        
         $cohorte = base64_decode($cohorte);
         $this->db->query("SELECT * FROM curso WHERE cohorte='$cohorte' ORDER BY nivel ASC");
-        echo "SELECT * FROM curso WHERE cohorte='$cohorte' ORDER BY nivel ASC";
         return $this->db->findAll();
     }
 

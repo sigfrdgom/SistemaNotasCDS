@@ -39,7 +39,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <?php
                             }
                             ?>
-                            <th>Promedio</th>
+<!--                            <th>Promedio</th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                     ?>
                                     <td style="background: rgb(130, 224, 170, 0.8);">
                                     <?php
-                                    $suma = promedioModulo($datos['matrizModulos'][$i][$c]);
+//                                    $suma += promedioModulo($datos['matrizModulos'][$i][$c]);
                                     echo promedioModulo($datos['matrizModulos'][$i][$c]);
                                     }else{
                                     ?>
@@ -74,18 +74,18 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <?php
                             }
 
-                            $promedio= $suma/sizeof($datos['modulos']);
-                            if($promedio>6){
-                                ?>
-                            <td style="background: rgb(130, 224, 170, 0.8);">
-                                <?php
-                                echo $promedio;
-                            }else{
-                                ?>
-                            <td style="background: rgb(241, 148, 138, 0.8)">
-                                <?php
-                                echo $promedio;
-                            }
+//                            $promedio= $suma/sizeof($datos['modulos']);
+//                            if($promedio>6){
+//                                ?>
+<!--                            <td style="background: rgb(130, 224, 170, 0.8);">-->
+<!--                                --><?php
+//                                echo $promedio;
+//                            }else{
+//                                ?>
+<!--                            <td style="background: rgb(241, 148, 138, 0.8)">-->
+<!--                                --><?php
+//                                echo $promedio;
+//                            }
                             ?>
                             </td>
                             <?php

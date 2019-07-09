@@ -103,7 +103,7 @@ class ParticipanteModel{
     }
 
     public function participantesByCurso($id_curso){
-        $this->db->query('SELECT * FROM participante p INNER JOIN matricula m WHERE m.id_curso=:id_curso');
+        $this->db->query('SELECT * FROM participante p INNER JOIN matricula m ON P.id_participante=m.id_participante WHERE m.id_curso=:id_curso');
         $this->db->bind(':id_curso', $id_curso);
         return $this->db->findAll();
     }

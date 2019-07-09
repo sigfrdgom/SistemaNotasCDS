@@ -38,7 +38,12 @@ class RankingNotas extends Controller
 
     public function ranking(){
 
-        $notas = $this->notaModel->findNotasByCursoModuloNivel(1,1,1,1);
+        $datos = [
+            'id_curso' => trim($_POST['id_curso']),
+            'nivel' => trim($_POST['nivel'])
+        ];
+
+//        $notas = $this->notaModel->findNotasByCursoModuloNivel(1,1,1,1);
         $modulos= $this->modulosCursoModel->modulosByCurso(1);
         $participantes = $this->participanteModel->participantesByCurso(1);
 
@@ -49,10 +54,8 @@ class RankingNotas extends Controller
             $c++;
         }
 
-
         $datos = [
             'titulo' => "Ranking de Notas",
-            'notas' => $notas,
             'modulos' => $modulos,
             'participantes' => $participantes,
             'matrizModulos' => $matrizModulos

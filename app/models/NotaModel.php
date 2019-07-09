@@ -99,7 +99,7 @@ class NotaModel{
     }
 
     public function findNotasEstudiantes($datos){
-        $this->db->query('SELECT n.id_nota, n.id_participante, n.id_modulos_curso, n.nota1, n.nota2, n.nota3, n.nota4, n.nota4, n.nota5, n.nota6, n.observaciones, p.nombres, p.apellidos, mc.id_curso, mc.id_modulo, mc.id_docente, mo.evaluacion1, mo.evaluacion2, mo.evaluacion3, mo.evaluacion4, mo.evaluacion5, mo.evaluacion6 FROM participante p INNER JOIN nota n ON p.id_participante = n.id_participante INNER JOIN modulos_curso mc ON n.id_modulos_curso= mc.id_modulos_curso INNER JOIN curso c ON mc.id_curso = c.id_curso INNER JOIN modulo mo ON mc.id_modulo=mo.id_modulo WHERE mc.id_curso=:id_curso AND mc.id_modulo=:id_modulo AND c.estado=1 AND mo.estado=1');
+        $this->db->query('SELECT n.id_nota, n.id_participante, n.id_modulos_curso, n.nota1, n.nota2, n.nota3, n.nota4, n.nota4, n.nota5, n.nota6, n.observaciones, p.nombres, p.apellidos, mc.id_curso, mc.id_modulo, mc.id_docente, mo.evaluacion1, mo.evaluacion2, mo.evaluacion3, mo.evaluacion4, mo.evaluacion5, mo.evaluacion6 FROM participante p INNER JOIN nota n ON p.id_participante = n.id_participante INNER JOIN modulos_curso mc ON n.id_modulos_curso= mc.id_modulos_curso INNER JOIN curso c ON mc.id_curso = c.id_curso INNER JOIN modulo mo ON mc.id_modulo=mo.id_modulo INNER JOIN matricula ma ON ma.id_curso=c.id_curso AND ma.id_participante=p.id_participante WHERE mc.id_curso=:id_curso AND mc.id_modulo=:id_modulo AND c.estado=1 AND mo.estado=1 ');
         $this->db->bind(':id_curso', $datos['id_curso'],PDO::PARAM_INT);
         $this->db->bind(':id_modulo', $datos['id_modulo'],PDO::PARAM_INT);
         return $this->db->findAll();

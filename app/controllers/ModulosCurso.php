@@ -29,6 +29,51 @@ class ModulosCurso extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
+            // Recibiendo y limpiando los arreglos
+            $modulo=$_POST['mcid_modulo'];
+            $array=$_POST['mcid_docente'];
+            $limit=count($array);
+            
+                for ($i=0; $i < $limit; $i++) { 
+                    if ($array[$i] == "") {
+                        unset($array[$i]);
+                    }
+                }
+            
+            $docente = array_values($array);
+            
+            // Recorriendo los arreglos para guardar la informacion correspondiente
+            $limit=count($modulo);
+                for ($x=0; $x < $limit; $x++) 
+                { 
+                    // Para comprobar si existe ya una tupla con la informacion, si no existe la insertamos, de lo contrario la pasamos de largo
+                    $bandera=$this->comprobar(trim($_POST['mcid_curso']),trim($modulo[$x]),);
+                    if ($bandera) {
+                        $datos = [
+                            'id_modulos_curso' => null,
+                            'id_curso' => trim($_POST['mcid_curso']),
+                            'id_modulo' => trim($modulo[$x]),
+                            'id_docente' => trim($docente[$x]),
+                            'observaciones' => trim($_POST['mcobservaciones'])
+                            ];
+
+                                if(!$this->modulosCursoModel->create($datos))
+                                {
+                                    die("Error al insertar los datos"); 
+                                    return;
+                                }  
+                    } else {
+                        echo "Error al insertar el modulo al curso, ya existen";
+                    }  
+                }
+            redireccionar("modulosCurso/curso/".$_POST['mcid_curso']);
+       }
+    }
+
+    public function createORG()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
            $datos = [
                'id_modulos_curso' => null,
                'id_curso' => trim($_POST['mcid_curso']),
@@ -36,7 +81,8 @@ class ModulosCurso extends Controller
                'id_docente' => trim($_POST['mcid_docente']),
                'observaciones' => trim($_POST['mcobservaciones'])
             ];
-          
+            
+            
             if($this->modulosCursoModel->create($datos))
             {
                 redireccionar("modulosCurso/curso/".$_POST['mcid_curso']);
@@ -141,6 +187,24 @@ class ModulosCurso extends Controller
         ];
         $this->view('pages/modulosCurso/modulosCursoDetalle', $datos);
     }
+
+    public function comprobar($curso,$modulo)
+    {
+       if ($_SERVER['REQUEST_METHOD'] == 'POST')
+       {
+          $datos = [
+              'id_curso' => $curso,
+              'id_modulo' => $modulo
+          ];  
+          $bandera = $this->modulosCursoModel->comprobar($datos);
+      }
+      if ($bandera[0]->n_registros == 0) {
+            return TRUE;
+      } else {
+            return FALSE;
+      }
+      
+    } 
 }
 
 

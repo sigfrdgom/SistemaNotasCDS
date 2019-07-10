@@ -59,48 +59,28 @@ require_once RUTA_APP . '/views/include/header.php';
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    foreach ($datos['modulosCurso'] as $modulosCursos) {
-                        echo "<tr>
-                                <td class='secret'>$modulosCursos->id_modulos_curso</td>
-                                <td class='secret'>$modulosCursos->id_curso</td>
-                                <td class='secret'>$modulosCursos->nombre_curso</td>
-                                <td class='secret'>$modulosCursos->id_modulo</td>
-                                <td>$modulosCursos->nombre_modulo</td>
-                                <td class='secret'>$modulosCursos->id_docente</td>
-                                <td>$modulosCursos->nombre</td>
-                                <td>$modulosCursos->observaciones</td>
-                                <td class='shrink'><button type='button' class='btn btn-warning btn_editar_mc' data-toggle='modal' data-target='#editarModulosCurso'><span class='fa fa-edit'></span> Editar</button></td>
-                                <td class='shrink'><button id='btn_baja' onclick='menjaseEliminar(\"modulosCurso/delete/$modulosCursos->id_modulos_curso\")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Eliminar</button></td>
-                                </tr>
-                                ";
-                    }
-                    ?>
+                    <?php foreach ($datos['modulosCurso'] as $modulosCursos) { ?>
+                        <tr>
+                            <td class='secret'><?php echo $modulosCursos->id_modulos_curso ?></td>
+                            <td class='secret'><?php echo $modulosCursos->id_curso ?></td>
+                            <td class='secret'><?php echo $modulosCursos->nombre_curso ?></td>
+                            <td class='secret'><?php echo $modulosCursos->id_modulo ?></td>
+                            <td><?php echo $modulosCursos->nombre_modulo ?></td>
+                            <td class='secret'><?php echo $modulosCursos->id_docente ?></td>
+                            <td><?php echo $modulosCursos->nombre ?></td>
+                            <td><?php echo $modulosCursos->observaciones ?></td>
+                            <td class='shrink'><button type='button' class='btn btn-warning btn_editar_mc' data-toggle='modal' data-target='#editarModulosCurso'><span class='fa fa-edit'></span> Editar</button></td>
+                            <td class='shrink'><button id='btn_baja' onclick='menjaseEliminar(\"modulosCurso/delete/<?php echo $modulosCursos->id_modulos_curso ?>\"")' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Eliminar</button></td>
+                        </tr>
+                        
+                    <?php } ?>
+                    
                     </tbody>
                 </table>
             </div>
 
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="modal fade" id="agregarModulosCurso">
@@ -118,7 +98,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <form  id="mm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
                         
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mcid_curso" required>
+							<select class="form-control select2"  name="mcid_curso" required disabled>
                                 <!-- <option value="">Selecciona un curso</option>     -->
                                     <?php
                                         echo " <option value='".$datos['curso']->id_curso."'>".$datos['curso']->cohorte." ,".$datos['curso']->nombre_curso." , nivel ".$datos['curso']->nivel."</option>";
@@ -127,31 +107,32 @@ require_once RUTA_APP . '/views/include/header.php';
 
                             <label for="tipo_modulo" class="mrg-spr-ex">Tipos de modulos</label>
                             <div>
+                                <hr class="border border-secondary-50">
                                 <?php foreach ($datos['tipoModulo'] as $m) { ?>
                                     
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" name="tipoModulo[]" onclick='mostrar("<?php echo $m->nombre ?>")' id="CHK_<?php echo $m->nombre?>">
+                                        <input class="form-check-input" type="checkbox" name="tipoModulo[]" onclick="mostrar('<?php echo str_replace(' ', '', $m->nombre) ?>')" id="CHK_<?php echo str_replace(' ', '', $m->nombre) ?>">
                                         <label class="form-check-label" for="tipoModulo"><?php echo $m->nombre ?></label>
                                     </div>
                                     <!-- <hr class="border border-info"> -->
                                     
-                                    <div id="div_<?php echo $m->nombre?>" class="secret">
+                                    <div id="div_<?php echo str_replace(' ', '', $m->nombre)?>" class="secret">
                                         <?php foreach ($datos['modulo'] as $n) { ?>
                                             
                                                 <?php if ($n->tipo_modulo == $m->id_tipo_modulo) { ?>
 
-                                                    <div class="ml-5 mr-2 my-1 row border-bottom border-secondary py-1">
+                                                    <div class="mx-2 my-1 row border-bottom border-dark-90 py-1">
 
                                                         <div class="col-4 form-check form-check-inline" >
-                                                            <input class='form-check-input' type='checkbox' name='mcid_modulo[]' value='$n->id_modulo' onclick='valFM("<?php echo $n->nombre_modulo ?>")'
-                                                            id="CHK_<?php echo $n->nombre_modulo ?>">
+                                                            <input class='form-check-input' type='checkbox' name='mcid_modulo[]' value='<?php echo $n->id_modulo ?>' onclick="valFM('<?php echo str_replace(' ', '', $n->nombre_modulo)  ?>')"
+                                                            id="CHK_<?php echo str_replace(' ', '', $n->nombre_modulo) ?>">
                                                             <div>
-                                                                <label class="form-check-label" for="mcid_modulo[]"><?php echo $n->nombre_modulo ?></label>
+                                                                <label class="form-check-label" for="mcid_modulo"><?php echo $n->nombre_modulo ?></label>
                                                             </div>
                                                         </div>
 
                                                         <div class="col">
-                                                            <select class="form-control select2"  name="mcid_docente" id="<?php echo "date_".$n->nombre_modulo ?>">
+                                                            <select class="form-control select2"  name="mcid_docente[]" id="date_<?php echo str_replace(' ', '', $n->nombre_modulo) ?>">
                                                                 <option value="">Selecciona el docente </option>    
                                                                     <?php foreach ($datos['docente'] as $d) { ?>
                                                                         <option value='<?php echo $d->id_docente ?>'><?php echo $d->nombres." ".$d->apellidos ?> </option>
@@ -165,9 +146,9 @@ require_once RUTA_APP . '/views/include/header.php';
                                             
                                         <?php } ?>
                                         </div>
-                                    <br>                      
+                                        <hr class="border border-secondary-50">                      
                                 <?php } ?>
-                                <hr class="border border-secondary"> 
+                                 
                             </div>
 
                         <label for="mcobservacion" class="mrg-spr-ex">Observación del modulo en el curso:</label>
@@ -187,27 +168,6 @@ require_once RUTA_APP . '/views/include/header.php';
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="modal fade" id="editarModulosCurso">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
@@ -224,7 +184,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                     <input type="hidden" name="idmc" id="idmc">
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mcid_curso" id="mcid_curso" required>
+							<select class="form-control select2"  name="mcid_curso" id="mcid_curso" required disabled>
                                 <!-- <option value="">Selecciona un curso</option>     -->
                                     <?php
                                         // foreach ($datos['curso'] as $curso) {
@@ -237,7 +197,7 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
 
                         <label for="mcid_modulo" class="mrg-spr-ex">Modulo:</label>
-							<select class="form-control select2"  name="mcid_modulo" id="mcid_modulo" required>
+							<select class="form-control select2"  name="mcid_modulo" id="mcid_modulo" required disabled>
                                 <option value="">Selecciona un modulo</option>    
                                     <?php
                                         foreach ($datos['modulo'] as $m) {

@@ -45,8 +45,7 @@ class Modulo extends Controller
            var_dump($datos);
            if($this->moduloModel->create($datos))
            {
-               redireccionar('modulo');
-
+                redireccionar("modulo/detalle/".$_POST['mtipo_modulo']);
            }
            else
            {
@@ -78,8 +77,7 @@ class Modulo extends Controller
            var_dump($datos);
            if($this->moduloModel->update($datos))
            {
-               redireccionar('modulo');
-
+               redireccionar("modulo/detalle/".$_POST['mtipo_modulo']);
            }
            else
            {

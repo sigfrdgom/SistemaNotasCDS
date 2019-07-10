@@ -580,7 +580,9 @@ function valFM($componente) {
 
         if (ischk) {
             $("#date_"+$componente).attr("required", true);
+            document.getElementById("date_"+$componente).setAttribute(name,"mcid_docente")
         } else {
             $("#date_"+$componente).removeAttr('required');
+            document.getElementById("date_"+$componente).setAttribute(name,"")
         }
 }

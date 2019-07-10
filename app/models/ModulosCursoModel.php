@@ -94,5 +94,13 @@ class ModulosCursoModel{
         $this->db->bind(':id_curso',$id_curso);
         return $this->db->findAll();
     }
+
+    public function comprobar($datos)
+    {
+        $this->db->query('SELECT count(id_modulos_curso) as n_registros FROM modulos_curso WHERE id_curso = :id_curso AND id_modulo= :id_modulo ;');
+        $this->db->bind(':id_curso', $datos['id_curso']);
+        $this->db->bind(':id_modulo', $datos['id_modulo']);
+        return $this->db->findAll();
+    }
 }
 ?>

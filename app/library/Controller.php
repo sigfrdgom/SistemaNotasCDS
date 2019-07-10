@@ -20,5 +20,32 @@ class Controller{
             die("El archivo de la vista no existe");
         }
     }
+
+
+
+
+    public function sessionActiva(){
+        //  session_start();
+        if ((session_status() == 2)&&$_SESSION['id_sesion']==session_id()) { 
+            
+            echo "<script> alert('HOLA HAY SESSION :V');
+                
+                </script>";
+            //validacion del tipoUsuario
+
+
+            return true;
+        }else{
+            echo "<script> alert('HOLA NO HAY SESSION :V');
+                
+                </script>";
+            return false;
+            
+        }
+
+    }
+
+
+
 }
 ?>

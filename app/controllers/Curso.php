@@ -6,6 +6,7 @@ class Curso extends Controller
         $this->cursoModel = $this->model('CursoModel');
         $this->nivelCursoModel = $this->model('NivelCursoModel');
         // $this->obtenerNivel = $this->model('NivelCursoModel');
+        
     }
 
     public function index(){
@@ -30,7 +31,8 @@ class Curso extends Controller
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        session_start();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
         {
            $datos = [
                'id_curso' => null,
@@ -55,40 +57,58 @@ class Curso extends Controller
                die("Error al insertar los datos");
            }
        }else{
+        echo "<script> alert('No estas autorizado');
+        </script>";
+        //  var_dump($datos);
         redireccionar('curso');
        }
    }
 
-   public function delete($id)
+   public function delete($id = null)
    {
+    
+       if($this->sessionActiva()){
+          
         if (isset($id))
-        {
-            if($this->cursoModel->delete($id))
-            {
-                redireccionar('curso');
-            }
-            else
-            {
-                die("Error al eliminar los datos");
-            }
-        }
-        else
-        {
-            $this->index();
-        }
-    }
+           {
+               if($this->cursoModel->delete($id))
+               {
+                   redireccionar('curso');
+               }
+               else
+               {
+                   die("Error al eliminar los datos");
+               }
+           }
+           else
+           {
+               $this->index();
+           }
+       }else{
+        redireccionar('curso');
+       }
+   }
 
-    public function findById($id){
-        if(isset($id)){
-            return $this->cursoModel->findById($id);
-        }else{
-            die("Error al buscar el dato");
+
+
+    public function findById($id=null){
+        if($this->sessionActiva()){
+            if(isset($id)){
+                return $this->cursoModel->findById($id);
+            }else{
+                die("Error al buscar el dato");
+            }
+        }else {
+            redireccionar('curso');
         }
-    }
+
+       }
+        
+    
 
     public function update()
    {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
     {
        $datos = [
            'id_curso' => trim($_POST['cid']),
@@ -112,11 +132,16 @@ class Curso extends Controller
        {
            die("Error al actualizar los datos");
        }
-   }
+   }else{
+       redireccionar('curso');
+    }
   }
 
   public function updateDown($id)
-   {
+  {
+    session_start();
+    if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+    {
         if (isset($id))
         {
             if($this->cursoModel->updateDown($id))
@@ -132,16 +157,24 @@ class Curso extends Controller
         {
             $this->index();
         }
+
+    }else{
+        redireccionar('curso');
+        }
     }
 
 
 
-    public function countParticipante($id){
-        if(isset($id)){
-            return $this->cursoModel->countParticipante($id);
+    public function countParticipante($id = null){
+        if($this->sessionActiva()){
+            if(isset($id)){
+                return $this->cursoModel->countParticipante($id);
+            }else{
+                die("Error al buscar el dato");
+            }
         }else{
-            die("Error al buscar el dato");
-        }
+        redireccionar('curso');
+    }
     }
 
 

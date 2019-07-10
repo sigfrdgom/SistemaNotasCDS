@@ -3,17 +3,21 @@
 <!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
 <?php
 if ((session_status() == 2)&&$_SESSION['id_sesion']==session_id()) { 
-    
+    // ini_set("session.gc_maxlifetime","60");
+    // ini_set("session.cookie_lifetime","60");
 
 }else{
-
+    // ini_set("session.gc_maxlifetime","60");
+    // ini_set("session.cookie_lifetime","60");
     session_start();
-    if(isset($_SESSION['tipoUsuario'])==null){
-        echo "<script> alert('No estas autorizado');
-                window.location='".RUTA_URL."';
-                </script>";
-                exit;
-    }
+    // if (isset($_SESSION['id_sesion'])) {
+    //     # code...
+    // }
+    echo "<script> alert('NO ESTA AUTORIZADO');
+         window.location='".RUTA_URL."';
+        </script>";
+        exit;
+    
 }
 ?>
 

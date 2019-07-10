@@ -11,6 +11,7 @@ class Login extends Controller
         $this->notaModel = $this->model('NotaModel');
         $this->cursoModel = $this->model('CursoModel');
         $this->moduloModel = $this->model('ModuloModel');
+    
     }
 
     public function index(){
@@ -39,6 +40,7 @@ class Login extends Controller
 
 
 
+    //FINALIZACION DE LA SESION
     public function finalizarSesion()
     {
         session_start();
@@ -51,14 +53,12 @@ class Login extends Controller
         }
 
 
-        session_regenerate_id(true);
+        // session_regenerate_id(true);
         unset($_COOKIE['id_sesion']);
         session_destroy(); 
         $this->view('pages/login/login');
        
         
-
-
 
     }
 
@@ -75,9 +75,10 @@ class Login extends Controller
            //Verificacion de la consulta
            if($docente)
            {
-               
+               ini_set("session.gc_maxlifetime","60");
+               ini_set("session.cookie_lifetime","60");
                session_start();
-               session_cache_expire(60);
+         //    session_cache_expire(60);
                $_SESSION['id_sesion'] = session_id();
                $_SESSION['tipoUsuario']=$docente->tipo_usuario;
                $_SESSION['nombres'] = $docente->nombres;

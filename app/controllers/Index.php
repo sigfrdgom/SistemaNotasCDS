@@ -12,6 +12,7 @@ class Index extends Controller
 
     /*Vista Principal*/
     public function index(){
+
         // $nombres = array();
         // $n_participantes= $this->participanteModel->count();
         // $n_usuarios = $this->docenteModel->count();

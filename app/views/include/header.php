@@ -116,7 +116,7 @@ if ((session_status() == 2)&&$_SESSION['id_sesion']==session_id()) {
                         </a> -->
 
                         <!-- item-->
-                        <a href="<?php echo RUTA_URL ?>/login/finalizarSesion" class="dropdown-item notify-item">
+                        <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item">
                             <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
                         </a>
 

@@ -1,10 +1,4 @@
 <?php
-// if(isset($_SESSION['tipoUsuario'])!=null){
-// session_destroy();
-// }
-// session_cache_limiter('');
-// session_cache_expire(60);
-// session_start();
 
 /*Importacion de Header de la aplicacion*/
 require_once RUTA_APP . '/views/include/headerLogin.php';

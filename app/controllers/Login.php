@@ -41,7 +41,7 @@ class Login extends Controller
 
     public function finalizarSesion()
     {
-        echo $_SESSION['id_sesion'];
+        session_start();
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(session_name(), '', time() - 42000,
@@ -50,10 +50,16 @@ class Login extends Controller
             );
         }
 
-        session_abort();
-        session_destroy();
-        echo $_SESSION['id_sesion'];
-        redireccionar('');
+
+        session_regenerate_id(true);
+        unset($_COOKIE['id_sesion']);
+        session_destroy(); 
+        $this->view('pages/login/login');
+       
+        
+
+
+
     }
 
 
@@ -70,7 +76,6 @@ class Login extends Controller
            if($docente)
            {
                
-               session_cache_limiter('');
                session_start();
                session_cache_expire(60);
                $_SESSION['id_sesion'] = session_id();
@@ -81,8 +86,13 @@ class Login extends Controller
                $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
                
                //MENSAJE DE BIENVENIDA CHAFA 
+
+               echo "<script>history.forward(); </script>";
+               echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
+               </script>";
                echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
                </script>";
+               
    
 
                 $this->index();
@@ -92,7 +102,6 @@ class Login extends Controller
            {
                //DESTRUIR TODA LA SESION Y COOKIES
                $this->finalizarSesion();
-               die("Error al insertar los datos");
 
            }
        }else{

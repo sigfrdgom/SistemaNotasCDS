@@ -566,5 +566,21 @@ function validarUpgrade() {
 }
 
 function mostrar($texto) {
-    alert("Has de mostrar el elemento "+$texto);
+   
+    if (document.getElementById("CHK_"+$texto).checked) {
+        document.getElementById("div_"+$texto).style.display= "block";
+    } else {
+        document.getElementById("div_"+$texto).style.display= "none";
+    }
+}
+
+function valFM($componente) {
+
+    var ischk = document.getElementById("CHK_"+$componente).checked;
+
+        if (ischk) {
+            $("#date_"+$componente).attr("required", true);
+        } else {
+            $("#date_"+$componente).removeAttr('required');
+        }
 }

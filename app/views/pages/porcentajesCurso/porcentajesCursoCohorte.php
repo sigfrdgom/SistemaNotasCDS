@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active">Modulos por curso</li>
+                            <li class="breadcrumb-item active">Porcentajes por curso</li>
                             <li class="breadcrumb-item active">Cohortes</li>
                         </ol>
                         

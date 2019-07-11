@@ -45,9 +45,9 @@ class PorcentajeCurso extends Controller
         // $modulosCurso = $this->modulosCursoModel->findByNivel($id_curso);
         
         
-        $descripcion = "Vista que muestra todos las modulos pertenecientes a un curso";
+        $descripcion = "Vista que muestra todos las porcentajes del tipo modulo pertenecientes a un curso";
         $datos = [
-            'titulo' => "Modulos del curso $curso->nombre_curso, Nivel $curso->nivel ",
+            'titulo' => "Porcentajes por modulos $curso->nombre_curso, Nivel $curso->nivel ",
             'descripcion' => $descripcion,
             // 'modulosCurso' => $modulosCurso,
             'curso' => $curso,

@@ -11,10 +11,10 @@ require_once RUTA_APP . '/views/include/header.php';
 
         <div class="row">
             <div class="col-xl-12">
-                <div class="breadcrumb-holder">
+                <div class="breadcrumb-holder ">
                     <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                     <!-- El boton para agregar a traves de un modal -->
-                    <button  id="ivkprt" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarPorcentaje">
+                    <button  id="ivkprt" type="button" class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarPorcentaje">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo porcentaje curso
                     </button>
                     <ol class="breadcrumb float-right">

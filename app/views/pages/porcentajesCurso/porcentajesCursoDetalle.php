@@ -34,9 +34,9 @@ require_once RUTA_APP . '/views/include/header.php';
                     <table class="table table-bordered table-hover display">
                         <thead>
                         <tr>
+                            <th class='secret'>ID PC</th>
                             <th class='secret'>ID curso</th>
-                            <th class='secret'>ID curso</th>
-                            <th>Curso</th>
+                            <th class='secret'>Curso</th>
                             <th class='secret'>ID tipo</th>
                             <th>Tipo modulo</th>
                             <th>Porcentaje</th>
@@ -50,7 +50,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             echo "<tr>
                                 <td class='secret'>$porcentajesCursos->id_porcentajes_curso</td>
                                 <td class='secret'>$porcentajesCursos->id_curso</td>
-                                <td>$porcentajesCursos->nombre_curso</td>
+                                <td class='secret'>$porcentajesCursos->nombre_curso</td>
                                 <td class='secret'>$porcentajesCursos->id_tipo_modulo</td>
                                 <td>$porcentajesCursos->nombre</td>
                                 <td>$porcentajesCursos->porcentaje</td>
@@ -88,12 +88,12 @@ require_once RUTA_APP . '/views/include/header.php';
                             <input type="hidden" name="porid" id="porid">
 
                             <label for="pcidCurso" class="mrg-spr-ex">Curso:</label>
-                            <select class="form-control select2" id="pidc" name="pid_curso" required>
-                                <option name="oid_curso">Selecciona un curso</option>
+                            <select class="form-control select2" id="pidc" name="pid_curso" required disabled>
+                                <!-- <option name="oid_curso">Selecciona un curso</option> -->
                                 <?php
-                                foreach ($datos['curso'] as $curso) {
-                                    echo " <option value='$curso->id_curso'>$curso->cohorte , $curso->nombre_curso</option>";
-                                }
+                                // foreach ($datos['curso'] as $curso) {
+                                    echo " <option value='".$datos['curso']->id_curso."' selected>".$datos['curso']->cohorte." , ".$datos['curso']->nombre_curso."</option>";
+                                // }
                                 ?>
                             </select>
 

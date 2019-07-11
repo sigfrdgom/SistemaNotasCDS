@@ -2,21 +2,34 @@
 
 <!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
 <?php
-if ((session_status() == 2)&&$_SESSION['id_sesion']==session_id()) { 
+if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) { 
     // ini_set("session.gc_maxlifetime","60");
     // ini_set("session.cookie_lifetime","60");
+   
+    echo "<script> alert('".session_status()."');
+         
+        </script>";
+
 
 }else{
     // ini_set("session.gc_maxlifetime","60");
     // ini_set("session.cookie_lifetime","60");
+    echo "<script> alert('".session_status()."');
+         
+        </script>";
     session_start();
-    // if (isset($_SESSION['id_sesion'])) {
-    //     # code...
-    // }
-    echo "<script> alert('NO ESTA AUTORIZADO');
+    if (isset($_SESSION['id_sesion'])) {
+    // //     # code...
+    // session_destroy();
+    
+    echo "<script> alert('".session_status()."');
+         
+        </script>";
+    }else{
+    echo "<script> alert('NO ESTA AUTORIZADO HEADER');
          window.location='".RUTA_URL."';
         </script>";
-        exit;
+        exit;}
     
 }
 ?>

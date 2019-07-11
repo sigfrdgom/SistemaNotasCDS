@@ -1,7 +1,7 @@
 <?php
    
     require_once RUTA_APP . '/views/include/header.php';
-    //Si la sesiones es correcta mostramos la pagina
+
      
 
     

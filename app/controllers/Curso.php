@@ -31,8 +31,8 @@ class Curso extends Controller
 
     public function create()
     {
-        session_start();
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
            $datos = [
                'id_curso' => null,
@@ -57,7 +57,7 @@ class Curso extends Controller
                die("Error al insertar los datos");
            }
        }else{
-        echo "<script> alert('No estas autorizado');
+        echo "<script> alert('No estas autorizado controlador');
         </script>";
         //  var_dump($datos);
         redireccionar('curso');
@@ -67,7 +67,7 @@ class Curso extends Controller
    public function delete($id = null)
    {
     
-       if($this->sessionActiva()){
+       
           
         if (isset($id))
            {
@@ -82,25 +82,25 @@ class Curso extends Controller
            }
            else
            {
-               $this->index();
+            redireccionar('curso');
            }
-       }else{
-        redireccionar('curso');
-       }
+       
    }
 
 
 
     public function findById($id=null){
-        if($this->sessionActiva()){
+       
             if(isset($id)){
                 return $this->cursoModel->findById($id);
             }else{
+                redireccionar('curso');
                 die("Error al buscar el dato");
+                
             }
-        }else {
-            redireccionar('curso');
-        }
+                
+            
+        
 
        }
         
@@ -108,7 +108,7 @@ class Curso extends Controller
 
     public function update()
    {
-    if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+    if (($_SERVER['REQUEST_METHOD'] == 'POST'))
     {
        $datos = [
            'id_curso' => trim($_POST['cid']),
@@ -137,10 +137,10 @@ class Curso extends Controller
     }
   }
 
-  public function updateDown($id)
+  public function updateDown($id = null) 
   {
-    session_start();
-    if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+    
+    if (($_SERVER['REQUEST_METHOD'] == 'POST'))
     {
         if (isset($id))
         {
@@ -166,15 +166,14 @@ class Curso extends Controller
 
 
     public function countParticipante($id = null){
-        if($this->sessionActiva()){
+        
             if(isset($id)){
                 return $this->cursoModel->countParticipante($id);
             }else{
+                redireccionar('curso');
                 die("Error al buscar el dato");
             }
-        }else{
-        redireccionar('curso');
-    }
+       
     }
 
 

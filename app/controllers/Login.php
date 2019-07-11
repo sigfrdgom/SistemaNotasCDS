@@ -54,8 +54,11 @@ class Login extends Controller
 
 
         // session_regenerate_id(true);
+        
         unset($_COOKIE['id_sesion']);
+        
         session_destroy(); 
+        session_abort();
         $this->view('pages/login/login');
        
         
@@ -75,9 +78,10 @@ class Login extends Controller
            //Verificacion de la consulta
            if($docente)
            {
-               ini_set("session.gc_maxlifetime","60");
-               ini_set("session.cookie_lifetime","60");
-               session_start();
+            //    ini_set("session.gc_maxlifetime","60");
+            //    ini_set("session.cookie_lifetime","60");
+            echo "<script>history.forward(); </script>";   
+            session_start();
          //    session_cache_expire(60);
                $_SESSION['id_sesion'] = session_id();
                $_SESSION['tipoUsuario']=$docente->tipo_usuario;
@@ -88,7 +92,7 @@ class Login extends Controller
                
                //MENSAJE DE BIENVENIDA CHAFA 
 
-               echo "<script>history.forward(); </script>";
+               
                echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
                </script>";
                echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');

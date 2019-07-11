@@ -126,11 +126,10 @@
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
-                <a href="index" ><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
+                <!-- <a href="index" ><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a> -->
 
                 <ul>
-
-                    <li class="submenu">
+                    <li class="submenu mt-3">
                         <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-graduation-cap bigfont"></i><span> Cursos </span> </a>
                     </li>
 
@@ -155,31 +154,39 @@
                     </li>
 
                     <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/matricula"><i class="fa fa-certificate bigfonts" aria-hidden="true"></i><span> Matriculas </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/rankingNotas"><i class="fa fa-bar-chart bigfonts"></i><span> Ranking Notas </span> </a>
+                    </li>
+
+                    <!-- <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-print"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Reporte </a></li>
+                            <li><a href="#">Reporte </a></li>
+                        </ul>
+                    </li> -->
+
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/reporte"><i class="fa fa-fw fa-print"></i><span> Reportes </span> </a>
+                    </li>
+
+                    <li class="submenu">
                         <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/tipoModulo">Tipo Modulo</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/nivelCurso">Niveles del curso</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li>
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/notas">Notas</a></li> -->
-                            <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li>
+                            <!-- <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li> -->
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/curso">Cursos</a></li> -->
                             <li><a href="<?php echo RUTA_URL ?>/modulosCurso">Modulos por cursos</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/porcentajeCurso">Porcentajes Curso</a></li>
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/participante">Participantes</a></li> -->
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/docente">Docentes</a></li> -->
 
-                        </ul>
-                    </li>
-
-                    <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/rankingNotas"><i class="fa fa-fw fa-scribd"></i><span> Ranking Notas </span> </a>
-                    </li>
-
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-print"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Reporte 1</a></li>
-                            <li><a href="#">Reporte 2</a></li>
                         </ul>
                     </li>
 

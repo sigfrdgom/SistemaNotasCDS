@@ -123,6 +123,15 @@ class CursoModel{
         return $this->db->findAll();
     }
 
+    public function comprobar($cohorte,$nivel){
+        $this->db->query("SELECT COUNT(id_curso) as n_registros FROM curso WHERE cohorte = :cohorte and nivel=:nivel");
+        $this->db->bind(':cohorte',$cohorte);
+        $this->db->bind(':nivel',$nivel+1);
+        return $this->db->findOne();
+    }
+
+
+    
 }
 
 ?>

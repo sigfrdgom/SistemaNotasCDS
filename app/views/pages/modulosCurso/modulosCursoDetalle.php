@@ -95,7 +95,7 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="mm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create"data-parsley-validate novalidate >
+                    <form  id="mm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create" data-parsley-validate novalidate >
                         
                         <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
 							<select class="form-control select2"  name="mcid_curso" required disabled>
@@ -111,7 +111,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <?php foreach ($datos['tipoModulo'] as $m) { ?>
                                     
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" name="tipoModulo[]" onclick="mostrar('<?php echo str_replace(' ', '', $m->nombre) ?>')" id="CHK_<?php echo str_replace(' ', '', $m->nombre) ?>">
+                                        <input class="form-check-input" required type="checkbox" name="tipoModulo[]" onclick="mostrar('<?php echo  str_replace(' ', '', $m->nombre) ?>')" id="CHK_<?php echo str_replace(' ', '', $m->nombre) ?>">
                                         <label class="form-check-label" for="tipoModulo"><?php echo $m->nombre ?></label>
                                     </div>
                                     <!-- <hr class="border border-info"> -->
@@ -124,15 +124,15 @@ require_once RUTA_APP . '/views/include/header.php';
                                                     <div class="mx-2 my-1 row border-bottom border-dark-90 py-1">
 
                                                         <div class="col-4 form-check form-check-inline" >
-                                                            <input class='form-check-input' type='checkbox' name='mcid_modulo[]' value='<?php echo $n->id_modulo ?>' onclick="valFM('<?php echo str_replace(' ', '', $n->nombre_modulo)  ?>')"
-                                                            id="CHK_<?php echo str_replace(' ', '', $n->nombre_modulo) ?>">
+                                                            <input class='form-check-input' required type='checkbox' name='mcid_modulo[]' value='<?php echo $n->id_modulo ?>' onclick="valFM('<?php echo str_replace([' ','#'], '', $n->nombre_modulo)  ?>')"
+                                                            id="CHK_<?php echo str_replace([' ','#'], '', $n->nombre_modulo) ?>">
                                                             <div>
                                                                 <label class="form-check-label" for="mcid_modulo"><?php echo $n->nombre_modulo ?></label>
                                                             </div>
                                                         </div>
 
                                                         <div class="col">
-                                                            <select class="form-control select2"  name="mcid_docente[]" id="date_<?php echo str_replace(' ', '', $n->nombre_modulo) ?>">
+                                                            <select class="form-control select2"  name="mcid_docente[]" id="date_<?php echo str_replace([' ','#'], '', $n->nombre_modulo) ?>">
                                                                 <option value="">Selecciona el docente </option>    
                                                                     <?php foreach ($datos['docente'] as $d) { ?>
                                                                         <option value='<?php echo $d->id_docente ?>'><?php echo $d->nombres." ".$d->apellidos ?> </option>
@@ -161,7 +161,8 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="modal-footer">
                 <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
             </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button> -->
+            <a href="<?php echo constant('RUTA_URL')."/modulosCurso/curso/".$datos['curso']->id_curso ?>" class="btn btn-danger">Cancelar</a>
         </div>
       </div>
     </div>

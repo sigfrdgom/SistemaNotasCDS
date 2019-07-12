@@ -65,9 +65,9 @@
     </style>
 </head>
 
-<body class="adminbody">
+<body class="adminbody-void">
 
-<div id="main">
+<div id="main" class="enlarged forced">
 
     <!-- top bar navigation -->
     <div class="headerbar">
@@ -82,7 +82,7 @@
             <ul class="list-inline float-right mb-0">
 
                 <li class="list-inline-item dropdown notif">
-                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
+                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
                         <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -128,9 +128,9 @@
             <div id="sidebar-menu">
                 <!-- <a href="index" ><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a> -->
 
-                <ul>
-                    <li class="submenu mt-3">
-                        <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-graduation-cap bigfont"></i><span> Cursos </span> </a>
+                <ul >
+                    <li class="submenu mt-3" >
+                        <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-graduation-cap bigfont "></i><span> Cursos </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -142,7 +142,7 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>
+                        <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Participantes </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -174,11 +174,11 @@
                     </li>
 
                     <li class="submenu">
-                        <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
+                        <a ><i class="fa fa-cog bigfonts"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/tipoModulo">Tipo Modulo</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/nivelCurso">Niveles del curso</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li>
+                            <!-- <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li> -->
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/notas">Notas</a></li> -->
                             <!-- <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li> -->
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/curso">Cursos</a></li> -->
@@ -191,11 +191,11 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-question"></i><span> Preguntas Frecuentes </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/general/faq"><i class="fa fa-question-circle-o bigfonts" style="font-size: 1.5em;"></i><span> FA&Q </span> </a>
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-deviantart"></i><span> About Us </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/general/acercaDe"><i class="fa fa-info-circle bigfonts" style="font-size: 1.5em;"></i><span> Sobre el proyecto </span> </a>
                     </li>
 
                 </ul>

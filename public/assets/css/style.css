@@ -256,7 +256,7 @@ a {
     text-align: center;
     height: 50px;
     position: relative;
-    width: 250px;
+    width: 200px;
     z-index: 1; }
 
 .headerbar .headerbar-left .logo img {
@@ -285,7 +285,7 @@ a {
   border-radius: 0;
   margin-bottom: 0;
   padding: 0 10px;
-  margin-left: 250px;
+  margin-left: 200px;
   min-height: 50px;}
 
 .navbar-custom .nav-link {
@@ -313,7 +313,7 @@ a {
 
 .main-sidebar {
   top: 50px;
-  width: 250px;
+  width: 200px;
   z-index: 10;
   background: #262D33;
   bottom: 70px;
@@ -324,7 +324,7 @@ a {
 }
 
 .content-page {
-  margin-left: 250px;
+  margin-left: 200px;
   overflow: hidden; }
 
 .content-page .content {
@@ -436,15 +436,16 @@ body.adminbody .main-sidebar.left {
   color: #b5b5b5;
   display: block;
   padding: 9px 9px 12px 9px;
-  font-weight: 400;
+  font-weight: bolder;
   font-size: 0.90rem;
   border-left: 2px solid transparent;  }
 
 #sidebar-menu > ul > li > a:hover {
-    color: #FFF;
+  color: #FFF;
 	background-color: #414d58;
-    text-decoration: none;
-	border-left: 2px solid #608ab3; }
+  text-decoration: none;
+  /* border-left: 2px solid #bc1335; */
+border-bottom: 3px solid #bc1335; }
 
 #sidebar-menu > ul > li > a > span {
   vertical-align: middle; }
@@ -482,7 +483,7 @@ body.adminbody .main-sidebar.left {
     padding: 10px;
     position: absolute;
     right: 0;
-    left: 250px;
+    left: 200px;
     background-color: #fff; }
 
 #main.enlarged .menu-title {
@@ -749,8 +750,8 @@ body.adminbody .main-sidebar.left {
 	}
 
 	.mobile-content {
-		left: 250px;
-		right: -250px;
+		left: 100%;
+		right: -100%;
 	}
 
 	.wrapper-page {

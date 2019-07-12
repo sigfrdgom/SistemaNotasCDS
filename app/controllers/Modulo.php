@@ -143,7 +143,7 @@ class Modulo extends Controller
         
         $descripcion = "Vista que muestra todos los modulos que existen";
         $datos = [
-            'titulo' => "Tipos de modulo \"".strtolower($tipoModulo->nombre)."\"",
+            'titulo' => "Tipos de modulo '".strtolower($tipoModulo->nombre)."'",
             'descripcion' => $descripcion,
             'modulo' => $modulo,
             'tipoModulo' => $tipoModulo

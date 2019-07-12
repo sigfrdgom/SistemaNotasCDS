@@ -17,7 +17,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;  </h1>
 
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success"
+                    <button type="button" class="btn btn-outline-success mb-2"
                     data-toggle="modal" data-target="#agregarParticipante" id="participanteReset">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo participante
                     </button>

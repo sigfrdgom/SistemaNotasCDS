@@ -35,13 +35,16 @@ require_once RUTA_APP . '/views/include/header.php';
                         
                         <div class="col my-3 mx-3">
                             <div class="card">
-                                <div class="card-img-top text-center mt-3">
-                                    <img src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" class="img-fluid" width="50%">
-                                    <!-- <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 10em"></i> -->
+                                <div class="card-img-top text-center mt-3" >
+
+                                    <img src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" class="img-fluid" style="width: 50%">
+                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid mr-5" style="width: 10%">
+                                    
                                 </div>
-                                    <div class="card-body text-justify">
+                                
+                                    <div class="card-body text-justify mx-3">
                                         <p class="card-text">
-                                            <b>Razon de ser</b> <br>
+                                            <b>Razon de ser del proyecto</b><br> <br>
                                             Some quick example text to build on the card title and make up the bulk of the card's content.
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, officiis dicta accusantium voluptatum incidunt asperiores consectetur officia. Nam, mollitia cumque? Maxime, animi quasi? Illo beatae esse facere minima a ab.
                                             <br><br><b>Objetivos</b><br>
@@ -69,7 +72,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <!-- Equipo desarrollo -->
             <div>
                 
-                <div class="text-center breadcrumb-holder mt-3">
+                <div class="text-center breadcrumb-holder mt-3 pb-2 border-dark border">
                         <h3>Equipo de desarrollo</h3>
                 </div>
                 
@@ -82,6 +85,9 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <div class="card-img-top text-center mt-3">
                                     <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 10em"></i>
                                 </div>
+                                    <div  class="text-center mt-2 text-white" style="background: black">
+                                        <h4 class="mt-2">Carlos Martinez</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -93,6 +99,9 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <div class="card-img-top text-center mt-3">
                                     <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 10em"></i>
                                 </div>
+                                    <div  class="text-center mt-2 text-white" style="background: black">
+                                        <h4 class="mt-2">Kevin Martinez</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -104,6 +113,9 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <div class="card-img-top text-center mt-3">
                                     <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 10em"></i>
                                 </div>
+                                    <div class="text-center mt-2 text-white" style="background: black">
+                                        <h4 class="mt-2">Sigfrido Gómez</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -120,8 +132,8 @@ require_once RUTA_APP . '/views/include/header.php';
             <!-- plataformas -->
             <div>
                 
-                <div class="text-center breadcrumb-holder mt-3">
-                        <h3>Plataformas</h3>
+                <div class="text-center breadcrumb-holder mt-3 pb-2 border-danger border" >
+                        <h3>Enfoque a multiplataforma</h3>
                 </div>
                 
                 <div class="container-fluid">
@@ -131,8 +143,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-mobile" aria-hidden="true" style="font-size: 10em"></i>
+                                    <i class="fa fa-mobile" aria-hidden="true" style="font-size: 10em; color: #b90b2e"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">Smartphone</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -142,8 +157,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-tablet" aria-hidden="true" style="font-size: 10em"></i>
+                                    <i class="fa fa-tablet" aria-hidden="true" style="font-size: 10em; color: #002e6c "></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">Tablet</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -153,8 +171,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-laptop" aria-hidden="true" style="font-size: 10em"></i>
+                                    <i class="fa fa-laptop" aria-hidden="true" style="font-size: 10em; color: #b90b2e"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">Laptop</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -164,8 +185,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-desktop" aria-hidden="true" style="font-size: 10em"></i>
+                                    <i class="fa fa-desktop" aria-hidden="true" style="font-size: 10em; color: #002e6c"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">Desktop</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -181,7 +205,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <!-- Tecnologias -->
             <div>
                 
-                <div class="text-center breadcrumb-holder mt-3">
+                <div class="text-center breadcrumb-holder mt-3 pb-2 border-warning border">
                         <h3>Tecnologias</h3>
                 </div>
                 
@@ -192,9 +216,13 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-git mr-5" aria-hidden="true" style="font-size: 5em"></i><br>
-                                    <i class="fa fa-github ml-5" aria-hidden="true" style="font-size: 5em"></i>
+                                    <i class="fab fa-git mr-5" aria-hidden="true" style="font-size: 5em; color: #002e6c"></i><br>
+                                    <i class="fab fa-github-square ml-5" aria-hidden="true" style="font-size: 5em; color: #b90b2e"></i>
+                                    
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">Git y GitHub</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -204,8 +232,29 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-tablet" aria-hidden="true" style="font-size: 10em"></i>
+                                    
+                                    <i class="fab fa-html5"  aria-hidden="true" style="font-size: 5em; color: #b90b2e"></i> <br>
+                                    <i class="fab fa-js"  aria-hidden="true" style="font-size: 5em; color: #f29800" ></i>
+                                    <i class="fab fa-css3-alt"  aria-hidden="true" style="font-size: 5em; color: #002e6c"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">Stack Web</h4>
+                                    </div>
+                                    <div class="card-body text-justify">
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col my-3 mx-2">
+                            <div class="card">
+                                <div class="card-img-top text-center mt-3">
+                                    <i class="fab fa-php" aria-hidden="true" style="font-size: 10em; color:#002e6c"></i>
+                                </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">PHP</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -215,8 +264,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-laptop" aria-hidden="true" style="font-size: 10em"></i>
+                                    <i class="fas fa-database" aria-hidden="true" style="font-size: 10em; color: #b90b2e"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">MariaDB</h4>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -226,19 +278,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-desktop" aria-hidden="true" style="font-size: 10em"></i>
+                                    <i class="fas fa-server" aria-hidden="true" style="font-size: 10em; color: #f29800"></i>
                                 </div>
-                                    <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h4 class="mt-2">Apache Server</h4>
                                     </div>
-                            </div>
-                        </div>
-
-                        <div class="col my-3 mx-2">
-                            <div class="card">
-                                <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-desktop" aria-hidden="true" style="font-size: 10em"></i>
-                                </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -254,8 +298,8 @@ require_once RUTA_APP . '/views/include/header.php';
             <!--  funciones -->
             <div>
                 
-                <div class="text-center breadcrumb-holder mt-3">
-                        <h3>Pincipales funciones</h3>
+                <div class="text-center breadcrumb-holder mt-3 pb-2 border-info border">
+                        <h3>Principales funciones</h3>
                 </div>
                 
                 <div class="container-fluid">
@@ -265,8 +309,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-graduation-cap" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-graduation-cap" aria-hidden="true" style="font-size: 7em;color: #b90b2e"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Gestion de cursos</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -276,8 +323,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-book" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-book" aria-hidden="true" style="font-size: 7em;color: #f29800 "></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Gestion de modulos</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -287,8 +337,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-id-badge" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-id-badge" aria-hidden="true" style="font-size: 7em;color: #002e6c"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Control de usuarios</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -298,8 +351,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-id-card" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-id-card" aria-hidden="true" style="font-size: 7em;color: #f29800 "></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Control de participantes</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -309,8 +365,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-percent" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-share-alt" aria-hidden="true" style="font-size: 7em;color: #b90b2e"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">API REST</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -324,8 +383,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-certificate" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-certificate" aria-hidden="true" style="font-size: 7em; color: #f29800"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Gestion de matriculas</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -335,8 +397,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-bar-chart" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-bar-chart" aria-hidden="true" style="font-size: 7em;color: #b90b2e"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Notas y evaluaciones</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -346,8 +411,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-question-circle" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-question-circle" aria-hidden="true" style="font-size: 7em;color: #002e6c"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Soporte incluido</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -357,8 +425,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-print" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-print" aria-hidden="true" style="font-size: 7em;color: #b90b2e"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Reportes</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -368,8 +439,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="col my-3 mx-2">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-unlock" aria-hidden="true" style="font-size: 7em"></i>
+                                    <i class="fa fa-unlock" aria-hidden="true" style="font-size: 7em; color: #f29800"></i>
                                 </div>
+                                    <div class="text-center mt-2" style="background: #cad3e0">
+                                        <h6 class="mt-2 " style="font-weight: bolder">Seguridad incluida</h6>
+                                    </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>

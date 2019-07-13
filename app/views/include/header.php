@@ -27,6 +27,7 @@
     <!-- Other CSS -->
     <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 
+    <script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
     
     <style>
         .mrg-spr-ex {

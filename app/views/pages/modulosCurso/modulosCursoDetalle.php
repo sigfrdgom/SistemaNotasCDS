@@ -97,8 +97,8 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="modal-body">
                     <form  id="mm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/create" data-parsley-validate novalidate >
                         
-                        <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mcid_curso" required disabled>
+                        <label for="mcidcurso" class="mrg-spr-ex">Curso:</label>
+							<select class="form-control select2"  name="mcidcurso" required readonly>
                                 <!-- <option value="">Selecciona un curso</option>     -->
                                     <?php
                                         echo " <option value='".$datos['curso']->id_curso."'>".$datos['curso']->cohorte." ,".$datos['curso']->nombre_curso." , nivel ".$datos['curso']->nivel."</option>";
@@ -184,8 +184,8 @@ require_once RUTA_APP . '/views/include/header.php';
                     <form  id="mmm" method="POST" action="<?php echo RUTA_URL ?>/modulosCurso/update" data-parsley-validate novalidate >
 
                     <input type="hidden" name="idmc" id="idmc">
-                        <label for="mcid_curso" class="mrg-spr-ex">Curso:</label>
-							<select class="form-control select2"  name="mcid_curso" id="mcid_curso" required disabled>
+                        <label for="mcidcurso" class="mrg-spr-ex">Curso:</label>
+							<select class="form-control select2"  name="mcidcurso" id="mcidcurso" required readonly >
                                 <!-- <option value="">Selecciona un curso</option>     -->
                                     <?php
                                         // foreach ($datos['curso'] as $curso) {
@@ -198,7 +198,7 @@ require_once RUTA_APP . '/views/include/header.php';
 							</select>
 
                         <label for="mcid_modulo" class="mrg-spr-ex">Modulo:</label>
-							<select class="form-control select2"  name="mcid_modulo" id="mcid_modulo" required disabled>
+							<select class="form-control select2"  name="mcid_modulo" id="mcid_modulo" required readonly>
                                 <option value="">Selecciona un modulo</option>    
                                     <?php
                                         foreach ($datos['modulo'] as $m) {

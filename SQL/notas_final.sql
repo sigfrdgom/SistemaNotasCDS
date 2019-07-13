@@ -108,11 +108,11 @@ CREATE TABLE `matricula` (
 -- Volcado de datos para la tabla `matricula`
 --
 
-INSERT INTO `matricula` (`id_matricula`, `id_curso`, `id_participante`, `estado`, `observaciones`) VALUES
-(30, 1, 1, 1, 'TODO BIEN, TODO CORRECTO'),
-(31, 6, 1, 1, 'TODO BIEN, TODO CORRECTO'),
-(32, 1, 3, 1, 'TODO BIEN, TODO CORRECTO'),
-(35, 6, 3, 1, 'TODO BIEN, TODO CORRECTO');
+-- INSERT INTO `matricula` (`id_matricula`, `id_curso`, `id_participante`, `estado`, `observaciones`) VALUES
+-- (30, 1, 1, 1, 'TODO BIEN, TODO CORRECTO'),
+-- (31, 6, 1, 1, 'TODO BIEN, TODO CORRECTO'),
+-- (32, 1, 3, 1, 'TODO BIEN, TODO CORRECTO'),
+-- (35, 6, 3, 1, 'TODO BIEN, TODO CORRECTO');
 
 -- --------------------------------------------------------
 
@@ -185,20 +185,20 @@ CREATE TABLE `modulos_curso` (
 -- Volcado de datos para la tabla `modulos_curso`
 --
 
-INSERT INTO `modulos_curso` (`id_modulos_curso`, `id_curso`, `id_modulo`, `id_docente`, `observaciones`) VALUES
-(2, 1, 1, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-(3, 1, 2, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-(4, 1, 3, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-(5, 1, 4, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-(6, 1, 23, 5, 'ninguna'),
-(7, 1, 19, 4, 'ninguna'),
-(8, 1, 17, 2, 'ninguna'),
-(9, 1, 18, 2, 'ninguna'),
-(10, 1, 13, 2, 'ninguna'),
-(11, 1, 12, 2, 'ninguna'),
-(12, 6, 25, 3, 'ninguna'),
-(13, 6, 26, 1, 'ninguna'),
-(14, 6, 27, 3, 'ninguna');
+-- INSERT INTO `modulos_curso` (`id_modulos_curso`, `id_curso`, `id_modulo`, `id_docente`, `observaciones`) VALUES
+-- (2, 1, 1, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+-- (3, 1, 2, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+-- (4, 1, 3, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+-- (5, 1, 4, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+-- (6, 1, 23, 5, 'ninguna'),
+-- (7, 1, 19, 4, 'ninguna'),
+-- (8, 1, 17, 2, 'ninguna'),
+-- (9, 1, 18, 2, 'ninguna'),
+-- (10, 1, 13, 2, 'ninguna'),
+-- (11, 1, 12, 2, 'ninguna'),
+-- (12, 6, 25, 3, 'ninguna'),
+-- (13, 6, 26, 1, 'ninguna'),
+-- (14, 6, 27, 3, 'ninguna');
 
 -- --------------------------------------------------------
 
@@ -218,8 +218,8 @@ CREATE TABLE `nivel_curso` (
 
 INSERT INTO `nivel_curso` (`id_nivel_curso`, `nivel_curso`, `estado`) VALUES
 (1, 'Nivel 1', 1),
-(2, 'Nivel 2', 0),
-(3, 'Nivel 3', 0);
+(2, 'Nivel 2', 1),
+(3, 'Nivel 3', 1);
 
 -- --------------------------------------------------------
 
@@ -244,40 +244,40 @@ CREATE TABLE `nota` (
 -- Volcado de datos para la tabla `nota`
 --
 
-INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `observaciones`) VALUES
-(40, 1, 2, 10.00, 10.00, 10.00, 10.00, NULL, NULL, 'Participante matriculado con exito'),
-(41, 1, 3, 10.00, 8.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
-(42, 1, 4, 7.00, 7.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
-(43, 1, 5, 9.50, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
-(44, 1, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(45, 1, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(46, 1, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(47, 1, 9, 10.00, 9.00, 9.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
-(48, 1, 7, 8.00, 8.00, 8.00, 8.00, 8.00, NULL, 'Participante matriculado con exito'),
-(49, 1, 6, 10.00, 8.00, 9.00, 9.80, NULL, NULL, 'Participante matriculado con exito'),
-(50, 2, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(51, 2, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(52, 2, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(53, 2, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(54, 2, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(55, 2, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(56, 2, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(57, 2, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(58, 2, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(59, 2, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(60, 3, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(61, 3, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(62, 3, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(63, 3, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(64, 3, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(65, 3, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(66, 3, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(67, 3, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(68, 3, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(69, 3, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(70, 3, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(71, 3, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(72, 3, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito');
+-- INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `observaciones`) VALUES
+-- (40, 1, 2, 10.00, 10.00, 10.00, 10.00, NULL, NULL, 'Participante matriculado con exito'),
+-- (41, 1, 3, 10.00, 8.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+-- (42, 1, 4, 7.00, 7.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+-- (43, 1, 5, 9.50, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+-- (44, 1, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (45, 1, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (46, 1, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (47, 1, 9, 10.00, 9.00, 9.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+-- (48, 1, 7, 8.00, 8.00, 8.00, 8.00, 8.00, NULL, 'Participante matriculado con exito'),
+-- (49, 1, 6, 10.00, 8.00, 9.00, 9.80, NULL, NULL, 'Participante matriculado con exito'),
+-- (50, 2, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (51, 2, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (52, 2, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (53, 2, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (54, 2, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (55, 2, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (56, 2, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (57, 2, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (58, 2, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (59, 2, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (60, 3, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (61, 3, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (62, 3, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (63, 3, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (64, 3, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (65, 3, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (66, 3, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (67, 3, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (68, 3, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (69, 3, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (70, 3, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (71, 3, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+-- (72, 3, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito');
 
 -- --------------------------------------------------------
 
@@ -332,46 +332,46 @@ CREATE TABLE `porcentajes_curso` (
 -- Volcado de datos para la tabla `porcentajes_curso`
 --
 
-INSERT INTO `porcentajes_curso` (`id_porcentajes_curso`, `id_curso`, `id_tipo_modulo`, `porcentaje`, `observacion`) VALUES
-(1, 1, 1, 15, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-(2, 1, 2, 45, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-(3, 1, 3, 40, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-(4, 2, 1, 15, 'Creado'),
-(5, 2, 2, 20, 'Creado'),
-(6, 2, 3, 40, 'Creado'),
-(7, 2, 4, 15, 'Creado'),
-(8, 2, 5, 10, 'Creado'),
-(9, 2, 6, 0, 'Creado'),
-(10, 4, 1, 15, 'Creado'),
-(11, 4, 2, 25, 'Creado'),
-(12, 4, 3, 40, 'Creado'),
-(13, 4, 4, 0, 'Creado'),
-(14, 4, 5, 20, 'Creado'),
-(15, 4, 6, 0, 'Creado'),
-(16, 5, 1, 20, 'Creado'),
-(17, 5, 2, 20, 'Creado'),
-(18, 5, 3, 40, 'Creado'),
-(19, 5, 4, 0, 'Creado'),
-(20, 5, 5, 20, 'Creado'),
-(21, 5, 6, 0, 'Creado'),
-(22, 3, 1, 15, 'Creado'),
-(23, 3, 2, 25, 'Creado'),
-(24, 3, 3, 40, 'Creado'),
-(25, 3, 4, 0, 'Creado'),
-(26, 3, 5, 20, 'Creado'),
-(27, 3, 6, 0, 'Creado'),
-(28, 6, 1, 0, 'Creado'),
-(29, 6, 2, 40, 'Creado'),
-(30, 6, 3, 40, 'Creado'),
-(31, 6, 4, 20, 'Creado'),
-(32, 6, 5, 0, 'Creado'),
-(33, 6, 6, 0, 'Creado'),
-(34, 7, 1, 0, 'Creado'),
-(35, 7, 2, 40, 'Creado'),
-(36, 7, 3, 40, 'Creado'),
-(37, 7, 4, 20, 'Creado'),
-(38, 7, 5, 0, 'Creado'),
-(39, 7, 6, 0, 'Creado');
+-- INSERT INTO `porcentajes_curso` (`id_porcentajes_curso`, `id_curso`, `id_tipo_modulo`, `porcentaje`, `observacion`) VALUES
+-- (1, 1, 1, 15, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+-- (2, 1, 2, 45, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+-- (3, 1, 3, 40, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+-- (4, 2, 1, 15, 'Creado'),
+-- (5, 2, 2, 20, 'Creado'),
+-- (6, 2, 3, 40, 'Creado'),
+-- (7, 2, 4, 15, 'Creado'),
+-- (8, 2, 5, 10, 'Creado'),
+-- (9, 2, 6, 0, 'Creado'),
+-- (10, 4, 1, 15, 'Creado'),
+-- (11, 4, 2, 25, 'Creado'),
+-- (12, 4, 3, 40, 'Creado'),
+-- (13, 4, 4, 0, 'Creado'),
+-- (14, 4, 5, 20, 'Creado'),
+-- (15, 4, 6, 0, 'Creado'),
+-- (16, 5, 1, 20, 'Creado'),
+-- (17, 5, 2, 20, 'Creado'),
+-- (18, 5, 3, 40, 'Creado'),
+-- (19, 5, 4, 0, 'Creado'),
+-- (20, 5, 5, 20, 'Creado'),
+-- (21, 5, 6, 0, 'Creado'),
+-- (22, 3, 1, 15, 'Creado'),
+-- (23, 3, 2, 25, 'Creado'),
+-- (24, 3, 3, 40, 'Creado'),
+-- (25, 3, 4, 0, 'Creado'),
+-- (26, 3, 5, 20, 'Creado'),
+-- (27, 3, 6, 0, 'Creado'),
+-- (28, 6, 1, 0, 'Creado'),
+-- (29, 6, 2, 40, 'Creado'),
+-- (30, 6, 3, 40, 'Creado'),
+-- (31, 6, 4, 20, 'Creado'),
+-- (32, 6, 5, 0, 'Creado'),
+-- (33, 6, 6, 0, 'Creado'),
+-- (34, 7, 1, 0, 'Creado'),
+-- (35, 7, 2, 40, 'Creado'),
+-- (36, 7, 3, 40, 'Creado'),
+-- (37, 7, 4, 20, 'Creado'),
+-- (38, 7, 5, 0, 'Creado'),
+-- (39, 7, 6, 0, 'Creado');
 
 -- --------------------------------------------------------
 
@@ -394,8 +394,7 @@ INSERT INTO `tipo_modulo` (`id_tipo_modulo`, `nombre`, `estado`) VALUES
 (2, 'ESPECIALIDAD', 1),
 (3, 'CERTIFICACIÓN', 1),
 (4, 'PASANTIA', 1),
-(5, 'HABILIDADES BLANDAS', 1),
-(6, 'PRACTICA LABORAL', 0);
+(5,'HABILIDADES BLANDAS',1);
 
 --
 -- Índices para tablas volcadas
@@ -482,59 +481,59 @@ ALTER TABLE `tipo_modulo`
 ALTER TABLE `curso`
   MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT de la tabla `docente`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `docente`
+-- --
 ALTER TABLE `docente`
   MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- AUTO_INCREMENT de la tabla `matricula`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `matricula`
+-- --
 ALTER TABLE `matricula`
-  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
---
--- AUTO_INCREMENT de la tabla `modulo`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `modulo`
+-- --
 ALTER TABLE `modulo`
   MODIFY `id_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
---
--- AUTO_INCREMENT de la tabla `modulos_curso`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `modulos_curso`
+-- --
 ALTER TABLE `modulos_curso`
-  MODIFY `id_modulos_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_modulos_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
---
--- AUTO_INCREMENT de la tabla `nivel_curso`
+-- --
+-- -- AUTO_INCREMENT de la tabla `nivel_curso`
 --
 ALTER TABLE `nivel_curso`
   MODIFY `id_nivel_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT de la tabla `nota`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `nota`
+-- --
 ALTER TABLE `nota`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
---
--- AUTO_INCREMENT de la tabla `participante`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `participante`
+-- --
 ALTER TABLE `participante`
   MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT de la tabla `porcentajes_curso`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `porcentajes_curso`
+-- --
 ALTER TABLE `porcentajes_curso`
-  MODIFY `id_porcentajes_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_porcentajes_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
---
--- AUTO_INCREMENT de la tabla `tipo_modulo`
---
+-- --
+-- -- AUTO_INCREMENT de la tabla `tipo_modulo`
+-- --
 ALTER TABLE `tipo_modulo`
-  MODIFY `id_tipo_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_tipo_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- Restricciones para tablas volcadas
@@ -553,11 +552,6 @@ ALTER TABLE `matricula`
   ADD CONSTRAINT `fk_id_curso2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_id_estudiante2` FOREIGN KEY (`id_participante`) REFERENCES `participante` (`id_participante`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `modulo`
---
-ALTER TABLE `modulo`
-  ADD CONSTRAINT `fk_tipo_modulo` FOREIGN KEY (`tipo_modulo`) REFERENCES `tipo_modulo` (`id_tipo_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `modulos_curso`
@@ -580,6 +574,15 @@ ALTER TABLE `nota`
 ALTER TABLE `porcentajes_curso`
   ADD CONSTRAINT `fk_curso_porcentajes` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tipo_porcentaje` FOREIGN KEY (`id_tipo_modulo`) REFERENCES `tipo_modulo` (`id_tipo_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+--
+-- Filtros para la tabla `modulo`
+--
+ALTER TABLE `modulo`
+  ADD CONSTRAINT `fk_tipo_modulo` FOREIGN KEY (`tipo_modulo`) REFERENCES `tipo_modulo` (`id_tipo_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -56,7 +56,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th colspan="3">Acciones
                             <a href="#" 
                                 title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
-                                data-content="Sirven para modificar informacion de un curso o darlo de baja">
+                                data-content="Sirven para modificar informacion de un curso, darlo de baja o promover este curso a un nuevo nivel">
                             <i class="fa fa-fw fa-question-circle pop-help"></i>
                             </a>
                         </th>
@@ -92,12 +92,12 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='shrink'><button type='button' data-nivel="<?php echo $cursos->nivel;?>"
                                 class='btn btn-warning btn_editar_curso' 
                                 data-toggle='modal' data-target='#agregarCurso'><span class='fa fa-edit'></span> Editar</button></td>
-                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('curso/updateDown/<?php echo $cursos->id_curso ?>', <?php echo $cursos->id_curso ?>)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span>Dar baja</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('curso/updateDown/<?php echo $cursos->id_curso ?>', <?php echo $cursos->id_curso ?>)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
                                 
                                 <?php  if ($cursos->nivel < 3) {  ?>
                                     
                                         <td class="shrink"><button type="button" class="btn btn-info btn_promover_curso ivkprmcurso" data-toggle="modal" data-target="#promoverCurso" >
-                                        <span class='fa fa-line-chart bigfonts'></span>Promover</button></td>
+                                        <span class='fa fa-line-chart bigfonts'></span> Promover</button></td>
 
                                 <?php } else{ ?>
 
@@ -215,10 +215,10 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal footer -->
         <div class="modal-footer">
-                <input type="submit"  class="btn btn-success" value="Guardar" name="guardar_participante">
+                <input type="submit"  class="btn btn-success btn-block mt-2" value="Guardar" name="guardar_participante">
                 <!-- <input type="button"  class="btn btn-warning" value="Actualizar" name="actualizar_participante" > -->
             </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cancelar</button>
         </div>
         
       </div>
@@ -242,7 +242,7 @@ require_once RUTA_APP . '/views/include/header.php';
         <div class="modal-body">
                     <form  id="prmcurso" method="POST" action="<?php echo RUTA_URL ?>/curso/" data-parsley-validate novalidate >
                         
-                        <input type="number" class="form-control secret" name="prmcid" id="prmcid" disabled >
+                        <input type="number" class="form-control secret" name="prmcid" id="prmcid" readonly >
 
                         <label for="prmduracion" class="mrg-spr-ex">Duracion del curso:</label>
                         <input type="text" name="prmduracion" id="prmduracion" placeholder="Escribe la duracion Ej. 12 semanas" 
@@ -262,10 +262,10 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal footer -->
         <div class="modal-footer">
-                <input type="submit"  class="btn btn-success" value="Promover" name="guardar_promover_curso">
+                <input type="submit"  class="btn btn-success btn-block mt-2" value="Promover" name="guardar_promover_curso">
                 <!-- <input type="button"  class="btn btn-warning" value="Actualizar" name="actualizar_participante" > -->
             </form>
-            <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelprmcurso">Cancelar</button>
+            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal" id="cancelprmcurso">Cancelar</button>
         </div>
         
       </div>

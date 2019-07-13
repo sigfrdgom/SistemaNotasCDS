@@ -47,11 +47,11 @@ class ModulosCurso extends Controller
                 for ($x=0; $x < $limit; $x++) 
                 { 
                     // Para comprobar si existe ya una tupla con la informacion, si no existe la insertamos, de lo contrario la pasamos de largo
-                    $bandera=$this->comprobar(trim($_POST['mcid_curso']),trim($modulo[$x]),);
+                    $bandera=$this->comprobar(trim($_POST['mcidcurso']),trim($modulo[$x]));
                     if ($bandera) {
                         $datos = [
                             'id_modulos_curso' => null,
-                            'id_curso' => trim($_POST['mcid_curso']),
+                            'id_curso' => trim($_POST['mcidcurso']),
                             'id_modulo' => trim($modulo[$x]),
                             'id_docente' => trim($docente[$x]),
                             'observaciones' => trim($_POST['mcobservaciones'])
@@ -66,7 +66,7 @@ class ModulosCurso extends Controller
                         echo "Error al insertar el modulo al curso, ya existen";
                     }  
                 }
-            redireccionar("modulosCurso/curso/".$_POST['mcid_curso']);
+            redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
        }
     }
 
@@ -76,7 +76,7 @@ class ModulosCurso extends Controller
         {
            $datos = [
                'id_modulos_curso' => null,
-               'id_curso' => trim($_POST['mcid_curso']),
+               'id_curso' => trim($_POST['mcidcurso']),
                'id_modulo' => trim($_POST['mcid_modulo']),
                'id_docente' => trim($_POST['mcid_docente']),
                'observaciones' => trim($_POST['mcobservaciones'])
@@ -85,7 +85,7 @@ class ModulosCurso extends Controller
             
             if($this->modulosCursoModel->create($datos))
             {
-                redireccionar("modulosCurso/curso/".$_POST['mcid_curso']);
+                redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
             }
             else
             {
@@ -100,7 +100,7 @@ class ModulosCurso extends Controller
         {
             $datos = [
                 'id_modulos_curso' => trim($_POST['idmc']),
-                'id_curso' => trim($_POST['mcid_curso']),
+                'id_curso' => trim($_POST['mcidcurso']),
                 'id_modulo' => trim($_POST['mcid_modulo']),
                 'id_docente' => trim($_POST['mcid_docente']),
                 'observaciones' => trim($_POST['mcobservaciones'])

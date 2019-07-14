@@ -62,6 +62,8 @@ class RankingNotas extends Controller
     public function seleccion()
     {
         $datos = [
+            'id_curso' => trim($_POST['id_curso']),
+            'nivel' => trim($_POST['nivel']),
             'titulo' => "Seleccion",
         ];
         $this->view('pages/ranking/seleccion', $datos);
@@ -69,9 +71,14 @@ class RankingNotas extends Controller
 
     public function rankingTop()
     {
-        $tipoModulos = $this->tipoModuloModel->tipoModulosByCurso(1);
-        $participantes = $this->participanteModel->participanteCursoNivel(1, 1);
-        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop(1, 1);
+        $datos = [
+            'id_curso' => trim($_POST['id_curso']),
+            'nivel' => trim($_POST['nivel'])
+        ];
+
+        $tipoModulos = $this->tipoModuloModel->tipoModulosByCurso($datos['id_curso']);
+        $participantes = $this->participanteModel->participanteCursoNivel($datos['id_curso'], $datos['nivel']);
+        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($datos['id_curso'], $datos['nivel']);
 
         $suma = 0;
         $contProm = 0;
@@ -81,53 +88,55 @@ class RankingNotas extends Controller
         $porcentaje = 0;
         $listaParticipante = array();
         $estudiantes = array();
-        foreach ($participantes as $participantes) {
-            array_push($estudiantes, $participantes->nombres . " " . $participantes->apellidos);
-            foreach ($tipoModulos as $tipoModulo) {
-                foreach ($notas as $nota) {
-                    if ($tipoModulo->tipo_modulo == $nota->id_tipo_modulo &&
-                        $participantes->id_participante == $nota->id_participante) {
-                        $contProm++;
-                        $suma += $this->promedioModulo($nota);
-                        $porcentaje = $nota->porcentaje;
+        if(sizeof($participantes)>0) {
+            foreach ($participantes as $participantes) {
+                array_push($estudiantes, $participantes->nombres . " " . $participantes->apellidos);
+                foreach ($tipoModulos as $tipoModulo) {
+                    foreach ($notas as $nota) {
+                        if ($tipoModulo->tipo_modulo == $nota->id_tipo_modulo &&
+                            $participantes->id_participante == $nota->id_participante) {
+                            $contProm++;
+                            $suma += $this->promedioModulo($nota);
+                            $porcentaje = $nota->porcentaje;
+                        }
+                    }
+                    if ($contProm == 0) {
+                        $contProm = 1;
+                    }
+                    $suma = round($suma / $contProm, 2);
+                    array_push($promedios, $suma);
+
+                    $total += $suma * ($porcentaje / 100);
+                    $contProm = 0;
+                    $suma = 0;
+                    $porcentaje = 0;
+                }
+                array_push($totalProm, round($total, 2));
+                $total = 0;
+            }
+            $promedios = array_chunk($promedios, sizeof($tipoModulos));
+
+
+            while (sizeof($totalProm) != 0) {
+                $mayor = 0;
+                $clave = 0;
+                foreach ($totalProm as $key => $valor) {
+                    if ($valor > $mayor) {
+                        $mayor = $valor;
+                        $clave = $key;
                     }
                 }
-                if ($contProm == 0) {
-                    $contProm = 1;
-                }
-                $suma = round($suma / $contProm, 2);
-                array_push($promedios, $suma);
-
-                $total += $suma * ($porcentaje / 100);
-                $contProm = 0;
-                $suma = 0;
-                $porcentaje = 0;
+                $arreglo = [
+                    'participante' => $estudiantes[$clave],
+                    'tipoModulo' => $promedios[$clave],
+                    'promedio' => $totalProm[$clave]
+                ];
+                array_push($listaParticipante, $arreglo);
+                unset($estudiantes[$clave]);
+                unset($promedios[$clave]);
+                unset($totalProm[$clave]);
+                unset($arreglo);
             }
-            array_push($totalProm, round($total, 2));
-            $total = 0;
-        }
-        $promedios = array_chunk($promedios, sizeof($tipoModulos));
-
-
-        while (sizeof($totalProm)!=0) {
-            $mayor = 0;
-            $clave = 0;
-            foreach ($totalProm as $key => $valor) {
-                if ($valor > $mayor) {
-                    $mayor = $valor;
-                    $clave = $key;
-                }
-            }
-            $arreglo =[
-                'participante' => $estudiantes[$clave],
-                'tipoModulo' => $promedios[$clave],
-                'promedio' => $totalProm[$clave]
-            ];
-            array_push($listaParticipante, $arreglo);
-            unset($estudiantes[$clave]);
-            unset($promedios[$clave]);
-            unset($totalProm[$clave]);
-            unset($arreglo);
         }
         unset($participantes);
         unset($notas);

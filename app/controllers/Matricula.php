@@ -48,7 +48,7 @@ class Matricula extends Controller
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
-            'titulo' => "Niveles",
+            'titulo' => "Niveles ".$curso[0]->cohorte,
             'descripcion' => $descripcion,
             'curso' => $curso 
         ];

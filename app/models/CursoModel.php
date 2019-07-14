@@ -130,6 +130,14 @@ class CursoModel{
         return $this->db->findOne();
     }
 
+    public function findByCriteria($datos){
+        $this->db->query("SELECT n.id_nota, n.id_participante, n.id_modulos_curso, n.nota1, n.nota2, n.nota3, n.nota4, n.nota4, n.nota5, n.nota6, n.observaciones, p.nombres, p.apellidos, mc.id_curso, mc.id_modulo, mc.id_docente, mo.evaluacion1, mo.evaluacion2, mo.evaluacion3, mo.evaluacion4, mo.evaluacion5, mo.evaluacion6 FROM participante p INNER JOIN nota n ON p.id_participante = n.id_participante INNER JOIN modulos_curso mc ON n.id_modulos_curso= mc.id_modulos_curso INNER JOIN curso c ON mc.id_curso = c.id_curso INNER JOIN modulo mo ON mc.id_modulo=mo.id_modulo WHERE mc.id_curso=:id_curso AND mc.id_modulo=:id_modulo AND (p.nombres LIKE :nombres OR p.apellidos LIKE :apellidos) AND c.estado=1 AND mo.estado=1");
+        $this->db->bind(':id_curso',$datos['id_curso']);
+        $busqueda = "%{".$datos['busqueda']."}%";
+        $this->db->bind(':cohorte', $busqueda, PDO::PARAM_STR);
+        $this->db->bind(':sede', $busqueda, PDO::PARAM_STR);
+        return $this->db->findAll();
+    }
 
     
 }

@@ -239,7 +239,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         
                         <div class="col my-3 mx-2" >
                             <div class="card" >
-                                <div class="card-img-top text-center align-middle mt-3" style="width: 10em">
+                                <div class="card-img-top text-center align-middle mt-3" >
 
                                     <i class="fab fa-git mr-5" aria-hidden="true" style="font-size: 5em; color: #002e6c;"></i><br>
                                     <i class="fab fa-github-square ml-5" aria-hidden="true" style="font-size: 5em; color: #b90b2e"></i>

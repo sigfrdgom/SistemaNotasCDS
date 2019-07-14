@@ -25,7 +25,7 @@ class Curso extends Controller
             'nivelCurso' => $nivelCurso,
             'obtenerNivel' => $obtenerNivel
         ];
-        $this->view('pages/curso', $datos);
+        $this->view('pages/curso/curso', $datos);
     }
 
     public function create()
@@ -47,7 +47,7 @@ class Curso extends Controller
            var_dump($datos);
            if($this->cursoModel->create($datos))
            {
-               redireccionar('curso');
+               redireccionar('curso/curso');
 
            }
            else
@@ -63,7 +63,7 @@ class Curso extends Controller
         {
             if($this->cursoModel->delete($id))
             {
-                redireccionar('curso');
+                redireccionar('curso/curso');
             }
             else
             {
@@ -103,7 +103,7 @@ class Curso extends Controller
        var_dump($datos);
        if($this->cursoModel->update($datos))
        {
-           redireccionar('curso');
+           redireccionar('curso/curso');
 
        }
        else
@@ -119,7 +119,7 @@ class Curso extends Controller
         {
             if($this->cursoModel->updateDown($id))
             {
-                redireccionar('curso');
+                redireccionar('curso/curso');
             }
             else
             {
@@ -169,7 +169,7 @@ class Curso extends Controller
                         var_dump($datos);
                             if($this->cursoModel->create($datos))
                             {
-                                redireccionar('curso');
+                                redireccionar('curso/curso');
                             }
                             else
                             {
@@ -198,5 +198,25 @@ class Curso extends Controller
             }
     }
 
+    public function buscarCursos(){
+        $id_curso = $_POST['id_curso'];
+        $busqueda = $_POST['busqueda'];
+
+        $datos = [
+            'id_curso' => trim($id_curso),
+            'busqueda' => trim($busqueda)
+        ];
+
+        if($busqueda == null || $busqueda== ""){
+            $notas = $this->cursoModel->findById($datos);
+        }else{
+            $notas = $this->cursoModel->findByCriteria($datos);
+        }
+
+        $datos = [
+            'cursos' => $notas,
+        ];
+        $this->view('pages/curso/buscarCurso', $datos);
+    }
 
 }

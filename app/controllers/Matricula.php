@@ -86,7 +86,7 @@ class Matricula extends Controller
                         die("Error al insertar los datos");
                     }
            }else{
-                echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese cruso');</script>";
+                echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese curso');</script>";
                 //redireccionar('matricula');
            }
            
@@ -265,7 +265,9 @@ public function crearNotas($curso, $participante)
                         die("Error al insertar los datos");
                     }
             }
-            redireccionar("notas/modulos/$curso");
+            // redireccionar("notas/modulos/$curso");
+            redireccionar("matricula/curso/$curso");
+            
         } 
         else 
         {

@@ -23,17 +23,12 @@ require_once RUTA_APP . '/views/include/header.php';
             
            
             <!-- Presentacion sistema -->
-            <div>
-                
-                <!-- <div class="text-center breadcrumb-holder">
-                        <h3>Razon de ser</h3>
-                </div> -->
-                
+            <div>    
                 <div class="container-fluid align-middle">
                 
                     <div class="row mx-0 ">
                         
-                        <div class="col my-3 mx-3">
+                        <div class="col my-3 mx-0">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3" >
 
@@ -45,15 +40,17 @@ require_once RUTA_APP . '/views/include/header.php';
                                     <div class="card-body text-justify mx-3">
                                         <p class="card-text">
                                             <b>Razon de ser del proyecto</b><br> <br>
-                                            Some quick example text to build on the card title and make up the bulk of the card's content.
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi, officiis dicta accusantium voluptatum incidunt asperiores consectetur officia. Nam, mollitia cumque? Maxime, animi quasi? Illo beatae esse facere minima a ab.
+                                            El proyecto surge con la necesita de solventar el inconveniente modo de manejar las notas para el personal del Proyecto de USAID, Puentes para el Empleo, Centro de Desarrollo de Software y Fundación Gloria de Kriete sede de Santa Ana, de los participantes de los cursos que imparten y facilitar en la medida de lo posible la gestión de notas y reportes dentro de dicho proyecto.
                                             <br><br><b>Objetivos</b><br>
                                             <ul>
-                                                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, laborum nobis, provident impedit facilis aliquid tenetur sit temporibus quia accusantium molestias error repellat ducimus minima fugiat? Rem nisi quas nam.</li>
-                                                <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione nobis labore deserunt asperiores quasi, nesciunt cupiditate dolore sed autem blanditiis, quo atque debitis pariatur nulla dicta enim illum iure omnis?</li>
-                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ex omnis iste. Incidunt explicabo ab dolores labore iure voluptatum voluptas ducimus itaque libero exercitationem. A et est quasi magni maxime.</li>
+                                                <li>
+                                                    Crear un sistema de notas que integre diferentes funcionalidades para que sea un sistema integral capaz de gestionar las notas de todos los participantes del proyecto CDS.
+                                                </li>
+                                                <li>
+                                                    Implementar en el sistema de notas, al funcionabilidad necesaria para el correcto funcionamiento de este y que pueda proveer de información que facilite la obtencion de reportes de desempeño, manteniendo la eficiencia, seguridad y la mayor usabilidad posible.
+                                                </li>
                                             </ul>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ut veniam quaerat maiores, molestiae sit incidunt quasi fugiat, dolorum sed aspernatur earum placeat dolores soluta! Inventore deleniti quidem totam at.
+                                            Todo lo anterior desarrollado y montado en un entorno web para que pueda ser accedido desde cualquier dispositivo con acceso a internet o intranet(Celular, Tablet, Computadora) y llegar a implementarse en más sedes aparte de Santa Ana, que es la sede donde se realiza el desarrollo de este proyecto.
                                         </p>
                                     </div>
                             </div>
@@ -68,8 +65,11 @@ require_once RUTA_APP . '/views/include/header.php';
                 
             </div>
 
+            
 
-            <!-- Equipo desarrollo -->
+            
+
+            <!-- Equipo de desarrollo -->
             <div>
                 
                 <div class="text-center breadcrumb-holder mt-3 pb-2 border-dark border">
@@ -77,58 +77,82 @@ require_once RUTA_APP . '/views/include/header.php';
                 </div>
                 
                 <div class="container-fluid align-middle">
-                
-                    <div class="row mx-0 ">
+                <div class="row mx-0" >
+
+                    <!-- Card Carlos -->
+                    <div class="col mx-3 my-3" style="height: 25em" >
+                        <div class="card">
                         
-                        <div class="col my-3 mx-3">
-                            <div class="card">
-                                <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 10em"></i>
+                            <div class="card-img-top text-center mt-2">
+                                <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                            </div>
+                            <div  class="text-center mt-2 text-white" style="background: black">
+                                <h4 class="mt-2">Carlos Martinez</h4>
+                            </div>
+                            <div class="card-body text-justify">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <div class="align-bottom">
+                                <div class="bg-info text-center" style="font-size: 2em;">
+                                <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
+                                <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
+                                <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
                                 </div>
-                                    <div  class="text-center mt-2 text-white" style="background: black">
-                                        <h4 class="mt-2">Carlos Martinez</h4>
-                                    </div>
-                                    <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
                             </div>
                         </div>
-
-                        <div class="col my-3 mx-3">
-                            <div class="card" >
-                                <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 10em"></i>
-                                </div>
-                                    <div  class="text-center mt-2 text-white" style="background: black">
-                                        <h4 class="mt-2">Kevin Martinez</h4>
-                                    </div>
-                                    <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="col my-3 mx-3">
-                            <div class="card" >
-                                <div class="card-img-top text-center mt-3">
-                                    <i class="fa fa-user-circle" aria-hidden="true" style="font-size: 10em"></i>
-                                </div>
-                                    <div class="text-center mt-2 text-white" style="background: black">
-                                        <h4 class="mt-2">Sigfrido Gómez</h4>
-                                    </div>
-                                    <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                            </div>
-                        </div>
-
-
                     </div>
-                </div>
 
+                    <!-- Card Kevin -->
+                    <div class="col mx-3 my-3" style="height: 25em" >
+                        <div class="card">
+                        
+                            <div class="card-img-top text-center mt-2">
+                                <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                            </div>
+                            <div  class="text-center mt-2 text-white" style="background: black">
+                                <h4 class="mt-2">Kevin Martinez</h4>
+                            </div>
+                            <div class="card-body text-justify">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <div class="align-bottom">
+                                <div class="bg-info text-center" style="font-size: 2em;">
+                                <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
+                                <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
+                                <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Sigfrido Gómez -->
+                    <div class="col mx-3 my-3" style="height: 25em" >
+                        <div class="card">
+                        
+                            <div class="card-img-top text-center mt-2">
+                                <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                            </div>
+                            <div  class="text-center mt-2 text-white" style="background: black">
+                                <h4 class="mt-2">Sigfrido Gómez </h4>
+                            </div>
+                            <div class="card-body text-justify">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <div class="align-bottom">
+                                <div class="bg-info text-center" style="font-size: 2em;">
+                                <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
+                                <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
+                                <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 
+                
+                </div>
             </div>
 
+                
             <!-- plataformas -->
             <div>
                 
@@ -213,10 +237,11 @@ require_once RUTA_APP . '/views/include/header.php';
                 
                     <div class="row">
                         
-                        <div class="col my-3 mx-2">
-                            <div class="card">
-                                <div class="card-img-top text-center mt-3">
-                                    <i class="fab fa-git mr-5" aria-hidden="true" style="font-size: 5em; color: #002e6c"></i><br>
+                        <div class="col my-3 mx-2" >
+                            <div class="card" >
+                                <div class="card-img-top text-center align-middle mt-3" style="width: 10em">
+
+                                    <i class="fab fa-git mr-5" aria-hidden="true" style="font-size: 5em; color: #002e6c;"></i><br>
                                     <i class="fab fa-github-square ml-5" aria-hidden="true" style="font-size: 5em; color: #b90b2e"></i>
                                     
                                 </div>
@@ -230,12 +255,11 @@ require_once RUTA_APP . '/views/include/header.php';
                         </div>
 
                         <div class="col my-3 mx-2">
-                            <div class="card">
-                                <div class="card-img-top text-center mt-3">
-                                    
-                                    <i class="fab fa-html5"  aria-hidden="true" style="font-size: 5em; color: #b90b2e"></i> <br>
-                                    <i class="fab fa-js"  aria-hidden="true" style="font-size: 5em; color: #f29800" ></i>
-                                    <i class="fab fa-css3-alt"  aria-hidden="true" style="font-size: 5em; color: #002e6c"></i>
+                            <div class="card" >
+                                <div class="card-img-top text-center mt-3" >
+                                    <i class="fab fa-html5 mx-2"  aria-hidden="true" style="font-size: 5em; color: #b90b2e"></i>
+                                    <i class="fab fa-css3-alt mx-2"  aria-hidden="true" style="font-size: 5em; color: #002e6c"></i><br>
+                                    <i class="fab fa-js mx-2"  aria-hidden="true" style="font-size: 5em; color: #f29800" ></i>
                                 </div>
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h4 class="mt-2">Stack Web</h4>
@@ -368,7 +392,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                     <i class="fa fa-share-alt" aria-hidden="true" style="font-size: 7em;color: #b90b2e"></i>
                                 </div>
                                     <div class="text-center mt-2" style="background: #cad3e0">
-                                        <h6 class="mt-2 " style="font-weight: bolder">API REST</h6>
+                                        <h6 class="mt-2 " style="font-weight: bolder">API REST READY</h6>
                                     </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -442,7 +466,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                     <i class="fa fa-unlock" aria-hidden="true" style="font-size: 7em; color: #f29800"></i>
                                 </div>
                                     <div class="text-center mt-2" style="background: #cad3e0">
-                                        <h6 class="mt-2 " style="font-weight: bolder">Seguridad incluida</h6>
+                                        <h6 class="mt-2 " style="font-weight: bolder">Seguridad</h6>
                                     </div>
                                     <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

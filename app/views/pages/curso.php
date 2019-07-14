@@ -35,9 +35,29 @@ require_once RUTA_APP . '/views/include/header.php';
     </div>
     <!-- end row -->
 
-    <div class="row">
+    
 
+    <div class="row">
+    
         <div class="card card-body">
+            <!-- Para busquedas -->
+            <div class="mb-2">
+                <?php if (!empty($datos['curso'])) { ?>
+                    <div class="col-xl-12">
+                                
+                        <div class="input-group mb-1 float-right col-sm-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda"
+                                    data-id-curso="<?php echo $datos['id_curso'] ?>"
+                                    aria-label="Busqueda"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-hover display text-center">
                     <thead>

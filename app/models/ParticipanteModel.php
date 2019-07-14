@@ -114,5 +114,12 @@ class ParticipanteModel{
         return $this->db->findAll();
     }
 
+    public function participanteCursoNivel($id_curso, $nivel){
+        $this->db->query('SELECT DISTINCT (p.id_participante), p.nombres, p.apellidos FROM participante p INNER JOIN nota n ON p.id_participante = n.id_participante INNER JOIN modulos_curso mc ON n.id_modulos_curso= mc.id_modulos_curso INNER JOIN curso c ON mc.id_curso = c.id_curso INNER JOIN modulo mo ON mc.id_modulo=mo.id_modulo INNER JOIN matricula ma ON ma.id_curso=c.id_curso AND ma.id_participante=p.id_participante INNER JOIN porcentajes_curso pc ON c.id_curso=pc.id_curso INNER JOIN tipo_modulo tm ON pc.id_tipo_modulo=tm.id_tipo_modulo AND mo.tipo_modulo=tm.id_tipo_modulo WHERE mc.id_curso=:id_curso AND c.nivel=:nivel;');
+        $this->db->bind(':id_curso', $id_curso);
+        $this->db->bind(':nivel', $nivel);
+        return $this->db->findAll();
+    }
+
 }
 ?>

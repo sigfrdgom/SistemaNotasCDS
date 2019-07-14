@@ -62,5 +62,16 @@ class TipoModuloModel{
         $this->db->query("SELECT * FROM tipo_modulo WHERE estado=1;");
         return $this->db->findAll();
     }
+
+    public function findAllActivos(){
+        $this->db->query("SELECT * FROM tipo_modulo WHERE estado=1;");
+        return $this->db->findAll();
+    }
+
+    public function tipoModulosByCurso($id_curso){
+        $this->db->query("SELECT DISTINCT(mo.tipo_modulo), tm.nombre, tm.estado, pc.porcentaje FROM modulos_curso mc INNER JOIN modulo mo ON mo.id_modulo=mc.id_modulo INNER JOIN tipo_modulo tm ON tm.id_tipo_modulo=mo.tipo_modulo INNER JOIN porcentajes_curso pc ON pc.id_tipo_modulo=tm.id_tipo_modulo AND pc.id_curso=mc.id_curso  WHERE mc.id_curso=:id_curso AND tm.estado=1");
+        $this->db->bind(':id_curso',$id_curso);
+        return $this->db->findAll();
+    }
 }
 ?>

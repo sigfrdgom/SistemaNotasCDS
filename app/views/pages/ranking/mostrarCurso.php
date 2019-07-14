@@ -22,8 +22,8 @@ require_once RUTA_APP . '/views/include/header.php';
                 </div>
             </div>
             <!-- end row -->
-            <div class="card-deck">
 
+            <div class="card-deck" style="margin: 0 auto" >
                 <?php
                 if (empty($datos['cursos'])) {
                     ?>
@@ -32,15 +32,9 @@ require_once RUTA_APP . '/views/include/header.php';
                     </div>
                     <?php
                 } else {
-                $c = 0;
                 foreach ($datos['cursos'] as $cursos) {
-                if ($c % 5 == 0 && $c != 0) {
                 ?>
-            </div>
-            <br/>
-            <div class="card-columns">
-                <?php } ?>
-                <div class="card p-2" style="width: 16rem;">
+                <div class="card p-2 card-mostrar" >
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
                         <p class="card-text"><?php echo $cursos->nombre_curso ?></p>
@@ -51,16 +45,13 @@ require_once RUTA_APP . '/views/include/header.php';
                         <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>
                     </div>
                 </div>
-
                 <?php
-                $c++;
                 }
                 } ?>
             </div>
-            <br/>
-
-
         </div>
 
-    </div>
-
+<?php
+/*Importacion de Footer de la aplicacion */
+require_once RUTA_APP . '/views/include/footer.php';
+?>

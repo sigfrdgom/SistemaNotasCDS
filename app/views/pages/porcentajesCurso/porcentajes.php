@@ -32,7 +32,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <select name="select_id_curso" id="select_id_curso" class="form-control">
                                     <?php foreach ($datos['cursoSinPorcentaje'] AS $item){?>
                                         <?php if($item->nombre_curso){ ?>
-                                            <option value="<?php echo $item->id_curso ?>"><?php echo $item->nombre_curso ?></option>
+                                            <option value="<?php echo $item->id_curso ?>"><?php echo $item->nombre_curso.", NIVEL ".$item->nivel ?></option>
                                         <?php } else{?>
                                             <option value="" disabled ><?php echo "No existen cursos disponibles"?></option>
                                     <?php }

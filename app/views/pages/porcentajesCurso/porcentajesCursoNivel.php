@@ -45,8 +45,8 @@ require_once RUTA_APP . '/views/include/header.php';
                         <!-- El card -->
                         <div class="card p-2" style="width: 16rem;">
                             <div class="card-body" >
-                                <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
-                                <p class="card-text"><?php echo "<b> $cursos->nombre_curso </b> Nivel $cursos->nivel" ?> </p>
+                                <h5 class="card-title"><?php echo "Nivel $cursos->nivel" ?></h5>
+                                <p class="card-text"><?php echo "<b>Curso:  </b> Nivel $cursos->nombre_curso" ?> </p>
                                     <a href="<?php echo constant('RUTA_URL') ?>/porcentajeCurso/curso/<?php echo $cursos->id_curso ?>"
                                     class="btn btn-primary btn-block"  >Ver modulos</a>
                             </div>

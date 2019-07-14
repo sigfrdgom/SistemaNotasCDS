@@ -108,7 +108,7 @@ class ModulosCurso extends Controller
            
             if($this->modulosCursoModel->update($datos))
             {
-                redireccionar('modulosCurso/modulosCurso');
+                redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
             }
             else
             {
@@ -123,7 +123,7 @@ class ModulosCurso extends Controller
         {
             if($this->modulosCursoModel->delete($id))
             {
-                redireccionar('modulosCurso/modulosCurso');
+                redireccionar("modulosCurso/curso/$id");
             }
             else
             {
@@ -142,7 +142,7 @@ class ModulosCurso extends Controller
          {
             if($this->moduloModel->updateDown($id))
             {
-                redireccionar('modulosCurso/modulosCurso');
+                redireccionar("modulosCurso/curso/$id");
             }
             else
             {
@@ -175,7 +175,7 @@ class ModulosCurso extends Controller
         $modulosCurso = $this->modulosCursoModel->findByNivel($id_curso);
         $tipoModulo = $this->tipoModuloModel->findAll();
         
-        $descripcion = "Vista que muestra todos las modulos pertenecientes a un curso";
+        $descripcion = "Vista que muestra todos los modulos pertenecientes a un curso";
         $datos = [
             'titulo' => "Modulos del curso $curso->nombre_curso, Nivel $curso->nivel ",
             'descripcion' => $descripcion,

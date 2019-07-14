@@ -14,7 +14,7 @@ class Participante extends Controller
             'descripcion' => $descripcion,
             'participante' => $participante
         ];
-        $this->view('pages/participante', $datos);
+        $this->view('pages/participante/participante', $datos);
     }
 
     public function create(){
@@ -38,7 +38,7 @@ class Participante extends Controller
             ];
             var_dump($datos);
             if($this->participanteModel->create($datos)){
-                redireccionar('participante');
+                redireccionar('participante/participante');
 
             }else{
                 die("Error al insertar los datos");
@@ -72,7 +72,7 @@ class Participante extends Controller
            ];
            var_dump($datos);
            if($this->participanteModel->update($datos)){
-               redireccionar('participante');
+               redireccionar('participante/participante');
 
            }else{
                die("Error al actualizar los datos");
@@ -88,7 +88,7 @@ class Participante extends Controller
     public function delete($id){
         if (isset($id)){
             if($this->participanteModel->delete($id)){
-                redireccionar('participante');
+                redireccionar('participante/participante');
             }else{
                 die("Error al eliminar los datos");
             }
@@ -104,7 +104,7 @@ class Participante extends Controller
         {
             if($this->participanteModel->updateDown($id))
             {
-                redireccionar('participante');
+                redireccionar('participante/participante');
             }
             else
             {

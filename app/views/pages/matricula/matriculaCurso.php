@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarMatricula" id="ivkmatricula">
+                    <button type="button" class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarMatricula" id="ivkmatricula">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nueva matricula
                     </button>
                 <ol class="breadcrumb float-right">
@@ -33,6 +33,23 @@ require_once RUTA_APP . '/views/include/header.php';
     <div class="row">
 
         <div class="card card-body">
+            <!-- Para busqueda -->
+            <div class="mb-2">
+                <?php if (!empty($datos['matricula'])) { ?>
+                    <div class="col-xl-12">
+                                
+                        <div class="input-group mb-1 float-right col-sm-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda"
+                                    data-id-curso="<?php echo $datos['id_matricula'] ?>"
+                                    aria-label="Busqueda"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover display">
                     <thead>

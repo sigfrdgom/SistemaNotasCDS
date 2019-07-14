@@ -13,7 +13,7 @@ class Docente extends Controller
             'descripcion' => $descripcion,
             'docente' => $docente
         ];
-        $this->view('pages/docente', $datos);
+        $this->view('pages/docente/docente', $datos);
     }
 
     public function create()
@@ -36,7 +36,7 @@ class Docente extends Controller
            var_dump($datos);
            if($this->docenteModel->create($datos))
            {
-               redireccionar('docente');
+               redireccionar('docente/docente');
 
            }
            else
@@ -66,7 +66,7 @@ class Docente extends Controller
         //   var_dump($datos);
           if($this->docenteModel->update($datos))
           {
-               redireccionar('docente');
+               redireccionar('docente/docente');
 
           }
           else
@@ -82,7 +82,7 @@ class Docente extends Controller
         {
             if($this->docenteModel->delete($id))
             {
-                redireccionar('docente');
+                redireccionar('docente/docente');
             }
             else
             {
@@ -101,7 +101,7 @@ class Docente extends Controller
         {
             if($this->docenteModel->updateDown($id))
             {
-                redireccionar('docente');
+                redireccionar('docente/docente');
             }
             else
             {

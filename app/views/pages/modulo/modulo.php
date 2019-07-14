@@ -15,8 +15,6 @@ require_once RUTA_APP . '/views/include/header.php';
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
                             <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
-                            <li class="breadcrumb-item active">Cohortes</li>
-                            
                         </ol>
                         
                         <div class="clearfix">
@@ -46,7 +44,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <div class="card p-2" style="width: 16rem;">
                             <div class="card-body" >
                                 <h5 class="card-title">Tipo modulo</h5>
-                                <p class="card-text"><?php echo "<b> $tipo->nombre</b> " ?> </p>
+                                <p class="card-text"><?php echo "$tipo->nombre" ?> </p>
                                     <a href="<?php echo constant('RUTA_URL')."/modulo/detalle/".$tipo->id_tipo_modulo ?>"
                                     class="btn btn-primary btn-block">Ver modulos</a>
                             </div>

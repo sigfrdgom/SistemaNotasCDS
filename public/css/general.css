@@ -5,9 +5,6 @@ th{
 td-center{
     text-align: center;
 }
-.text-centrado{
-    text-align: mid;
-}
 .centrado{
     display:block;
     margin-left: auto;
@@ -27,3 +24,14 @@ td-center{
     text-align: center;
 }
 
+.card-mostrar{
+    max-width: 16rem;
+    min-width: 16rem;
+    margin-top: 10px;
+}
+@media (max-width: 600px) {
+    .card-mostrar{
+        margin: 10px auto;
+        max-width: unset;
+    }
+}

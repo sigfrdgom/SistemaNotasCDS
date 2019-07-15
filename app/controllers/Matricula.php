@@ -27,7 +27,11 @@ class Matricula extends Controller
     }
 
 
-    public function curso($id_curso){
+    public function curso($id_curso=null){
+
+        if(isset($id)&&$this->sessionActiva())
+        {
+
         $matricula = $this->matriculaModel->findForTableCurso($id_curso);
         $participante = $this->participanteModel->findAll();
         $curso = $this->cursoModel->findAll();
@@ -42,10 +46,18 @@ class Matricula extends Controller
             'id_curso' => $id_curso
         ];
         $this->view('pages/matricula/matriculaCurso', $datos);
+
+    }else{
+        redireccionar('matricula');
+    }
+
+
     }
 
     
-    public function nivel($cohorte){
+    public function nivel($cohorte=null){
+        if(isset($id)&&$this->sessionActiva())
+            {
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
@@ -54,8 +66,10 @@ class Matricula extends Controller
             'curso' => $curso 
         ];
         $this->view('pages/matricula/matriculaNivel', $datos);
+    }else{
+        redireccionar('matricula');
     }
-
+}
 
 
     public function create()

@@ -1,5 +1,14 @@
 <?php
    
+   if (isset($_SESSION['session_id'])) {
+    echo "<script> alert('HOLAAAAAAAAAAAAA ME EJECUTO');
+         
+    </script>";
+   }else{
+    echo "<script> alert('HOLAAAAAAAAAAAAA ME EJECUTO');
+         
+    </script>";
+   }
     require_once RUTA_APP . '/views/include/header.php';
 
      

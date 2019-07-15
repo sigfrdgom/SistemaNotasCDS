@@ -14,16 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
 
-                <!-- El boton para agregar a traves de un modal -->
-                    <button  id="ivkcurso" type="button" class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarCurso">
-                        <span class='fa fa-plus-square-o bigfonts'></span> Nuevo curso
-                    </button>
 
-                    <a href="#" 
-                            title="Agregar Curso"  data-toggle="popover" data-trigger="focus"
-                            data-content="Sirve para agregar un nuevo curso para poder asignarle modulos y realizar la matricula de participantes en ellos.">
-                        <i class="fa fa-fw fa-question-circle pop-help"></i>
-                    </a>
 
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
@@ -80,7 +71,6 @@ require_once RUTA_APP . '/views/include/header.php';
                     </thead>
                     <tbody id="tbody-table">
                     <?php
-                     
                     foreach ($datos['curso'] as $cursos) { ?>
                     
                         <tr id='fila-<?php echo $cursos->id_curso; ?>' class="center">

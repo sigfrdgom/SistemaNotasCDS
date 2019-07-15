@@ -6,6 +6,8 @@ class Curso extends Controller
         $this->cursoModel = $this->model('CursoModel');
         $this->nivelCursoModel = $this->model('NivelCursoModel');
         // $this->obtenerNivel = $this->model('NivelCursoModel');
+
+        parent::__construct();
         
     }
 
@@ -140,9 +142,8 @@ class Curso extends Controller
   public function updateDown($id = null) 
   {
     
-    if (($_SERVER['REQUEST_METHOD'] == 'POST'))
-    {
-        if (isset($id))
+   
+        if (isset($id)&&(isset($_SESSION['id_sesion'])))
         {
             if($this->cursoModel->updateDown($id))
             {
@@ -155,12 +156,9 @@ class Curso extends Controller
         }
         else
         {
-            $this->index();
+            redireccionar('curso');
         }
 
-    }else{
-        redireccionar('curso');
-        }
     }
 
 

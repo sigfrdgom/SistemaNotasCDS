@@ -6,7 +6,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     // ini_set("session.gc_maxlifetime","60");
     // ini_set("session.cookie_lifetime","60");
    
-    echo "<script> alert('".session_status()."');
+    echo "<script> alert('HAY SESSION EN HEADER ".session_status()."');
          
         </script>";
 
@@ -14,7 +14,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
 }else{
     // ini_set("session.gc_maxlifetime","60");
     // ini_set("session.cookie_lifetime","60");
-    echo "<script> alert('".session_status()."');
+    echo "<script> alert(' NO HAY SESISION EN HEADER ".session_status()."');
          
         </script>";
     session_start();
@@ -22,7 +22,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     // //     # code...
     // session_destroy();
     
-    echo "<script> alert('".session_status()."');
+    echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');
          
         </script>";
     }else{

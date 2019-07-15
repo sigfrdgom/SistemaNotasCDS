@@ -6,37 +6,17 @@ class Login extends Controller
     public function __construct() {
         //Cargar Modelos de la paginas;
         $this->docenteModel = $this->model('DocenteModel');
-        $this->participanteModel = $this->model('ParticipanteModel');
-        $this->docenteModel = $this->model('DocenteModel');
-        $this->notaModel = $this->model('NotaModel');
-        $this->cursoModel = $this->model('CursoModel');
-        $this->moduloModel = $this->model('ModuloModel');
+        
     
     }
 
-    public function index(){
+    // public function index(){
 
-        $nombres = array();
-        $n_participantes= $this->participanteModel->count();
-        $n_usuarios = $this->docenteModel->count();
-        $n_notas = $this->notaModel->count();
-        $n_cursos = $this->cursoModel->count();
-        $n_modulos = $this->moduloModel->count();
-        $descripcion = "";
-        $datos = [
-            'titulo' => "Inicio",
-            'descripcion' => $descripcion,
-            'nombres' => $nombres,
-            'n_participantes' => $n_participantes[0]->n_registros,
-            'n_usuarios' => $n_usuarios[0]->n_registros,
-            'n_notas' => $n_notas[0]->n_registros,
-            'n_cursos' => $n_cursos[0]->n_registros,
-            'n_modulos' => $n_modulos[0]->n_registros,
-        ];
-        $this->view('pages/inicio', $datos);
+       
+    //     $this->view('pages/inicio', $datos);
     
     
-    }
+    // }
 
 
 
@@ -81,8 +61,12 @@ class Login extends Controller
             //    ini_set("session.gc_maxlifetime","60");
             //    ini_set("session.cookie_lifetime","60");
             echo "<script>history.forward(); </script>";   
+         
             session_start();
-         //    session_cache_expire(60);
+            
+         
+         
+            //    session_cache_expire(60);
                $_SESSION['id_sesion'] = session_id();
                $_SESSION['tipoUsuario']=$docente->tipo_usuario;
                $_SESSION['nombres'] = $docente->nombres;
@@ -100,9 +84,10 @@ class Login extends Controller
                
    
 
-                $this->index();
+                // $this->index();
             //    $this->view('pages/inicio', $datos);
-           }
+               redireccionar('index/index2');  
+        }
            else
            {
                //DESTRUIR TODA LA SESION Y COOKIES

@@ -170,7 +170,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">Smartphone</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Sistema probado y accesible desde Smartphones a traves de navegador WEB</p>
                                     </div>
                             </div>
                         </div>
@@ -184,7 +184,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">Tablet</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Sistema probado y accesible desde Tablets a traves de navegador WEB.</p>
                                     </div>
                             </div>
                         </div>
@@ -198,7 +198,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">Laptop</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Sistema accesible desde laptop a traves de navegador WEB como target principal.</p>
                                     </div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">Desktop</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Sistema accesible desde Desktop-PC a traves de navegador WEB como target principal.</p>
                                     </div>
                             </div>
                         </div>
@@ -246,7 +246,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">Git y GitHub</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Controlador de versiones y trabajo colaborativo en el proyecto.</p>
                                     </div>
                             </div>
                         </div>
@@ -262,7 +262,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">Stack Web</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Para diseño y maquetado de vistas funcionales Front-End del sistema.</p>
                                     </div>
                             </div>
                         </div>
@@ -277,7 +277,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">PHP</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Lenguaje principal del proyecto y logica de Backend y servicios del sistema.</p>
                                     </div>
                             </div>
                         </div>
@@ -291,7 +291,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">MariaDB</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Gestor de datos para el resgaurdo de los datos usados y proveidos por el sistema.</p>
                                     </div>
                             </div>
                         </div>
@@ -305,7 +305,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                         <h4 class="mt-2">Apache Server</h4>
                                     </div>
                                     <div class="card-body text-justify">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text">Servidor apache para montaje del sistema, servidor de aplicaciónes del sistema.</p>
                                     </div>
                             </div>
                         </div>

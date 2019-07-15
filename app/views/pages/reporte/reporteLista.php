@@ -27,7 +27,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <div class="card-body" >
                         <h5 class="card-title">Desempeño por Cohorte</h5>
                         <p class="card-text"> Descripción del reporte </p>
-                            <a href="#" class="btn btn-primary btn-block">Generar Reporte</a>
+                            <a href="<?php echo constant('RUTA_URL') ?>/reporte/dsmpCohorte/" target="_blank" class="btn btn-primary btn-block">Ver Cohortes</a>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Otra información sobre el reporte </small>
@@ -40,7 +40,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <div class="card-body" >
                         <h5 class="card-title">Desempeño por nivel</h5>
                         <p class="card-text"> Descripción del reporte </p>
-                            <a href="#" class="btn btn-primary btn-block">Generar Reporte</a>
+                            <a href="<?php echo constant('RUTA_URL') ?>/reporte/dsmpNivel/" class="btn btn-primary btn-block">Ver cursos y niveles</a>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Otra información sobre el reporte </small>
@@ -53,7 +53,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <div class="card-body" >
                         <h5 class="card-title">Desempeño por participante</h5>
                         <p class="card-text"> Descripción del reporte </p>
-                            <a href="#" class="btn btn-primary btn-block">Generar Reporte</a>
+                            <a href="<?php echo constant('RUTA_URL') ?>/reporte/dsmpParticipante/" target="_blank" class="btn btn-primary btn-block">Ver participantes</a>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Otra información sobre el reporte </small>

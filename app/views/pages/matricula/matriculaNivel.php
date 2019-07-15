@@ -44,7 +44,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     <?php } ?> 
                     
                         <!-- El card -->
-                        <div class="card p-2" style="width: 16rem;">
+                        <div class="card p-2">
                             <div class="card-body" >
                                 <h5 class="card-title"><?php echo "Nivel $cursos->nivel" ?></h5>
                                 <p class="card-text"><?php echo "<b> Curso:  </b> $cursos->nombre_curso" ?> </p>

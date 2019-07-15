@@ -80,7 +80,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <div class="row mx-0" >
 
                     <!-- Card Carlos -->
-                    <div class="col mx-3 my-3" style="height: 25em" >
+                    <div class="col-xs-12 col-md-6 col-lg-3 mx-3 my-3" style="height: 25em" >
                         <div class="card">
                         
                             <div class="card-img-top text-center mt-2">

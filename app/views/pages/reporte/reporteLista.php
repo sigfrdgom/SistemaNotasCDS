@@ -23,7 +23,7 @@ require_once RUTA_APP . '/views/include/header.php';
             
             <div class="card-deck">
                 <!-- El card -->
-                <div class="card p-2" style="width: 16rem;">
+                <div class="card p-2">
                     <div class="card-body" >
                         <h5 class="card-title">Desempeño por Cohorte</h5>
                         <p class="card-text"> Descripción del reporte </p>
@@ -36,7 +36,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <!-- El card -->
 
                 <!-- El card -->
-                <div class="card p-2" style="width: 16rem;">
+                <div class="card p-2" >
                     <div class="card-body" >
                         <h5 class="card-title">Desempeño por nivel</h5>
                         <p class="card-text"> Descripción del reporte </p>
@@ -49,9 +49,9 @@ require_once RUTA_APP . '/views/include/header.php';
                 <!-- El card -->
 
                 <!-- El card -->
-                <div class="card p-2" style="width: 16rem;">
+                <div class="card p-2">
                     <div class="card-body" >
-                        <h5 class="card-title">Dsempeño por participante</h5>
+                        <h5 class="card-title">Desempeño por participante</h5>
                         <p class="card-text"> Descripción del reporte </p>
                             <a href="#" class="btn btn-primary btn-block">Generar Reporte</a>
                     </div>

@@ -27,7 +27,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="card card-body">
                 <?php if(empty($datos['tipoModulos'])){
                     ?>
-                    <h2>No Existen registros</h2>
+                    <h2 class="text-center">No existen registros</h2>
                     <?php
                 }else{?>
                 <div class="card-deck">

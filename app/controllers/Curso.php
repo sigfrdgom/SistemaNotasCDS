@@ -13,7 +13,7 @@ class Curso extends Controller
         $curso = $this->cursoModel->findAll();
         
         $nivelCurso = $this->nivelCursoModel->findAll();
-        $obtenerNivel = $this->nivelCursoModel;
+        // $obtenerNivel = $this->nivelCursoModel;
 
         $cantidadParticipantes =$this->cursoModel;
 
@@ -23,8 +23,7 @@ class Curso extends Controller
             'descripcion' => $descripcion,
             'curso' => $curso,
             'cantidadParticipantes' => $cantidadParticipantes,
-            'nivelCurso' => $nivelCurso,
-            'obtenerNivel' => $obtenerNivel
+            'obtenerNivel' => $nivelCurso
         ];
         $this->view('pages/curso', $datos);
     }

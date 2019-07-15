@@ -78,13 +78,29 @@ $(document).ready(function () {
         $('#idTipoModulo').val(data[1]);
         $("#idEstado option[value='" + data[2] + "']").attr("selected", true);
         // $('#idEstado').val(data[2]);
+
+        document.getElementById('mdfTipoModulo').style.display = 'inline';
+        document.getElementById('aggTipoModulo').style.display = 'none';
     });
 });
+
+//LIMPIAR MODALES TIPOMODULO
+$("#btnTipoModulo").click(function (event) {
+    $("#frmTipoModulo")[0].reset();
+    document.getElementById('mdfTipoModulo').style.display = 'none';
+    document.getElementById('aggTipoModulo').style.display = 'inline';
+});
+
+
+
+
+
+
 
 
 //actualizar NivelCurso
 $(document).ready(function () {
-    $(document).on('click', '.btn_modal_editar', function () {
+    $(document).on('click', '.btn_edit', function () {
         $('#agregarNivelCurso').modal('show');
         $tr = $(this).closest('tr');
 
@@ -93,14 +109,22 @@ $(document).ready(function () {
         }).get();
         console.log(data);
         $('#frmNivelCurso').attr('action', 'nivelCurso/update');
-        //alert('the action is: ' + $('#frmTipoModulo').attr('method'));}
         $('#idNivelCurso').val(data[0]);
         $('#nivel_curso').val(data[1]);
         $("#idEstado option[value='" + data[2] + "']").attr("selected", true);
-        // $('#idEstado').val(data[2]);
+        
+        document.getElementById('mdfNivelCurso').style.display = 'inline';
+        document.getElementById('aggNivelCurso').style.display = 'none';
     });
 });
 
+
+//LIMPIAR MODALES NIVELCURSO
+$("#btnNivelCurso").click(function (event) {
+    $("#frmNivelCurso")[0].reset();
+    document.getElementById('mdfNivelCurso').style.display = 'none';
+    document.getElementById('aggNivelCurso').style.display = 'inline';
+});
 
 
 

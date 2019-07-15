@@ -5,9 +5,7 @@ class Curso extends Controller
         //Cargar Modelos de la paginas;
         $this->cursoModel = $this->model('CursoModel');
         $this->nivelCursoModel = $this->model('NivelCursoModel');
-        // $this->obtenerNivel = $this->model('NivelCursoModel');
-
-        parent::__construct();
+        
         
     }
 
@@ -34,7 +32,7 @@ class Curso extends Controller
     public function create()
     {
 
-        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
         {
            $datos = [
                'id_curso' => null,
@@ -59,60 +57,29 @@ class Curso extends Controller
                die("Error al insertar los datos");
            }
        }else{
-        echo "<script> alert('No estas autorizado controlador');
-        </script>";
-        //  var_dump($datos);
-        redireccionar('curso');
+            redireccionar('curso');
        }
    }
 
-   public function delete($id = null)
-   {
-    
-       
-          
-        if (isset($id))
-           {
-               if($this->cursoModel->delete($id))
-               {
-                   redireccionar('curso');
-               }
-               else
-               {
-                   die("Error al eliminar los datos");
-               }
-           }
-           else
-           {
-            redireccionar('curso');
-           }
-       
-   }
-
-
-
     public function findById($id=null){
        
-            if(isset($id)){
+            if(isset($id)&&$this->sessionActiva())
+            {
                 return $this->cursoModel->findById($id);
             }else{
                 redireccionar('curso');
                 die("Error al buscar el dato");
                 
             }
-                
-            
-        
-
        }
         
     
 
     public function update()
    {
-    if (($_SERVER['REQUEST_METHOD'] == 'POST'))
-    {
-       $datos = [
+       if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+       {
+           $datos = [
            'id_curso' => trim($_POST['cid']),
            'nombre_curso' => trim($_POST['cnombre']),
            'cohorte' => trim($_POST['ccohorte']),
@@ -124,7 +91,7 @@ class Curso extends Controller
            'fecha_inicio' => trim($_POST['cfecha_inicio']),
            'fecha_fin' => trim($_POST['cfecha_fin'])
        ];
-       var_dump($datos);
+       
        if($this->cursoModel->update($datos))
        {
            redireccionar('curso');
@@ -132,9 +99,10 @@ class Curso extends Controller
        }
        else
        {
-           die("Error al actualizar los datos");
+            redireccionar('curso');   
+            die("Error al actualizar los datos");
        }
-   }else{
+    }else{
        redireccionar('curso');
     }
   }
@@ -143,7 +111,8 @@ class Curso extends Controller
   {
     
    
-        if (isset($id)&&(isset($_SESSION['id_sesion'])))
+        // if (isset($id)&&(isset($_SESSION['id_sesion'])))
+        if (isset($id)&&$this->sessionActiva())
         {
             if($this->cursoModel->updateDown($id))
             {
@@ -151,7 +120,9 @@ class Curso extends Controller
             }
             else
             {
+                redireccionar('curso');
                 die("Error al dar de baja el curso");
+                
             }
         }
         else
@@ -165,7 +136,7 @@ class Curso extends Controller
 
     public function countParticipante($id = null){
         
-            if(isset($id)){
+            if(isset($id)&&$this->sessionActiva()){
                 return $this->cursoModel->countParticipante($id);
             }else{
                 redireccionar('curso');

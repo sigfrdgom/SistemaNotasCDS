@@ -18,7 +18,7 @@ class Docente extends Controller
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
         {
            $datos = [
                'id_docente' => null,
@@ -50,7 +50,7 @@ class Docente extends Controller
 
    public function update()
    {
-       if ($_SERVER['REQUEST_METHOD'] == 'POST')
+       if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
        {
           $datos = [
               'id_docente' =>trim($_POST['did']),
@@ -65,7 +65,7 @@ class Docente extends Controller
               'pass' => trim($_POST['dpass']),
               'estado' => trim($_POST['destado'])
           ];
-        //   var_dump($datos);
+        
           if($this->docenteModel->update($datos))
           {
                redireccionar('docente');
@@ -75,44 +75,48 @@ class Docente extends Controller
           {
               die("Error al insertar los datos");
           }
-      }
+        }else
+        {
+        redireccionar('docente');
+     }
   }
 
-   public function delete($id)
-   {
-        if (isset($id))
-        {
-            if($this->docenteModel->delete($id))
-            {
-                redireccionar('docente');
-            }
-            else
-            {
-                die("Error al eliminar los datos");
-            }
-        }
-        else
-        {
-            $this->index();
-        }
-    }
+//    public function delete($id)
+//    {
+//         if (isset($id))
+//         {
+//             if($this->docenteModel->delete($id))
+//             {
+//                 redireccionar('docente');
+//             }
+//             else
+//             {
+//                 die("Error al eliminar los datos");
+//             }
+//         }
+//         else
+//         {
+//             $this->index();
+//         }
+//     }
 
-    public function updateDown($id)
+    public function updateDown($id = null)
    {
-        if (isset($id))
-        {
-            if($this->docenteModel->updateDown($id))
+       if (isset($id)&&$this->sessionActiva())
+       {
+            if($this->docenteMbodel->updateDown($id))
             {
                 redireccionar('docente');
             }
             else
             {
-                die("Error al dar de baja el usuario");
+                redireccionar('docente');
+                die("Error al dar de baja el docente");
             }
-        }
-        else
+        }else
         {
-            $this->index();
+            redireccionar('docente');
         }
+
     }
 }

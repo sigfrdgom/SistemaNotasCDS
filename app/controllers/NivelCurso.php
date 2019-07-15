@@ -19,7 +19,8 @@ class NivelCurso extends Controller{
     }
 
     public function create(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        { 
             $datos = [
                 'nivel_curso' => trim($_POST['nivel_curso']),
                 'estado' => trim($_POST['estado'])
@@ -30,16 +31,19 @@ class NivelCurso extends Controller{
                 die("Error al insertar los datos");
             }
         }else{
-            $datos = [
-                'nivel_curso' => '',
-                'estado' => ''
-            ];
-            $this->view('pages/nivelCurso', $datos);
+            redireccionar('nivelCurso');
+            // $datos = [
+            //     'nivel_curso' => '',
+            //     'estado' => ''
+            // ];
+            // $this->view('pages/nivelCurso', $datos);
         }
     }
 
     public function update(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        { 
+             
             $datos = [
                 'id_nivel_curso' => $_POST['id_nivel_curso'],
                 'nivel_curso' => trim($_POST['nivel_curso']),
@@ -56,22 +60,26 @@ class NivelCurso extends Controller{
         }
     }
 
-    public function delete($id){
-        if (isset($id)){
+    public function delete($id = null){
+        if (isset($id)&&$this->sessionActiva())
+        {
             if($this->nivelCursoModel->delete($id)){
                 
             }else{
+                $this->index();
                 die("Error al eliminar los datos");
             }
         }else{
-            // $this->index();
+            $this->index();
         }
     }
 
-    public function  findById($id){
-        if(isset($id)){
+    public function  findById($id=null){
+        if (isset($id)&&$this->sessionActiva())
+        {
             return $this->nivelCursoModel->findById($id);
         }else{
+            $this->index();
             die("Error al buscar el dato");
         }
     }

@@ -18,7 +18,9 @@ class Participante extends Controller
     }
 
     public function create(){
-         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        {
             $datos = [
                 'nombres' => trim($_POST['nombres']),
                 'apellidos' => trim($_POST['apellidos']),
@@ -43,7 +45,9 @@ class Participante extends Controller
             }else{
                 die("Error al insertar los datos");
             }
-        }
+        }else{
+            redireccionar('participante');
+       }
 
 
 
@@ -51,7 +55,8 @@ class Participante extends Controller
 
 
     public function update(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        {
            $datos = [
                'id' => trim($_POST['id']),
                'nombres' => trim($_POST['nombres']),
@@ -70,14 +75,15 @@ class Participante extends Controller
 
 
            ];
-           var_dump($datos);
            if($this->participanteModel->update($datos)){
                redireccionar('participante');
 
            }else{
                die("Error al actualizar los datos");
            }
-       }
+       }else{
+        redireccionar('participante');
+   }
 
 
     
@@ -85,8 +91,9 @@ class Participante extends Controller
 
 
 
-    public function delete($id){
-        if (isset($id)){
+    public function delete($id = null){
+        if(isset($id)&&$this->sessionActiva())
+            {
             if($this->participanteModel->delete($id)){
                 redireccionar('participante');
             }else{
@@ -98,10 +105,11 @@ class Participante extends Controller
     }
 
 
-    public function updateDown($id)
+    public function updateDown($id = null)
    {
-        if (isset($id))
-        {
+    
+        if(isset($id)&&$this->sessionActiva())
+            {
             if($this->participanteModel->updateDown($id))
             {
                 redireccionar('participante');

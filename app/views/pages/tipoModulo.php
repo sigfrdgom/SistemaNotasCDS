@@ -14,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <div class="breadcrumb-holder">
                     <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarTipoModulo">
+                    <button id="btnTipoModulo" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarTipoModulo">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo Tipo Modulo
                     </button>
                     <ol class="breadcrumb float-right">
@@ -77,10 +77,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo Tipo Modulo</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="aggTipoModulo">Agregar un nuevo Tipo de Modulo</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="mdfTipoModulo">Modificar un Tipo de Modulo</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-
+                        
                         <!-- Modal body -->
                         <div class="modal-body">
                             <form method="POST" id="frmTipoModulo" action="<?php echo RUTA_URL ?>/tipoModulo/create" data-parsley-validate

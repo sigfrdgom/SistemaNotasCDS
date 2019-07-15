@@ -25,7 +25,7 @@ class Modulo extends Controller
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
         {
            $datos = [
                'id_modulo' => null,
@@ -50,15 +50,18 @@ class Modulo extends Controller
            }
            else
            {
+                redireccionar('modulo');
                die("Error al insertar los datos");
            }
-       }
+       }else{
+        redireccionar('modulo');
+     }
    }
 
 
    public function update()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
         {
            $datos = [
                'id_modulo' => trim($_POST['mid']),
@@ -83,15 +86,18 @@ class Modulo extends Controller
            }
            else
            {
-               die("Error al insertar los datos");
-           }
-       }
+            redireccionar('modulo');
+            die("Error al insertar los datos");
+            }
+        }else{
+            redireccionar('modulo');
+ }
    }
 
-   public function delete($id)
+   public function delete($id = null)
    {
-        if (isset($id))
-        {
+       if (isset($id)&&$this->sessionActiva())
+       {
             if($this->moduloModel->delete($id))
             {
                 redireccionar('modulo');
@@ -107,10 +113,10 @@ class Modulo extends Controller
         }
     }
 
-    public function down($id)
+    public function down($id = null)
     {
-         if (isset($id))
-         {
+        if (isset($id)&&$this->sessionActiva())
+        {
              if($this->moduloModel->updateDown($id))
              {
                  redireccionar('modulo');
@@ -126,9 +132,9 @@ class Modulo extends Controller
          }
      }
 
-     public function  findById($id)
+     public function  findById($id=null)
      {
-        if(isset($id))
+        if (isset($id)&&$this->sessionActiva())
         {
             return $this->ModuloModel->findById($id);
         }

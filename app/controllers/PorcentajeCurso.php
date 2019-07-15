@@ -24,7 +24,8 @@ class PorcentajeCurso extends Controller
     }
 
     public function create(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        {
             $datos = [
                 'id_porcentaje_curso' => null,
                 'id_curso' => trim($_POST['pid_curso']),
@@ -44,7 +45,8 @@ class PorcentajeCurso extends Controller
     }
 
     public function update(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        {
             $datos = [
                 'id_porcentajes_curso' => trim($_POST['porid']),
                 'id_curso' => trim($_POST['pid_curso']),
@@ -63,8 +65,9 @@ class PorcentajeCurso extends Controller
         }
     }
 
-    public function delete($id){
-        if (isset($id)){
+    public function delete($id=null){
+        if(isset($id)&&$this->sessionActiva())
+            {
             if($this->porcentajesCursoModel->delete($id)){
                 redireccionar('porcentajeCurso');
             }else{
@@ -90,23 +93,34 @@ class PorcentajeCurso extends Controller
         $this->view('pages/porcentajesCurso/porcentajes', $datos);
     }
 
-    public function mostrarPorcentajes($id_curso){
-        $tipoModulo = $this->tipoModuloModel->findActivos();
-        $curso = $this->cursoModel->findById($id_curso);
-        $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
-        $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
-        $datos = [
-            'titulo' => "Porcentajes de los Curso",
-            'descripcion' => $descripcion,
-            'tipoModulo' => $tipoModulo,
-            'curso' => $curso,
-            'cursoSinPorcentaje' => $cursoSinPorcentaje
-        ];
-        $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
+    public function mostrarPorcentajes($id_curso = null){
+        
+        if(isset($id_curso)&&$this->sessionActiva())
+            {
+                $tipoModulo = $this->tipoModuloModel->findActivos();
+                $curso = $this->cursoModel->findById($id_curso);
+                $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
+                $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
+                $datos = [
+                    'titulo' => "Porcentajes de los Curso",
+                    'descripcion' => $descripcion,
+                    'tipoModulo' => $tipoModulo,
+                    'curso' => $curso,
+                    'cursoSinPorcentaje' => $cursoSinPorcentaje
+                ];
+                $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
+            
+            }else{
+                $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
+        die("Error al buscar el dato");
+        
+        }
+
     }
 
     public function guardarPorcentajes(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        {
 
             for ($i = 0; $i < sizeof($_POST['id_tipoModulo']); $i++) {
                 $datos = [

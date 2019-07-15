@@ -2,32 +2,6 @@
 //clase encargada de cargar los modelos y las vistas
 class Controller{
 
-
-    public function __construct() {
-        session_start();
-        if ((isset($_SESSION['id_sesion']))) { 
-            
-                    echo "<script> alert('HOLA HAY SESSION ACTIVA EN CONTROLLER SUPREMO :V');
-                        
-                        </script>";
-                    //validacion del tipoUsuario
-        
-        
-                    return true;
-                }else{
-                    session_destroy();
-                    echo "<script> alert('NO HAY SESSION AHORITA EN CONTROLLER MASTER :V');
-                        
-                        </script>";
-                    return false;
-                    
-                }
-    }
-
-
-
-
-
     //cargar modelo
     public function model($model){
         //verificar que el modelo exista
@@ -51,26 +25,52 @@ class Controller{
 
 
 
-    // public function sessionActiva(){
-
-    //     if ((isset($_SESSION['id_sesion']))) { 
+    public function sessionActiva(){
+        session_start();
+        if ((isset($_SESSION['id_sesion']))) { 
             
-    //         echo "<script> alert('HOLA HAY SESSION ACTIVA EN CONTROLLER SUPREMO :V');
+            echo "<script> alert('HOLA HAY SESSION ACTIVA EN CONTROLLER SUPREMO :V');</script>";
                 
-    //             </script>";
-    //         //validacion del tipoUsuario
+                if ($_SESSION['tipoUsuario']=='ADMINISTRADOR') {
+                    return true;
+                }else{
+                    return false;
 
+                }
+        }else{
+            session_destroy();
+            echo "<script> alert('NO HAY SESSION AHORITA EN CONTROLLER MASTER :V');
+            console.log('holaa');
+                </script>";
+            return false;  
+        }
 
-    //         return true;
-    //     }else{
-    //         echo "<script> alert('NO HAY SESSION AHORITA EN CONTROLLER MASTER :V');
-                
-    //             </script>";
-    //         return false;
+    }
+
+    public function sessionMultiple(){
+        session_start();
+        if ((isset($_SESSION['id_sesion']))) { 
             
-    //     }
+            echo "<script> alert('HOLA HAY SESSION ACTIVA EN CONTROLLER SUPREMO :V');</script>";
+                
+                if (($_SESSION['tipoUsuario']=='DOCENTE')||($_SESSION['tipoUsuario']=='ADMINISTRADOR')) {
+                    return true;
+                }else{
+                    return false;
 
-    // }
+                }
+        }else{
+            session_destroy();
+            echo "<script> alert('NO HAY SESSION AHORITA EN CONTROLLER MASTER :V');
+            console.log('holaa');
+                </script>";
+            return false;
+            
+        }
+
+    }
+
+
 
 
 

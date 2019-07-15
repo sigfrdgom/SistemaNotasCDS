@@ -30,7 +30,7 @@ class ModulosCurso extends Controller
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
         {
            $datos = [
                'id_modulos_curso' => null,
@@ -49,13 +49,15 @@ class ModulosCurso extends Controller
            {
                die("Error al insertar los datos");
            }
-       }
+       }else{
+        redireccionar('modulosCurso/modulosCurso');
+     }
    }
    
    public function update()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
-        {
+        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+       {
            $datos = [
                'id_modulos_curso' => trim($_POST['idmc']),
                'id_curso' => trim($_POST['mcid_curso']),
@@ -73,19 +75,22 @@ class ModulosCurso extends Controller
            {
                die("Error al insertar los datos");
            }
-       }
+       }else{
+        redireccionar('modulosCurso/modulosCurso');
+     }
    }
 
-   public function delete($id)
+   public function delete($id = null)
    {
-        if (isset($id))
-        {
+       if (isset($id)&&$this->sessionActiva())
+           {
             if($this->modulosCursoModel->delete($id))
             {
                 redireccionar('modulosCurso/modulosCurso');
             }
             else
             {
+                redireccionar('modulosCurso/modulosCurso');
                 die("Error al eliminar los datos");
             }
         }
@@ -95,16 +100,17 @@ class ModulosCurso extends Controller
         }
     }
 
-    public function down($id)
+    public function down($id=null)
     {
-         if (isset($id))
-         {
+        if (isset($id)&&$this->sessionActiva())
+        {
              if($this->moduloModel->updateDown($id))
              {
                  redireccionar('modulosCurso/modulosCurso');
              }
              else
              {
+                redireccionar('modulosCurso/modulosCurso');
                  die("Error al dar de baja el modulo");
              }
          }

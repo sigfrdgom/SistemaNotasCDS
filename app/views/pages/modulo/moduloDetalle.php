@@ -34,6 +34,24 @@ require_once RUTA_APP . '/views/include/header.php';
     <div class="row">
 
         <div class="card card-body">
+            <div class="mb-2">
+                <?php if (!empty($datos['modulo'])) { ?>
+                    <div class="col-xl-12">
+                                
+                        <div class="input-group mb-1 float-right col-sm-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda"
+                                    
+                                    data-id-tipo="<?php echo $datos['idTipoModulo'] ?>"
+                                    aria-label="Busqueda"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-sm table-bordered table-hover display">
                     <thead>
@@ -60,7 +78,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="contenido">
                     <?php
                     foreach ($datos['modulo'] as $modulos) {  ?>
                         <tr>
@@ -214,6 +232,8 @@ require_once RUTA_APP . '/views/include/header.php';
       </div>
     </div>
 </div>
+
+<script src="<?php echo RUTA_URL ?>/js/views/modulos.js"></script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

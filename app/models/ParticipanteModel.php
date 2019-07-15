@@ -121,5 +121,11 @@ class ParticipanteModel{
         return $this->db->findAll();
     }
 
+    public function findByCriteria($datos){
+        $this->db->query("SELECT * FROM participante WHERE id_participante = :busqueda OR nombres LIKE :busqueda  OR apellidos LIKE :busqueda  OR  dui LIKE :busqueda
+         OR nit LIKE :busqueda  OR carnet_minoridad LIKE :busqueda  OR direccion LIKE :busqueda OR telefono LIKE :busqueda OR email LIKE :busqueda");
+        $this->db->bind(':busqueda', "%".$datos."%", PDO::PARAM_STR);
+        return $this->db->findAll();
+    }
 }
 ?>

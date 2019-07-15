@@ -146,8 +146,31 @@ class Modulo extends Controller
             'titulo' => "Modulos de tipo '".strtolower($tipoModulo->nombre)."'",
             'descripcion' => $descripcion,
             'modulo' => $modulo,
-            'tipoModulo' => $tipoModulo
+            'tipoModulo' => $tipoModulo,
+            'idTipoModulo' => $id_tipo
         ];
         $this->view('pages/modulo/moduloDetalle', $datos);
     }
+
+    public function buscarModulos(){
+        $id_tipo = $_POST['tipo'];
+        $busqueda = $_POST['busqueda'];
+
+        $datos = [
+            'id_modulo' => trim($id_tipo),
+            'busqueda' => trim($busqueda)
+        ];
+
+        if($busqueda == null || $busqueda== ""){
+            $results = $this->moduloModel->findByTipo($id_tipo);
+        }else{
+            $results = $this->moduloModel->findByCriteria($datos);
+        }
+
+        $datos = [
+            'modulo' => $results,
+        ];
+        $this->view('pages/modulo/buscarModulo', $datos);
+    }
+
 }

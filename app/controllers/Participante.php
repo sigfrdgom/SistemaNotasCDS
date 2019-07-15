@@ -117,5 +117,19 @@ class Participante extends Controller
         }
     }
 
+    public function buscarParticipante(){
+        $busqueda = trim($_POST['busqueda']);
+
+        if($busqueda == null || $busqueda== ""){
+            $results = $this->participanteModel->findAll();
+        }else{
+            $results = $this->participanteModel->findByCriteria($busqueda);
+        }
+
+        $datos = [
+            'participante' => $results,
+        ];
+        $this->view('pages/participante/buscarParticipante', $datos);
+    }
 
 }

@@ -26,14 +26,14 @@ require_once RUTA_APP . '/views/include/header.php';
             <div>    
                 <div class="container-fluid align-middle">
                 
-                    <div class="row mx-0 ">
+                    <div class="row card-deck mx-0 ">
                         
                         <div class="col my-3 mx-0">
                             <div class="card">
                                 <div class="card-img-top text-center mt-3" >
 
-                                    <img src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" class="img-fluid" style="width: 50%">
-                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid mr-5" style="width: 10%">
+                                    <img src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" class="img-fluid" style="width: 60%">
+                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid mr-5" style="width: 15%">
                                     
                                 </div>
                                 
@@ -46,6 +46,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                                 <li>
                                                     Crear un sistema de notas que integre diferentes funcionalidades para que sea un sistema integral capaz de gestionar las notas de todos los participantes del proyecto CDS.
                                                 </li>
+                                                <br>
                                                 <li>
                                                     Implementar en el sistema de notas, al funcionabilidad necesaria para el correcto funcionamiento de este y que pueda proveer de información que facilite la obtencion de reportes de desempeño, manteniendo la eficiencia, seguridad y la mayor usabilidad posible.
                                                 </li>
@@ -55,10 +56,6 @@ require_once RUTA_APP . '/views/include/header.php';
                                     </div>
                             </div>
                         </div>
-
-                        
-
-
                     </div>
                 </div>
 
@@ -76,81 +73,81 @@ require_once RUTA_APP . '/views/include/header.php';
                         <h3>Equipo de desarrollo</h3>
                 </div>
                 
-                <div class="container-fluid align-middle">
-                <div class="row mx-0" >
+                <div class="container-fluid">
+                    <div class="row card-deck" >
 
-                    <!-- Card Carlos -->
-                    <div class="col-xs-12 col-md-6 col-lg-3 mx-3 my-3" style="height: 25em" >
-                        <div class="card">
-                        
-                            <div class="card-img-top text-center mt-2">
-                                <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
-                            </div>
-                            <div  class="text-center mt-2 text-white" style="background: black">
-                                <h4 class="mt-2">Carlos Martinez</h4>
-                            </div>
-                            <div class="card-body text-justify">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="align-bottom">
-                                <div class="bg-info text-center" style="font-size: 2em;">
-                                <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
-                                <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
-                                <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                        <!-- Card Carlos Martinez -->
+                        <div class="col mx-0 my-3" style="height: 25em" >
+                            <div class="card">
+                            
+                                <div class="card-img-top text-center mt-2">
+                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                                </div>
+                                <div  class="text-center mt-2 text-white" style="background: black">
+                                    <h4 class="mt-2">Carlos Martinez </h4>
+                                </div>
+                                <div class="card-body text-justify">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                                <div class="align-bottom">
+                                    <div class="bg-info text-center" style="font-size: 2em;">
+                                    <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
+                                    <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
+                                    <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Card Kevin -->
-                    <div class="col mx-3 my-3" style="height: 25em" >
-                        <div class="card">
-                        
-                            <div class="card-img-top text-center mt-2">
-                                <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
-                            </div>
-                            <div  class="text-center mt-2 text-white" style="background: black">
-                                <h4 class="mt-2">Kevin Martinez</h4>
-                            </div>
-                            <div class="card-body text-justify">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="align-bottom">
-                                <div class="bg-info text-center" style="font-size: 2em;">
-                                <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
-                                <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
-                                <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                        <!-- Card Kevin Martinez -->
+                        <div class="col mx-0 my-3" style="height: 25em" >
+                            <div class="card">
+                            
+                                <div class="card-img-top text-center mt-2">
+                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                                </div>
+                                <div  class="text-center mt-2 text-white" style="background: black">
+                                    <h4 class="mt-2">Kevin Martinez </h4>
+                                </div>
+                                <div class="card-body text-justify">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                                <div class="align-bottom">
+                                    <div class="bg-info text-center" style="font-size: 2em;">
+                                    <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
+                                    <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
+                                    <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Card Sigfrido Gómez -->
-                    <div class="col mx-3 my-3" style="height: 25em" >
-                        <div class="card">
-                        
-                            <div class="card-img-top text-center mt-2">
-                                <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
-                            </div>
-                            <div  class="text-center mt-2 text-white" style="background: black">
-                                <h4 class="mt-2">Sigfrido Gómez </h4>
-                            </div>
-                            <div class="card-body text-justify">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="align-bottom">
-                                <div class="bg-info text-center" style="font-size: 2em;">
-                                <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
-                                <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
-                                <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                        <!-- Card Sigfrido Gómez -->
+                        <div class="col mx-0 my-3" style="height: 25em" >
+                            <div class="card">
+                            
+                                <div class="card-img-top text-center mt-2">
+                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                                </div>
+                                <div  class="text-center mt-2 text-white" style="background: black">
+                                    <h4 class="mt-2">Sigfrido Gómez </h4>
+                                </div>
+                                <div class="card-body text-justify">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                                <div class="align-bottom">
+                                    <div class="bg-info text-center" style="font-size: 2em;">
+                                    <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
+                                    <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
+                                    <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                
-                
                 </div>
-            </div>
+            <div>
 
                 
             <!-- plataformas -->
@@ -162,7 +159,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 
                 <div class="container-fluid">
                 
-                    <div class="row">
+                    <div class="row card-deck">
                         
                         <div class="col my-3 mx-2">
                             <div class="card">
@@ -235,7 +232,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 
                 <div class="container-fluid">
                 
-                    <div class="row">
+                    <div class="row card-deck">
                         
                         <div class="col my-3 mx-2" >
                             <div class="card" >
@@ -328,7 +325,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 
                 <div class="container-fluid">
                 
-                    <div class="row">
+                    <div class="row card-deck">
                         
                         <div class="col my-3 mx-2">
                             <div class="card">
@@ -402,7 +399,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                     </div>
 
-                    <div class="row">
+                    <div class="row card-deck">
                         
                         <div class="col my-3 mx-2">
                             <div class="card">

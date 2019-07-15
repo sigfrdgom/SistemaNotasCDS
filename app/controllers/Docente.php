@@ -96,7 +96,7 @@ class Docente extends Controller
     }
 
     public function updateDown($id)
-   {
+    {
         if (isset($id))
         {
             if($this->docenteModel->updateDown($id))
@@ -113,4 +113,20 @@ class Docente extends Controller
             $this->index();
         }
     }
+
+    public function buscarDocente(){
+        $busqueda = trim($_POST['busqueda']);
+
+        if($busqueda == null || $busqueda== ""){
+            $results = $this->docenteModel->findAll();
+        }else{
+            $results = $this->docenteModel->findByCriteria($busqueda);
+        }
+
+        $datos = [
+            'docente' => $results,
+        ];
+        $this->view('pages/docente/buscarDocente', $datos);
+    }
+
 }

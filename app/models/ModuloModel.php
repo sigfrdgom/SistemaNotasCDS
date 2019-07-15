@@ -102,5 +102,12 @@ class ModuloModel{
         $this->db->bind(':id_tipo',$id);
         return $this->db->findAll();
     }
+
+    public function findByCriteria($datos){
+        $this->db->query("SELECT * FROM modulo WHERE tipo_modulo = :id_tipo AND nombre_modulo LIKE :busqueda ");
+        $this->db->bind(':id_tipo',$datos['id_modulo']);
+        $this->db->bind(':busqueda', "%".$datos['busqueda']."%", PDO::PARAM_STR);
+        return $this->db->findAll();
+    }
 }
 ?>

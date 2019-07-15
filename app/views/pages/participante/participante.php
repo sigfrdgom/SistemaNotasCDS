@@ -73,7 +73,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th colspan="2">Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="contenido">
                     <?php
                     //  <td class='bsecreto dp11'>$participantes->pass</td>
                     foreach ($datos['participante'] as $participantes) { ?>
@@ -226,16 +226,7 @@ require_once RUTA_APP . '/views/include/header.php';
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
+<script src="<?php echo RUTA_URL ?>/js/views/participantes.js"></script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

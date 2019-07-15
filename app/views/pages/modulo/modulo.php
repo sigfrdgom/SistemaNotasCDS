@@ -36,14 +36,14 @@ require_once RUTA_APP . '/views/include/header.php';
                     
                     <?php   $c = 0; $x=0;
                     foreach ($datos['tipoModulo'] as $tipo) {
-                    if ($c % 4 == 0 ) { $x=1; ?>
-                        <div class="card-deck align-middle">
+                        if ($c % 4 == 0 ) { $x=1; ?>
+                            <div class="card-deck align-middle">
                     <?php } ?> 
                     
                         <!-- El card -->
                         <div class="card p-2 ">
                             <div class="card-body" >
-                                <h5 class="card-title">Tipo modulo</h5>
+                                <h5 class="card-title">Modulo tipo</h5>
                                 <p class="card-text"><?php echo "$tipo->nombre" ?> </p>
                                     <a href="<?php echo constant('RUTA_URL')."/modulo/detalle/".$tipo->id_tipo_modulo ?>"
                                     class="btn btn-primary btn-block text-center">Ver modulos</a>

@@ -47,7 +47,7 @@
             <img alt="Logo" class="img-logo mt-3" style="border-radius: 3px; width: 100%" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" />
         </div>
         <div class="text-center mt-3 col">
-            <p style="font-size: 1.5em; font-weight: bold">
+            <p style="font-size: 1.2em; font-weight: bold">
                 PROYECTO PUENTES PARA EL EMPLEO <br>
                 FUNDACIÓN GLORIA DE KRIETE <br>
                 CENTRO DE DESARROLLO DE SOFTWARE <br>
@@ -61,7 +61,7 @@
     </div>
     
     <!-- El cuerpo del reporte -->
-    <div class="row mx-4 mt-5 ">
+    <div class="row mx-4 mt-3 ">
         
         <?php if(empty($datos['matrizModulos'])){?>
                 

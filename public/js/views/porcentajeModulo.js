@@ -2,13 +2,45 @@ $('#alert-error').hide();
 $('#alert-warning').hide();
 window.addEventListener('DOMContentLoaded', listener);
 var url = "http://localhost/SistemaNotasCDS/porcentajeCurso/";
+var div_seleccion
 
 function listener() {
-    document.getElementById('btn-seleccionar').addEventListener('click', mostrarDiv);
+    document.getElementById('btn_add').addEventListener('click', div_agregar);
+    document.getElementById('btn_edit').addEventListener('click', div_agregar);
+
+    div_seleccion = document.getElementById('div_seleccion');
 }
 
 function listener_guardar() {
     document.getElementById('form_porcentajes').addEventListener('submit', guardarPorcentajes);
+}
+
+function div_agregar(e) {
+    let btn = e.target.value;
+    e.preventDefault();
+    if(btn == "agregar"){
+        httpRequest(url+"seleccionAdd", function () {
+            div_seleccion.innerHTML= this.responseText;
+        });
+    }
+    if(btn == "editar"){
+        httpRequest(url+"seleccionEdit", function () {
+            div_seleccion.innerHTML= this.responseText;
+        });
+    }
+    document.getElementById('btn-seleccionar').addEventListener('click', mostrarDiv);
+}
+
+function httpRequest(url, callback){
+    const http = new XMLHttpRequest();
+    http.open("GET", url);
+    http.send();
+
+    http.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            callback.apply(http);
+        }
+    }
 }
 
 function mostrarDiv(e) {

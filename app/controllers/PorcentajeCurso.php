@@ -122,13 +122,15 @@ class PorcentajeCurso extends Controller
         $tipoModulo = $this->tipoModuloModel->findActivos();
         $curso = $this->cursoModel->findAll();
         $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
+        $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
             'titulo' => "Porcentajes de los Cursos",
             'descripcion' => $descripcion,
             'tipoModulo' => $tipoModulo,
             'curso' => $curso,
-            'cursoSinPorcentaje' => $cursoSinPorcentaje
+            'cursoSinPorcentaje' => $cursoSinPorcentaje,
+            'cursoConPorcentaje' => $cursoConPorcentaje
         ];
         $this->view('pages/porcentajesCurso/porcentajes', $datos);
     }
@@ -138,17 +140,31 @@ class PorcentajeCurso extends Controller
         $tipoModulo = $this->tipoModuloModel->findActivos();
         $curso = $this->cursoModel->findById($id_curso);
         $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
-        $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
             'titulo' => "Porcentajes de los Curso",
             'descripcion' => $descripcion,
             'tipoModulo' => $tipoModulo,
             'curso' => $curso,
-            'cursoSinPorcentaje' => $cursoSinPorcentaje,
-            'cursoConPorcentaje' => $cursoConPorcentaje
+            'cursoSinPorcentaje' => $cursoSinPorcentaje
         ];
         $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
+    }
+
+    public function seleccionEdit(){
+        $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
+        $datos = [
+            'cursoSinPorcentaje' => $cursoConPorcentaje
+        ];
+        $this->view('pages/porcentajesCurso/seleccionAdd', $datos);
+    }
+
+    public function seleccionAdd(){
+        $cursoConPorcentaje = $this->cursoModel->cursoSinPorcentaje();
+        $datos = [
+            'cursoSinPorcentaje' => $cursoConPorcentaje
+        ];
+        $this->view('pages/porcentajesCurso/seleccionAdd', $datos);
     }
 
     public function guardarPorcentajes(){

@@ -5,7 +5,7 @@
                 <label for="inputEmail3" class="col-form-label">Seleccione un curso: </label>
                 <div class="input-group mb-1 float-right col-sm-12">
                     <select name="select_id_curso" id="select_id_curso" class="form-control">
-                        <?php foreach ($datos['cursoSinPorcentaje'] AS $item) { ?>
+                        <?php foreach ($datos['cursoConPorcentaje'] AS $item) { ?>
                             <?php if ($item->nombre_curso) { ?>
                                 <option value="<?php echo $item->id_curso ?>"><?php echo $item->nombre_curso . ", NIVEL " . $item->nivel ?></option>
                             <?php } else { ?>

@@ -18,7 +18,7 @@ class RankingNotas extends Controller
     public function index()
     {
         $descripcion = "Vista que muestra todos los cursos";
-        $cursos = $this->cursoModel->orderByFechaDesc();
+        $cursos = $this->cursoModel->orderByCohorteNivel();
         $datos = [
             'titulo' => "Mostrar Cursos",
             'descripcion' => $descripcion,
@@ -71,6 +71,7 @@ class RankingNotas extends Controller
 
     public function rankingTop()
     {
+        $this->sessionActivaX();
         $datos = [
             'id_curso' => trim($_POST['id_curso']),
             'nivel' => trim($_POST['nivel'])
@@ -87,6 +88,7 @@ class RankingNotas extends Controller
         $totalProm = array();
         $porcentaje = 0;
         $listaParticipante = array();
+        // var_dump($notas);
         $estudiantes = array();
         if(sizeof($participantes)>0) {
             foreach ($participantes as $participantes) {
@@ -126,6 +128,7 @@ class RankingNotas extends Controller
                         $clave = $key;
                     }
                 }
+                
                 $arreglo = [
                     'participante' => $estudiantes[$clave],
                     'tipoModulo' => $promedios[$clave],

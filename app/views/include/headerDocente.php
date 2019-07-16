@@ -1,38 +1,20 @@
 
 <!DOCTYPE html>
 
-<!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
+<!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA OPTIMIZACION-->
 <?php
 if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) { 
-    // ini_set("session.gc_maxlifetime","60");
-    // ini_set("session.cookie_lifetime","60");
-   
-    // echo "<script> alert('HAY SESSION EN HEADER ".session_status()."');
-         
-    //     </script>";
-
 
 }else{
-    // ini_set("session.gc_maxlifetime","60");
-    // ini_set("session.cookie_lifetime","60");
-    // echo "<script> alert(' NO HAY SESISION EN HEADER ".session_status()."');
-         
-        // </script>";
     session_start();
     if (isset($_SESSION['id_sesion'])) {
-    // //     # code...
-    // session_destroy();
-    
-    // echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');
-         
-    //     </script>";
     }else{
-    echo "<script> alert('NO ESTA AUTORIZADO HEADER');
+    echo "<script> alert('NO ESTA AUTORIZADO');
          window.location='".RUTA_URL."';
         </script>";
         exit;}
-    
 }
+
 ?>
 
 
@@ -46,16 +28,16 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     <link rel="shortcut icon" href="<?php echo RUTA_URL; ?>/img/icons/test.png">
 
     <!-- Bootstrap CSS -->
-    <link href="<?php echo RUTA_URL ?>/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo RUTA_URL ?>/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Awesome CSS -->
-    <link href="<?php echo RUTA_URL ?>/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo RUTA_URL ?>/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet"  />
 
     <!-- Custom CSS -->
-    <link href="<?php echo RUTA_URL ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo RUTA_URL ?>/assets/css/style.css" rel="stylesheet"  />
     
     <!-- CSS General para la pagina-->
-    <link href="<?php echo RUTA_URL ?>/css/general.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo RUTA_URL ?>/css/general.css" rel="stylesheet" >
 
     <!-- BEGIN CSS for this page -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
@@ -64,47 +46,16 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     <!-- Other CSS -->
     <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 
+    <script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
     
     <style>
-        .mrg-spr-ex {
-            margin-top:1.25em;
-        }
-        .parsley-error {
-            border-color: #ff5d48 !important;
-        }
-
-        .parsley-errors-list.filled {
-            display: block;
-        }
-
-        .parsley-errors-list {
-            display: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .parsley-errors-list > li {
-            font-size: 12px;
-            list-style: none;
-            color: #ff5d48;
-            margin-top: 5px;
-        }
-
-        .form-section {
-            padding-left: 15px;
-            border-left: 2px solid #FF851B;
-            display: none;
-        }
-
-        .form-section.current {
-            display: inherit;
-        }
+        
     </style>
 </head>
 
-<body class="adminbody">
+<body class="adminbody-void">
 
-<div id="main">
+<div id="main" class="enlarged forced">
 
     <!-- top bar navigation -->
     <div class="headerbar">
@@ -119,26 +70,32 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
             <ul class="list-inline float-right mb-0">
 
                 <li class="list-inline-item dropdown notif">
-                <h5 class="bg-danger"><small>USUARIO :<?php echo $_SESSION['tipoUsuario'] ?></small> </h5><a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
-                        <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5 class="text-overflow"><small>HOLA A :<?php echo $_SESSION['nombres'] ?></small> </h5>
+                    
+                <div class="col">
+                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
+                                <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
+                                <!-- item-->
+                                <div class="dropdown-item perfil_item ">
+                                    <small class="text-overflow"><i class="fas fa-shield-alt"></i><?php echo $_SESSION['tipoUsuario'] ?></small>
+                                </div>
+                                <div class="dropdown-item perfil_item text-justify">
+                                    <small class="text-overflow"><i class="fas fa-user"></i><?php echo $_SESSION['nombres']?></small>
+                                </div>
+                                <div class="cerrar_session">
+                                    <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item cerrar_session">
+                                        <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
+                                    </a>
+                                </div>
+                                
+
+                            </div>
                         </div>
 
-                        <!-- item-->
-                        <!-- <a href="pro-profile.html" class="dropdown-item notify-item">
-                            <i class="fa fa-user"></i> <span>Perfil</span>
-                        </a> -->
+                    
+                    
 
-                        <!-- item-->
-                        <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item">
-                            <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
-                        </a>
-
-                    </div>
                 </li>
 
             </ul>
@@ -163,18 +120,15 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
-                <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
+                <!-- <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a> -->
 
-                <ul>
-
-                    
-
+                <ul >
                     <li class="submenu">
                         <a href="<?php echo RUTA_URL?>/modulo"><i class="fa fa-fw fa-book"></i><span> Modulos </span> </a>
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>
+                        <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Participantes </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -182,20 +136,21 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                     </li>
 
                     <li class="submenu">
-                        <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="<?php echo RUTA_URL ?>/modulosCurso">Modulos por cursos</a></li>
-                
+                        <a href="<?php echo RUTA_URL ?>/rankingNotas"><i class="fa fa-bar-chart bigfonts"></i><span> Ranking Notas </span> </a>
+                    </li>
 
-                        </ul>
+              
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/reporte"><i class="fa fa-fw fa-print"></i><span> Reportes </span> </a>
+                    </li>
+
+                   
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/general/faq"><i class="fa fa-question-circle-o bigfonts" style="font-size: 1.5em;"></i><span> FA&Q </span> </a>
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-question"></i><span> Preguntas Frecuentes </span> </a>
-                    </li>
-
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-deviantart"></i><span> About Us </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/general/acercaDe"><i class="fa fa-info-circle bigfonts" style="font-size: 1.5em;"></i><span> Sobre el proyecto </span> </a>
                     </li>
 
                 </ul>
@@ -215,4 +170,3 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     <div class="content-page">
 
         <!-- Start content -->
-

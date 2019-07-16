@@ -29,8 +29,14 @@
     <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 
     <script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
+
 </head>
-<body class="bg-white">
+<body class="bg-white text-center" >
+    
+<div class="bg-dark" id="imprimir">
+    <button class="btn btn-info font-weigth-bold my-3" onclick="window.print();" ><i class="fa fa-print" aria-hidden="true" style="font-size: 1.5em"></i> <b class="mb-5">Imprimir reporte PDF</b> </button>
+</div>
+
 
 
 <!-- Start content -->
@@ -43,7 +49,7 @@
             <img alt="Logo" class="img-logo mt-3" style="border-radius: 3px; width: 100%" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" />
         </div>
         <div class="text-center mt-3 col">
-            <p style="font-size: 1.5em; font-weight: bold">
+            <p style="font-size: 1.2em; font-weight: bold">
                 PROYECTO PUENTES PARA EL EMPLEO <br>
                 FUNDACIÓN GLORIA DE KRIETE <br>
                 CENTRO DE DESARROLLO DE SOFTWARE <br>
@@ -56,7 +62,7 @@
         </div>
     </div>
     
-    <div class="row mx-4 mt-5 ">
+    <div class="row mx-4 mt-3 ">
         
         <?php if(empty($datos['tipoModulos'])){?>
                 
@@ -94,7 +100,7 @@
                 </thead>
                 <tbody class="">
                     <?php $c = 1; foreach ($datos['lista'] as $lista) { ?>
-                        <tr class="border-bottom border-dark">
+                        <tr class="border border-dark">
                             <td class="text-center"><?php echo $c ?></td>
                             <td ><?php echo $lista['participante'] ?></td>
                             <?php foreach ($lista['tipoModulo'] as $tipoModulo) {
@@ -109,7 +115,7 @@
                         $alumnos++;
                         $c++;
                     } ?>
-                        <tr class="border-bottom border-dark">
+                        <tr class="border border-dark">
                             <td colspan="<?php echo count($datos['tipoModulos']) + 2 ?>" class="text-right"><b>PROMEDIO GENERAL DEL CURSO</b></td>
                             <td rowspan="2" class="align-middle text-center border border-dark" 
                                 <?php $promedio = round(($suma/ $alumnos), 2); 
@@ -134,11 +140,10 @@
                 ?>
             <?php } ?>
     </div>
-<br>
-                        <?php setlocale(LC_TIME, "es_ES");?>
+    <?php setlocale(LC_TIME, "es_ES");?>
     <!-- Footer del reporte -->
     <div class=" mx-5">
-        <div class="text-center mt-3 col">
+        <div class="text-center mt-0 col">
             <p class="font-weight-bold">
                 Impreso en <?php echo  ucwords(strtolower($datos['sede']))?> el dia <?php echo strftime('%A')?>  <?php echo date("d")?> del mes de 
                 <?php echo strftime('%B')?> del año <?php echo date("Y")?>

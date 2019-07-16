@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2019 a las 00:31:54
+-- Tiempo de generación: 16-07-2019 a las 23:52:24
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -27,10 +27,9 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `curso`
 --
-
 DROP DATABASE IF EXISTS notas;
-CREATE DATABASE IF NOT EXISTS `notas` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `notas`;
+CREATE DATABASE notas;
+USE notas;
 
 CREATE TABLE `curso` (
   `id_curso` int(11) NOT NULL,
@@ -83,12 +82,14 @@ CREATE TABLE `docente` (
 --
 
 INSERT INTO `docente` (`id_docente`, `nombres`, `apellidos`, `fecha_nacimiento`, `sexo`, `dui`, `nit`, `especialidad`, `tipo_usuario`, `pass`, `estado`) VALUES
-(1, 'ULISES', 'SAMAYOA', '1970-06-10', 'MASCULINO', '21234578-9', '2547-845678-879-9', 'PROGRAMACION', 'ADMINISTRADOR', '12345', 1),
-(2, 'GUDIEL JOSELINO', 'DIAZ DE VIZVAR', '1990-10-10', 'MASCULINO', '12345678-9', '0210-111111-123-1', 'PROGRAMACION', 'DOCENTE', '12345', 1),
-(3, 'NOEL GALDAMEZ', 'MORAN', '1991-07-07', 'MASCULINO', '19191919-9', '0111-999999-112-1', 'PROGRAMACION', 'DOCENTE', '12345', 1),
-(4, 'ROGELIO', 'MARTINEZ ROJAS', '1979-09-09', 'MASCULINO', '11111111-9', '0133-818181-122-1', 'PSICOLOGIA', 'DOCENTE', '21232f297a57a5a743894a0e4a801fc3', 1),
-(5, 'MONICA REYES', 'DEL CID LOPEZ', '1985-11-03', 'FEMENINO', '87654871-9', '0440-444444-121-1', 'PSICOLOGIA', 'DOCENTE', '12345', 1),
-(6, 'admin', 'admin', '1995-04-08', 'MASCULINO', '12345678-9', '1234-123456-123-1', 'DOCENTE', 'ADMINISTRADOR', '21232f297a57a5a743894a0e4a801fc3', 1);
+(1, 'ADAN ULISES', 'SAMAYOA', '1970-06-10', 'MASCULINO', '12345678-0', '2547-845678-879-9', 'PROGRAMACION', 'ADMINISTRADOR', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 'JOSE MAURICIO', 'DIAZ DE VIZVAR', '1990-10-10', 'MASCULINO', '12345678-1', '0210-111111-123-1', 'PROGRAMACION', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
+(3, 'NOEL ', 'MORAN GALDAMEZ', '1991-07-07', 'MASCULINO', '12345678-2', '0111-999999-112-1', 'PROGRAMACION', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
+(4, 'ROGELIO', 'MARTINEZ ROJAS', '1979-09-09', 'MASCULINO', '12345678-3', '0133-818181-122-1', 'PSICOLOGIA', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
+(5, 'MONICA MARIA', 'DEL CID LOPEZ', '1985-11-03', 'FEMENINO', '12345678-4', '0440-444444-121-1', 'PSICOLOGIA', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
+(6, 'SILVIA', 'MUNGIA', '1985-04-08', 'FEMENINO', '12345678-5', '1234-123456-123-1', 'DOCENTE / PSICOLOGIA', 'ADMINISTRADOR', '21232f297a57a5a743894a0e4a801fc3', 1),
+(7, 'DORIS', 'GRANADOS', '1998-01-01', 'FEMENINO', '12345678-6', '0210-010198-100-0', 'MATEMATICAS', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
+(8, 'CINDY', 'MALDONADO', '1985-02-02', 'FEMENINO', '12345678-7', '0210-02-111-10285', 'INGLES', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 0);
 
 -- --------------------------------------------------------
 
@@ -108,11 +109,16 @@ CREATE TABLE `matricula` (
 -- Volcado de datos para la tabla `matricula`
 --
 
--- INSERT INTO `matricula` (`id_matricula`, `id_curso`, `id_participante`, `estado`, `observaciones`) VALUES
--- (30, 1, 1, 1, 'TODO BIEN, TODO CORRECTO'),
--- (31, 6, 1, 1, 'TODO BIEN, TODO CORRECTO'),
--- (32, 1, 3, 1, 'TODO BIEN, TODO CORRECTO'),
--- (35, 6, 3, 1, 'TODO BIEN, TODO CORRECTO');
+INSERT INTO `matricula` (`id_matricula`, `id_curso`, `id_participante`, `estado`, `observaciones`) VALUES
+(1, 1, 1, 1, 'MATRICULA EN NORMALIDAD'),
+(2, 1, 2, 1, 'MATRICULA EN NORMALIDAD'),
+(3, 1, 3, 1, 'MATRICULA EN NORMALIDAD'),
+(4, 1, 4, 1, 'MATRICULA EN NORMALIDAD'),
+(5, 1, 5, 1, 'MATRICULA EN NORMALIDAD'),
+(6, 1, 6, 1, 'MATRICULA EN NORMALIDAD'),
+(7, 1, 7, 1, 'MATRICULA EN NORMALIDAD'),
+(8, 1, 8, 1, 'MATRICULA EN NORMALIDAD'),
+(9, 1, 9, 1, 'MATRICULA EN NORMALIDAD');
 
 -- --------------------------------------------------------
 
@@ -143,11 +149,11 @@ INSERT INTO `modulo` (`id_modulo`, `nombre_modulo`, `descripcion_modulo`, `horas
 (1, 'MATEMATICA', 'MODULO DE MATEMATICAS', '12 horas', 1, 25, 25, 25, 25, 0, 0, 1),
 (2, 'LOGICA', 'MODULO DE LOGICA', '14 horas', 1, 30, 30, 40, 0, 0, 0, 1),
 (3, 'C# MVC FRAMEWORK', 'C', '16 horas', 2, 25, 25, 50, 0, 0, 0, 1),
-(4, 'CERTIFICACIÓN C#', 'CERTIFICACIÓN DE C#', '8 horas', 3, 100, 0, 0, 0, 0, 0, 1),
+(4, 'CERTIFICACIÓN C# NIVEL 1', 'CERTIFICACIÓN DE C#', '8 horas', 3, 100, 0, 0, 0, 0, 0, 1),
 (6, 'INTRODUCCIÓN A BASE DE DATOS', 'MODULO BASICO DE BASE DE DATOS', '8 HORAS', 2, 30, 35, 35, 0, 0, 0, 1),
-(7, 'INTRODUCCION A JAVASCRIPT', 'DESCRIBE LOS PRINCIPIO DE JAVASCRIPT', '16 HORAS', 2, 25, 25, 25, 25, 0, 0, 1),
-(8, 'CERTIFICACIÓN PHP', 'EXAMEN DE CERTIFICACION DE PHP', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
-(9, 'HABILIDADES PARA LA VIDA', 'MODULO DE PREPARACIÓN PARA LA VIDA', '30 HORAS', 1, 20, 20, 20, 20, 20, 0, 1),
+(7, 'JAVASCRIPT FRAMEWORKS', 'DESCRIBE LOS PRINCIPIO DE JAVASCRIPT Y USO DE FRAMEWORKS', '16 HORAS', 2, 25, 25, 25, 25, 0, 0, 1),
+(8, 'CERTIFICACIÓN C# NIVEL 2', 'EXAMEN DE CERTIFICACION DE C# NIVEL DOS', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(9, 'REFUERZO DE HABILIDADES COMPUTACIONALES', 'MODULO DE PREPARACIÓN PARA CURSO EN GENERAL', '10 HORAS', 1, 20, 20, 20, 20, 20, 0, 1),
 (10, 'HISTORIA DEL INTERNET', 'HISTORIA DEL INTERNET', '12', 1, 40, 30, 30, 0, 0, 0, 1),
 (11, 'ALGORITMIA', 'LOGICA DE ALGORITMOS', '12', 1, 25, 25, 25, 25, 0, 0, 1),
 (12, 'HISTORIA E INTERESES MUNDIALES', 'HISTORIA DEL INTERNET', '8', 1, 30, 30, 40, 0, 0, 0, 1),
@@ -161,11 +167,19 @@ INSERT INTO `modulo` (`id_modulo`, `nombre_modulo`, `descripcion_modulo`, `horas
 (20, 'LOGICA Y MATEMATICAS', 'LOGICA Y MATEMATICAS', '12 HORAS', 1, 25, 25, 25, 25, 0, 0, 1),
 (21, 'C# BÁSICO', 'C# BÁSICO', '20 HORAS', 2, 30, 30, 40, 0, 0, 0, 1),
 (22, 'C# INTERMEDIO Y Desing pattern', 'C# INTERMEDIO Y Desing pattern', '20 HORAS', 2, 20, 10, 20, 20, 30, 0, 1),
-(23, 'HABILIDADES BLANDAS PUENTES', 'HABILIDADES BLANDAS PUENTES', '80 HORAS', 5, 13, 14, 33, 40, 0, 0, 1),
+(23, 'HABILIDADES BLANDAS PUENTES NIVEL 1', 'HABILIDADES BLANDAS PUENTES', '80 HORAS', 5, 13, 14, 33, 40, 0, 0, 1),
 (24, 'MAQUETACION BAJO XML', 'MAQUETACION DE COMPONENTES EN XML', '12 horas', 1, 25, 25, 25, 25, 0, 0, 1),
 (25, 'C# AVANZADO', 'USO AVANZADO DE C# Y PATRONES DE DISEÑO', '20 HORAS', 2, 30, 30, 40, 0, 0, 0, 1),
-(26, 'CERTIFICACION C# NIVEL 2', 'CERTIFICACION C# NIVEL DOS', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
-(27, 'GESTION INTEGRAL DE BASE DE DATOS', 'GESTION DE BASE DE DATOS', '12 horas', 2, 25, 25, 25, 25, 0, 0, 1);
+(26, 'CERTIFICACION C# NIVEL 3', 'CERTIFICACION C# NIVEL TRES', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(27, 'GESTION INTEGRAL DE BASE DE DATOS', 'GESTION DE BASE DE DATOS', '12 horas', 2, 25, 25, 25, 25, 0, 0, 1),
+(28, 'CERTIFICACION XAMARIN NIVEL 1', 'CERTIFICACION XAMARIN NIVEL UNO', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(29, 'CERTIFICACION XAMARIN NIVEL 2', 'CERTIFICACION XAMARIN NIVEL DOS', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(30, 'CERTIFICACION XAMARIN NIVEL 3', 'CERTIFICACION XAMARIN NIVEL TRES', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(31, 'CERTIFICACION HTML CUT NIVEL 1', 'CERTIFICACION HTML CUT NIVEL UNO', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(32, 'CERTIFICACION HTML CUT NIVEL 2', 'CERTIFICACION HTML CUT NIVEL DOS', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(33, 'CERTIFICACION HTML CUT NIVEL 3', 'CERTIFICACION HTML CUT NIVEL TRES', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
+(34, 'HABILIDADES BLANDAS PUENTES NIVEL 2', 'HABILIDADES BLANDAS PUENTES', '12 HORAS', 5, 25, 25, 50, 0, 0, 0, 1),
+(35, 'PASANTIA NIVEL 2', 'PASANTIA NIVEL DOS', '240 HORAS', 4, 10, 20, 30, 40, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -185,20 +199,24 @@ CREATE TABLE `modulos_curso` (
 -- Volcado de datos para la tabla `modulos_curso`
 --
 
--- INSERT INTO `modulos_curso` (`id_modulos_curso`, `id_curso`, `id_modulo`, `id_docente`, `observaciones`) VALUES
--- (2, 1, 1, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
--- (3, 1, 2, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
--- (4, 1, 3, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
--- (5, 1, 4, 1, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
--- (6, 1, 23, 5, 'ninguna'),
--- (7, 1, 19, 4, 'ninguna'),
--- (8, 1, 17, 2, 'ninguna'),
--- (9, 1, 18, 2, 'ninguna'),
--- (10, 1, 13, 2, 'ninguna'),
--- (11, 1, 12, 2, 'ninguna'),
--- (12, 6, 25, 3, 'ninguna'),
--- (13, 6, 26, 1, 'ninguna'),
--- (14, 6, 27, 3, 'ninguna');
+INSERT INTO `modulos_curso` (`id_modulos_curso`, `id_curso`, `id_modulo`, `id_docente`, `observaciones`) VALUES
+(1, 1, 1, 7, 'TODO BIEN'),
+(2, 1, 2, 2, 'TODO BIEN'),
+(3, 1, 9, 2, 'TODO BIEN'),
+(4, 1, 10, 2, 'TODO BIEN'),
+(5, 1, 11, 2, 'TODO BIEN'),
+(6, 1, 12, 2, 'TODO BIEN'),
+(7, 1, 13, 2, 'TODO BIEN'),
+(8, 1, 14, 2, 'TODO BIEN'),
+(9, 1, 16, 2, 'TODO BIEN'),
+(10, 1, 17, 2, 'TODO BIEN'),
+(11, 1, 18, 2, 'TODO BIEN'),
+(12, 1, 19, 8, 'TODO BIEN'),
+(13, 1, 24, 2, 'TODO BIEN'),
+(14, 1, 21, 2, 'TODO BIEN'),
+(15, 1, 22, 2, 'TODO BIEN'),
+(16, 1, 4, 1, 'TODO BIEN'),
+(17, 1, 23, 5, 'TODO BIEN');
 
 -- --------------------------------------------------------
 
@@ -244,40 +262,160 @@ CREATE TABLE `nota` (
 -- Volcado de datos para la tabla `nota`
 --
 
--- INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `observaciones`) VALUES
--- (40, 1, 2, 10.00, 10.00, 10.00, 10.00, NULL, NULL, 'Participante matriculado con exito'),
--- (41, 1, 3, 10.00, 8.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
--- (42, 1, 4, 7.00, 7.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
--- (43, 1, 5, 9.50, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
--- (44, 1, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (45, 1, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (46, 1, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (47, 1, 9, 10.00, 9.00, 9.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
--- (48, 1, 7, 8.00, 8.00, 8.00, 8.00, 8.00, NULL, 'Participante matriculado con exito'),
--- (49, 1, 6, 10.00, 8.00, 9.00, 9.80, NULL, NULL, 'Participante matriculado con exito'),
--- (50, 2, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (51, 2, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (52, 2, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (53, 2, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (54, 2, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (55, 2, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (56, 2, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (57, 2, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (58, 2, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (59, 2, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (60, 3, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (61, 3, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (62, 3, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (63, 3, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (64, 3, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (65, 3, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (66, 3, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (67, 3, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (68, 3, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (69, 3, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (70, 3, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (71, 3, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
--- (72, 3, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito');
+INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `observaciones`) VALUES
+(1, 1, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(2, 1, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(3, 1, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(4, 1, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(5, 1, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(6, 1, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(7, 1, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(8, 1, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(9, 1, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(10, 1, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(11, 1, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(12, 1, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(13, 1, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(14, 1, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(15, 1, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(16, 1, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(17, 1, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(18, 2, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(19, 2, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(20, 2, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(21, 2, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(22, 2, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(23, 2, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(24, 2, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(25, 2, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(26, 2, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(27, 2, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(28, 2, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(29, 2, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(30, 2, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(31, 2, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(32, 2, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(33, 2, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(34, 2, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(35, 3, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(36, 3, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(37, 3, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(38, 3, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(39, 3, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(40, 3, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(41, 3, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(42, 3, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(43, 3, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(44, 3, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(45, 3, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(46, 3, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(47, 3, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(48, 3, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(49, 3, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(50, 3, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(51, 3, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(52, 4, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(53, 4, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(54, 4, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(55, 4, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(56, 4, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(57, 4, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(58, 4, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(59, 4, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(60, 4, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(61, 4, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(62, 4, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(63, 4, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(64, 4, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(65, 4, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(66, 4, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(67, 4, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(68, 4, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(69, 5, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(70, 5, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(71, 5, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(72, 5, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(73, 5, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(74, 5, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(75, 5, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(76, 5, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(77, 5, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(78, 5, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(79, 5, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(80, 5, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(81, 5, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(82, 5, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(83, 5, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(84, 5, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(85, 5, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(86, 6, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(87, 6, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(88, 6, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(89, 6, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(90, 6, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(91, 6, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(92, 6, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(93, 6, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(94, 6, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(95, 6, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(96, 6, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(97, 6, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(98, 6, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(99, 6, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(100, 6, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(101, 6, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(102, 6, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(103, 7, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(104, 7, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(105, 7, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(106, 7, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(107, 7, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(108, 7, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(109, 7, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(110, 7, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(111, 7, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(112, 7, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(113, 7, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(114, 7, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(115, 7, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(116, 7, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(117, 7, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(118, 7, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(119, 7, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(120, 8, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(121, 8, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(122, 8, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(123, 8, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(124, 8, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(125, 8, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(126, 8, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(127, 8, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(128, 8, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(129, 8, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(130, 8, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(131, 8, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(132, 8, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(133, 8, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(134, 8, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(135, 8, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(136, 8, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(137, 9, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(138, 9, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(139, 9, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(140, 9, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(141, 9, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(142, 9, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(143, 9, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(144, 9, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(145, 9, 8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(146, 9, 9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(147, 9, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(148, 9, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(149, 9, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(150, 9, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(151, 9, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(152, 9, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(153, 9, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito');
 
 -- --------------------------------------------------------
 
@@ -307,12 +445,14 @@ CREATE TABLE `participante` (
 
 INSERT INTO `participante` (`id_participante`, `nombres`, `apellidos`, `fecha_nacimiento`, `sexo`, `dui`, `nit`, `carnet_minoridad`, `direccion`, `telefono`, `email`, `pass`, `estado`) VALUES
 (1, 'CARLOS ALBERTO', 'MARTINEZ LOPEZ', '1993-06-21', 'MASCULINO', '02478959-9', '4578-789459-789-9', '3456789', 'en algun lugar de santa ana', '2345-6789', 'carlos.lopez@proyectosfgk.org', '12345', 1),
-(2, 'SIGFRIDO', 'PERALTA GUEVARITA', '1990-05-05', 'MASCULINO', '12223456-9', '', '', 'COL.METROCENTRO', '2222-2222', 'sifri@gmail.com', '12345', 1),
+(2, 'SIGFRIDO ERNESTO', 'GOMEZ GUINEA', '1990-05-05', 'MASCULINO', '12223456-9', '', '', 'COL.METROCENTRO', '2222-2222', 'sifri@gmail.com', '12345', 1),
 (3, 'KEVIN', 'MARTINEZ AYALA', '1996-02-10', 'MASCULINO', '99999999-1', '', '', 'COL.GUATEMALA', '2222-2222', 'KEVIN@gmail.com', '12345', 1),
-(4, 'ROBERTO', 'MORALES CHUMAGER', '2000-10-12', 'MASCULINO', '87654321-9', '', '', 'LAMATEPEC', '9999-9999', 'roberto@hotmail.com', '123456', 1),
-(5, 'ELIZABETH ESPERANZA', 'CHANEL COCO', '1995-10-11', 'FEMENINO', '', '1313-123123-131-1', '', 'LAMATEPEC', '1111-1111', 'elizabeth@yahoo.com', '12345', 1),
-(6, 'CLARA HAYDEE', 'ROJAS MARTINEZ', '1990-12-12', 'FEMENINO', '', '', '3333333', 'COL.GUATEMALITA', '9999-9872', 'klariwoman@hotmail.com', '12345', 1),
-(7, 'MARGARITA TEODORA', 'CONTRERAS', '2003-03-05', 'INDEFINIDO', '10101010-9', '', '', 'COL.IVU', '9999-9999', 'teorodito@gmail.com', '12345', 1);
+(4, 'ROBERTO HAROLDO', 'MORALES CHUMAGER', '2000-10-12', 'MASCULINO', '87654321-9', '', '', 'LAMATEPEC', '2999-9999', 'roberto@hotmail.com', '123456', 1),
+(5, 'ELIZABETH ESPERANZA', 'CARRANZA MORALES', '1995-10-11', 'FEMENINO', '', '1313-123123-131-1', '', 'LAMATEPEC', '2111-1111', 'elizabeth@yahoo.com', '12345', 1),
+(6, 'CLARA HAYDEE', 'ROJAS MARTINEZ', '1990-12-12', 'FEMENINO', '', '', '3333333', 'COL.GUATEMALITA', '2999-9872', 'klariwoman@hotmail.com', '12345', 1),
+(7, 'MARGARITA TEODORA', 'CONTRERAS', '2003-03-05', 'INDEFINIDO', '10101010-9', '', '', 'COL.IVU', '2999-9999', 'teorodito@gmail.com', '12345', 1),
+(8, 'JOSE MARIO', 'DIAZ MONTORROZA', '1998-02-02', 'MASCULINO', '24578954-9', '', '', 'Col Buena Vista #2 #182', '2578-8969', 'JOSEDIAS@OUTLOOK.COM', '12345', 1),
+(9, 'ALEJANDRA DINORA', 'MARTINEZ REPREZA', '1998-05-05', 'FEMENINO', '14978245-9', '', '', 'COLONIA CUSCATLAN CASA 23', '2784-8974', 'ALEJANDRADINORAH@GMAIL.COM', '12345', 1);
 
 -- --------------------------------------------------------
 
@@ -332,46 +472,12 @@ CREATE TABLE `porcentajes_curso` (
 -- Volcado de datos para la tabla `porcentajes_curso`
 --
 
--- INSERT INTO `porcentajes_curso` (`id_porcentajes_curso`, `id_curso`, `id_tipo_modulo`, `porcentaje`, `observacion`) VALUES
--- (1, 1, 1, 15, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
--- (2, 1, 2, 45, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
--- (3, 1, 3, 40, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
--- (4, 2, 1, 15, 'Creado'),
--- (5, 2, 2, 20, 'Creado'),
--- (6, 2, 3, 40, 'Creado'),
--- (7, 2, 4, 15, 'Creado'),
--- (8, 2, 5, 10, 'Creado'),
--- (9, 2, 6, 0, 'Creado'),
--- (10, 4, 1, 15, 'Creado'),
--- (11, 4, 2, 25, 'Creado'),
--- (12, 4, 3, 40, 'Creado'),
--- (13, 4, 4, 0, 'Creado'),
--- (14, 4, 5, 20, 'Creado'),
--- (15, 4, 6, 0, 'Creado'),
--- (16, 5, 1, 20, 'Creado'),
--- (17, 5, 2, 20, 'Creado'),
--- (18, 5, 3, 40, 'Creado'),
--- (19, 5, 4, 0, 'Creado'),
--- (20, 5, 5, 20, 'Creado'),
--- (21, 5, 6, 0, 'Creado'),
--- (22, 3, 1, 15, 'Creado'),
--- (23, 3, 2, 25, 'Creado'),
--- (24, 3, 3, 40, 'Creado'),
--- (25, 3, 4, 0, 'Creado'),
--- (26, 3, 5, 20, 'Creado'),
--- (27, 3, 6, 0, 'Creado'),
--- (28, 6, 1, 0, 'Creado'),
--- (29, 6, 2, 40, 'Creado'),
--- (30, 6, 3, 40, 'Creado'),
--- (31, 6, 4, 20, 'Creado'),
--- (32, 6, 5, 0, 'Creado'),
--- (33, 6, 6, 0, 'Creado'),
--- (34, 7, 1, 0, 'Creado'),
--- (35, 7, 2, 40, 'Creado'),
--- (36, 7, 3, 40, 'Creado'),
--- (37, 7, 4, 20, 'Creado'),
--- (38, 7, 5, 0, 'Creado'),
--- (39, 7, 6, 0, 'Creado');
+INSERT INTO `porcentajes_curso` (`id_porcentajes_curso`, `id_curso`, `id_tipo_modulo`, `porcentaje`, `observacion`) VALUES
+(1, 1, 1, 15, 'Creado'),
+(2, 1, 2, 20, 'Creado'),
+(3, 1, 3, 40, 'Creado'),
+(4, 1, 4, 0, 'Creado'),
+(5, 1, 5, 25, 'Creado');
 
 -- --------------------------------------------------------
 
@@ -394,7 +500,7 @@ INSERT INTO `tipo_modulo` (`id_tipo_modulo`, `nombre`, `estado`) VALUES
 (2, 'ESPECIALIDAD', 1),
 (3, 'CERTIFICACIÓN', 1),
 (4, 'PASANTIA', 1),
-(5,'HABILIDADES BLANDAS',1);
+(5, 'HABILIDADES BLANDAS', 1);
 
 --
 -- Índices para tablas volcadas
@@ -481,59 +587,59 @@ ALTER TABLE `tipo_modulo`
 ALTER TABLE `curso`
   MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
--- --
--- -- AUTO_INCREMENT de la tabla `docente`
--- --
+--
+-- AUTO_INCREMENT de la tabla `docente`
+--
 ALTER TABLE `docente`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
--- --
--- -- AUTO_INCREMENT de la tabla `matricula`
--- --
+--
+-- AUTO_INCREMENT de la tabla `matricula`
+--
 ALTER TABLE `matricula`
-  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
--- --
--- -- AUTO_INCREMENT de la tabla `modulo`
--- --
+--
+-- AUTO_INCREMENT de la tabla `modulo`
+--
 ALTER TABLE `modulo`
-  MODIFY `id_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
--- --
--- -- AUTO_INCREMENT de la tabla `modulos_curso`
--- --
+--
+-- AUTO_INCREMENT de la tabla `modulos_curso`
+--
 ALTER TABLE `modulos_curso`
-  MODIFY `id_modulos_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id_modulos_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
--- --
--- -- AUTO_INCREMENT de la tabla `nivel_curso`
+--
+-- AUTO_INCREMENT de la tabla `nivel_curso`
 --
 ALTER TABLE `nivel_curso`
   MODIFY `id_nivel_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
--- --
--- -- AUTO_INCREMENT de la tabla `nota`
--- --
+--
+-- AUTO_INCREMENT de la tabla `nota`
+--
 ALTER TABLE `nota`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
--- --
--- -- AUTO_INCREMENT de la tabla `participante`
--- --
+--
+-- AUTO_INCREMENT de la tabla `participante`
+--
 ALTER TABLE `participante`
-  MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
--- --
--- -- AUTO_INCREMENT de la tabla `porcentajes_curso`
--- --
+--
+-- AUTO_INCREMENT de la tabla `porcentajes_curso`
+--
 ALTER TABLE `porcentajes_curso`
-  MODIFY `id_porcentajes_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id_porcentajes_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
--- --
--- -- AUTO_INCREMENT de la tabla `tipo_modulo`
--- --
+--
+-- AUTO_INCREMENT de la tabla `tipo_modulo`
+--
 ALTER TABLE `tipo_modulo`
-  MODIFY `id_tipo_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id_tipo_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -552,6 +658,11 @@ ALTER TABLE `matricula`
   ADD CONSTRAINT `fk_id_curso2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_id_estudiante2` FOREIGN KEY (`id_participante`) REFERENCES `participante` (`id_participante`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Filtros para la tabla `modulo`
+--
+ALTER TABLE `modulo`
+  ADD CONSTRAINT `fk_tipo_modulo` FOREIGN KEY (`tipo_modulo`) REFERENCES `tipo_modulo` (`id_tipo_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `modulos_curso`
@@ -574,15 +685,6 @@ ALTER TABLE `nota`
 ALTER TABLE `porcentajes_curso`
   ADD CONSTRAINT `fk_curso_porcentajes` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_tipo_porcentaje` FOREIGN KEY (`id_tipo_modulo`) REFERENCES `tipo_modulo` (`id_tipo_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
---
--- Filtros para la tabla `modulo`
---
-ALTER TABLE `modulo`
-  ADD CONSTRAINT `fk_tipo_modulo` FOREIGN KEY (`tipo_modulo`) REFERENCES `tipo_modulo` (`id_tipo_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

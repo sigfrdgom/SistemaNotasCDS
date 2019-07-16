@@ -24,7 +24,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     }else{
 
         //CAMBIARRRRRRRR ESTOS MENSAJE
-        echo "<script> alert('NO ESTA AUTORIZADO HEADER');
+        echo "<script> alert('NO ESTA AUTORIZADO');
          window.location='".RUTA_URL."';
         </script>";
         exit;}

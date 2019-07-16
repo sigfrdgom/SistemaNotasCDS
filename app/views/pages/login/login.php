@@ -20,7 +20,7 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
             <form class="login100-form validate-form"  id="formu" method="POST" action="<?php echo RUTA_URL ?>/login/logIn" data-parsley-validate novalidate >
 
 					<span class="login100-form-title">
-						Iniciar Sessión
+						Iniciar Sesión
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "El DUI es requerido, ejemplo: 789456123-9">
@@ -41,10 +41,7 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
 
                 <div class="container-login100-form-btn">
                     <input class="login100-form-btn" type="submit" value="Verificacion" name="validando">
-        
-                    <!-- <button class="login100-form-btn">
-                        Iniciar
-                    </button> -->
+    
                 </div>
 
                 <div class="text-center p-t-12">

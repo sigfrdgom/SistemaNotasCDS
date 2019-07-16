@@ -18,7 +18,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
         // echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');</script>";
     }else
     {
-        echo "<script> alert('NO ESTA AUTORIZADO HEADER');
+        echo "<script> alert('NO ESTA AUTORIZADO');
         window.location='".RUTA_URL."';
         </script>";
         exit;

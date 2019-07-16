@@ -119,7 +119,7 @@ class Curso extends Controller
         {
             if($this->cursoModel->updateDown($id))
             {
-                redireccionar('curso/curso');
+                redireccionar('curso');
             }
             else
             {
@@ -150,17 +150,17 @@ class Curso extends Controller
     }
 
 
-    public function promote($id_curso)
+    public function promote($id_curso = null)
     {
         $this->sessionActivaX();
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             if ($curso =$this->cursoModel->findById($id_curso)) {
-                 var_dump($curso);
+                //  var_dump($curso);
                  
                 $bandera = $this->comprobar($curso->cohorte, $curso->nivel );
                 if ($bandera) {
-                    echo "<br> Se puede promover <br>";
+                   
                     // Entonces promovemos
                        $datos = [
                             'id_curso' => null,
@@ -174,7 +174,7 @@ class Curso extends Controller
                             'fecha_inicio' => trim($_POST['prmcfecha_inicio']),
                             'fecha_fin' => trim($_POST['prmcfecha_fin'])
                         ];
-                        var_dump($datos);
+                        
                             if($this->cursoModel->create($datos))
                             {
                                 redireccionar('curso');
@@ -184,11 +184,14 @@ class Curso extends Controller
                                 die("Error al insertar los datos");
                             }
                 } else {
-                    die("No se puede promover el curso");
+
+                    echo "<script> alert('No se puede promover el curso');
+                    window.location='".RUTA_URL."/curso';
+                    </script>";
                 }
                 
             } else {
-                die("Error al promover el curso.");
+                die("Error en los datos");
             }
        }
     }
@@ -216,14 +219,15 @@ class Curso extends Controller
         ];
 
         if($busqueda == null || $busqueda== ""){
-            $notas = $this->cursoModel->findById($datos);
+            $notas = $this->cursoModel->findAll();
         }else{
             $notas = $this->cursoModel->findByCriteria($datos);
         }
 
         $datos = [
-            'cursos' => $notas,
+            'curso' => $notas,
         ];
+
         $this->view('pages/curso/buscarCurso', $datos);
     }
 

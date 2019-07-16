@@ -40,8 +40,13 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
                         <p class="card-text"><?php echo $cursos->nombre_curso ?>
                         <small class="text-info"><?php echo "Nivel: ".$cursos->nivel ?></small></p>
-                        <a href="<?php echo constant('RUTA_URL') ?>/rankingNotas/nivel/<?php echo $cursos->id_curso ?>"
-                           class="btn btn-primary btn-block">Nivel</a>
+                            <div>
+                                <form action="<?php echo constant('RUTA_URL') ?>/rankingNotas/seleccion/" method="post">
+                                    <input type="hidden" name="id_curso" value="<?php echo $cursos->id_curso ?>">
+                                    <input type="hidden" name="nivel" value="<?php echo $cursos->nivel ?>">
+                                    <button type="submit" class="btn btn-primary btn-block">Ranking</button>  
+                                </form>
+                            </div>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>

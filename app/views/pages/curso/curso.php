@@ -1,6 +1,7 @@
 <?php
-/*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+/*Importacion de Header de la aplicacion */
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
 
 ?>
 
@@ -91,6 +92,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret'><?php echo $cursos->id_curso; ?></td>
                                 <td><?php echo $cursos->nombre_curso ?></td>
 
+                                <!-- ESTA MALO -->
                                 <td><?php  $conteo=$datos['cantidadParticipantes']->countParticipante($cursos->id_curso);
                                 echo $conteo[0]->participantes;
                                 
@@ -102,10 +104,11 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret'><?php echo $cursos->duracion ?></td>
                                 <td><?php echo $cursos->sede ?></td> 
                                 <td><?php echo ($cursos->estado == 1? "ACTIVO":"INACTIVO") ?></td>
-                                <!-- <td class="nivel"><?php echo $cursos->nivel ?></td> -->
                                 
-                                <td class="nivel"><?php $datoNivel=$datos['obtenerNivel']->findById($cursos->nivel);
-                                echo $datoNivel->nivel_curso ?></td>
+                            
+                                
+                                <td class="nivel"><?php $datosNivelArray=$datos['obtenerNivel']; foreach($datosNivelArray as $niveles)
+                                {if(($niveles->id_nivel_curso)==$cursos->nivel){ echo $niveles->nivel_curso;}}?></td>
 
                                 <td class='secret'><?php echo $cursos->fecha_inicio ?></td>
                                 <td><?php echo $cursos->fecha_fin; ?></td>
@@ -176,7 +179,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <label for="cdescripcion" class="mrg-spr-ex">Descripcion del curso:</label>
                         <input type="text" name="cdescripcion" id="cdescripcion" placeholder="Escribe la descripcion del curso" 
-                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,128}'>
+                        class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
 
                         <label for="cduracion" class="mrg-spr-ex">Duracion del curso:</label>
                         <input type="text" name="cduracion" id="cduracion" placeholder="Escribe la duracion Ej. 12 semanas" 
@@ -195,7 +198,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="cestado" id="cestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="cestado" id="cestado1" value="1" required checked>
                                         Activo
                                     </label>
                                 </div>
@@ -211,7 +214,7 @@ require_once RUTA_APP . '/views/include/header.php';
 								<select class="form-control select2"  name="cnivel" id="cnivel" required>
                                     <option value="">Selecciona el nivel Curso</option>    
                                         <?php
-                                            foreach ($datos['nivelCurso'] as $tm) {
+                                            foreach ($datos['obtenerNivel'] as $tm) {
                                                 echo " <option value='$tm->id_nivel_curso' >$tm->nivel_curso</option>";
                                             }
                                         ?>

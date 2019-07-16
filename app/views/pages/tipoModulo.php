@@ -1,6 +1,7 @@
 <?php
 /*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
 
 ?>
 
@@ -14,7 +15,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <div class="breadcrumb-holder">
                     <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarTipoModulo">
+                    <button id="btnTipoModulo" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarTipoModulo">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo Tipo Modulo
                     </button>
                     <ol class="breadcrumb float-right">
@@ -48,7 +49,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td style="display:none;"><?php echo $tipoModelos->id_tipo_modulo ?></td>
                                 <td><?php echo  $tipoModelos->nombre ?></td>
                                 <td><?php echo ($tipoModelos->estado ==1)? "Activo" : "Inactivo"; ?></td>
-                                <td><button class='centrado btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
+                                <td><button class='btn_modal_editar centrado btn btn-warning' data-tipomodulo="<?php echo $tipoModelos->id_tipo_modulo;?>"><span class='fa fa-edit '></span> Editar</button></td>
                                 
                                 <!-- <td><button id='btn_eliminar2' 
                                 onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo;?>", <?php echo $tipoModelos->id_tipo_modulo;?>)' 
@@ -77,10 +78,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo Tipo Modulo</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="aggTipoModulo">Agregar un nuevo Tipo de Modulo</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="mdfTipoModulo">Modificar un Tipo de Modulo</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-
+                        
                         <!-- Modal body -->
                         <div class="modal-body">
                             <form method="POST" id="frmTipoModulo" action="<?php echo RUTA_URL ?>/tipoModulo/create" data-parsley-validate

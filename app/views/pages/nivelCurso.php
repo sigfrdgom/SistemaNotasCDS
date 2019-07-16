@@ -1,6 +1,7 @@
 <?php
 /*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
 
 ?>
 
@@ -14,7 +15,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <div class="breadcrumb-holder">
                     <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarNivelCurso">
+                    <button id="btnNivelCurso" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarNivelCurso">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo Nivel de Curso
                     </button>
                     <ol class="breadcrumb float-right">
@@ -48,7 +49,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td style="display:none;"><?php echo $nivelCurso->id_nivel_curso ?></td>
                                 <td><?php echo  $nivelCurso->nivel_curso ?></td>
                                 <td><?php echo ($nivelCurso->estado ==1)? "Activo" : "Inactivo"; ?></td>
-                                <td><button class='centrado btn btn-warning btn_modal_editar'><span class='fa fa-edit '></span> Editar</button></td>
+                                <td><button class='btn_edit centrado btn btn-warning' type="button"  data-toggle="modal" data-target="#agregarNivelCurso"><span class='fa fa-edit '></span> Editar</button></td>
                                 
                                 <td><button id='btn_eliminar2' 
                                 onclick='menjaseEliminar("nivelCurso/delete/<?php echo $nivelCurso->id_nivel_curso;?>", <?php echo $nivelCurso->id_nivel_curso;?>)' 
@@ -69,7 +70,8 @@ require_once RUTA_APP . '/views/include/header.php';
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="margin: 0% auto;">Agregar un nuevo Nivel Curso</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="aggNivelCurso">Agregar un nuevo Nivel de Curso</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="mdfNivelCurso">Modificar un Nivel de Curso</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -100,9 +102,10 @@ require_once RUTA_APP . '/views/include/header.php';
                         <!-- Modal footer -->
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-success" value="Guardar" name="guardar_nivel_curso">
-                            </form>
+                             </form>
                             <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        </div>
+                       </div>
+                        
 
                     </div>
 

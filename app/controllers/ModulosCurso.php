@@ -27,7 +27,8 @@ class ModulosCurso extends Controller
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             // Recibiendo y limpiando los arreglos
             $modulo=$_POST['mcid_modulo'];
@@ -72,30 +73,54 @@ class ModulosCurso extends Controller
 
     public function createORG()
     {
+        $this->sessionActivaX();
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-           $datos = [
-               'id_modulos_curso' => null,
-               'id_curso' => trim($_POST['mcidcurso']),
-               'id_modulo' => trim($_POST['mcid_modulo']),
-               'id_docente' => trim($_POST['mcid_docente']),
-               'observaciones' => trim($_POST['mcobservaciones'])
-            ];
+            // Recibiendo y limpiando los arreglos
+            $modulo=$_POST['mcid_modulo'];
+            $array=$_POST['mcid_docente'];
+            $limit=count($array);
             
+                for ($i=0; $i < $limit; $i++) { 
+                    if ($array[$i] == "") {
+                        unset($array[$i]);
+                    }
+                }
             
-            if($this->modulosCursoModel->create($datos))
-            {
-                redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
-            }
-            else
-            {
-                die("Error al insertar los datos");
-            }
+            $docente = array_values($array);
+            
+            // Recorriendo los arreglos para guardar la informacion correspondiente
+            $limit=count($modulo);
+                for ($x=0; $x < $limit; $x++) 
+                { 
+                    // Para comprobar si existe ya una tupla con la informacion, si no existe la insertamos, de lo contrario la pasamos de largo
+                    $bandera=$this->comprobar(trim($_POST['mcidcurso']),trim($modulo[$x]));
+                    if ($bandera) {
+                        $datos = [
+                            'id_modulos_curso' => null,
+                            'id_curso' => trim($_POST['mcidcurso']),
+                            'id_modulo' => trim($modulo[$x]),
+                            'id_docente' => trim($docente[$x]),
+                            'observaciones' => trim($_POST['mcobservaciones'])
+                            ];
+
+                                if(!$this->modulosCursoModel->create($datos))
+                                {
+                                    die("Error al insertar los datos"); 
+                                    return;
+                                }  
+                    } else {
+                        echo "Error al insertar el modulo al curso, ya existen";
+                    }  
+                }
+            redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
        }
     }
+    
    
     public function update()
     {
+        $this->sessionActivaX();
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $datos = [
@@ -117,16 +142,18 @@ class ModulosCurso extends Controller
        }
    }
 
-   public function delete($id)
+   public function delete($id = null)
    {
-        if (isset($id))
-        {
+    $this->sessionActivaX();
+       if (isset($id))
+           {
             if($this->modulosCursoModel->delete($id))
             {
                 redireccionar("modulosCurso/curso/$id");
             }
             else
             {
+                redireccionar('modulosCurso/modulosCurso');
                 die("Error al eliminar los datos");
             }
         }
@@ -136,8 +163,9 @@ class ModulosCurso extends Controller
         }
     }
 
-    public function down($id)
+    public function down($id=null)
     {
+        $this->sessionActivaX();
          if (isset($id))
          {
             if($this->moduloModel->updateDown($id))

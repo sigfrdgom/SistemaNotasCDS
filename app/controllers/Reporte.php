@@ -48,21 +48,22 @@ class Reporte extends Controller
 
 
     // El metodo para generar el reporte por nivel de un cohorte
-    public function generarDsmpNivel($c,$n,$p=null)
+    public function generarDsmpNivel($c,$n)
     {
         $id_curso=trim($c);
         $nivel=trim($n);
-        $id_participante=trim($p);
+        // $id_participante=trim($p);
 
         $infoCurso = $this->cursoModel->findById($id_curso);
         $tipoModulos = $this->tipoModuloModel->tipoModulosByCurso($id_curso);
         $participantes = $this->participanteModel->participanteCursoNivel($id_curso, $nivel);
+        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
         
-        if($p == null){
-            $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
-        }else{
-            $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTopParticipante($id_curso, $nivel,$id_participante);
-        }
+        // if($p == null){
+        //     $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
+        // }else{
+        //     $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTopParticipante($id_curso, $nivel,$id_participante);
+        // }
         
 
         $suma = 0;
@@ -250,7 +251,9 @@ class Reporte extends Controller
         $porcentaje = 0;
         $listaParticipante = array();
         $estudiantes = array();
-        if(sizeof($participantes)>0) {
+
+        
+        // if(sizeof($participantes)>0) {
                 array_push($estudiantes, $participantes->nombres . " " . $participantes->apellidos);
                 foreach ($tipoModulos as $tipoModulo) {
                     foreach ($notas as $nota) {
@@ -284,7 +287,6 @@ class Reporte extends Controller
                     }
                 }
                 $arreglo = [
-                   
                     'promedio' => $totalProm[$clave]
                 ];
                 
@@ -293,10 +295,9 @@ class Reporte extends Controller
                 unset($promedios[$clave]);
                 unset($totalProm[$clave]);
             }
-        }
+        // }
         unset($participantes);
         unset($notas);
-
         return $arreglo;
         unset($arreglo);
     }

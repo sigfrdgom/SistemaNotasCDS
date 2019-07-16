@@ -1,6 +1,9 @@
 <?php
-//    require_once RUTA_APP . '/views/include/header.php';
-  require_once RUTA_APP . '/views/include/headerPadre.php';
+   
+    // require_once RUTA_APP . '/views/include/header.php';
+    require_once RUTA_APP . '/views/include/headerPadre.php';
+
+     
 
     
 
@@ -33,7 +36,7 @@
 
                     <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
                         <div class="card-box noradius noborder bg-info">
-                            <i class="fa fa-id-badge float-right text-white"></i>
+                            <i class="fa fa-user-o float-right text-white"></i>
                             <h6 class="text-white text-uppercase m-b-20">Usuarios</h6>
                             <h1 class="m-b-20 text-white counter"><?php echo $datos['n_usuarios'] ?></h1>
                             <span class="text-white">5 Nuevos Usuarios</span>

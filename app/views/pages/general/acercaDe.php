@@ -81,7 +81,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div class="card">
                             
                                 <div class="card-img-top text-center mt-2">
-                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                                    <img src="<?php echo RUTA_URL ?>/img/team/Carlos.jpg" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
                                 </div>
                                 <div  class="text-center mt-2 text-white" style="background: black">
                                     <h4 class="mt-2">Carlos Martinez </h4>
@@ -104,7 +104,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div class="card">
                             
                                 <div class="card-img-top text-center mt-2">
-                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                                    <img src="<?php echo RUTA_URL ?>/img/team/Kevin.jpg" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
                                 </div>
                                 <div  class="text-center mt-2 text-white" style="background: black">
                                     <h4 class="mt-2">Kevin Martinez </h4>
@@ -127,7 +127,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div class="card">
                             
                                 <div class="card-img-top text-center mt-2">
-                                    <img src="<?php echo RUTA_URL ?>/img/logo/fgk.png" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
+                                    <img src="<?php echo RUTA_URL ?>/img/team/Sigfrido.jpg" class="img-fluid rounded-circle border border-info" style="width: 10em; height: 10em">
                                 </div>
                                 <div  class="text-center mt-2 text-white" style="background: black">
                                     <h4 class="mt-2">Sigfrido Gómez </h4>

@@ -79,6 +79,7 @@
                     <tr>
                         <!-- <th class="align-middle border border-dark"> MODULO</th> -->
                         <th rowspan="2" class="align-middle border border-dark">NOMBRE MODULO</th>
+                        <th rowspan="2" class="align-middle border border-dark">TIPO MODULO</th>
                         <th colspan="6" class="align-middle border border-dark">ACTIVIDADES</th>
                         <th rowspan="2" class="align-middle border border-dark">PROMEDIO</th>
                     </tr>
@@ -98,6 +99,9 @@
                             <!-- <td class="border border-dark align-middle" rowspan="2"><?php echo $c?></td> -->
                             <td class="border border-dark align-middle"  rowspan="2">
                                 <?php echo $lista[0]->nombre_modulo?>
+                            </td>
+                            <td rowspan="2" class="border border-dark align-middle">
+                                <?php echo $lista[0]->tipo_modulo?>
                             </td>
                             <td class="border border-dark">
                                 %<?php echo $lista[0]->evaluacion1?>
@@ -163,7 +167,7 @@
                         $c++;
                     } ?>
                         <tr class="border border-dark">
-                            <td colspan="7" class="text-right"><b>PROMEDIO GENERAL DEL ALUMNO</b></td>
+                            <td colspan="8" class="text-right"><b>PROMEDIO GENERAL DEL ALUMNO</b></td>
                             <td rowspan="2" class="align-middle text-center border border-dark" 
                                 <?php $promedio = $datos['promedio']; 
                                     echo ($promedio['promedio']>6) ? 'style="background: rgb(130, 224, 170, 0.8);"' : 'style="background: rgb(241, 148, 138, 0.8);"' ?> >

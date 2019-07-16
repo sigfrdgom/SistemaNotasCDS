@@ -83,7 +83,7 @@ class ModuloModel{
     
     public function updateDown($datos){
         $this->db->query('UPDATE modulo SET estado=0 WHERE id_modulo = :id ');
-        $this->db->bind(':id', $datos['id']);
+        $this->db->bind(':id', $datos);
         if($this->db->execute()){
             return true;
         }else{

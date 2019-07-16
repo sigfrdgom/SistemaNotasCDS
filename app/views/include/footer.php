@@ -68,6 +68,9 @@
 </script>
 
 <script src="<?php echo constant('RUTA_URL')?>/js/validations.js"></script>
+<script>
+                            $(":input").inputmask();
+                        </script>
 
 </body>
 </html>

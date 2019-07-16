@@ -11,7 +11,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-holder">
-                        <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
+                        
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
                             <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
@@ -21,23 +21,23 @@ require_once RUTA_APP . '/views/include/header.php';
                 </div>
             </div>
             
-            <!-- <div>
-                <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
-            </div> -->
-           
         </div>
     </div>
-
+    
+    <div class="text-center breadcrumb-holder mt-2 pb-2 border-info border">
+                        <h1 class="main-title">Perguntas y respuestas frecuentes Sistema de Notas CDS &nbsp;</h1>
+                </div>
+    
     <div class='justify-content-center text-center ml-2 mr-2'>
     <div class='tab'>
     
-    <button class='tablinks' onclick="openTab(event, 'usuarios')" id='defaultOpen'>Sobre usuarios</button>
-    <button class='tablinks' onclick="openTab(event, 'participantes')">Sobre participantes</button>
-    <button class='tablinks' onclick="openTab(event, 'cursos')">Sobre cursos</button>
-    <button class='tablinks' onclick="openTab(event, 'modulos')">Sobre módulos</button>
-    <button class='tablinks' onclick="openTab(event, 'matricula')">Sobre matrícula</button>
-    <button class='tablinks' onclick="openTab(event, 'notas')">Sobre notas</button>
-    <button class='tablinks' onclick="openTab(event, 'otros')">Otros</button>
+    <button class='tablinks' onclick="openTab(event, 'usuarios')" id='defaultOpen'><p class="ml-2 my-0 font-weight-bold">Sobre usuarios</p></button>
+    <button class='tablinks' onclick="openTab(event, 'participantes')"><p class="ml-2 my-0 font-weight-bold">Sobre participante</p></button>
+    <button class='tablinks' onclick="openTab(event, 'cursos')"><p class="ml-2 my-0 font-weight-bold">Sobre cursos</p></button>
+    <button class='tablinks' onclick="openTab(event, 'modulos')"><p class="ml-2 my-0 font-weight-bold">Sobre módulos</p></button>
+    <button class='tablinks' onclick="openTab(event, 'matricula')"><p class="ml-2 my-0 font-weight-bold">Sobre matrícula</p></button>
+    <button class='tablinks' onclick="openTab(event, 'notas')"><p class="ml-2 my-0 font-weight-bold">Sobre notas</p></button>
+    <button class='tablinks' onclick="openTab(event, 'otros')"><p class="ml-2 my-0 font-weight-bold">Otros</p></button>
     </div>
     
  

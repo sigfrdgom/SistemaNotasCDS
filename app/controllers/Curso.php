@@ -152,6 +152,7 @@ class Curso extends Controller
 
     public function promote($id_curso)
     {
+        $this->sessionActivaX();
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             if ($curso =$this->cursoModel->findById($id_curso)) {

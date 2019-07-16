@@ -229,13 +229,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
 </div>
 
 
-
-
-
-
-
-
-
+<script src="<?php echo RUTA_URL ?>/js/views/participantes.js"></script>
 
 <?php
 if ($_SESSION['tipoUsuario']==$_SESSION['admin2']) {

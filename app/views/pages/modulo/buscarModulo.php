@@ -20,7 +20,7 @@
             <td class='shrink '><button  class='centrado btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
             
             <td class='shrink align-middle'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
-                onclick='menjaseBaja("<?php echo "modulo/down/$modulos->id_modulo;"?>")' 
+                onclick='menjaseBaja("<?php echo RUTA_URL."/modulo/down/$modulos->id_modulo"?>")' 
                 class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button></td>
         </tr>
                 

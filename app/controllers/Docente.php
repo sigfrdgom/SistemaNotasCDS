@@ -105,7 +105,9 @@ class Docente extends Controller
 
     }
 
+
     public function buscarDocente(){
+        $this->sessionActivaX();
         $busqueda = trim($_POST['busqueda']);
 
         if($busqueda == null || $busqueda== ""){

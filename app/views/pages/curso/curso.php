@@ -198,7 +198,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <div style="margin-left:2em;">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="cestado" id="cestado1" value="1" required>
+                                        <input class="form-check-input" type="radio" name="cestado" id="cestado1" value="1" required checked>
                                         Activo
                                     </label>
                                 </div>

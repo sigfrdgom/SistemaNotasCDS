@@ -80,26 +80,32 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
             <ul class="list-inline float-right mb-0">
 
                 <li class="list-inline-item dropdown notif">
-                <h5 class="bg-danger"><small>USUARIO :<?php echo $_SESSION['tipoUsuario'] ?></small> </h5><a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
-                        <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5 class="text-overflow"><small>HOLA A :<?php echo $_SESSION['nombres'] ?></small> </h5>
+                    
+                        <div class="col">
+                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
+                                <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
+                                <!-- item-->
+                                <div class="dropdown-item perfil_item ">
+                                    <small class="text-overflow"><i class="fas fa-shield-alt"></i><?php echo $_SESSION['tipoUsuario'] ?></small>
+                                </div>
+                                <div class="dropdown-item perfil_item text-justify">
+                                    <small class="text-overflow"><i class="fas fa-user"></i><?php echo $_SESSION['nombres']?></small>
+                                </div>
+                                <div class="cerrar_session">
+                                    <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item cerrar_session">
+                                        <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
+                                    </a>
+                                </div>
+                                
+
+                            </div>
                         </div>
 
-                        <!-- item-->
-                        <!-- <a href="pro-profile.html" class="dropdown-item notify-item">
-                            <i class="fa fa-user"></i> <span>Perfil</span>
-                        </a> -->
+                    
+                    
 
-                        <!-- item-->
-                        <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item">
-                            <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
-                        </a>
-
-                    </div>
                 </li>
 
             </ul>
@@ -124,7 +130,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
-                <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
+                <!-- <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a> -->
 
                 <ul >
                     <li class="submenu mt-3" >

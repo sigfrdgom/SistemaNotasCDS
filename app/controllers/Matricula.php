@@ -30,27 +30,27 @@ class Matricula extends Controller
     public function curso($id_curso=null){
 
         $this->sessionActivaX();
-        if(isset($id))
+        if(isset($id_curso))
         {
 
-        $matricula = $this->matriculaModel->findForTableCurso($id_curso);
-        $participante = $this->participanteModel->findAll();
-        $curso = $this->cursoModel->findById($id_curso);
-        
-        $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
-        $datos = [
-            'titulo' => "Participantes matriculados",
-            'descripcion' => $descripcion,
-            'matricula' => $matricula,
-            'participante' => $participante ,
-            'curso' => $curso ,
-            'id_curso' => $id_curso
-        ];
-        $this->view('pages/matricula/matriculaCurso', $datos);
+            $matricula = $this->matriculaModel->findForTableCurso($id_curso);
+            $participante = $this->participanteModel->findAll();
+            $curso = $this->cursoModel->findById($id_curso);
+            
+            $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
+            $datos = [
+                'titulo' => "Participantes matriculados",
+                'descripcion' => $descripcion,
+                'matricula' => $matricula,
+                'participante' => $participante ,
+                'curso' => $curso ,
+                'id_curso' => $id_curso
+            ];
+            $this->view('pages/matricula/matriculaCurso', $datos);
 
-    }else{
-        redireccionar('matricula');
-    }
+        }else{
+            redireccionar('matricula');
+        }
 
 
     }
@@ -58,18 +58,18 @@ class Matricula extends Controller
     
     public function nivel($cohorte=null){
         $this->sessionActivaX();
-        if(isset($id))
+            if(isset($cohorte))
             {
-        $curso = $this->cursoModel->findByNivel($cohorte);
-        $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
-        $datos = [
-            'titulo' => "Niveles ".$curso[0]->cohorte,
-            'descripcion' => $descripcion,
-            'curso' => $curso 
-        ];
-        $this->view('pages/matricula/matriculaNivel', $datos);
-            }else{
-                redireccionar('matricula');
+                $curso = $this->cursoModel->findByNivel($cohorte);
+                $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
+                $datos = [
+                    'titulo' => "Niveles ".$curso[0]->cohorte,
+                    'descripcion' => $descripcion,
+                    'curso' => $curso 
+                ];
+                $this->view('pages/matricula/matriculaNivel', $datos);
+                    }else{
+                        redireccionar('matricula');
             }
 }
 

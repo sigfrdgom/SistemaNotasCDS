@@ -105,3 +105,17 @@ td-center{
       background-color: white;
       overflow: hidden;
     }
+
+    .cerrar_session{
+      background: #d46a7f41;
+    }
+
+    .cerrar_session:hover{
+      color: white;
+      background: #ba0c2f;
+    }
+
+    .perfil_item:hover{
+      color: white;
+      background:#002f6c;
+    }

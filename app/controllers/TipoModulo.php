@@ -19,7 +19,9 @@ class TipoModulo extends Controller{
     }
 
     public function create(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        {
             $datos = [
                 'nombre' => trim($_POST['nombreTipoModulo']),
                 'estado' => trim($_POST['estado'])
@@ -30,16 +32,19 @@ class TipoModulo extends Controller{
                 die("Error al insertar los datos");
             }
         }else{
-            $datos = [
-                'nombre' => '',
-                'estado' => ''
-            ];
-            $this->view('pages/tipoModulo', $datos);
+            // $datos = [
+            //     'nombre' => '',
+            //     'estado' => ''
+            // ];
+            // $this->view('pages/tipoModulo', $datos);
+            redireccionar('tipoModulo');
         }
     }
 
     public function update(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        {
             $datos = [
                 'id_tipo_modulo' => $_POST['id_tipo_modulo'],
                 'nombre' => trim($_POST['nombreTipoModulo']),
@@ -56,22 +61,28 @@ class TipoModulo extends Controller{
         }
     }
 
-    public function delete($id){
-        if (isset($id)){
+    public function delete($id=null){
+        $this->sessionActivaX();
+        if(isset($id))
+            {
             if($this->tipoModuloModel->delete($id)){
                 // redireccionar('tipoModulo');
             }else{
+                redireccionar('tipoModulo');
                 die("Error al eliminar los datos");
             }
         }else{
-            // $this->index();
+             $this->index();
         }
     }
 
-    public function  findById($id){
-        if(isset($id)){
+    public function  findById($id = null){
+        $this->sessionActivaX();
+        if(isset($id))
+            {
             return $this->tipoModuloModel->findById($id);
         }else{
+            redireccionar('tipoModulo');
             die("Error al buscar el dato");
         }
     }

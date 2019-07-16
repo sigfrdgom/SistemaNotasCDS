@@ -18,7 +18,8 @@ class Docente extends Controller
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
            $datos = [
                'id_docente' => null,
@@ -43,12 +44,15 @@ class Docente extends Controller
            {
                die("Error al insertar los datos");
            }
+       }else{
+        redireccionar('docente');
        }
    }
 
    public function update()
    {
-       if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        $this->sessionActivaX();
+       if (($_SERVER['REQUEST_METHOD'] == 'POST'))
        {
           $datos = [
               'id_docente' =>trim($_POST['did']),
@@ -63,7 +67,7 @@ class Docente extends Controller
               'pass' => trim($_POST['dpass']),
               'estado' => trim($_POST['destado'])
           ];
-        //   var_dump($datos);
+        
           if($this->docenteModel->update($datos))
           {
                redireccionar('docente/docente');
@@ -73,48 +77,37 @@ class Docente extends Controller
           {
               die("Error al insertar los datos");
           }
-      }
+        }else
+        {
+        redireccionar('docente');
+     }
   }
 
-   public function delete($id)
-   {
-        if (isset($id))
-        {
-            if($this->docenteModel->delete($id))
-            {
-                redireccionar('docente/docente');
-            }
-            else
-            {
-                die("Error al eliminar los datos");
-            }
-        }
-        else
-        {
-            $this->index();
-        }
-    }
 
-    public function updateDown($id)
-    {
-        if (isset($id))
-        {
+    public function updateDown($id = null)
+   {
+    $this->sessionActivaX();
+       if (isset($id))
+       {
             if($this->docenteModel->updateDown($id))
             {
                 redireccionar('docente/docente');
             }
             else
             {
-                die("Error al dar de baja el usuario");
+                redireccionar('docente');
+                die("Error al dar de baja el docente");
             }
-        }
-        else
+        }else
         {
-            $this->index();
+            redireccionar('docente');
         }
+
     }
 
+
     public function buscarDocente(){
+        $this->sessionActivaX();
         $busqueda = trim($_POST['busqueda']);
 
         if($busqueda == null || $busqueda== ""){

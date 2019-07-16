@@ -1,4 +1,33 @@
 <!DOCTYPE html>
+
+<!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
+<?php
+if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {   
+    // echo "<script> alert('HAY SESSION EN HEADER ".session_status()."');</script>";
+
+}else{
+    
+    // echo "<script> alert(' NO HAY SESISION EN HEADER ".session_status()."');</script>";
+    
+    if (session_status() != 2) {
+        session_start();
+    } 
+    
+    if (isset($_SESSION['id_sesion'])) 
+    {
+        // echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');</script>";
+    }else
+    {
+        echo "<script> alert('NO ESTA AUTORIZADO HEADER');
+        window.location='".RUTA_URL."';
+        </script>";
+        exit;
+    }
+    
+}
+?>
+
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -43,7 +72,7 @@
 
         <!-- LOGO -->
         <div class="headerbar-left">
-            <a href="<?php echo RUTA_URL ?>" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
+        <a href="<?php echo RUTA_URL ?>/index/index2" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
         </div>
 
         <nav class="navbar-custom">
@@ -51,22 +80,22 @@
             <ul class="list-inline float-right mb-0">
 
                 <li class="list-inline-item dropdown notif">
-                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
+                <h5 class="bg-danger"><small>USUARIO :<?php echo $_SESSION['tipoUsuario'] ?></small> </h5><a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
                         <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
                         <div class="dropdown-item noti-title">
-                            <h5 class="text-overflow"><small>Hola, Carlos</small> </h5>
+                            <h5 class="text-overflow"><small>HOLA A :<?php echo $_SESSION['nombres'] ?></small> </h5>
                         </div>
 
                         <!-- item-->
-                        <a href="pro-profile.html" class="dropdown-item notify-item">
+                        <!-- <a href="pro-profile.html" class="dropdown-item notify-item">
                             <i class="fa fa-user"></i> <span>Perfil</span>
-                        </a>
+                        </a> -->
 
                         <!-- item-->
-                        <a href="#" class="dropdown-item notify-item">
+                        <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item">
                             <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
                         </a>
 
@@ -95,7 +124,7 @@
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
-                <!-- <a href="index" ><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a> -->
+                <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
 
                 <ul >
                     <li class="submenu mt-3" >

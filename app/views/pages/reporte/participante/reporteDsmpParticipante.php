@@ -100,9 +100,12 @@
                             <td class="border border-dark align-middle"  rowspan="2">
                                 <?php echo $lista[0]->nombre_modulo?>
                             </td>
+<<<<<<< HEAD
+=======
                             <td rowspan="2" class="border border-dark align-middle">
                                 <?php echo $lista[0]->tipo_modulo?>
                             </td>
+>>>>>>> 9bd56d32b89baae1ff8076fc4d3bbd9033a062eb
                             <td class="border border-dark">
                                 %<?php echo $lista[0]->evaluacion1?>
                             </td>
@@ -141,7 +144,10 @@
                             </td>
                         </tr>
                         <tr class="border border-dark">
+<<<<<<< HEAD
+=======
                                 
+>>>>>>> 9bd56d32b89baae1ff8076fc4d3bbd9033a062eb
                                 <td>
                                     <?php echo ($lista[0]->nota1 == null)?"":$lista[0]->nota1  ?>
                                 </td>
@@ -168,7 +174,11 @@
                         $c++;
                     } ?>
                         <tr class="border border-dark">
+<<<<<<< HEAD
+                            <td colspan="7" class="text-right"><b>PROMEDIO GENERAL DEL ALUMNO</b></td>
+=======
                             <td colspan="8" class="text-right"><b>PROMEDIO GENERAL DEL ALUMNO</b></td>
+>>>>>>> 9bd56d32b89baae1ff8076fc4d3bbd9033a062eb
                             <td rowspan="2" class="align-middle text-center border border-dark" 
                                 <?php $promedio = $datos['promedio']; 
                                     echo ($promedio['promedio']>6) ? 'style="background: rgb(130, 224, 170, 0.8);"' : 'style="background: rgb(241, 148, 138, 0.8);"' ?> >

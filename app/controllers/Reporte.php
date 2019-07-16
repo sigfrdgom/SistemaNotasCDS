@@ -146,7 +146,6 @@ class Reporte extends Controller
             array_push($matrizModulos, $this->notaModel->findNotasByCursoModuloNivelParticipante($curso, $modulo->id_modulo, $nivel,$participante));
         }
 
-        var_dump($matrizModulos[0]);
         $promedio = $this->generarDsmpNivelProm($curso,$nivel,$participante);
         $datos = [
             'titulo' => "Reporte de desempeño Curso:  $info->nombre_curso , Nivel: $info->nivel",

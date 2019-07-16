@@ -18,7 +18,10 @@ class Participante extends Controller
     }
 
     public function create(){
-         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        {
             $datos = [
                 'nombres' => trim($_POST['nombres']),
                 'apellidos' => trim($_POST['apellidos']),
@@ -43,7 +46,9 @@ class Participante extends Controller
             }else{
                 die("Error al insertar los datos");
             }
-        }
+        }else{
+            redireccionar('participante');
+       }
 
 
 
@@ -51,7 +56,9 @@ class Participante extends Controller
 
 
     public function update(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        {
            $datos = [
                'id' => trim($_POST['id']),
                'nombres' => trim($_POST['nombres']),
@@ -70,14 +77,15 @@ class Participante extends Controller
 
 
            ];
-           var_dump($datos);
            if($this->participanteModel->update($datos)){
                redireccionar('participante/participante');
 
            }else{
                die("Error al actualizar los datos");
            }
-       }
+       }else{
+        redireccionar('participante');
+   }
 
 
     
@@ -85,8 +93,10 @@ class Participante extends Controller
 
 
 
-    public function delete($id){
-        if (isset($id)){
+    public function delete($id = null){
+        $this->sessionActivaX();
+        if(isset($id))
+            {
             if($this->participanteModel->delete($id)){
                 redireccionar('participante/participante');
             }else{
@@ -98,10 +108,11 @@ class Participante extends Controller
     }
 
 
-    public function updateDown($id)
+    public function updateDown($id = null)
    {
-        if (isset($id))
-        {
+    $this->sessionActivaX();
+        if(isset($id))
+            {
             if($this->participanteModel->updateDown($id))
             {
                 redireccionar('participante/participante');

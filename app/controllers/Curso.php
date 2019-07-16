@@ -5,14 +5,15 @@ class Curso extends Controller
         //Cargar Modelos de la paginas;
         $this->cursoModel = $this->model('CursoModel');
         $this->nivelCursoModel = $this->model('NivelCursoModel');
-        // $this->obtenerNivel = $this->model('NivelCursoModel');
+        
+        
     }
 
     public function index(){
         
         $curso = $this->cursoModel->findAll();
         $nivelCurso = $this->nivelCursoModel->findAll();
-        $obtenerNivel = $this->nivelCursoModel;
+        // $obtenerNivel = $this->nivelCursoModel;
 
         $cantidadParticipantes =$this->cursoModel;
 
@@ -22,15 +23,16 @@ class Curso extends Controller
             'descripcion' => $descripcion,
             'curso' => $curso,
             'cantidadParticipantes' => $cantidadParticipantes,
-            'nivelCurso' => $nivelCurso,
-            'obtenerNivel' => $obtenerNivel
+            'obtenerNivel' => $nivelCurso
         ];
         $this->view('pages/curso/curso', $datos);
     }
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        $this->sessionActivaX();
+
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
            $datos = [
                'id_curso' => null,
@@ -54,41 +56,34 @@ class Curso extends Controller
            {
                die("Error al insertar los datos");
            }
+       }else{
+            redireccionar('curso');
        }
     }
 
-   public function delete($id)
-   {
-        if (isset($id))
-        {
-            if($this->cursoModel->delete($id))
+    public function findById($id=null){
+       
+        $this->sessionActivaX();
+            if(isset($id))
             {
+                return $this->cursoModel->findById($id);
+            }else{
+                redireccionar('curso');
+                die("Error al buscar el dato");
+                
                 redireccionar('curso');
             }
-            else
-            {
-                die("Error al eliminar los datos");
-            }
-        }
-        else
-        {
-            $this->index();
-        }
-    }
-
-    public function findById($id){
-        if(isset($id)){
-            return $this->cursoModel->findById($id);
-        }else{
-            die("Error al buscar el dato");
-        }
-    }
+       }
+        
+    
 
     public function update()
    {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-       $datos = [
+    
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+       {
+           $datos = [
            'id_curso' => trim($_POST['cid']),
            'nombre_curso' => trim($_POST['cnombre']),
            'cohorte' => trim($_POST['ccohorte']),
@@ -100,7 +95,7 @@ class Curso extends Controller
            'fecha_inicio' => trim($_POST['cfecha_inicio']),
            'fecha_fin' => trim($_POST['cfecha_fin'])
        ];
-       var_dump($datos);
+       
        if($this->cursoModel->update($datos))
        {
            redireccionar('curso');
@@ -108,43 +103,56 @@ class Curso extends Controller
        }
        else
        {
-           die("Error al actualizar los datos");
+            redireccionar('curso');   
+            die("Error al actualizar los datos");
        }
-   }
+    }else{
+       redireccionar('curso');
+    }
   }
 
-  public function updateDown($id)
-   {
+  public function updateDown($id = null) 
+  {
+    $this->sessionActivaX();
+    
         if (isset($id))
         {
             if($this->cursoModel->updateDown($id))
             {
-                redireccionar('curso');
+                redireccionar('curso/curso');
             }
             else
             {
+                redireccionar('curso');
                 die("Error al dar de baja el curso");
+                
             }
         }
         else
         {
-            $this->index();
+            redireccionar('curso');
         }
+
     }
 
 
 
-    public function countParticipante($id){
+    public function countParticipante($id = null){
+        
+        $this->sessionActivaX();
         if(isset($id)){
             return $this->cursoModel->countParticipante($id);
         }else{
+        redireccionar('curso');
             die("Error al buscar el dato");
         }
+       
     }
 
 
     public function promote($id_curso)
     {
+        $this->sessionActivaX();
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             if ($curso =$this->cursoModel->findById($id_curso)) {

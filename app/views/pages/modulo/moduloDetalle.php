@@ -1,6 +1,7 @@
 <?php
 /*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
 
 ?>
 
@@ -17,7 +18,7 @@ require_once RUTA_APP . '/views/include/header.php';
                     </a>
                 <?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
+                    <button type="button" class="btnAccion btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo
                     </button>
                     <a href="#" 
@@ -72,7 +73,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <th>Evaluacion 5</th>
                             <th>Evaluacion 6</th>
                             <th>Estado</th>
-                            <th colspan="2">Acciones
+                            <th class="btnAccion" colspan="2">Acciones
                                 <a href="#" 
                                     title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
                                     data-content="Sirven para modificar informacion de un Modulo o darlo de baja">
@@ -241,6 +242,10 @@ require_once RUTA_APP . '/views/include/header.php';
 
 <?php
 /*Importacion de Footer de la aplicacion */
+if ($_SESSION['tipoUsuario']==$_SESSION['admin2']) {
+    echo "<script src='".RUTA_URL."/js/componentHidden.js'></script>";
+ }
 require_once RUTA_APP . '/views/include/footer.php';
+
 ?>
 <script src="<?php echo RUTA_URL ?>/js/modulosData.js"></script>

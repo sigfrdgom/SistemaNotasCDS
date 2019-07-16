@@ -130,6 +130,14 @@ class NotaModel{
         return $this->db->findAll();
     }
 
+    public function findNotasByCursoPorcenatejeNivelTopParticipante($id_curso,$id_nivel,$id_participante){
+        $this->db->query("SELECT n.id_nota, n.id_participante, n.id_modulos_curso, n.nota1, n.nota2, n.nota3, n.nota4, n.nota4, n.nota5, n.nota6, n.observaciones, p.nombres, p.apellidos, mc.id_curso, mc.id_modulo, mc.id_docente, mo.evaluacion1, mo.evaluacion2, mo.evaluacion3, mo.evaluacion4, mo.evaluacion5, mo.evaluacion6, pc.id_tipo_modulo, pc.porcentaje, tm.nombre FROM participante p INNER JOIN nota n ON p.id_participante = n.id_participante INNER JOIN modulos_curso mc ON n.id_modulos_curso= mc.id_modulos_curso INNER JOIN curso c ON mc.id_curso = c.id_curso INNER JOIN modulo mo ON mc.id_modulo=mo.id_modulo INNER JOIN matricula ma ON ma.id_curso=c.id_curso AND ma.id_participante=p.id_participante INNER JOIN porcentajes_curso pc ON c.id_curso=pc.id_curso INNER JOIN tipo_modulo tm ON pc.id_tipo_modulo=tm.id_tipo_modulo AND mo.tipo_modulo=tm.id_tipo_modulo WHERE mc.id_curso=:id_curso AND c.nivel=:id_nivel AND tm.estado=1 AND n.id_participante = :id_participante;");
+        $this->db->bind(':id_curso',$id_curso, PDO::PARAM_INT);
+        $this->db->bind(':id_nivel',$id_nivel, PDO::PARAM_INT);
+        $this->db->bind(':id_participante',$id_participante, PDO::PARAM_INT);
+        return $this->db->findAll();
+    }
+
     public function findNotasByCursoTipoModulo($id_curso,$id_tipo_modulo,$id_nivel){
         $this->db->query("SELECT n.id_nota, n.id_participante, n.id_modulos_curso, n.nota1, n.nota2, n.nota3, n.nota4, n.nota4, n.nota5, n.nota6, n.observaciones, p.nombres, p.apellidos, mc.id_curso, mc.id_modulo, mc.id_docente, mo.evaluacion1, mo.evaluacion2, mo.evaluacion3, mo.evaluacion4, mo.evaluacion5, mo.evaluacion6, pc.id_tipo_modulo, pc.porcentaje, tm.nombre FROM participante p INNER JOIN nota n ON p.id_participante = n.id_participante INNER JOIN modulos_curso mc ON n.id_modulos_curso= mc.id_modulos_curso INNER JOIN curso c ON mc.id_curso = c.id_curso INNER JOIN modulo mo ON mc.id_modulo=mo.id_modulo INNER JOIN matricula ma ON ma.id_curso=c.id_curso AND ma.id_participante=p.id_participante INNER JOIN porcentajes_curso pc ON c.id_curso=pc.id_curso INNER JOIN tipo_modulo tm ON pc.id_tipo_modulo=tm.id_tipo_modulo AND mo.tipo_modulo=tm.id_tipo_modulo WHERE mc.id_curso=:id_curso AND c.nivel=:id_nivel AND mo.tipo_modulo=:id_tipo_modulo AND tm.estado=1;");
         $this->db->bind(':id_curso',$id_curso, PDO::PARAM_INT);

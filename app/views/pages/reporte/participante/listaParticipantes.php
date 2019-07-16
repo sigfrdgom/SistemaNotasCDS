@@ -12,7 +12,11 @@ require_once RUTA_APP . '/views/include/header.php';
     <div class="row">
         <div class="col-xl-12">
             <div class="breadcrumb-holder">
-                <h1 class="main-title float-left mb-2"><?php echo $datos['titulo'] ?>&nbsp;</h1>
+                <h1 class="main-title float-left mb-2">
+                        <a href="<?php echo constant('RUTA_URL') ?>/reporte/dsmpParticipanteNivel/<?php echo base64_encode($datos['curso']->cohorte)?>">    
+                            <i class="fas fa-arrow-circle-left color-primary"></i>
+                        </a>
+                        <?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -65,7 +69,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret'><?php echo $matricula->observaciones ?></td>
                                 <td class='shrink' colspan="2">
                                     <a href="<?php echo constant('RUTA_URL')."/reporte/generarDsmpParticipante/$matricula->id_curso/$matricula->nivel/$matricula->id_participante" ?> " target="_blank" class="btn btn-primary btn-block">
-                                        <span class='fa fa-print'></span> Generar reportess
+                                        <span class='fa fa-print'></span> Generar reporte
                                         <!-- <?php //echo constant('RUTA_URL')."reporte/generarDsmpParticipante/$matricula->id_curso/$matricula->nivel/$matricula->id_participante" ?> -->
                                     </a>
                                 </td>

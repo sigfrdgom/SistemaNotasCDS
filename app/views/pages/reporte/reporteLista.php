@@ -27,7 +27,8 @@ require_once RUTA_APP . '/views/include/header.php';
                     <div class="card-body" >
                         <h5 class="card-title">Desempeño por Cohorte</h5>
                         <p class="card-text"> Descripción del reporte </p>
-                            <a href="<?php echo constant('RUTA_URL') ?>/reporte/dsmpCohorte/" target="_blank" class="btn btn-primary btn-block">Ver Cohortes</a>
+                            <a href="" class="btn btn-primary btn-block">Ver Cohortes</a>
+                            <!-- <?php //echo constant('RUTA_URL') ?>/reporte/dsmpCohorte/" target="_blank" -->
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Otra información sobre el reporte </small>

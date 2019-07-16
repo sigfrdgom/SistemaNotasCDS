@@ -12,7 +12,9 @@ require_once RUTA_APP . '/views/include/header.php';
     <div class="row">
         <div class="col-xl-12">
             <div class="breadcrumb-holder">
-                <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
+                <h1 class="main-title float-left">
+                
+                <?php echo $datos['titulo'] ?>&nbsp;</h1>
 
                 <!-- El boton para agregar a traves de un modal -->
                    

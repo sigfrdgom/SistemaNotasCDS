@@ -102,9 +102,9 @@ require_once RUTA_APP . '/views/include/header.php';
                             
                             <td class='shrink align-middle'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
                                 onclick='menjaseBaja("<?php echo RUTA_URL."/modulo/down/$modulos->id_modulo"?>")' 
-                                class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button></td>
+                                class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button>
+                                <?php echo RUTA_URL."/modulo/down/$modulos->id_modulo"?></td>
                         </tr>
-                               
                         <?php } ?>
                     </tbody>
                 </table>

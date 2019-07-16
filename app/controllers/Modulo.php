@@ -109,7 +109,8 @@ class Modulo extends Controller
     {
          if (isset($id))
          {
-             if($this->moduloModel->updateDown($id))
+             echo $id;
+             if($this->moduloModel->updateDown(trim($id)))
              {
                  redireccionar('modulo');
              }

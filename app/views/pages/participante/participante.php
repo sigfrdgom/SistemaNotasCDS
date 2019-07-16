@@ -181,8 +181,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         class="form-control pad-extra-input" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9/.#, ]{1,64}'>
 
                         <label for="telefono" class=" mrg-spr-ex">Telefono del participante:</label>
-                        <input type="text" name="telefono" id="telefono" placeholder="Escribe el telefono del participante" 
-                        class="form-control   fgk-dis-ctrl" required pattern='[0-9]{4}[-]{1}[0-9]{4}'>
+                        <input type="tel" name="telefono" id="telefono" placeholder="Escribe el telefono del participante" 
+                        class="form-control   fgk-dis-ctrl" required pattern='[2|7|6]{1}[0-9]{3}[-]{1}[0-9]{4}'>
+                        
                         
                         <label for="email" class="mrg-spr-ex">Email del participante:</label>
                         <input type="email" name="email" id="email" placeholder="Escribe el email del participante" 

@@ -41,14 +41,14 @@ class Participante extends Controller
             ];
             var_dump($datos);
             if($this->participanteModel->create($datos)){
-                redireccionar('participante/participante');
+                redireccionar('participante');
 
             }else{
                 die("Error al insertar los datos");
             }
         }else{
             redireccionar('participante');
-       }
+        }
 
 
 
@@ -59,33 +59,33 @@ class Participante extends Controller
         $this->sessionActivaX();
         if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
-           $datos = [
-               'id' => trim($_POST['id']),
-               'nombres' => trim($_POST['nombres']),
-               'apellidos' => trim($_POST['apellidos']),
-               'fecha_nacimiento' => trim($_POST['fecha_nacimiento']),
-               'sexo' => trim($_POST['sexo']),
-               'dui' => trim($_POST['dui']),
-               'nit' => trim($_POST['nit']),
-               'carnet_minoridad' => trim($_POST['carnet_minoridad']),
-               'direccion' => trim($_POST['direccion']),
-               'telefono' => trim($_POST['telefono']),
-               'email' => trim($_POST['email']),
+            $datos = [
+                'id' => trim($_POST['id']),
+                'nombres' => trim($_POST['nombres']),
+                'apellidos' => trim($_POST['apellidos']),
+                'fecha_nacimiento' => trim($_POST['fecha_nacimiento']),
+                'sexo' => trim($_POST['sexo']),
+                'dui' => trim($_POST['dui']),
+                'nit' => trim($_POST['nit']),
+                'carnet_minoridad' => trim($_POST['carnet_minoridad']),
+                'direccion' => trim($_POST['direccion']),
+                'telefono' => trim($_POST['telefono']),
+                'email' => trim($_POST['email']),
             // 'pass' => trim($_POST['ppass']),
             // 'estado' => trim($_POST['estado'])
                 'estado' => 1
 
 
-           ];
-           if($this->participanteModel->update($datos)){
-               redireccionar('participante/participante');
+            ];
+            if($this->participanteModel->update($datos)){
+                redireccionar('participante');
 
-           }else{
-               die("Error al actualizar los datos");
-           }
-       }else{
+            }else{
+                die("Error al actualizar los datos");
+            }
+        }else{
         redireccionar('participante');
-   }
+    }
 
 
     
@@ -98,7 +98,7 @@ class Participante extends Controller
         if(isset($id))
             {
             if($this->participanteModel->delete($id)){
-                redireccionar('participante/participante');
+                redireccionar('participantee');
             }else{
                 die("Error al eliminar los datos");
             }
@@ -109,13 +109,13 @@ class Participante extends Controller
 
 
     public function updateDown($id = null)
-   {
+    {
     $this->sessionActivaX();
         if(isset($id))
             {
             if($this->participanteModel->updateDown($id))
             {
-                redireccionar('participante/participante');
+                redireccionar('participante');
             }
             else
             {

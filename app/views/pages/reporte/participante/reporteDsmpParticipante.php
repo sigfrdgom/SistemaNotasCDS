@@ -32,6 +32,10 @@
 </head>
 <body class="bg-white">
 
+<div class="bg-dark text-center" id="imprimir">
+    <button class="btn btn-info font-weigth-bold my-3" onclick="window.print();" ><i class="fa fa-print" aria-hidden="true" style="font-size: 1.5em"></i> <b class="mb-5">Imprimir reporte PDF</b> </button>
+</div>
+
 
 <!-- Start content -->
 <div class="content mt-5 ">

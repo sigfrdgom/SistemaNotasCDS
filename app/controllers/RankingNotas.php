@@ -87,6 +87,7 @@ class RankingNotas extends Controller
         $totalProm = array();
         $porcentaje = 0;
         $listaParticipante = array();
+        var_dump($notas);
         $estudiantes = array();
         if(sizeof($participantes)>0) {
             foreach ($participantes as $participantes) {
@@ -126,15 +127,16 @@ class RankingNotas extends Controller
                         $clave = $key;
                     }
                 }
+                
                 $arreglo = [
                     'participante' => $estudiantes[$clave],
                     'tipoModulo' => $promedios[$clave],
                     'promedio' => $totalProm[$clave]
                 ];
                 array_push($listaParticipante, $arreglo);
-                unset($estudiantes[$clave]);
-                unset($promedios[$clave]);
-                unset($totalProm[$clave]);
+                array_splice($estudiantes, $clave, 1);
+                array_splice($promedios, $clave, 1);
+                array_splice($totalProm, $clave, 1);
                 unset($arreglo);
             }
         }

@@ -93,7 +93,6 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 <td class='secret dp9'><?php echo $participantes->telefono ?></td>
                                 <td class='secret dp10'><?php echo $participantes->email ?></td>
                                 
-                               
                                 <td ><?php echo ($participantes->estado == 1? "ACTIVO":"INACTIVO") ?></td>
                                 <td class='secret dp12'><?php echo $participantes->pass ?></td>
                                 
@@ -113,13 +112,12 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
 
     <div class="modal fade" id="agregarParticipante">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content">
-      
+        <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
         <h4 class="modal-title" style="margin: 0% auto;" id="aggp">Agregar un nuevo Participante</h4>
         <h4 class="modal-title" style="margin: 0% auto;" id="mdfp">Modificar un Participante</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->

@@ -108,7 +108,12 @@ class CursoModel{
     }
 
     public function cursoSinPorcentaje(){
-        $this->db->query("SELECT c.id_curso, c.nombre_curso, c.nivel FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NULL AND c.estado=1");
+        $this->db->query("SELECT c.id_curso, c.nombre_curso, c.nivel, c.cohorte FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NULL AND c.estado=1");
+        return $this->db->findAll();
+    }
+
+    public function cursoConPorcentaje(){
+        $this->db->query("SELECT DISTINCT(pc.id_curso), c.nombre_curso, c.cohorte, c.nivel FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NOT NULL AND c.estado=1 ORDER BY c.cohorte ASC");
         return $this->db->findAll();
     }
 
@@ -131,6 +136,7 @@ class CursoModel{
     }
 
     public function findByCriteria($datos){
+        
         $this->db->query("SELECT n.id_nota, n.id_participante, n.id_modulos_curso, n.nota1, n.nota2, n.nota3, n.nota4, n.nota4, n.nota5, n.nota6, n.observaciones, p.nombres, p.apellidos, mc.id_curso, mc.id_modulo, mc.id_docente, mo.evaluacion1, mo.evaluacion2, mo.evaluacion3, mo.evaluacion4, mo.evaluacion5, mo.evaluacion6 FROM participante p INNER JOIN nota n ON p.id_participante = n.id_participante INNER JOIN modulos_curso mc ON n.id_modulos_curso= mc.id_modulos_curso INNER JOIN curso c ON mc.id_curso = c.id_curso INNER JOIN modulo mo ON mc.id_modulo=mo.id_modulo WHERE mc.id_curso=:id_curso AND mc.id_modulo=:id_modulo AND (p.nombres LIKE :nombres OR p.apellidos LIKE :apellidos) AND c.estado=1 AND mo.estado=1");
         $this->db->bind(':id_curso',$datos['id_curso']);
         $busqueda = "%{".$datos['busqueda']."}%";

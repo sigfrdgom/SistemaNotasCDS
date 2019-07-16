@@ -29,8 +29,14 @@
     <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 
     <script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
+
 </head>
-<body class="bg-white">
+<body class="bg-white text-center" >
+    
+<div class="bg-dark" id="imprimir">
+    <button class="btn btn-info font-weigth-bold my-3" onclick="window.print();" ><i class="fa fa-print" aria-hidden="true" style="font-size: 1.5em"></i> <b class="mb-5">Imprimir reporte PDF</b> </button>
+</div>
+
 
 
 <!-- Start content -->
@@ -94,7 +100,7 @@
                 </thead>
                 <tbody class="">
                     <?php $c = 1; foreach ($datos['lista'] as $lista) { ?>
-                        <tr class="border-bottom border-dark">
+                        <tr class="border border-dark">
                             <td class="text-center"><?php echo $c ?></td>
                             <td ><?php echo $lista['participante'] ?></td>
                             <?php foreach ($lista['tipoModulo'] as $tipoModulo) {
@@ -109,7 +115,7 @@
                         $alumnos++;
                         $c++;
                     } ?>
-                        <tr class="border-bottom border-dark">
+                        <tr class="border border-dark">
                             <td colspan="<?php echo count($datos['tipoModulos']) + 2 ?>" class="text-right"><b>PROMEDIO GENERAL DEL CURSO</b></td>
                             <td rowspan="2" class="align-middle text-center border border-dark" 
                                 <?php $promedio = round(($suma/ $alumnos), 2); 

@@ -49,3 +49,4 @@
     display: inherit;
 }
 /* Lo que esta para parsley */
+@media print { #imprimir {display: none;}}

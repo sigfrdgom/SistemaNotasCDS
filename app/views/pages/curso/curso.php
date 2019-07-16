@@ -65,7 +65,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                     <tr>
                         <th class='secret'>ID</th>
                         <th>Nombre</th>
-                        <th>Numero participantes</th>
+                        <!-- <th>Numero participantes</th> -->
                         <th>Cohorte</th>
                         <th class='secret'>Descripcion</th>
                         <th class='secret'>Duracion</th>
@@ -93,11 +93,11 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 <td><?php echo $cursos->nombre_curso ?></td>
 
                                 <!-- ESTA MALO -->
-                                <td><?php  $conteo=$datos['cantidadParticipantes']->countParticipante($cursos->id_curso);
+                                <!-- <td><?php  $conteo=$datos['cantidadParticipantes']->countParticipante($cursos->id_curso);
                                 echo $conteo[0]->participantes;
                                 
                                 
-                                ?></td>
+                                ?></td> -->
                                 
                                 <td><?php echo $cursos->cohorte; ?></td>
                                 <td class='secret'><?php echo $cursos->descripcion ?> </td>
@@ -107,8 +107,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 
                             
                                 
-                                <td class="nivel"><?php $datosNivelArray=$datos['obtenerNivel']; foreach($datosNivelArray as $niveles)
-                                {if(($niveles->id_nivel_curso)==$cursos->nivel){ echo $niveles->nivel_curso;}}?></td>
+                                <td class="nivel">Nivel <?php echo $cursos->nivel?></td>
 
                                 <td class='secret'><?php echo $cursos->fecha_inicio ?></td>
                                 <td><?php echo $cursos->fecha_fin; ?></td>
@@ -142,13 +141,12 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
 <!-- El modal para agregar un nuevo curso -->
 <div class="modal fade" id="agregarCurso">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content">
-      
+        <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="margin: 0% auto;" id="aggcurso">Agregar un nuevo Curso</h4>
-          <h4 class="modal-title" style="margin: 0% auto;" id="mdfcurso">Modificar un Curso</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="margin: 0% auto;" id="aggcurso">Agregar un nuevo Curso</h4>
+            <h4 class="modal-title" style="margin: 0% auto;" id="mdfcurso">Modificar un Curso</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->

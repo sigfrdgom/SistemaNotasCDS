@@ -216,14 +216,15 @@ class Curso extends Controller
         ];
 
         if($busqueda == null || $busqueda== ""){
-            $notas = $this->cursoModel->findById($datos);
+            $notas = $this->cursoModel->findAll();
         }else{
             $notas = $this->cursoModel->findByCriteria($datos);
         }
 
         $datos = [
-            'cursos' => $notas,
+            'curso' => $notas,
         ];
+
         $this->view('pages/curso/buscarCurso', $datos);
     }
 

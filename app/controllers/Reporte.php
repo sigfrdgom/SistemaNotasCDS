@@ -59,13 +59,6 @@ class Reporte extends Controller
         $participantes = $this->participanteModel->participanteCursoNivel($id_curso, $nivel);
         $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
         
-        // if($p == null){
-        //     $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
-        // }else{
-        //     $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTopParticipante($id_curso, $nivel,$id_participante);
-        // }
-        
-
         $suma = 0;
         $contProm = 0;
         $promedios = array();
@@ -115,9 +108,9 @@ class Reporte extends Controller
                     'promedio' => $totalProm[$clave]
                 ];
                 array_push($listaParticipante, $arreglo);
-                unset($estudiantes[$clave]);
-                unset($promedios[$clave]);
-                unset($totalProm[$clave]);
+                array_splice($estudiantes,$clave,1);
+                array_splice($promedios,$clave,1);
+                array_splice($totalProm,$clave,1);
                 unset($arreglo);
             }
         }

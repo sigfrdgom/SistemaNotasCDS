@@ -35,18 +35,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <!-- Para busquedas -->
             <!-- <div class="mb-2">
                 <?php if (!empty($datos['curso'])) { ?>
-                    <div class="col-xl-12">
-                                
-                        <div class="input-group mb-1 float-right col-sm-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-                            </div>
-                            <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda"
-                                    data-id-curso="<?php echo $datos['id_curso'] ?>"
-                                    aria-label="Busqueda"
-                                    aria-describedby="basic-addon1">
-                        </div>
-                    </div>
+
                 <?php } ?>
             </div> -->
 
@@ -86,13 +75,6 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <!-- <td class="nivel"><?php echo $cursos->nivel ?></td> -->
                                 <td colspan="2">
 
-                                <!-- <form action="<?php echo constant('RUTA_URL')."/rankingNotas/rankingtop/" ?>" method="post">
-                                
-                                    <input type="hidden" name="id_curso" value="<?php echo $cursos->id_curso ?>">
-                                    <input type="hidden" name="nivel" value="<?php echo $cursos->nivel ?>">
-
-                                    <button type="submit" class="btn btn-primary btn-block"><span class='fa fa-print'></span> Generar reporte</button>
-                                </!--> 
                                     <a href="<?php echo constant('RUTA_URL')."/reporte/generarDsmpNivel/$cursos->id_curso/$cursos->nivel" ?> " target="_blank" class="btn btn-primary btn-block">
                                         <span class='fa fa-print'></span> Generar reporte
                                     </a>

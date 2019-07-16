@@ -14,13 +14,13 @@
                     <tbody id="table-content ">
                     <td><input type="hidden" id="id_curso_text" name="id_curso_text" value="<?php echo $datos['curso']->id_curso ?>"><?php echo $datos['curso']->nombre_curso ?></td>
                     <?php foreach ($datos['tipoModulo'] as $item) { ?>
-                        <td>
+                        <td style="min-width: 76px;">
                             <div class="input-group">
                                 <input type="text" class="form-control text-centrado porcentaje" name="porcentajes_curso[]" maxlength="5"
                                        onkeypress="decimalonly()" onkeyup="filterFloat(this);sumar()"
                                        aria-label="Ingrese un porcentaje" pattern="^[0-9]+([.][0-9]+)?$">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
+                                <div class="input-group-append" >
+                                    <span class="input-group-text text-center" >%</span>
                                 </div>
                             </div>
                         </td>

@@ -47,7 +47,7 @@ class Curso extends Controller
            var_dump($datos);
            if($this->cursoModel->create($datos))
            {
-               redireccionar('curso/curso');
+               redireccionar('curso');
 
            }
            else
@@ -63,7 +63,7 @@ class Curso extends Controller
         {
             if($this->cursoModel->delete($id))
             {
-                redireccionar('curso/curso');
+                redireccionar('curso');
             }
             else
             {
@@ -103,7 +103,7 @@ class Curso extends Controller
        var_dump($datos);
        if($this->cursoModel->update($datos))
        {
-           redireccionar('curso/curso');
+           redireccionar('curso');
 
        }
        else
@@ -169,7 +169,7 @@ class Curso extends Controller
                         var_dump($datos);
                             if($this->cursoModel->create($datos))
                             {
-                                redireccionar('curso/curso');
+                                redireccionar('curso');
                             }
                             else
                             {

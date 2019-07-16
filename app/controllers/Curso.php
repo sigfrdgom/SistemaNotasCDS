@@ -119,7 +119,7 @@ class Curso extends Controller
         {
             if($this->cursoModel->updateDown($id))
             {
-                redireccionar('curso/curso');
+                redireccionar('curso');
             }
             else
             {

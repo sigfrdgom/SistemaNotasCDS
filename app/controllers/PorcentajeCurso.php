@@ -130,13 +130,15 @@ class PorcentajeCurso extends Controller
         $tipoModulo = $this->tipoModuloModel->findActivos();
         $curso = $this->cursoModel->findById($id_curso);
         $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
+        $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
             'titulo' => "Porcentajes de los Curso",
             'descripcion' => $descripcion,
             'tipoModulo' => $tipoModulo,
             'curso' => $curso,
-            'cursoSinPorcentaje' => $cursoSinPorcentaje
+            'cursoSinPorcentaje' => $cursoSinPorcentaje,
+            'cursoConPorcentaje' => $cursoConPorcentaje
         ];
         $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
     }

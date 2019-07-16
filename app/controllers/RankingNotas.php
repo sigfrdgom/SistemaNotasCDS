@@ -132,9 +132,9 @@ class RankingNotas extends Controller
                     'promedio' => $totalProm[$clave]
                 ];
                 array_push($listaParticipante, $arreglo);
-                unset($estudiantes[$clave]);
-                unset($promedios[$clave]);
-                unset($totalProm[$clave]);
+                array_splice($estudiantes, $clave, 1);
+                array_splice($promedios, $clave, 1);
+                array_splice($totalProm, $clave, 1);
                 unset($arreglo);
             }
         }

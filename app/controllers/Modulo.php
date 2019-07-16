@@ -9,7 +9,7 @@ class Modulo extends Controller
     }
 
     public function index(){
-        $modulo = $this->moduloModel->findAll();
+        // $modulo = $this->moduloModel->findAll();
         $tipoModulo = $this->tipoModuloModel->findAll();
             
         
@@ -17,10 +17,10 @@ class Modulo extends Controller
         $datos = [
             'titulo' => "Modulo",
             'descripcion' => $descripcion,
-            'modulo' => $modulo,
+            // 'modulo' => $modulo,
             'tipoModulo' => $tipoModulo
         ];
-        $this->view('pages/modulo', $datos);
+        $this->view('pages/modulo/modulo', $datos);
     }
 
     public function create()
@@ -46,8 +46,7 @@ class Modulo extends Controller
            var_dump($datos);
            if($this->moduloModel->create($datos))
            {
-               redireccionar('modulo');
-
+                redireccionar("modulo/detalle/".$_POST['mtipo_modulo']);
            }
            else
            {
@@ -83,8 +82,7 @@ class Modulo extends Controller
            var_dump($datos);
            if($this->moduloModel->update($datos))
            {
-               redireccionar('modulo');
-
+               redireccionar("modulo/detalle/".$_POST['mtipo_modulo']);
            }
            else
            {
@@ -148,4 +146,42 @@ class Modulo extends Controller
             die("Error al buscar el dato");
         }
     }
+
+    public function detalle($id_tipo){
+        $modulo = $this->moduloModel->findByTipo($id_tipo);
+        $tipoModulo = $this->tipoModuloModel->findById($id_tipo);
+            
+        
+        $descripcion = "Vista que muestra todos los modulos que existen";
+        $datos = [
+            'titulo' => "Modulos de tipo '".strtolower($tipoModulo->nombre)."'",
+            'descripcion' => $descripcion,
+            'modulo' => $modulo,
+            'tipoModulo' => $tipoModulo,
+            'idTipoModulo' => $id_tipo
+        ];
+        $this->view('pages/modulo/moduloDetalle', $datos);
+    }
+
+    public function buscarModulos(){
+        $id_tipo = $_POST['tipo'];
+        $busqueda = $_POST['busqueda'];
+
+        $datos = [
+            'id_modulo' => trim($id_tipo),
+            'busqueda' => trim($busqueda)
+        ];
+
+        if($busqueda == null || $busqueda== ""){
+            $results = $this->moduloModel->findByTipo($id_tipo);
+        }else{
+            $results = $this->moduloModel->findByCriteria($datos);
+        }
+
+        $datos = [
+            'modulo' => $results,
+        ];
+        $this->view('pages/modulo/buscarModulo', $datos);
+    }
+
 }

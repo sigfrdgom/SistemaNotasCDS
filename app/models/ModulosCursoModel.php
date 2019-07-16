@@ -23,7 +23,7 @@ class ModulosCursoModel{
         $this->db->query("SELECT mc.id_modulos_curso , mc.id_curso, c.nombre_curso, mc.id_modulo, m.nombre_modulo, mc.id_docente, concat(d.nombres,' ',d.apellidos) as nombre, mc.observaciones 
         FROM modulos_curso mc JOIN  curso c ON mc.id_curso=c.id_curso 
         JOIN modulo m ON mc.id_modulo = m.id_modulo
-        JOIN docente d ON mc.id_docente=d.id_docente;");
+        JOIN docente d ON mc.id_docente=d.id_docente ORDER BY m.nombre_modulo ASC;");
         return $this->db->findAll();
     }
 
@@ -79,8 +79,27 @@ class ModulosCursoModel{
     }
 
     public function modulosByCurso($id_curso){
-        $this->db->query("SELECT * FROM modulos_curso mc INNER JOIN modulo mo ON mo.id_modulo=mc.id_modulo WHERE id_curso=:id_curso;");
+        $this->db->query("SELECT * FROM modulos_curso mc INNER JOIN modulo mo ON mo.id_modulo=mc.id_modulo WHERE id_curso=:id_curso ;");
         $this->db->bind(':id_curso',$id_curso);
+        return $this->db->findAll();
+    }
+
+    public function findByNivel($id_curso)
+    {
+        $this->db->query("SELECT mc.id_modulos_curso , mc.id_curso, c.nombre_curso, mc.id_modulo, m.nombre_modulo, mc.id_docente, concat(d.nombres,' ',d.apellidos) as nombre, mc.observaciones 
+            FROM modulos_curso mc JOIN  curso c ON mc.id_curso=c.id_curso 
+            JOIN modulo m ON mc.id_modulo = m.id_modulo
+            JOIN docente d ON mc.id_docente=d.id_docente
+            WHERE mc.id_curso=:id_curso  ORDER BY m.nombre_modulo ASC");
+        $this->db->bind(':id_curso',$id_curso);
+        return $this->db->findAll();
+    }
+
+    public function comprobar($datos)
+    {
+        $this->db->query('SELECT count(id_modulos_curso) as n_registros FROM modulos_curso WHERE id_curso = :id_curso AND id_modulo= :id_modulo ;');
+        $this->db->bind(':id_curso', $datos['id_curso']);
+        $this->db->bind(':id_modulo', $datos['id_modulo']);
         return $this->db->findAll();
     }
 }

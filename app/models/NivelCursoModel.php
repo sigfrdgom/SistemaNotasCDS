@@ -62,5 +62,11 @@ class NivelCursoModel{
         $this->db->query("SELECT * FROM nivel_curso WHERE estado=1;");
         return $this->db->findAll();
     }
+
+    public function findNivelByCurso($id_curso){
+        $this->db->query("SELECT * FROM nivel_curso nc INNER JOIN curso c ON c.nivel=nc.id_nivel_curso WHERE c.nivel IS NOT NULL AND c.id_curso=:id_curso;");
+        $this->db->bind(':id_curso', $id_curso);
+        return $this->db->findAll();
+    }
 }
 ?>

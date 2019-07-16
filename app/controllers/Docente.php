@@ -13,7 +13,7 @@ class Docente extends Controller
             'descripcion' => $descripcion,
             'docente' => $docente
         ];
-        $this->view('pages/docente', $datos);
+        $this->view('pages/docente/docente', $datos);
     }
 
     public function create()
@@ -37,7 +37,7 @@ class Docente extends Controller
            var_dump($datos);
            if($this->docenteModel->create($datos))
            {
-               redireccionar('docente');
+               redireccionar('docente/docente');
 
            }
            else
@@ -70,7 +70,7 @@ class Docente extends Controller
         
           if($this->docenteModel->update($datos))
           {
-               redireccionar('docente');
+               redireccionar('docente/docente');
 
           }
           else
@@ -91,7 +91,7 @@ class Docente extends Controller
        {
             if($this->docenteMbodel->updateDown($id))
             {
-                redireccionar('docente');
+                redireccionar('docente/docente');
             }
             else
             {
@@ -104,4 +104,20 @@ class Docente extends Controller
         }
 
     }
+
+    public function buscarDocente(){
+        $busqueda = trim($_POST['busqueda']);
+
+        if($busqueda == null || $busqueda== ""){
+            $results = $this->docenteModel->findAll();
+        }else{
+            $results = $this->docenteModel->findByCriteria($busqueda);
+        }
+
+        $datos = [
+            'docente' => $results,
+        ];
+        $this->view('pages/docente/buscarDocente', $datos);
+    }
+
 }

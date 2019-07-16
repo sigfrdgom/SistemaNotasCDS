@@ -99,5 +99,13 @@ class DocenteModel{
         $this->db->bind(':dui',$dui);
         return $this->db->findOne();
     }
+
+    public function findByCriteria($datos){
+        $this->db->query("SELECT * FROM docente WHERE id_docente = :busqueda OR nombres LIKE :busqueda  OR apellidos LIKE :busqueda  OR  dui LIKE :busqueda
+         OR nit LIKE :busqueda  OR especialidad LIKE :busqueda  OR tipo_usuario LIKE :busqueda");
+        $this->db->bind(':id',$datos);
+        $this->db->bind(':busqueda', "%".$datos."%", PDO::PARAM_STR);
+        return $this->db->findAll();
+    }
 }
 ?>

@@ -38,16 +38,16 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     <link rel="shortcut icon" href="<?php echo RUTA_URL; ?>/img/icons/test.png">
 
     <!-- Bootstrap CSS -->
-    <link href="<?php echo RUTA_URL ?>/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo RUTA_URL ?>/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Awesome CSS -->
-    <link href="<?php echo RUTA_URL ?>/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo RUTA_URL ?>/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet"  />
 
     <!-- Custom CSS -->
-    <link href="<?php echo RUTA_URL ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo RUTA_URL ?>/assets/css/style.css" rel="stylesheet"  />
     
     <!-- CSS General para la pagina-->
-    <link href="<?php echo RUTA_URL ?>/css/general.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo RUTA_URL ?>/css/general.css" rel="stylesheet" >
 
     <!-- BEGIN CSS for this page -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
@@ -56,47 +56,16 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     <!-- Other CSS -->
     <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 
+    <script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
     
     <style>
-        .mrg-spr-ex {
-            margin-top:1.25em;
-        }
-        .parsley-error {
-            border-color: #ff5d48 !important;
-        }
-
-        .parsley-errors-list.filled {
-            display: block;
-        }
-
-        .parsley-errors-list {
-            display: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .parsley-errors-list > li {
-            font-size: 12px;
-            list-style: none;
-            color: #ff5d48;
-            margin-top: 5px;
-        }
-
-        .form-section {
-            padding-left: 15px;
-            border-left: 2px solid #FF851B;
-            display: none;
-        }
-
-        .form-section.current {
-            display: inherit;
-        }
+        
     </style>
 </head>
 
-<body class="adminbody">
+<body class="adminbody-void">
 
-<div id="main">
+<div id="main" class="enlarged forced">
 
     <!-- top bar navigation -->
     <div class="headerbar">
@@ -157,10 +126,9 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
             <div id="sidebar-menu">
                 <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
 
-                <ul>
-
-                    <li class="submenu">
-                        <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-graduation-cap bigfont"></i><span> Cursos </span> </a>
+                <ul >
+                    <li class="submenu mt-3" >
+                        <a href="<?php echo RUTA_URL?>/curso"><i class="fa fa-graduation-cap bigfont "></i><span> Cursos </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -172,7 +140,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Estudiantes </span> </a>
+                        <a href="<?php echo RUTA_URL?>/participante"><i class="fa fa-fw fa-user"></i><span> Participantes </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -184,16 +152,36 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                     </li>
 
                     <li class="submenu">
-                        <a ><i class="fa fa-fw fa-tv"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
+                        <a href="<?php echo RUTA_URL ?>/matricula"><i class="fa fa-certificate bigfonts" aria-hidden="true"></i><span> Matriculas </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/rankingNotas"><i class="fa fa-bar-chart bigfonts"></i><span> Ranking Notas </span> </a>
+                    </li>
+
+                    <!-- <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-print"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Reporte </a></li>
+                            <li><a href="#">Reporte </a></li>
+                        </ul>
+                    </li> -->
+
+                    <li class="submenu">
+                        <a href="<?php echo RUTA_URL ?>/reporte"><i class="fa fa-fw fa-print"></i><span> Reportes </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a ><i class="fa fa-cog bigfonts"></i> <span> Mantenimientos </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="<?php echo RUTA_URL ?>/tipoModulo">Tipo Modulo</a></li>
                             <li><a href="<?php echo RUTA_URL ?>/nivelCurso">Niveles del curso</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li>
+                            <!-- <li><a href="<?php echo RUTA_URL ?>/modulo">Modulos</a></li> -->
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/notas">Notas</a></li> -->
-                            <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li>
+                            <!-- <li><a href="<?php echo RUTA_URL ?>/matricula">Matricula</a></li> -->
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/curso">Cursos</a></li> -->
                             <li><a href="<?php echo RUTA_URL ?>/modulosCurso">Modulos por cursos</a></li>
-                            <li><a href="<?php echo RUTA_URL ?>/porcentajeCurso">Porcentaje modulos</a></li>
+                            <li><a href="<?php echo RUTA_URL ?>/porcentajeCurso">Porcentajes Curso</a></li>
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/participante">Participantes</a></li> -->
                             <!-- <li><a href="<?php //echo RUTA_URL ?>/docente">Docentes</a></li> -->
 
@@ -201,23 +189,11 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/rankingNotas"><i class="fa fa-fw fa-scribd"></i><span> Ranking Notas </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/general/faq"><i class="fa fa-question-circle-o bigfonts" style="font-size: 1.5em;"></i><span> FA&Q </span> </a>
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-print"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Reporte 1</a></li>
-                            <li><a href="#">Reporte 2</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-question"></i><span> Preguntas Frecuentes </span> </a>
-                    </li>
-
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-deviantart"></i><span> About Us </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/general/acercaDe"><i class="fa fa-info-circle bigfonts" style="font-size: 1.5em;"></i><span> Sobre el proyecto </span> </a>
                     </li>
 
                 </ul>

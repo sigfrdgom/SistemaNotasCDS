@@ -16,6 +16,7 @@ $( document ).ready(function() {
         this.$openLeftBtn = $(".open-left"),
         this.$menuItem = $("#sidebar-menu a")
     };
+    
     Sidemenu.prototype.openLeftBar = function() {
       $("#main").toggleClass("enlarged");
       $("#main").addClass("forced");

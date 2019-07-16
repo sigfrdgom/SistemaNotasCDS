@@ -9,18 +9,54 @@ class PorcentajeCurso extends Controller
     }
 
     public function index(){
-        $porcentajesCurso = $this->porcentajesCursoModel->findForTable();
-        $tipoModulo = $this->tipoModuloModel->findAll();
-        $curso = $this->cursoModel->findAll();
+        // $porcentajesCurso = $this->porcentajesCursoModel->findForTable();
+        // $tipoModulo = $this->tipoModuloModel->findAll();
+        $curso = $this->cursoModel->findByCohorte();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
-            'titulo' => "porcentajesCurso",
+            'titulo' => "Porcentajes por Curso",
             'descripcion' => $descripcion,
-            'porcentajesCurso' => $porcentajesCurso,
-            'tipoModulo' => $tipoModulo,
+            // 'porcentajesCurso' => $porcentajesCurso,
+            // 'tipoModulo' => $tipoModulo,
             'curso' => $curso
         ];
-        $this->view('pages/porcentajesCurso', $datos);
+        $this->view('pages/porcentajesCurso/porcentajesCursoCohorte', $datos);
+    }
+
+    public function nivel($cohorte)
+    {
+        $curso = $this->cursoModel->findByNivel($cohorte);
+        $descripcion = "Vista que muestra todos las cursos con sus respectivos modulos que existen";
+        $datos = [
+            'titulo' => "Niveles ".base64_decode($cohorte),
+            'descripcion' => $descripcion,
+            'curso' => $curso 
+        ];
+        $this->view('pages/porcentajesCurso/porcentajesCursoNivel', $datos);
+    }
+
+    public function curso($id_curso)
+    {
+        $curso = $this->cursoModel->findById($id_curso);
+        $porcentajesCurso = $this->porcentajesCursoModel->findByNivel($id_curso);
+        $tipoModulo = $this->tipoModuloModel->findAll();
+
+        
+        // $modulosCurso = $this->modulosCursoModel->findByNivel($id_curso);
+        
+        
+        $descripcion = "Vista que muestra todos las porcentajes del tipo modulo pertenecientes a un curso";
+        $datos = [
+            'titulo' => "Porcentajes por modulos $curso->nombre_curso, Nivel $curso->nivel ",
+            'descripcion' => $descripcion,
+            // 'modulosCurso' => $modulosCurso,
+            'curso' => $curso,
+            'porcentajesCurso' => $porcentajesCurso,
+            // 'modulo' =>$modulo,
+            // 'docente' => $docente,
+            'tipoModulo' => $tipoModulo
+        ];
+        $this->view('pages/porcentajesCurso/porcentajesCursoDetalle', $datos);
     }
 
     public function create(){
@@ -88,7 +124,7 @@ class PorcentajeCurso extends Controller
         $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
-            'titulo' => "Porcentajes de los Curso",
+            'titulo' => "Porcentajes de los Cursos",
             'descripcion' => $descripcion,
             'tipoModulo' => $tipoModulo,
             'curso' => $curso,

@@ -15,7 +15,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active">Notas</li>
+                            <li class="breadcrumb-item active">Ranking</li>
                             <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
                         </ol>
                         <div class="clearfix"></div>
@@ -23,8 +23,8 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                 </div>
             </div>
             <!-- end row -->
-            <div class="card-deck">
 
+            <div class="card-deck" style="margin: 0 auto" >
                 <?php
                 if (empty($datos['cursos'])) {
                     ?>
@@ -33,35 +33,27 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                     </div>
                     <?php
                 } else {
-                $c = 0;
                 foreach ($datos['cursos'] as $cursos) {
-                if ($c % 5 == 0 && $c != 0) {
                 ?>
-            </div>
-            <br/>
-            <div class=\"card-columns\">
-                <?php } ?>
-                <div class="card p-2" style="width: 16rem;">
+                <div class="card p-2 card-mostrar" >
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
-                        <p class="card-text"><?php echo $cursos->nombre_curso ?></p>
+                        <p class="card-text"><?php echo $cursos->nombre_curso ?>
+                        <small class="text-info"><?php echo "Nivel: ".$cursos->nivel ?></small></p>
                         <a href="<?php echo constant('RUTA_URL') ?>/rankingNotas/nivel/<?php echo $cursos->id_curso ?>"
-                           class="btn btn-primary">Nivel</a>
+                           class="btn btn-primary btn-block">Nivel</a>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>
                     </div>
                 </div>
-
                 <?php
-                $c++;
                 }
                 } ?>
             </div>
-            <br/>
-
-
         </div>
 
-    </div>
-
+<?php
+/*Importacion de Footer de la aplicacion */
+require_once RUTA_APP . '/views/include/footer.php';
+?>

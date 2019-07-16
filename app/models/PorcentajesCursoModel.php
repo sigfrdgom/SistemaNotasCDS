@@ -67,6 +67,16 @@ class PorcentajesCursoModel{
             return false;
         }
     }
+
+    public function findByNivel($id_curso){
+        $this->db->query("SELECT pm.id_porcentajes_curso, pm.id_curso, c.nombre_curso, pm.id_tipo_modulo, tm.nombre, pm.porcentaje, pm.observacion 
+        FROM porcentajes_curso pm JOIN curso c ON pm.id_curso=c.id_curso JOIN tipo_modulo tm ON pm.id_tipo_modulo=tm.id_tipo_modulo 
+        WHERE pm.id_curso = :id_curso
+        ORDER BY id_curso DESC ;");
+         $this->db->bind(':id_curso', $id_curso);
+        return $this->db->findAll();
+    }
+
 }
 
 ?>

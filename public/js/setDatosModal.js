@@ -588,3 +588,53 @@ function validarUpgrade() {
     var valor= document.getElementById('mid_curso').value;
     document.getElementById('matricula').setAttribute('action','/SistemaNotasCDS/matricula/upgrade/'+valor);
 }
+
+function mostrar($texto) {
+   
+    if (document.getElementById("CHK_"+$texto).checked) {
+        document.getElementById("div_"+$texto).style.display= "block";
+        $("#CHK_"+$texto).removeAttr('required');
+    } else {
+        document.getElementById("div_"+$texto).style.display= "none";
+        $("#CHK_"+$texto).attr('required', true);
+    }
+}
+
+function valFM($componente) {
+
+    var ischk = document.getElementById("CHK_"+$componente).checked;
+
+        if (ischk) {
+            $("#date_"+$componente).attr("required", true);
+            document.getElementById("date_"+$componente).setAttribute(name,"mcid_docente")
+        } else {
+            $("#date_"+$componente).removeAttr('required');
+            document.getElementById("date_"+$componente).setAttribute(name,"")
+        }
+}
+
+
+
+// ------------------------------------------------------------------------------------------------
+// Para promover un curso
+// ------------------------------------------------------------------------------------------------
+$(document).ready(function () {
+    $(document).on('click', '.btn_promover_curso', function () {
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function () {
+            return $(this).text();
+        }).get();
+        var id = data[0];
+        $('#prmcid').val(data[0]);
+        $('#cnombre').val(data[1]);
+        document.getElementById('headprmcurso').innerHTML='Promover el curso '+data[1]+', '+data[8];
+        document.getElementById('prmcurso').setAttribute('action', '/SistemaNotasCDS/curso/promote/'+id);
+    
+    });
+});
+
+
+$(".ivkprmcurso").click(function (event) {
+    $("#prmcurso")[0].reset();
+});
+// ------------------------------------------------------------------------------------------------

@@ -15,7 +15,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active">Notas</li>
+                            <li class="breadcrumb-item active">Ranking</li>
                             <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
                         </ol>
                         <div class="clearfix"></div>
@@ -42,10 +42,12 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
             <div class=\"card-columns\">
                 <?php } ?>
                 <div class="card p-2" style="width: 16rem;">
+                    <form action="<?php echo constant('RUTA_URL') ?>/rankingNotas/seleccion/" method="post">
                     <div class="card-body">
+                        <input type="hidden" name="id_curso" value="<?php echo $datos['id_curso'] ?>">
+                        <input type="hidden" name="nivel" value="<?php echo $nivel->id_nivel_curso ?>">
                         <h5 class="card-title"><?php echo $nivel->nivel_curso ?></h5>
-                        <a href="<?php echo constant('RUTA_URL') ?>/rankingNotas/ranking"
-                           class="btn btn-primary">Nivel</a>
+                        <button type="submit" class="btn btn-primary">Nivel</button>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Estado: <?php
@@ -55,6 +57,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 echo "Inactivo";
                             }?></small>
                     </div>
+                    </form>
                 </div>
 
                 <?php

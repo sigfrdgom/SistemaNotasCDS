@@ -15,8 +15,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active">Cohortes</li>
                             <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
+                            <li class="breadcrumb-item active">Cohortes</li>
+                            
                         </ol>
                         
                         <div class="clearfix">
@@ -43,12 +44,12 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                     <?php } ?> 
                     
                         <!-- El card -->
-                        <div class="card p-2" style="width: 16rem;">
+                        <div class="card p-2">
                             <div class="card-body" >
                                 <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
-                                <p class="card-text"><?php echo "<b> $cursos->nombre_curso </b> " ?> </p>
+                                <p class="card-text"><?php echo $cursos->nombre_curso ?> </p>
                                     <a href="<?php echo constant('RUTA_URL')."/matricula/nivel/". base64_encode($cursos->cohorte); ?>"
-                                    class="btn btn-primary">Ver niveles</a>
+                                    class="btn btn-primary btn-block">Ver niveles</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Sede: <?php echo $cursos->sede ?></small>

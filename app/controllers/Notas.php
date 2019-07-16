@@ -58,7 +58,9 @@ class Notas extends Controller
     {
         $datos = [
             'id_curso' => trim($id_curso),
-            'id_modulo' => trim($id_modulo)
+            'id_modulo' => trim($id_modulo),
+            'nivel' => trim(1)
+
         ];
         $descripcion = "Vista que manera de ingregar notas";
         $participantes = $this->notaModel->findNotasEstudiantes($datos);
@@ -76,7 +78,7 @@ class Notas extends Controller
     {
         $datos = [
             'id_curso' => trim($id_curso),
-            'id_modulo' => trim($id_modulo)
+            'id_modulo' => trim($id_modulo),
         ];
         $descripcion = "Vista que manera de ingregar notas";
         $participantes = $this->notaModel->findNotasEstudiantes($datos);

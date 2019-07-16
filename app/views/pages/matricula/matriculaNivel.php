@@ -12,11 +12,19 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
             <div class="row">
                 <div class="col-xl-12">
                     <div class="breadcrumb-holder">
-                        <h1 class="main-title float-left"><?php echo $datos['titulo'] ?> &nbsp;</h1>
+                    
+                        <h1 class="main-title float-left">
+                            <a href="<?php echo constant('RUTA_URL') ?>/matricula">
+                                <i class="fas fa-arrow-circle-left color-primary"></i>
+                            </a>
+                            <?php echo $datos['titulo'] ?> &nbsp;
+                        </h1>
                         <ol class="breadcrumb float-right">
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item active">Notas</li>
+                            <li class="breadcrumb-item active">Matricula</li>
+                            <li class="breadcrumb-item active">Cohorte</li>
                             <li class="breadcrumb-item active"><?php echo $datos['titulo'] ?></li>
+                            
                         </ol>
                         
                         <div class="clearfix">
@@ -43,12 +51,12 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                     <?php } ?> 
                     
                         <!-- El card -->
-                        <div class="card p-2" style="width: 16rem;">
+                        <div class="card p-2">
                             <div class="card-body" >
-                                <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
-                                <p class="card-text"><?php echo "<b> $cursos->nombre_curso </b> Nivel $cursos->nivel" ?> </p>
+                                <h5 class="card-title"><?php echo "Nivel $cursos->nivel" ?></h5>
+                                <p class="card-text"><?php echo "<b> Curso:  </b> $cursos->nombre_curso" ?> </p>
                                     <a href="<?php echo constant('RUTA_URL') ?>/matricula/curso/<?php echo $cursos->id_curso ?>"
-                                    class="btn btn-primary"  >Ver alumnos</a>
+                                    class="btn btn-primary btn-block"  >Ver alumnos</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>

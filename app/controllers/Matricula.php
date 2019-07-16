@@ -35,11 +35,11 @@ class Matricula extends Controller
 
         $matricula = $this->matriculaModel->findForTableCurso($id_curso);
         $participante = $this->participanteModel->findAll();
-        $curso = $this->cursoModel->findAll();
+        $curso = $this->cursoModel->findById($id_curso);
         
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
-            'titulo' => "Matricula",
+            'titulo' => "Participantes matriculados",
             'descripcion' => $descripcion,
             'matricula' => $matricula,
             'participante' => $participante ,
@@ -63,7 +63,7 @@ class Matricula extends Controller
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
-            'titulo' => "Matricula",
+            'titulo' => "Niveles ".$curso[0]->cohorte,
             'descripcion' => $descripcion,
             'curso' => $curso 
         ];
@@ -105,8 +105,8 @@ class Matricula extends Controller
                         die("Error al insertar los datos");
                     }
            }else{
-                echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese cruso');</script>";
-                // redireccionar('matricula');
+                echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese curso');</script>";
+                //redireccionar('matricula');
            }
            
        }
@@ -224,7 +224,11 @@ class Matricula extends Controller
                         if($this->matriculaModel->create($datos))
                         {
                             redireccionar("matricula/curso/$id_upgrade");
-                            // redireccionar('matricula');
+                            // redireccionar('matricula'); echo "momento de crear notas $curso -- $participante";
+                        // $this.crearNotas($curso, $participante);
+                        redireccionar("matricula/crearNotas/$id_upgrade/".$_POST['mid_participante']);
+                        echo "Creo las notas y matriculado en el siguiente nivel";
+
                         }
                         else
                         {
@@ -303,7 +307,9 @@ public function crearNotas($curso, $participante)
                         die("Error al insertar los datos");
                     }
             }
-            redireccionar("notas/modulo/$curso");
+            // redireccionar("notas/modulos/$curso");
+            redireccionar("matricula/curso/$curso");
+            
         } 
         else 
         {

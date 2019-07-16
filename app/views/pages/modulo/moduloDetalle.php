@@ -12,9 +12,13 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
     <div class="row">
         <div class="col-xl-12">
             <div class="breadcrumb-holder">
-                <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
+                <h1 class="main-title float-left">
+                    <a href="<?php echo constant('RUTA_URL') ?>/modulo">    
+                        <i class="fas fa-arrow-circle-left color-primary"></i>
+                    </a>
+                <?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btnAccion btn btn-outline-success" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
+                    <button type="button" class="btnAccion btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo
                     </button>
                     <a href="#" 
@@ -35,8 +39,26 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
     <div class="row">
 
         <div class="card card-body">
+            <div class="mb-2">
+                <?php if (!empty($datos['modulo'])) { ?>
+                    <div class="col-xl-12">
+                                
+                        <div class="input-group mb-1 float-right col-sm-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda"
+                                    
+                                    data-id-tipo="<?php echo $datos['idTipoModulo'] ?>"
+                                    aria-label="Busqueda"
+                                    aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
             <div class="table-responsive">
-                <table class="table table-bordered table-hover display">
+                <table class="table table-sm table-bordered table-hover display">
                     <thead>
                         <tr>
                             <th class='secret'>ID</th>
@@ -61,7 +83,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="contenido">
                     <?php
                     foreach ($datos['modulo'] as $modulos) {  ?>
                         <tr>
@@ -77,9 +99,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <td><?php echo ($modulos->evaluacion5 == 0.0?'---': $modulos->evaluacion5) ?></td>
                             <td><?php echo ($modulos->evaluacion6 == 0.0?'---': $modulos->evaluacion6) ?></td>
                             <td><?php echo ($modulos->estado == 1?'ACTIVO':'INACTIVO') ?></td>
-                            <td class='btnAccion shrink'><button  class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                            <td class='btnAccion shrink '><button  class='centrado btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
                             
-                            <td class='btnAccion shrink'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
+                            <td class='btnAccion shrink align-middle'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
                                 onclick='menjaseBaja("<?php echo "modulo/down/$modulos->id_modulo;"?>")' 
                                 class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button></td>
                         </tr>
@@ -98,7 +120,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
       
         <!-- Modal Header -->
         <div class="modal-header">
-            <h4 class="modal-title" style="margin: 0% auto;" id="aggmod">Agregar un nuevo modulo</h4>
+            <h4 class="modal-title" style="margin: 0% auto;" id="aggmod">Agregar un nuevo modulo de tipo <?php echo "\"".strtolower($datos['tipoModulo']->nombre)."\"" ?></h4>
             <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfmod">Modificar un modulo</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
@@ -123,11 +145,11 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
 
                         <label for="mtipo_modulo" class="mrg-spr-ex">Tipo de modulo:</label>
 								<select class="form-control select2" id="mti" name="mtipo_modulo" required>
-                                    <option value="">Selecciona un tipo de modulo</option>    
+                                    <!-- <option value="">Selecciona un tipo de modulo</option>     -->
                                         <?php
-                                            foreach ($datos['tipoModulo'] as $tm) {
-                                                echo " <option value='$tm->id_tipo_modulo' >$tm->nombre</option>";
-                                            }
+                                            // foreach ($datos['tipoModulo'] as $tm) {
+                                                echo " <option value='".$datos['tipoModulo']->id_tipo_modulo."' >".$datos['tipoModulo']->nombre."</option>";
+                                            // }
                                         ?>
 								</select>
 
@@ -215,6 +237,8 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
       </div>
     </div>
 </div>
+
+<script src="<?php echo RUTA_URL ?>/js/views/modulos.js"></script>
 
 <?php
 /*Importacion de Footer de la aplicacion */

@@ -18,28 +18,15 @@ class Reporte extends Controller
 
     /*Vista Principal*/
     public function index(){
-        // $nombres = array();
-        // $n_participantes= $this->participanteModel->count();
-        // $n_usuarios = $this->docenteModel->count();
-        // $n_notas = $this->notaModel->count();
-        // $n_cursos = $this->cursoModel->count();
-        // $n_modulos = $this->moduloModel->count();
-        // $descripcion = "";
         $datos = [
             'titulo' => "Reportes Sistema de Notas CDS",
-            // 'descripcion' => $descripcion,
-            // 'nombres' => $nombres,
-            // 'n_participantes' => $n_participantes[0]->n_registros,
-            // 'n_usuarios' => $n_usuarios[0]->n_registros,
-            // 'n_notas' => $n_notas[0]->n_registros,
-            // 'n_cursos' => $n_cursos[0]->n_registros,
-            // 'n_modulos' => $n_modulos[0]->n_registros,
         ];
-
         $this->view('pages/reporte/reporteLista', $datos);
     }
 
-    public function dsmpCohorte(){
+    // Para desempeño del cohorte
+    public function dsmpCohorte()
+    {
         $datos = [
             'titulo' => "Reporte de desempeño por Cohorte",
         ];
@@ -47,26 +34,36 @@ class Reporte extends Controller
         $this->view('pages/reporte/reporteDsmpCohorte', $datos);
     }
 
-    public function dsmpNivel(){
 
+    // Reporte de desempeño por nivel muestra los cursos disponibles para generar un reporte
+    public function dsmpNivel()
+    {
         $curso = $this->cursoModel->findAll();
-
         $datos = [
             'titulo' => "Reportes de Desempeño por nivel",
             'curso' => $curso
         ];
-
-        $this->view('pages/reporte/reporteNivel', $datos);
+        $this->view('pages/reporte/nivel/reporteNivel', $datos);
     }
 
-    public function generarDsmpNivel($c,$n){
+
+    // El metodo para generar el reporte por nivel de un cohorte
+    public function generarDsmpNivel($c,$n,$p=null)
+    {
         $id_curso=trim($c);
         $nivel=trim($n);
+        $id_participante=trim($p);
 
         $infoCurso = $this->cursoModel->findById($id_curso);
         $tipoModulos = $this->tipoModuloModel->tipoModulosByCurso($id_curso);
         $participantes = $this->participanteModel->participanteCursoNivel($id_curso, $nivel);
-        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
+        
+        if($p == null){
+            $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
+        }else{
+            $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTopParticipante($id_curso, $nivel,$id_participante);
+        }
+        
 
         $suma = 0;
         $contProm = 0;
@@ -132,10 +129,13 @@ class Reporte extends Controller
             'tipoModulos' => $tipoModulos,
             'lista' => $listaParticipante
         ];
-        $this->view('pages/reporte/reporteDsmpNivel', $datos);
+        $this->view('pages/reporte/nivel/reporteDsmpNivel', $datos);
     }
 
-    public function generarDsmpParticipante($curso,$nivel,$participante){
+
+    // El metodo para generar el reporte por nivel de un cohorte
+    public function generarDsmpParticipante($curso,$nivel,$participante)
+    {
 
         $modulos = $this->modulosCursoModel->modulosByCurso(trim($curso));
         $info = $this->cursoModel->findById(trim($curso));
@@ -145,20 +145,21 @@ class Reporte extends Controller
         foreach ($modulos as $modulo) {
             array_push($matrizModulos, $this->notaModel->findNotasByCursoModuloNivelParticipante($curso, $modulo->id_modulo, $nivel,$participante));
         }
+
+        $promedio = $this->generarDsmpNivelProm($curso,$nivel,$participante);
         $datos = [
             'titulo' => "Reporte de desempeño Curso:  $info->nombre_curso , Nivel: $info->nivel",
             'info' => "Participante: ".ucwords(strtolower("$alm->nombres $alm->apellidos")),
             'modulos' => $modulos,
             'matrizModulos' => $matrizModulos,
-            'sede' => $info->sede
+            'sede' => $info->sede,
+            'promedio' => $promedio
         ];
-        $this->view('pages/reporte/reporteDsmpParticipante', $datos);
-        var_dump($matrizModulos[0]);
-        echo "".$curso;
+        $this->view('pages/reporte/participante/reporteDsmpParticipante', $datos);
     }
 
 
-
+    // Para obtener los promedios de los modulos
     private function promedioModulo($notas)
     {
         if (!$notas) {
@@ -188,18 +189,21 @@ class Reporte extends Controller
     }
 
 
-    public function dsmpParticipanteCohorte(){
+    // Muestra los cohortes disponibles
+    public function dsmpParticipanteCohorte()
+    {
         $curso = $this->cursoModel->findByCohorte();
-
         $datos = [
             'titulo' => "Reportes de Desempeño por estudiante",
             'curso' => $curso
         ];
-
-        $this->view('pages/reporte/reporteParticipanteCohorte', $datos);
+        $this->view('pages/reporte/participante/reporteParticipanteCohorte', $datos);
     }
 
-    public function dsmpParticipanteNivel($cohorte){
+
+    // Muestra los niveles disponibles por cohorte
+    public function dsmpParticipanteNivel($cohorte)
+    {
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Reportes de Desempeño por estudiante";
         $datos = [
@@ -207,24 +211,93 @@ class Reporte extends Controller
             'descripcion' => $descripcion,
             'curso' => $curso 
         ];  
-        $this->view('pages/reporte/reporteParticipanteNivel', $datos);
+        $this->view('pages/reporte/participante/reporteParticipanteNivel', $datos);
     }
 
-    public function dsmpParticipante($id_curso){
+
+    // Muestra la lista de participantes inscritos en un Cohorte por curso por nivel especifico (matricula)
+    public function dsmpParticipante($id_curso)
+    {
         $matricula = $this->matriculaModel->findForTableCurso($id_curso);
-        $participante = $this->participanteModel->findAll();
         $curso = $this->cursoModel->findById($id_curso);
         
-        // $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
         $datos = [
-            'titulo' => "Participantes matriculados en $curso->cohorte, $curso->nombre_curso nivel $curso->nivel ",
-            
+            'titulo' => "Participantes del $curso->cohorte, $curso->nombre_curso nivel $curso->nivel ",        
             'matricula' => $matricula,
-            'participante' => $participante ,
             'curso' => $curso ,
             'id_curso' => $id_curso,
             'sede' => $curso->sede
         ];
-        $this->view('pages/reporte/listaParticipantes', $datos);
+        $this->view('pages/reporte/participante/listaParticipantes', $datos);
+    }
+
+    //  Para calcular el promedio por curso y nivel de un alumno en especificos
+    public function generarDsmpNivelProm($c,$n,$p)
+    {
+        $id_curso=trim($c);
+        $nivel=trim($n);
+        $id_participante=trim($p);
+
+        $tipoModulos = $this->tipoModuloModel->tipoModulosByCurso($id_curso);
+        $participantes = $this->participanteModel->findById($id_participante);
+        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTopParticipante($id_curso, $nivel,$id_participante);
+    
+        $suma = 0;
+        $contProm = 0;
+        $promedios = array();
+        $total = 0;
+        $totalProm = array();
+        $porcentaje = 0;
+        $listaParticipante = array();
+        $estudiantes = array();
+        if(sizeof($participantes)>0) {
+                array_push($estudiantes, $participantes->nombres . " " . $participantes->apellidos);
+                foreach ($tipoModulos as $tipoModulo) {
+                    foreach ($notas as $nota) {
+                        if ($tipoModulo->tipo_modulo == $nota->id_tipo_modulo &&
+                            $participantes->id_participante == $nota->id_participante) {
+                            $contProm++;
+                            $suma += $this->promedioModulo($nota);
+                            $porcentaje = $nota->porcentaje;
+                        }
+                    }
+                    if ($contProm == 0) {
+                        $contProm = 1;
+                    }
+                    $suma = round($suma / $contProm, 2);
+                    array_push($promedios, $suma);
+                    $total += $suma * ($porcentaje / 100);
+                    $contProm = 0;
+                    $suma = 0;
+                    $porcentaje = 0;
+                }
+                array_push($totalProm, round($total, 2));
+                $total = 0;
+            $promedios = array_chunk($promedios, sizeof($tipoModulos));
+            while (sizeof($totalProm) != 0) {
+                $mayor = 0;
+                $clave = 0;
+                foreach ($totalProm as $key => $valor) {
+                    if ($valor > $mayor) {
+                        $mayor = $valor;
+                        $clave = $key;
+                    }
+                }
+                $arreglo = [
+                   
+                    'promedio' => $totalProm[$clave]
+                ];
+                
+                array_push($listaParticipante, $arreglo);
+                unset($estudiantes[$clave]);
+                unset($promedios[$clave]);
+                unset($totalProm[$clave]);
+            }
+        }
+        unset($participantes);
+        unset($notas);
+
+        return $arreglo;
+        unset($arreglo);
     }
 }

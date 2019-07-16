@@ -235,10 +235,10 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal footer -->
         <div class="modal-footer">
-                <input type="submit"  class="btn btn-success btn-block mt-2" value="Guardar" name="guardar_participante">
+                <input type="submit"  class="btn btn-success " value="Guardar" name="guardar_participante">
                 <!-- <input type="button"  class="btn btn-warning" value="Actualizar" name="actualizar_participante" > -->
             </form>
-            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger " data-dismiss="modal">Cancelar</button>
         </div>
         
       </div>
@@ -247,7 +247,7 @@ require_once RUTA_APP . '/views/include/header.php';
 
 
 
-
+<!-- Modal para promover un curso -->
 <div class="modal fade " id="promoverCurso">
     <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
@@ -282,10 +282,10 @@ require_once RUTA_APP . '/views/include/header.php';
         
         <!-- Modal footer -->
         <div class="modal-footer">
-                <input type="submit"  class="btn btn-success btn-block mt-2" value="Promover" name="guardar_promover_curso">
+                <input type="submit"  class="btn btn-success" value="Promover" name="guardar_promover_curso">
                 <!-- <input type="button"  class="btn btn-warning" value="Actualizar" name="actualizar_participante" > -->
             </form>
-            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal" id="cancelprmcurso">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelprmcurso">Cancelar</button>
         </div>
         
       </div>

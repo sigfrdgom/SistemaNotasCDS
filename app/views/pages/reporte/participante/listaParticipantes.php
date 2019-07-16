@@ -65,7 +65,7 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret'><?php echo $matricula->observaciones ?></td>
                                 <td class='shrink' colspan="2">
                                     <a href="<?php echo constant('RUTA_URL')."/reporte/generarDsmpParticipante/$matricula->id_curso/$matricula->nivel/$matricula->id_participante" ?> " target="_blank" class="btn btn-primary btn-block">
-                                        <span class='fa fa-print'></span> Generar reportess
+                                        <span class='fa fa-print'></span> Generar reporte
                                         <!-- <?php //echo constant('RUTA_URL')."reporte/generarDsmpParticipante/$matricula->id_curso/$matricula->nivel/$matricula->id_participante" ?> -->
                                     </a>
                                 </td>

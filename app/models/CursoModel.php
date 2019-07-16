@@ -83,6 +83,11 @@ class CursoModel{
         return $this->db->findAll();
     }
 
+    public function orderByCohorteNivel(){
+        $this->db->query("SELECT * FROM curso ORDER BY cohorte DESC, nivel DESC");
+        return $this->db->findAll();
+    }
+
     public function updateDown($datos){
         $this->db->query('UPDATE curso SET estado=0 WHERE id_curso = :id ');
          $this->db->bind(':id', $datos);

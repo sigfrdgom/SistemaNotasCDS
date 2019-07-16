@@ -15,7 +15,8 @@ class Notas extends Controller
     public function index()
     {
         $descripcion = "Vista que muestra todos los cursos";
-        $cursos = $this->cursoModel->orderByFechaDesc();
+        // $cursos = $this->cursoModel->orderByFechaDesc();
+        $cursos = $this->cursoModel->orderByCohorteNivel();
         $datos = [
             'titulo' => "Mostrar Cursos",
             'descripcion' => $descripcion,

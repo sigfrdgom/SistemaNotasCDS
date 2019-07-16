@@ -627,7 +627,7 @@ $(document).ready(function () {
         var id = data[0];
         $('#prmcid').val(data[0]);
         $('#cnombre').val(data[1]);
-        document.getElementById('headprmcurso').innerHTML='Promover el curso '+data[1]+', '+data[8];
+        document.getElementById('headprmcurso').innerHTML='Promover el curso '+data[1]+', '+data[7];
         document.getElementById('prmcurso').setAttribute('action', '/SistemaNotasCDS/curso/promote/'+id);
     
     });

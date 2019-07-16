@@ -89,7 +89,7 @@ class Docente extends Controller
     $this->sessionActivaX();
        if (isset($id))
        {
-            if($this->docenteMbodel->updateDown($id))
+            if($this->docenteModel->updateDown($id))
             {
                 redireccionar('docente/docente');
             }

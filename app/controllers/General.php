@@ -19,7 +19,7 @@ class General extends Controller
     public function faq(){
 
         $datos = [
-            'titulo' => "Preguntas y respuestas frecuentes Sistema de Notas CDS",
+            'titulo' => "Preguntas y respuestas frecuentes.",
         ];
 
         $this->view('pages/general/faq', $datos);

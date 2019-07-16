@@ -21,7 +21,6 @@ function menjaseEliminar(ruta, dato){
                     // console.log("holaaaa");
                     tbody.removeChild(fila);
                                     });
-                  
                     
                 });
             }

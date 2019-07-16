@@ -250,7 +250,9 @@ class Reporte extends Controller
         $porcentaje = 0;
         $listaParticipante = array();
         $estudiantes = array();
-        if(sizeof($participantes)>0) {
+
+        
+        // if(sizeof($participantes)>0) {
                 array_push($estudiantes, $participantes->nombres . " " . $participantes->apellidos);
                 foreach ($tipoModulos as $tipoModulo) {
                     foreach ($notas as $nota) {
@@ -284,7 +286,6 @@ class Reporte extends Controller
                     }
                 }
                 $arreglo = [
-                   
                     'promedio' => $totalProm[$clave]
                 ];
                 
@@ -293,10 +294,9 @@ class Reporte extends Controller
                 unset($promedios[$clave]);
                 unset($totalProm[$clave]);
             }
-        }
+        // }
         unset($participantes);
         unset($notas);
-
         return $arreglo;
         unset($arreglo);
     }

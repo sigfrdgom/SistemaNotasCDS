@@ -133,29 +133,22 @@ class PorcentajeCurso extends Controller
         $this->view('pages/porcentajesCurso/porcentajes', $datos);
     }
 
-    public function mostrarPorcentajes($id_curso = null){
+    public function mostrarPorcentajes($id_curso){
         $this->sessionActivaX();
-        if(isset($id_curso))
-            {
-                $tipoModulo = $this->tipoModuloModel->findActivos();
-                $curso = $this->cursoModel->findById($id_curso);
-                $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
-                $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
-                $datos = [
-                    'titulo' => "Porcentajes de los Curso",
-                    'descripcion' => $descripcion,
-                    'tipoModulo' => $tipoModulo,
-                    'curso' => $curso,
-                    'cursoSinPorcentaje' => $cursoSinPorcentaje
-                ];
-                $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
-            
-            }else{
-                $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
-        die("Error al buscar el dato");
-        
-        }
-
+        $tipoModulo = $this->tipoModuloModel->findActivos();
+        $curso = $this->cursoModel->findById($id_curso);
+        $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
+        $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
+        $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
+        $datos = [
+            'titulo' => "Porcentajes de los Curso",
+            'descripcion' => $descripcion,
+            'tipoModulo' => $tipoModulo,
+            'curso' => $curso,
+            'cursoSinPorcentaje' => $cursoSinPorcentaje,
+            'cursoConPorcentaje' => $cursoConPorcentaje
+        ];
+        $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
     }
 
     public function guardarPorcentajes(){

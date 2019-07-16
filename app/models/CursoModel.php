@@ -108,7 +108,12 @@ class CursoModel{
     }
 
     public function cursoSinPorcentaje(){
-        $this->db->query("SELECT c.id_curso, c.nombre_curso, c.nivel FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NULL AND c.estado=1");
+        $this->db->query("SELECT c.id_curso, c.nombre_curso, c.nivel, c.cohorte FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NULL AND c.estado=1");
+        return $this->db->findAll();
+    }
+
+    public function cursoConPorcentaje(){
+        $this->db->query("SELECT DISTINCT(pc.id_curso), c.nombre_curso, c.cohorte, c.nivel FROM curso c LEFT JOIN porcentajes_curso pc ON c.id_curso = pc.id_curso WHERE pc.id_curso IS NOT NULL AND c.estado=1 ORDER BY c.cohorte ASC");
         return $this->db->findAll();
     }
 

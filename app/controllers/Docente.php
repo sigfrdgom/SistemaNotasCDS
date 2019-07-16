@@ -18,7 +18,8 @@ class Docente extends Controller
 
     public function create()
     {
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
            $datos = [
                'id_docente' => null,
@@ -50,7 +51,8 @@ class Docente extends Controller
 
    public function update()
    {
-       if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+       if (($_SERVER['REQUEST_METHOD'] == 'POST'))
        {
           $datos = [
               'id_docente' =>trim($_POST['did']),
@@ -81,28 +83,11 @@ class Docente extends Controller
      }
   }
 
-//    public function delete($id)
-//    {
-//         if (isset($id))
-//         {
-//             if($this->docenteModel->delete($id))
-//             {
-//                 redireccionar('docente');
-//             }
-//             else
-//             {
-//                 die("Error al eliminar los datos");
-//             }
-//         }
-//         else
-//         {
-//             $this->index();
-//         }
-//     }
 
     public function updateDown($id = null)
    {
-       if (isset($id)&&$this->sessionActiva())
+    $this->sessionActivaX();
+       if (isset($id))
        {
             if($this->docenteMbodel->updateDown($id))
             {

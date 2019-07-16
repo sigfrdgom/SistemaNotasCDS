@@ -1,6 +1,9 @@
 <?php
 /*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
+
+
 
 ?>
 <!-- BEGIN CSS for this page -->
@@ -17,7 +20,7 @@ require_once RUTA_APP . '/views/include/header.php';
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;  </h1>
 
                     <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success"
+                    <button type="button" class="btnAccion btn btn-outline-success"
                     data-toggle="modal" data-target="#agregarParticipante" id="participanteReset">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo participante
                     </button>
@@ -52,7 +55,7 @@ require_once RUTA_APP . '/views/include/header.php';
                         <th class='secret'>Email</th>
                         <!-- <th>Password</th> -->
                         <th>Estado</th>
-                        <th colspan="2">Acciones</th>
+                        <th class="btnAccion" colspan="2">Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -73,13 +76,13 @@ require_once RUTA_APP . '/views/include/header.php';
                                 <td class='secret dp10'><?php echo $participantes->email ?></td>
                                 
                                
-                                <td><?php echo ($participantes->estado == 1? "ACTIVO":"INACTIVO") ?></td>
+                                <td ><?php echo ($participantes->estado == 1? "ACTIVO":"INACTIVO") ?></td>
                                 <td class='secret dp12'><?php echo $participantes->pass ?></td>
                                 
-                                <td class='shrink'> <button type='button' value='Detalles' class='btn_editar_participante btn btn-warning ' data-toggle='modal' data-target='#agregarParticipante'>
+                                <td  class='btnAccion shrink'> <button type='button' value='Detalles' class='btn_editar_participante btn btn-warning ' data-toggle='modal' data-target='#agregarParticipante'>
                                 <span class='fa fa-edit'></span> Editar</td>
 
-                                <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('Participante/updateDown/<?php echo $participantes->id_participante;?>', null)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
+                                <td class='btnAccion shrink'><button id='btn_eliminar2' onclick="menjaseBaja('Participante/updateDown/<?php echo $participantes->id_participante;?>', null)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
                                 </tr>
                                 
                                 <?php } ?>
@@ -216,10 +219,11 @@ require_once RUTA_APP . '/views/include/header.php';
 
 
 
-
-
-
 <?php
+if ($_SESSION['tipoUsuario']==$_SESSION['admin2']) {
+   echo "<script src='".RUTA_URL."/js/componentHidden.js'></script>";
+}
+
 /*Importacion de Footer de la aplicacion */
 require_once RUTA_APP . '/views/include/footer.php';
 ?>

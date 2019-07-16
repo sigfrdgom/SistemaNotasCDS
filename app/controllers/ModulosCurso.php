@@ -30,7 +30,8 @@ class ModulosCurso extends Controller
 
     public function create()
     {
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
            $datos = [
                'id_modulos_curso' => null,
@@ -56,7 +57,8 @@ class ModulosCurso extends Controller
    
    public function update()
     {
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
        {
            $datos = [
                'id_modulos_curso' => trim($_POST['idmc']),
@@ -82,7 +84,8 @@ class ModulosCurso extends Controller
 
    public function delete($id = null)
    {
-       if (isset($id)&&$this->sessionActiva())
+    $this->sessionActivaX();
+       if (isset($id))
            {
             if($this->modulosCursoModel->delete($id))
             {
@@ -102,7 +105,8 @@ class ModulosCurso extends Controller
 
     public function down($id=null)
     {
-        if (isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (isset($id))
         {
              if($this->moduloModel->updateDown($id))
              {

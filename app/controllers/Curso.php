@@ -30,8 +30,9 @@ class Curso extends Controller
 
     public function create()
     {
+        $this->sessionActivaX();
 
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
            $datos = [
                'id_curso' => null,
@@ -62,7 +63,8 @@ class Curso extends Controller
 
     public function findById($id=null){
        
-            if(isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+            if(isset($id))
             {
                 return $this->cursoModel->findById($id);
             }else{
@@ -76,7 +78,9 @@ class Curso extends Controller
 
     public function update()
    {
-       if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+    
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
        {
            $datos = [
            'id_curso' => trim($_POST['cid']),
@@ -108,10 +112,9 @@ class Curso extends Controller
 
   public function updateDown($id = null) 
   {
+    $this->sessionActivaX();
     
-   
-        // if (isset($id)&&(isset($_SESSION['id_sesion'])))
-        if (isset($id)&&$this->sessionActiva())
+        if (isset($id))
         {
             if($this->cursoModel->updateDown($id))
             {
@@ -135,12 +138,13 @@ class Curso extends Controller
 
     public function countParticipante($id = null){
         
-            if(isset($id)&&$this->sessionActiva()){
-                return $this->cursoModel->countParticipante($id);
-            }else{
-                redireccionar('curso');
-                die("Error al buscar el dato");
-            }
+        $this->sessionActivaX();
+        if(isset($id)){
+            return $this->cursoModel->countParticipante($id);
+        }else{
+        redireccionar('curso');
+            die("Error al buscar el dato");
+        }
        
     }
 

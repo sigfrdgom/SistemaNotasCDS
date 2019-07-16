@@ -2,34 +2,27 @@
 
 <!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
 <?php
-if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) { 
-    // ini_set("session.gc_maxlifetime","60");
-    // ini_set("session.cookie_lifetime","60");
-   
-    echo "<script> alert('HAY SESSION EN HEADER ".session_status()."');
-         
-        </script>";
-
+if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {   
+    // echo "<script> alert('HAY SESSION EN HEADER ".session_status()."');</script>";
 
 }else{
-    // ini_set("session.gc_maxlifetime","60");
-    // ini_set("session.cookie_lifetime","60");
-    echo "<script> alert(' NO HAY SESISION EN HEADER ".session_status()."');
-         
-        </script>";
-    session_start();
-    if (isset($_SESSION['id_sesion'])) {
-    // //     # code...
-    // session_destroy();
     
-    echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');
-         
+    // echo "<script> alert(' NO HAY SESISION EN HEADER ".session_status()."');</script>";
+    
+    if (session_status() != 2) {
+        session_start();
+    } 
+    
+    if (isset($_SESSION['id_sesion'])) 
+    {
+        // echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');</script>";
+    }else
+    {
+        echo "<script> alert('NO ESTA AUTORIZADO HEADER');
+        window.location='".RUTA_URL."';
         </script>";
-    }else{
-    echo "<script> alert('NO ESTA AUTORIZADO HEADER');
-         window.location='".RUTA_URL."';
-        </script>";
-        exit;}
+        exit;
+    }
     
 }
 ?>
@@ -110,7 +103,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
 
         <!-- LOGO -->
         <div class="headerbar-left">
-        <a href="<?php echo RUTA_URL ?>" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
+        <a href="<?php echo RUTA_URL ?>/index/index2" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
         </div>
 
         <nav class="navbar-custom">
@@ -162,7 +155,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
         <div class="sidebar-inner leftscroll">
 
             <div id="sidebar-menu">
-                <a href="<?php echo RUTA_URL; ?>/logIn/index"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
+                <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a>
 
                 <ul>
 

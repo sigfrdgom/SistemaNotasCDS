@@ -19,7 +19,8 @@ class TipoModulo extends Controller{
     }
 
     public function create(){
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             $datos = [
                 'nombre' => trim($_POST['nombreTipoModulo']),
@@ -41,7 +42,8 @@ class TipoModulo extends Controller{
     }
 
     public function update(){
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             $datos = [
                 'id_tipo_modulo' => $_POST['id_tipo_modulo'],
@@ -60,7 +62,8 @@ class TipoModulo extends Controller{
     }
 
     public function delete($id=null){
-        if(isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if(isset($id))
             {
             if($this->tipoModuloModel->delete($id)){
                 // redireccionar('tipoModulo');
@@ -74,7 +77,8 @@ class TipoModulo extends Controller{
     }
 
     public function  findById($id = null){
-        if(isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if(isset($id))
             {
             return $this->tipoModuloModel->findById($id);
         }else{

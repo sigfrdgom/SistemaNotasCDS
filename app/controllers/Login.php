@@ -13,7 +13,10 @@ class Login extends Controller
     //FINALIZACION DE LA SESION
     public function finalizarSesion()
     {
-        session_start();
+        if (session_status()!= 2) {
+          session_start();
+        }
+        
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(session_name(), '', time() - 42000,
@@ -45,23 +48,26 @@ class Login extends Controller
            {
             //    ini_set("session.gc_maxlifetime","60");
             //    ini_set("session.cookie_lifetime","60");
-            echo "<script>history.forward(); </script>";   
+           
          
-            session_start();
-
+            
+                session_start();
             //    session_cache_expire(60);
+               $_SESSION['admin']="ADMINISTRADOR";
+               $_SESSION['admin2']="DOCENTE";
                $_SESSION['id_sesion'] = session_id();
                $_SESSION['tipoUsuario']=$docente->tipo_usuario;
                $_SESSION['nombres'] = $docente->nombres;
                $_SESSION['apellidos'] = $docente->apellidos;
-               $_SESSION['start'] = time();
-               $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
+            //    $_SESSION['start'] = time();
+            //    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
                
                //MENSAJE DE BIENVENIDA CHAFA               
                echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
                </script>";
                echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
                </script>";
+
                redireccionar('index/index2');  
             }else
             {

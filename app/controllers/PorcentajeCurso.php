@@ -24,7 +24,8 @@ class PorcentajeCurso extends Controller
     }
 
     public function create(){
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             $datos = [
                 'id_porcentaje_curso' => null,
@@ -45,7 +46,8 @@ class PorcentajeCurso extends Controller
     }
 
     public function update(){
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             $datos = [
                 'id_porcentajes_curso' => trim($_POST['porid']),
@@ -66,7 +68,8 @@ class PorcentajeCurso extends Controller
     }
 
     public function delete($id=null){
-        if(isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if(isset($id))
             {
             if($this->porcentajesCursoModel->delete($id)){
                 redireccionar('porcentajeCurso');
@@ -79,6 +82,7 @@ class PorcentajeCurso extends Controller
     }
 
     public function porcentajes(){
+        $this->sessionActivaX();
         $tipoModulo = $this->tipoModuloModel->findActivos();
         $curso = $this->cursoModel->findAll();
         $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
@@ -94,8 +98,8 @@ class PorcentajeCurso extends Controller
     }
 
     public function mostrarPorcentajes($id_curso = null){
-        
-        if(isset($id_curso)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if(isset($id_curso))
             {
                 $tipoModulo = $this->tipoModuloModel->findActivos();
                 $curso = $this->cursoModel->findById($id_curso);
@@ -119,7 +123,8 @@ class PorcentajeCurso extends Controller
     }
 
     public function guardarPorcentajes(){
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
 
             for ($i = 0; $i < sizeof($_POST['id_tipoModulo']); $i++) {

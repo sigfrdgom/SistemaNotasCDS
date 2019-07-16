@@ -1,6 +1,7 @@
 <?php
 /*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
 
 ?>
 
@@ -13,7 +14,7 @@ require_once RUTA_APP . '/views/include/header.php';
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
-                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
+                    <button type="button" class="btnAccion btn btn-outline-success" data-toggle="modal" data-target="#agregarModulo" id="ivkmdl">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo modulo
                     </button>
                     <a href="#" 
@@ -50,7 +51,7 @@ require_once RUTA_APP . '/views/include/header.php';
                             <th>Evaluacion 5</th>
                             <th>Evaluacion 6</th>
                             <th>Estado</th>
-                            <th colspan="2">Acciones
+                            <th class="btnAccion" colspan="2">Acciones
                                 <a href="#" 
                                     title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
                                     data-content="Sirven para modificar informacion de un Modulo o darlo de baja">
@@ -76,9 +77,9 @@ require_once RUTA_APP . '/views/include/header.php';
                             <td><?php echo ($modulos->evaluacion5 == 0.0?'---': $modulos->evaluacion5) ?></td>
                             <td><?php echo ($modulos->evaluacion6 == 0.0?'---': $modulos->evaluacion6) ?></td>
                             <td><?php echo ($modulos->estado == 1?'ACTIVO':'INACTIVO') ?></td>
-                            <td class='shrink'><button  class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                            <td class='btnAccion shrink'><button  class='btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
                             
-                            <td class='shrink'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
+                            <td class='btnAccion shrink'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
                                 onclick='menjaseBaja("<?php echo "modulo/down/$modulos->id_modulo;"?>")' 
                                 class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button></td>
                         </tr>
@@ -217,6 +218,10 @@ require_once RUTA_APP . '/views/include/header.php';
 
 <?php
 /*Importacion de Footer de la aplicacion */
+if ($_SESSION['tipoUsuario']==$_SESSION['admin2']) {
+    echo "<script src='".RUTA_URL."/js/componentHidden.js'></script>";
+ }
 require_once RUTA_APP . '/views/include/footer.php';
+
 ?>
 <script src="<?php echo RUTA_URL ?>/js/modulosData.js"></script>

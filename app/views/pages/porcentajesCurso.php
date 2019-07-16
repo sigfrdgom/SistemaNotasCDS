@@ -1,6 +1,7 @@
 <?php
 /*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
 
 ?>
 

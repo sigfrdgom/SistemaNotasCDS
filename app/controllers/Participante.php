@@ -19,7 +19,8 @@ class Participante extends Controller
 
     public function create(){
         
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             $datos = [
                 'nombres' => trim($_POST['nombres']),
@@ -55,7 +56,8 @@ class Participante extends Controller
 
 
     public function update(){
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
            $datos = [
                'id' => trim($_POST['id']),
@@ -92,7 +94,8 @@ class Participante extends Controller
 
 
     public function delete($id = null){
-        if(isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if(isset($id))
             {
             if($this->participanteModel->delete($id)){
                 redireccionar('participante');
@@ -107,8 +110,8 @@ class Participante extends Controller
 
     public function updateDown($id = null)
    {
-    
-        if(isset($id)&&$this->sessionActiva())
+    $this->sessionActivaX();
+        if(isset($id))
             {
             if($this->participanteModel->updateDown($id))
             {

@@ -29,7 +29,8 @@ class Matricula extends Controller
 
     public function curso($id_curso=null){
 
-        if(isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if(isset($id))
         {
 
         $matricula = $this->matriculaModel->findForTableCurso($id_curso);
@@ -56,7 +57,8 @@ class Matricula extends Controller
 
     
     public function nivel($cohorte=null){
-        if(isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if(isset($id))
             {
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Vista que muestra todos las cursos con  matriculas que existen";
@@ -66,15 +68,16 @@ class Matricula extends Controller
             'curso' => $curso 
         ];
         $this->view('pages/matricula/matriculaNivel', $datos);
-    }else{
-        redireccionar('matricula');
-    }
+            }else{
+                redireccionar('matricula');
+            }
 }
 
 
     public function create()
     {
-        if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
        {
             $curso= trim($_POST['mid_curso']);
             $participante = trim($_POST['mid_participante']);
@@ -114,7 +117,8 @@ class Matricula extends Controller
 
    public function update()
    {
-       if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+        $this->sessionActivaX();
+       if (($_SERVER['REQUEST_METHOD'] == 'POST'))
        {
           $datos = [
               'id_matricula' => trim($_POST['mid_matricula']),
@@ -140,7 +144,8 @@ class Matricula extends Controller
 
    public function delete($id = null)
    {
-        if (isset($id)&&$this->sessionActiva())
+    $this->sessionActivaX();
+        if (isset($id))
         {
             if($this->matriculaModel->delete($id))
             {
@@ -160,7 +165,8 @@ class Matricula extends Controller
 
     public function down($id = null)
     {
-         if (isset($id)&&$this->sessionActiva())
+        $this->sessionActivaX();
+        if (isset($id))
          {
              if($this->matriculaModel->updateDown($id))
              {
@@ -180,8 +186,9 @@ class Matricula extends Controller
 
     public function comprobar()
    {
-       if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
-       {
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        {
           $datos = [
               'id_curso' => trim($_POST['mid_curso']),
               'id_participante' => trim($_POST['mid_participante'])
@@ -198,7 +205,8 @@ class Matricula extends Controller
 
   public function upgrade($id = null)
   {
-    if(isset($id)&&$this->sessionActiva()){
+    $this->sessionActivaX();
+    if(isset($id)){
             $bandera = $this->matriculaModel->comprobarUpgrade($id);
             // var_dump($bandera);
             if (isset($bandera[0])) {
@@ -238,9 +246,10 @@ class Matricula extends Controller
  }
 
  //validar?
- public function comprobarUpgrade($idCurso)
+ public function comprobarUpgrade($idCurso=null)
    {
-       if (($_SERVER['REQUEST_METHOD'] == 'POST')&&$this->sessionActiva())
+    $this->sessionActivaX();
+       if (($_SERVER['REQUEST_METHOD'] == 'POST'))
        {
           $datos = [
               'id_curso' => $idCurso,
@@ -264,7 +273,8 @@ class Matricula extends Controller
 */
 public function crearNotas($curso, $participante)
 {
-    if (isset($curso) && isset($participante)&&$this->sessionActiva())
+    $this->sessionActivaX();
+    if (isset($curso) && isset($participante))
     {
         $modulos = $this->matriculaModel->obtenerModulos($curso);
         echo  "Participante ".$participante."<br>";

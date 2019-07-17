@@ -52,23 +52,16 @@ class Login extends Controller
          
             
                 session_start();
-            //    session_cache_expire(60);
+                session_cache_expire(60*15);
                $_SESSION['admin']="ADMINISTRADOR";
                $_SESSION['admin2']="DOCENTE";
                $_SESSION['id_sesion'] = session_id();
                $_SESSION['tipoUsuario']=$docente->tipo_usuario;
                $_SESSION['nombres'] = $docente->nombres;
                $_SESSION['apellidos'] = $docente->apellidos;
-            //    $_SESSION['start'] = time();
-            //    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
-               
-               //MENSAJE DE BIENVENIDA CHAFA               
-               echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
-               </script>";
-               echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
-               </script>";
-
-               redireccionar('index/index2');  
+           
+               ;
+            redireccionar('index/index2'); 
             }else
             {
                //DESTRUIR TODA LA SESION Y COOKIES

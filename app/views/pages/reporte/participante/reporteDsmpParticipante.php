@@ -77,7 +77,7 @@
             <h6><?php echo $datos['info']?></h6>
         </div>
 
-        <div class="table-responsive table-responsive-md mx-3" style="text-align: center; width: 100%">
+        <div class="table-responsive table-responsive-sm mx-3" style="text-align: center; width: 100%">
             <table class="table table-sm table-hover table-borderless">
                 <thead class="thead bg-info-50">
                     <tr>

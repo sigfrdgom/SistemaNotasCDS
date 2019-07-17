@@ -10,7 +10,7 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
 
         <div class="wrap-login100">
             <div class="div-completo">
-                <label>BIENVENIDOS A CDS NOTAS</label>
+                <label>BIENVENIDOS A NOTAS CDS</label>
             </div>
             <div class="login100-pic js-tilt" data-tilt>
                 <img src="<?php echo RUTA_URL ?>/img/fondo/img-01.jpg" alt="IMG">
@@ -23,7 +23,7 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
 						Iniciar Sesión
 					</span>
 
-                <div class="wrap-input100 validate-input" data-validate = "El DUI es requerido, ejemplo: 789456123-9">
+                <div class="wrap-input100 validate-input" data-validate = "El DUI es requerido, ejemplo: 03456123-9">
                     <input class="input100" type="text" name="dui" placeholder="DUI">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
@@ -40,7 +40,7 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <input class="login100-form-btn" type="submit" value="Verificacion" name="validando">
+                    <input class="login100-form-btn" type="submit" value="Iniciar" name="validando">
     
                 </div>
 
@@ -72,6 +72,8 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
 </script>
 <!--===============================================================================================-->
 <script src="<?php echo RUTA_URL ?>/js/views/login.js"></script>
+
+
 
 </body>
 </html>

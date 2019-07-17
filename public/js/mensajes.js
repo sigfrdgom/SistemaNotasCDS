@@ -12,22 +12,19 @@ function menjaseEliminar(ruta, dato){
                     icon: "success",
                 }).then((ok) => {
                     
-                    controlador = dato;
                     httpRequest("http://localhost/SistemaNotasCDS/"+ruta, function(){
-                    console.log(this.responseText);
                     const tbody = document.querySelector("#tbody-table");
-                    const fila  = document.querySelector("#fila-"+controlador);
-                    
-                    // console.log("holaaaa");
+                    const fila  = document.querySelector("#fila-"+dato);
+
+                    console.log(fila);
                     tbody.removeChild(fila);
-                                    });
+                    });
                     
                 });
             }
         });
 
 }
-
 
 function httpRequest(url, callback){
     const http = new XMLHttpRequest();
@@ -40,14 +37,6 @@ function httpRequest(url, callback){
         }
     }
 }
-
-
-
-
-
-
-
-
 
 
 function menjaseBaja(ruta, dato=null){

@@ -54,7 +54,8 @@ class PorcentajeCurso extends Controller
             'porcentajesCurso' => $porcentajesCurso,
             // 'modulo' =>$modulo,
             // 'docente' => $docente,
-            'tipoModulo' => $tipoModulo
+            'tipoModulo' => $tipoModulo,
+            'id_curso' => $id_curso
         ];
         $this->view('pages/porcentajesCurso/porcentajesCursoDetalle', $datos);
     }
@@ -64,8 +65,8 @@ class PorcentajeCurso extends Controller
         if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             $datos = [
-                'id_porcentaje_curso' => null,
-                'id_curso' => trim($_POST['pid_curso']),
+                'id_porcentajes_curso' => null,
+                'id_curso' => trim($_POST['id_curso']),
                 'id_tipo_modulo' => trim($_POST['pid_tipo_modulo']),
                 'porcentaje' => trim($_POST['pporcentaje']),
                 'observacion' => trim($_POST['pobservacion'])
@@ -87,7 +88,7 @@ class PorcentajeCurso extends Controller
         {
             $datos = [
                 'id_porcentajes_curso' => trim($_POST['porid']),
-                'id_curso' => trim($_POST['pid_curso']),
+                'id_curso' => trim($_POST['id_curso']),
                 'id_tipo_modulo' => trim($_POST['pid_tipo_modulo']),
                 'porcentaje' => trim($_POST['pporcentaje']),
                 'observacion' => trim($_POST['pobservacion'])
@@ -121,42 +122,52 @@ class PorcentajeCurso extends Controller
         $this->sessionActivaX();
         $tipoModulo = $this->tipoModuloModel->findActivos();
         $curso = $this->cursoModel->findAll();
-        $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
-        $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
             'titulo' => "Porcentajes de los Cursos",
             'descripcion' => $descripcion,
             'tipoModulo' => $tipoModulo,
             'curso' => $curso,
-            'cursoSinPorcentaje' => $cursoSinPorcentaje,
-            'cursoConPorcentaje' => $cursoConPorcentaje
         ];
         $this->view('pages/porcentajesCurso/porcentajes', $datos);
     }
 
-    public function mostrarPorcentajes($id_curso){
+    public function mostrarPorcentajesAdd($id_curso){
         $this->sessionActivaX();
         $tipoModulo = $this->tipoModuloModel->findActivos();
         $curso = $this->cursoModel->findById($id_curso);
-        $cursoSinPorcentaje = $this->cursoModel->cursoSinPorcentaje();
         $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
         $datos = [
             'titulo' => "Porcentajes de los Curso",
             'descripcion' => $descripcion,
             'tipoModulo' => $tipoModulo,
             'curso' => $curso,
-            'cursoSinPorcentaje' => $cursoSinPorcentaje
         ];
-        $this->view('pages/porcentajesCurso/mostrarPorcentajes', $datos);
+        $this->view('pages/porcentajesCurso/mostrarPorcentajesAdd', $datos);
+    }
+
+    public function mostrarPorcentajesEdit($id_curso){
+        $this->sessionActivaX();
+        $tipoModulo = $this->tipoModuloModel->findActivos();
+        $curso = $this->cursoModel->findById($id_curso);
+        $porcentajes = $this->porcentajesCursoModel->porcentajesTipoModulo($id_curso);
+        $descripcion = "Vista que muestra todos las porcentajesCursos que existen";
+        $datos = [
+            'titulo' => "Porcentajes de los Curso",
+            'descripcion' => $descripcion,
+            'tipoModulo' => $tipoModulo,
+            'curso' => $curso,
+            'porcentajes' => $porcentajes
+        ];
+        $this->view('pages/porcentajesCurso/mostrarPorcentajesEdit', $datos);
     }
 
     public function seleccionEdit(){
         $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
         $datos = [
-            'cursoSinPorcentaje' => $cursoConPorcentaje
+            'cursoConPorcentaje' => $cursoConPorcentaje
         ];
-        $this->view('pages/porcentajesCurso/seleccionAdd', $datos);
+        $this->view('pages/porcentajesCurso/seleccionEdit', $datos);
     }
 
     public function seleccionAdd(){
@@ -174,14 +185,14 @@ class PorcentajeCurso extends Controller
 
             for ($i = 0; $i < sizeof($_POST['id_tipoModulo']); $i++) {
                 $datos = [
-                    'id_porcentaje_curso' => null,
+                    'id_porcentajes_curso' => $_POST['id_porcentajes_curso'][$i],
                     'id_curso' => trim($_POST['id_curso_text']),
                     'id_tipo_modulo' => $_POST['id_tipoModulo'][$i],
                     'porcentaje' => $_POST['porcentajes_curso'][$i],
                     'observacion' => 'Creado'
                 ];
-                //var_dump($datos);
-                if($this->porcentajesCursoModel->create($datos)){
+//                var_dump($datos);
+                if($this->porcentajesCursoModel->replace($datos)){
                     redireccionar('porcentajeCurso');
                 }else{
                     die("Error al insertar los datos");

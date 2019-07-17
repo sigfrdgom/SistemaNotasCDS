@@ -45,22 +45,21 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <th colspan="2">Acciones</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody-table">
                         <?php
-                        foreach ($datos['porcentajesCurso'] as $porcentajesCursos) {
-                            echo "<tr>
-                                <td class='secret'>$porcentajesCursos->id_porcentajes_curso</td>
-                                <td class='secret'>$porcentajesCursos->id_curso</td>
-                                <td class='secret'>$porcentajesCursos->nombre_curso</td>
-                                <td class='secret'>$porcentajesCursos->id_tipo_modulo</td>
-                                <td>$porcentajesCursos->nombre</td>
-                                <td>$porcentajesCursos->porcentaje</td>
-                                <td>$porcentajesCursos->observacion</td>
+                        foreach ($datos['porcentajesCurso'] as $porcentajesCursos) {?>
+                            <tr id="fila-<?php echo $porcentajesCursos->id_porcentajes_curso;?>">
+                                <td class='secret'><?php echo $porcentajesCursos->id_porcentajes_curso ?></td>
+                                <td class='secret'><?php echo $porcentajesCursos->id_curso ?></td>
+                                <td class='secret'><?php echo $porcentajesCursos->nombre_curso ?></td>
+                                <td class='secret'><?php echo $porcentajesCursos->id_tipo_modulo ?></td>
+                                <td><?php echo $porcentajesCursos->nombre ?></td>
+                                <td><?php echo $porcentajesCursos->porcentaje ?></td>
+                                <td><?php echo $porcentajesCursos->observacion ?></td>
                                 <td class='shrink'><button type='button' class='btn btn-warning btn_editar_porcentajes' data-toggle='modal' data-target='#agregarPorcentaje'><span class='fa fa-edit'></span> Editar</button></td>
-                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar(\"porcentajeCurso/delete/$porcentajesCursos->id_porcentajes_curso\")' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
+                                <td class='shrink'><button id='btn_eliminar2' onclick='menjaseEliminar("porcentajeCurso/delete/<?php echo $porcentajesCursos->id_porcentajes_curso?>", <?php echo $porcentajesCursos->id_porcentajes_curso?>)' class='btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 </tr>
-                                ";
-                        }
+                        <?php }
                         ?>
                         </tbody>
                     </table>
@@ -87,6 +86,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                               data-parsley-validate novalidate>
 
                             <input type="hidden" name="porid" id="porid">
+                            <input type="hidden" name="id_curso" value="<?php echo $datos['id_curso']?>">
 
                             <label for="pcidCurso" class="mrg-spr-ex">Curso:</label>
                             <select class="form-control select2" id="pidc" name="pid_curso" required disabled>

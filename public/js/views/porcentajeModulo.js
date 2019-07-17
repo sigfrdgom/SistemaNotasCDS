@@ -21,14 +21,15 @@ function div_agregar(e) {
     if(btn == "agregar"){
         httpRequest(url+"seleccionAdd", function () {
             div_seleccion.innerHTML= this.responseText;
+            document.getElementById('btn-seleccionar').addEventListener('click', mostrarDivAdd);
         });
     }
     if(btn == "editar"){
         httpRequest(url+"seleccionEdit", function () {
             div_seleccion.innerHTML= this.responseText;
+            document.getElementById('btn-seleccionar').addEventListener('click', mostrarDivEdit);
         });
     }
-    document.getElementById('btn-seleccionar').addEventListener('click', mostrarDiv);
 }
 
 function httpRequest(url, callback){
@@ -43,7 +44,7 @@ function httpRequest(url, callback){
     }
 }
 
-function mostrarDiv(e) {
+function mostrarDivAdd(e) {
     e.preventDefault();
     var id_curso = document.getElementById('select_id_curso').value;
 
@@ -57,7 +58,32 @@ function mostrarDiv(e) {
                 listener_guardar();
             }
         };
-        peticion.open('GET', url + 'mostrarPorcentajes/' + id_curso);
+        peticion.open('GET', url + 'mostrarPorcentajesAdd/' + id_curso);
+        peticion.send();
+    }else{
+        Swal.fire({
+            type: 'error',
+            title: 'No existe registros',
+            text: 'Vuelve a intentar cuando existan registros',
+        });
+    }
+}
+
+function mostrarDivEdit(e) {
+    e.preventDefault();
+    var id_curso = document.getElementById('select_id_curso').value;
+
+    if(id_curso.length != 0) {
+        var peticion = new XMLHttpRequest();
+        peticion.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('div_procentajes').innerHTML = this.responseText;
+                $('#alert-error').hide();
+                $('#alert-warning').hide();
+                listener_guardar();
+            }
+        };
+        peticion.open('GET', url + 'mostrarPorcentajesEdit/' + id_curso);
         peticion.send();
     }else{
         Swal.fire({

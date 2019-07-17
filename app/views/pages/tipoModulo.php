@@ -15,7 +15,8 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                 <div class="breadcrumb-holder">
                     <h1 class="main-title float-left"><?php echo $datos['titulo'] ?>&nbsp;</h1>
                     <!-- El boton para agregar a traves de un modal -->
-                    <button id="btnTipoModulo" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#agregarTipoModulo">
+                    <button id="btnTipoModulo" type="button" class="btn btn-outline-success" data-toggle="modal"
+                            data-target="#agregarTipoModulo">
                         <span class='fa fa-plus-square-o bigfonts'></span> Nuevo Tipo Modulo
                     </button>
                     <ol class="breadcrumb float-right">
@@ -44,27 +45,34 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         <tbody id="tbody-table">
                         <?php
                         foreach ($datos['TipoModulo'] as $tipoModelos) {
-                            ?>
-                                <tr id="fila-<?php echo $tipoModelos->id_tipo_modulo;?>">
-                                <td style="display:none;"><?php echo $tipoModelos->id_tipo_modulo ?></td>
-                                <td><?php echo  $tipoModelos->nombre ?></td>
-                                <td><?php echo ($tipoModelos->estado ==1)? "Activo" : "Inactivo"; ?></td>
-                                <td><button class='btn_modal_editar centrado btn btn-warning' data-tipomodulo="<?php echo $tipoModelos->id_tipo_modulo;?>"><span class='fa fa-edit '></span> Editar</button></td>
-                                
-                                <!-- <td><button id='btn_eliminar2' 
-                                onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo;?>", <?php echo $tipoModelos->id_tipo_modulo;?>)' 
+                        ?>
+                        <tr id="fila-<?php echo $tipoModelos->id_tipo_modulo; ?>">
+                            <td style="display:none;"><?php echo $tipoModelos->id_tipo_modulo ?></td>
+                            <td><?php echo $tipoModelos->nombre ?></td>
+                            <td><?php echo ($tipoModelos->estado == 1) ? "Activo" : "Inactivo"; ?></td>
+                            <td>
+                                <button class='btn_modal_editar centrado btn btn-warning'
+                                        data-tipomodulo="<?php echo $tipoModelos->id_tipo_modulo; ?>"><span
+                                            class='fa fa-edit '></span> Editar
+                                </button>
+                            </td>
+
+                            <!-- <td><button id='btn_eliminar2'
+                                onclick='menjaseEliminar("tipoModulo/delete/<?php echo $tipoModelos->id_tipo_modulo; ?>", <?php echo $tipoModelos->id_tipo_modulo; ?>)'
                                 class='centrado btn btn-danger'><span class='fa fa-trash'></span> Eliminar</button></td>
                                 
                                 </tr> -->
 
-                                <td><button class="btnEliminartm centrado btn btn-danger" data-url="<?php echo RUTA_URL."/tipoModulo/delete/"?>"
-                                data-tipomodulo="<?php echo $tipoModelos->id_tipo_modulo;?>"><span class='fa fa-trash'></span> Eliminar</button></td>
-                                
+                            <td>
+                                <button class="btnEliminartm centrado btn btn-danger"
+                                        data-url="<?php echo RUTA_URL . "/tipoModulo/delete/" ?>"
+                                        data-tipomodulo="<?php echo $tipoModelos->id_tipo_modulo; ?>"><span
+                                            class='fa fa-trash'></span> Eliminar
+                                </button>
+                            </td>
 
 
-
-
-                        <?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -78,21 +86,24 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="margin: 0% auto;" id="aggTipoModulo">Agregar un nuevo Tipo de Modulo</h4>
-                            <h4 class="modal-title" style="margin: 0% auto;" id="mdfTipoModulo">Modificar un Tipo de Modulo</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="aggTipoModulo">Agregar un nuevo Tipo de
+                                Modulo</h4>
+                            <h4 class="modal-title" style="margin: 0% auto;" id="mdfTipoModulo">Modificar un Tipo de
+                                Modulo</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        
+
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form method="POST" id="frmTipoModulo" action="<?php echo RUTA_URL ?>/tipoModulo/create" data-parsley-validate
+                            <form method="POST" id="frmTipoModulo" action="<?php echo RUTA_URL ?>/tipoModulo/create"
+                                  data-parsley-validate
                                   novalidate>
-
 
 
                                 <input type="hidden" id="id_idTipoModulo" name="id_tipo_modulo">
                                 <div class="form-group">
-                                    <label for="nombreTipoModulo">Nombre de Tipo<span class="text-danger">*</span></label>
+                                    <label for="nombreTipoModulo">Nombre de Tipo<span
+                                                class="text-danger">*</span></label>
                                     <input type="text" name="nombreTipoModulo" data-parsley-trigger="change" required
                                            placeholder="Ingrese el nombre de usuario" class="form-control"
                                            id="idTipoModulo">
@@ -100,7 +111,8 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
 
                                 <div class="form-group">
                                     <label for="idEstado">Estado<span class="text-danger">*</span></label>
-                                    <select name="estado" id="idEstado" placeholder="Estado" class="form-control" data-parsley-trigger="change" required>
+                                    <select name="estado" id="idEstado" placeholder="Estado" class="form-control"
+                                            data-parsley-trigger="change" required>
                                         <option value="1">Activo</option>
                                         <option value="0">Inactivo</option>
                                     </select>

@@ -164,6 +164,7 @@ class Modulo extends Controller
     }
 
     public function buscarModulos(){
+       
         $id_tipo = $_POST['tipo'];
         $busqueda = $_POST['busqueda'];
 

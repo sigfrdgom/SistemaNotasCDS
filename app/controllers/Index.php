@@ -35,11 +35,8 @@ class Index extends Controller
             'n_cursos' => $n_cursos[0]->n_registros,
             'n_modulos' => $n_modulos[0]->n_registros,
         ];
+         
         $this->view('pages/inicio', $datos);
+        
     }
-
-
-
-
-
 }

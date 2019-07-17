@@ -2,16 +2,49 @@ $('#alert-error').hide();
 $('#alert-warning').hide();
 window.addEventListener('DOMContentLoaded', listener);
 var url = "http://localhost/SistemaNotasCDS/porcentajeCurso/";
+var div_seleccion
 
 function listener() {
-    document.getElementById('btn-seleccionar').addEventListener('click', mostrarDiv);
+    document.getElementById('btn_add').addEventListener('click', div_agregar);
+    document.getElementById('btn_edit').addEventListener('click', div_agregar);
+
+    div_seleccion = document.getElementById('div_seleccion');
 }
 
 function listener_guardar() {
     document.getElementById('form_porcentajes').addEventListener('submit', guardarPorcentajes);
 }
 
-function mostrarDiv(e) {
+function div_agregar(e) {
+    let btn = e.target.value;
+    e.preventDefault();
+    if(btn == "agregar"){
+        httpRequest(url+"seleccionAdd", function () {
+            div_seleccion.innerHTML= this.responseText;
+            document.getElementById('btn-seleccionar').addEventListener('click', mostrarDivAdd);
+        });
+    }
+    if(btn == "editar"){
+        httpRequest(url+"seleccionEdit", function () {
+            div_seleccion.innerHTML= this.responseText;
+            document.getElementById('btn-seleccionar').addEventListener('click', mostrarDivEdit);
+        });
+    }
+}
+
+function httpRequest(url, callback){
+    const http = new XMLHttpRequest();
+    http.open("GET", url);
+    http.send();
+
+    http.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            callback.apply(http);
+        }
+    }
+}
+
+function mostrarDivAdd(e) {
     e.preventDefault();
     var id_curso = document.getElementById('select_id_curso').value;
 
@@ -25,7 +58,32 @@ function mostrarDiv(e) {
                 listener_guardar();
             }
         };
-        peticion.open('GET', url + 'mostrarPorcentajes/' + id_curso);
+        peticion.open('GET', url + 'mostrarPorcentajesAdd/' + id_curso);
+        peticion.send();
+    }else{
+        Swal.fire({
+            type: 'error',
+            title: 'No existe registros',
+            text: 'Vuelve a intentar cuando existan registros',
+        });
+    }
+}
+
+function mostrarDivEdit(e) {
+    e.preventDefault();
+    var id_curso = document.getElementById('select_id_curso').value;
+
+    if(id_curso.length != 0) {
+        var peticion = new XMLHttpRequest();
+        peticion.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('div_procentajes').innerHTML = this.responseText;
+                $('#alert-error').hide();
+                $('#alert-warning').hide();
+                listener_guardar();
+            }
+        };
+        peticion.open('GET', url + 'mostrarPorcentajesEdit/' + id_curso);
         peticion.send();
     }else{
         Swal.fire({

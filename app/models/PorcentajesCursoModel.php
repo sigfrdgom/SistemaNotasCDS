@@ -44,6 +44,20 @@ class PorcentajesCursoModel{
         }
     }
 
+    public function replace($datos){
+        $this->db->query('REPLACE INTO porcentajes_curso VALUES(:id_porcentajes_curso, :id_curso, :id_tipo_modulo, :porcentaje, :observacion)');
+        $this->db->bind(':id_porcentajes_curso',$datos['id_porcentajes_curso']);
+        $this->db->bind(':id_curso',$datos['id_curso']);
+        $this->db->bind(':id_tipo_modulo', $datos['id_tipo_modulo']);
+        $this->db->bind(':porcentaje', $datos['porcentaje']);
+        $this->db->bind(':observacion', $datos['observacion']);
+        if ($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function update($datos){
         $this->db->query('UPDATE porcentajes_curso SET id_curso = :id_curso, id_tipo_modulo = :id_tipo_modulo , porcentaje = :porcentaje , observacion = :observacion WHERE id_porcentajes_curso = :id ');
         $this->db->bind(':id', $datos['id_porcentajes_curso']);
@@ -74,6 +88,12 @@ class PorcentajesCursoModel{
         WHERE pm.id_curso = :id_curso
         ORDER BY id_curso DESC ;");
          $this->db->bind(':id_curso', $id_curso);
+        return $this->db->findAll();
+    }
+
+    public function porcentajesTipoModulo($id_curso){
+        $this->db->query("SELECT * FROM porcentajes_curso pc INNER JOIN tipo_modulo tm ON pc.id_tipo_modulo=tm.id_tipo_modulo WHERE pc.id_curso=:id_curso");
+        $this->db->bind(':id_curso', $id_curso);
         return $this->db->findAll();
     }
 

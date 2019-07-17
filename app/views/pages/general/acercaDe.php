@@ -336,9 +336,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Gestion de cursos</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -350,9 +350,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Gestion de modulos</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -364,9 +364,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Control de usuarios</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -378,9 +378,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Control de participantes</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -392,9 +392,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">API REST READY</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -410,9 +410,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Gestion de matriculas</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -424,9 +424,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Notas y evaluaciones</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -438,9 +438,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Soporte incluido</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -452,9 +452,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Reportes</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 
@@ -466,9 +466,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     <div class="text-center mt-2" style="background: #cad3e0">
                                         <h6 class="mt-2 " style="font-weight: bolder">Seguridad</h6>
                                     </div>
-                                    <div class="card-body text-justify">
+                                    <!-- <div class="card-body text-justify">
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
 

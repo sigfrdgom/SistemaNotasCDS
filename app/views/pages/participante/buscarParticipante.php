@@ -1,4 +1,6 @@
-<?php if (empty($datos['participante'])) { ?>
+<?php 
+    session_start();
+    if (empty($datos['participante'])) { ?>
     <td colspan="9" class="text-center"><h5>Tu busqueda no tiene resultados</h5></td>
 <?php } else { ?>
 
@@ -20,10 +22,12 @@
         <td><?php echo ($participantes->estado == 1? "ACTIVO":"INACTIVO") ?></td>
         <td class='secret dp12'><?php echo $participantes->pass ?></td>
         
+        <?php if (!($_SESSION['tipoUsuario']==$_SESSION['admin2'])) { ?> 
         <td class='shrink'> <button type='button' value='Detalles' class='btn_editar_participante btn btn-warning ' data-toggle='modal' data-target='#agregarParticipante'>
         <span class='fa fa-edit'></span> Editar</td>
 
         <td class='shrink'><button id='btn_eliminar2' onclick="menjaseBaja('Participante/updateDown/<?php echo $participantes->id_participante;?>', null)" class='btn btn-danger alert_sweet'><span class='fa fa-trash'></span> Dar baja</button></td>
+        <?php } ?>
     </tr>
                                 
                 

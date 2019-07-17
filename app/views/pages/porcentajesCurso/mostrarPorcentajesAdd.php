@@ -16,6 +16,7 @@
                     <?php foreach ($datos['tipoModulo'] as $item) { ?>
                         <td style="min-width: 76px;">
                             <div class="input-group">
+                                <input type="hidden" name="id_porcentaje_curso[]" value="null">
                                 <input type="text" class="form-control text-centrado porcentaje" name="porcentajes_curso[]" maxlength="5"
                                        onkeypress="decimalonly()" onkeyup="filterFloat(this);sumar()"
                                        aria-label="Ingrese un porcentaje" pattern="^[0-9]+([.][0-9]+)?$">

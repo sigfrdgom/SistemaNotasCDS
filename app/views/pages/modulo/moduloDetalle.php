@@ -2,7 +2,6 @@
 /*Importacion de Header de la aplicacion*/
 // require_once RUTA_APP . '/views/include/header.php';
 require_once RUTA_APP . '/views/include/headerPadre.php';
-
 ?>
 
 <!-- Start content -->
@@ -79,7 +78,6 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                     data-content="Sirven para modificar informacion de un Modulo o darlo de baja">
                                 <i class="fa fa-fw fa-question-circle pop-help"></i>
                                 </a>
-
                             </th>
                         </tr>
                     </thead>
@@ -99,11 +97,15 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <td><?php echo ($modulos->evaluacion5 == 0.0?'---': $modulos->evaluacion5) ?></td>
                             <td><?php echo ($modulos->evaluacion6 == 0.0?'---': $modulos->evaluacion6) ?></td>
                             <td><?php echo ($modulos->estado == 1?'ACTIVO':'INACTIVO') ?></td>
-                            <td class='shrink '><button  class='centrado btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
-                            
-                            <td class='shrink align-middle'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
+
+                            <?php if (!($_SESSION['tipoUsuario']==$_SESSION['admin2'])) { ?>
+                                <td class='shrink '><button  class='centrado btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                                <td class='shrink align-middle'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
                                 onclick='menjaseBaja("<?php echo RUTA_URL."/modulo/down/$modulos->id_modulo"?>")' 
                                 class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button>
+                            </td>
+                            <?php }?>
+                                  
                         </tr>
                         <?php } ?>
                     </tbody>

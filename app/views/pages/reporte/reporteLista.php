@@ -1,6 +1,7 @@
 <?php
 /*Importacion de Header de la aplicacion*/
-require_once RUTA_APP . '/views/include/header.php';
+// require_once RUTA_APP . '/views/include/header.php';
+require_once RUTA_APP . '/views/include/headerPadre.php';
 ?>
 
     <!-- Start content -->
@@ -23,17 +24,17 @@ require_once RUTA_APP . '/views/include/header.php';
             
             <div class="card-deck">
                 <!-- El card -->
-                <div class="card p-2">
+                <!-- <div class="card p-2">
                     <div class="card-body" >
                         <h5 class="card-title">Desempeño por Cohorte</h5>
                         <p class="card-text"> Descripción del reporte </p>
-                            <a href="" class="btn btn-primary btn-block">Ver Cohortes</a>
-                            <!-- <?php //echo constant('RUTA_URL') ?>/reporte/dsmpCohorte/" target="_blank" -->
+                           
+                            <a href="<?php echo constant('RUTA_URL') ?>/reporte/dsmpCohorte/" class="btn btn-primary btn-block">Ver Cohortes</a>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Otra información sobre el reporte </small>
                     </div>
-                </div>
+                </div> -->
                 <!-- El card -->
 
                 <!-- El card -->

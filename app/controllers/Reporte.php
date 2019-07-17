@@ -27,11 +27,12 @@ class Reporte extends Controller
     // Para desempeño del cohorte
     public function dsmpCohorte()
     {
+        $curso = $this->cursoModel->findByCohorte();
         $datos = [
-            'titulo' => "Reporte de desempeño por Cohorte",
+            'titulo' => "Reportes de Desempeño por cohorte",
+            'curso' => $curso
         ];
-
-        $this->view('pages/reporte/reporteDsmpCohorte', $datos);
+        $this->view('pages/reporte/cohorte/reporteCohorteCohorte', $datos);
     }
 
 
@@ -46,6 +47,9 @@ class Reporte extends Controller
         $this->view('pages/reporte/nivel/reporteNivel', $datos);
     }
 
+    public function generarDsmpCohorte($cohorte){
+        
+    }
 
     // El metodo para generar el reporte por nivel de un cohorte
     public function generarDsmpNivel($c,$n)

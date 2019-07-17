@@ -92,7 +92,7 @@ class ModuloModel{
     }
 
     public function findbyIdCurso($id = ""){
-        $this->db->query("SELECT * FROM modulo m JOIN modulos_curso mc ON m.id_modulo=mc.id_modulo WHERE mc.id_curso=:id;");
+        $this->db->query("SELECT *,mc.id_docente FROM modulo m JOIN modulos_curso mc ON m.id_modulo=mc.id_modulo WHERE mc.id_curso=:id;");
         $this->db->bind(':id', $id);
         return $this->db->findAll();
     }

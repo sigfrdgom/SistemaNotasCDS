@@ -39,19 +39,24 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                 }else{
                 foreach ($datos['modulos'] as $modulos) {
                 ?>
-                <div class="card p-2 card-mostrar">
-                    <form action="<?php echo constant('RUTA_URL') ?>/notas/calificaciones/<?php echo $datos['id_curso'] ?>/<?php echo $modulos->id_modulo ?>" method="post">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $modulos->nombre_modulo ?></h5>
-                        <p class="card-text"><?php echo $modulos->descripcion_modulo ?></p>
-                        <button type="submit" class="btn btn-success">Ver Modulos</button>
+                
+                <?php if ($_SESSION['id_usuario'] == $modulos->id_docente || $_SESSION['tipoUsuario']=="ADMINISTRADOR") { ?>
+                    
+                    <div class="card p-2 card-mostrar">
+                        <form action="<?php echo constant('RUTA_URL') ?>/notas/calificaciones/<?php echo $datos['id_curso'] ?>/<?php echo $modulos->id_modulo ?>" method="post">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $modulos->nombre_modulo ?></h5>
+                            <p class="card-text"><?php echo $modulos->descripcion_modulo ?></p>
+                            <button type="submit" class="btn btn-success">Ver Modulos</button>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Inicio: <?php echo $modulos->horas_modulo ?></small>
+                        </div>
+                        </form>
                     </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Inicio: <?php echo $modulos->horas_modulo ?></small>
-                    </div>
-                    </form>
-                </div>
+
                 <?php
+                }
                 }
                 } ?>
             </div>

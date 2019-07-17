@@ -4,8 +4,10 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
 
     if ($_SESSION['tipoUsuario']==$_SESSION['admin']) {
         require_once RUTA_APP . '/views/include/header.php';
-    }else {
+    }else if ($_SESSION['tipoUsuario']==$_SESSION['admin2'] ){
         require_once RUTA_APP . '/views/include/headerDocente.php';
+    }else{
+        require_once RUTA_APP . '/views/include/headerParticipante.php';
     }
 }else{
     
@@ -18,9 +20,12 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
         
         if ($_SESSION['tipoUsuario']==$_SESSION['admin']) {
             require_once RUTA_APP . '/views/include/header.php';
-        }else {
+        }else if ($_SESSION['tipoUsuario']==$_SESSION['admin2'] ){
             require_once RUTA_APP . '/views/include/headerDocente.php';
+        }else{
+            require_once RUTA_APP . '/views/include/headerParticipante.php';
         }
+
     }else{
 
         //CAMBIARRRRRRRR ESTOS MENSAJE

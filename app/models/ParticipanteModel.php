@@ -127,5 +127,13 @@ class ParticipanteModel{
         $this->db->bind(':busqueda', "%".$datos."%", PDO::PARAM_STR);
         return $this->db->findAll();
     }
+
+    public function logIn($pass = "", $criteria=""){
+        $this->db->query("SELECT * FROM participante WHERE (pass = :pass and  dui = :criteria OR nit = :criteria and estado=1)");
+        // $this->db->bind(':pass',md5($pass));
+        $this->db->bind(':pass',md5($pass));
+        $this->db->bind(':criteria',$criteria);
+        return $this->db->findOne();
+    }
 }
 ?>

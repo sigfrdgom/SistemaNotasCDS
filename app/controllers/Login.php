@@ -6,7 +6,7 @@ class Login extends Controller
     public function __construct() {
         //Cargar Modelos de la paginas;
         $this->docenteModel = $this->model('DocenteModel');
-        $this->estudianteModel = $this->model('EstudianteModel');
+        $this->estudianteModel = $this->model('ParticipanteModel');
 
     }
 
@@ -47,7 +47,8 @@ class Login extends Controller
                     //    ini_set("session.cookie_lifetime","60");
                         session_start();
                     //    session_cache_expire(60);
-                        
+                        $_SESSION['admin']="ADMINISTRADOR";
+                        $_SESSION['admin2']="DOCENTE";
                         $_SESSION['id_sesion'] = session_id();
                         $_SESSION['tipoUsuario']="PARTICIPANTE";
                         $_SESSION['nombres'] = $estudiante->nombres;
@@ -56,12 +57,12 @@ class Login extends Controller
                     //    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
 
                     //MENSAJE DE BIENVENIDA CHAFA               
-                        echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
-                        </script>";
-                        echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
-                        </script>";
+                        // echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
+                        // </script>";
+                        // echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
+                        // </script>";
 
-                    //    redireccionar('index/index2');  
+                        redireccionar('index/index2');  
                 }else
                 {
                 //DESTRUIR TODA LA SESION Y COOKIES
@@ -88,12 +89,12 @@ class Login extends Controller
                     //    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
 
                     //MENSAJE DE BIENVENIDA CHAFA               
-                        echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
-                        </script>";
+                        // echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
+                        // </script>";
                         echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
                         </script>";
 
-                    //    redireccionar('index/index2');  
+                        redireccionar('index/index2');  
                 }else
                 {
                 //DESTRUIR TODA LA SESION Y COOKIES

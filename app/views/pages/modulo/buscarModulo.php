@@ -1,4 +1,6 @@
-<?php if (empty($datos['modulo'])) { ?>
+<?php 
+session_start();
+if (empty($datos['modulo'])) { ?>
     <td colspan="9" class="text-center"><h5>Tu busqueda no tiene resultados</h5></td>
 <?php } else { ?>
 
@@ -17,11 +19,14 @@
             <td><?php echo ($modulos->evaluacion5 == 0.0?'---': $modulos->evaluacion5) ?></td>
             <td><?php echo ($modulos->evaluacion6 == 0.0?'---': $modulos->evaluacion6) ?></td>
             <td><?php echo ($modulos->estado == 1?'ACTIVO':'INACTIVO') ?></td>
-            <td class='shrink '><button  class='centrado btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
             
-            <td class='shrink align-middle'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
-                onclick='menjaseBaja("<?php echo RUTA_URL."/modulo/down/$modulos->id_modulo"?>")' 
-                class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button></td>
+            <?php if (!($_SESSION['tipoUsuario']==$_SESSION['admin2'])) { ?>
+                <td class='shrink '><button  class='centrado btn btn-warning btn_editar_modulo' data-toggle='modal' data-target='#agregarModulo'><span class='fa fa-edit'></span> Editar</button></td>
+                <td class='shrink align-middle'><button id='btn_eliminar2' data-Modulo="<?php echo $modulos->id_modulo;?>"
+                    onclick='menjaseBaja("<?php echo RUTA_URL."/modulo/down/$modulos->id_modulo"?>")' 
+                    class='centrado btn btn-danger'><span class='fa fa-trash'></span> Dar baja</button>
+                </td>
+            <?php }?>
         </tr>
                 
 <?php } } ?>

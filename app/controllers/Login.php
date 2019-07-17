@@ -52,7 +52,7 @@ class Login extends Controller
          
             
                 session_start();
-                session_cache_expire(60*15);
+                // session_cache_expire(60);
                $_SESSION['admin']="ADMINISTRADOR";
                $_SESSION['admin2']="DOCENTE";
                $_SESSION['id_sesion'] = session_id();

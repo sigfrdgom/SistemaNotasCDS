@@ -18,6 +18,7 @@ class Reporte extends Controller
 
     /*Vista Principal*/
     public function index(){
+        $this->sessionActivaXD();
         $datos = [
             'titulo' => "Reportes Sistema de Notas CDS",
         ];

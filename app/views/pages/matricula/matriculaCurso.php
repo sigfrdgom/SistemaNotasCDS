@@ -14,9 +14,9 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
         <div class="col-xl-12">
             <div class="breadcrumb-holder">
                 <h1 class="main-title float-left">
-                            <a href="<?php echo constant('RUTA_URL') ?>/matricula/nivel/<?php echo base64_encode($datos['curso']->cohorte)?>">
-                                <i class="fas fa-arrow-circle-left color-primary"></i>
-                            </a>
+                    <a href="<?php echo constant('RUTA_URL') ?>/matricula/nivel/<?php echo base64_encode($datos['curso']->cohorte)?>">
+                        <i class="fas fa-arrow-circle-left color-primary"></i>
+                    </a>
                 <?php echo $datos['titulo'] ?>&nbsp;</h1>
                 <!-- El boton para agregar a traves de un modal -->
                     <button type="button" class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarMatricula" id="ivkmatricula">

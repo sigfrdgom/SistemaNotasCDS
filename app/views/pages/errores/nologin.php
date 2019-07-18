@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo constant('RUTA_URL')?>/css/error404.css">
+<script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
 <div id="clouds">
             <div class="cloud x1"></div>
             <div class="cloud x1_5"></div>

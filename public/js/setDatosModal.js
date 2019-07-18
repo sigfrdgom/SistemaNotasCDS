@@ -361,7 +361,8 @@ $(document).ready(function () {
         $('#cid').val(data[0]);
         $('#cnombre').val(data[1]);
         
-        $('#ccohorte').val(data[3]);
+        // $('#ccohorte').val(data[3]);
+        $("#ccohorte option[value='" + data[2] + "']").attr("selected", true);
         $('#cdescripcion').val(data[4]);
         $('#cduracion').val(data[5]);
 
@@ -378,8 +379,8 @@ $(document).ready(function () {
         $("#cnivel option[value='" + nivel + "']").attr("selected", true);
 
 
-        $('#cfecha_inicio').val(data[9]);
-        $('#cfecha_fin').val(data[10]);
+        $('#cfecha_inicio').val(data[8]);
+        $('#cfecha_fin').val(data[9]);
 
         document.getElementById('curso').setAttribute('action', '/SistemaNotasCDS/curso/update');
         document.getElementById('mdfcurso').style.display = 'inline';

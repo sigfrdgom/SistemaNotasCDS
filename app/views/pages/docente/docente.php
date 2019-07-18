@@ -70,7 +70,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         <th class='secret'>DUI</th>
                         <th class='secret'>NIT</th>
                         <th>Especialidad</th>
-                        <th class='secret'>Tipo Usuario</th>
+                        <th >Tipo Usuario</th>
                         <th class='secret'>Password</th>
                         <th>Estado</th>
                         <th colspan="2">Acciones
@@ -96,7 +96,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <td class="secret"><?php echo $docentes->dui?></td>
                             <td class="secret"><?php echo $docentes->nit ?></td>
                             <td><?php echo $docentes->especialidad ?></td>
-                            <td class="secret"><?php echo $docentes->tipo_usuario?></td>
+                            <td ><?php echo $docentes->tipo_usuario?></td>
                             <td class="secret"><?php echo $docentes->pass ?></td>
                             <td><?php if($docentes->estado ==1) {
                                 echo 'ACTIVO';}else{ echo 'INACTIVO';} ?></td>

@@ -6,7 +6,6 @@ class General extends Controller
         
     }
 
-   
     public function acercaDe(){
 
         $datos = [
@@ -17,11 +16,10 @@ class General extends Controller
     }
 
     public function faq(){
-
+        $this->sessionActivaXD();
         $datos = [
             'titulo' => "Preguntas y respuestas frecuentes.",
         ];
-
         $this->view('pages/general/faq', $datos);
     }
 

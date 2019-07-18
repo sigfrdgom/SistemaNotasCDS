@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 if (empty($datos['modulo'])) { ?>
     <td colspan="9" class="text-center"><h5>Tu busqueda no tiene resultados</h5></td>
 <?php } else { ?>

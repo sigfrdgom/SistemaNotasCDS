@@ -9,14 +9,13 @@ class ModulosCurso extends Controller
         $this->cursoModel = $this->model('CursoModel');
         $this->moduloModel = $this->model('ModuloModel');
         $this->tipoModuloModel = $this->model('TipoModuloModel');
-
     }
 
     public function index()
     {
+        $this->sessionActivaX();
         $curso = $this->cursoModel->findByCohorte();
         $descripcion = "Vista que muestra todos los modulosCurso que existen";
-       
         $datos = [
             'titulo' => "Modulos por curso",
             'descripcion' => $descripcion,
@@ -34,13 +33,11 @@ class ModulosCurso extends Controller
             $modulo=$_POST['mcid_modulo'];
             $array=$_POST['mcid_docente'];
             $limit=count($array);
-            
                 for ($i=0; $i < $limit; $i++) { 
                     if ($array[$i] == "") {
                         unset($array[$i]);
                     }
                 }
-            
             $docente = array_values($array);
             
             // Recorriendo los arreglos para guardar la informacion correspondiente
@@ -57,7 +54,6 @@ class ModulosCurso extends Controller
                             'id_docente' => trim($docente[$x]),
                             'observaciones' => trim($_POST['mcobservaciones'])
                             ];
-
                                 if(!$this->modulosCursoModel->create($datos))
                                 {
                                     die("Error al insertar los datos"); 
@@ -68,7 +64,7 @@ class ModulosCurso extends Controller
                     }  
                 }
             redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
-       }
+        }
     }
 
     public function createORG()
@@ -103,7 +99,6 @@ class ModulosCurso extends Controller
                             'id_docente' => trim($docente[$x]),
                             'observaciones' => trim($_POST['mcobservaciones'])
                             ];
-
                                 if(!$this->modulosCursoModel->create($datos))
                                 {
                                     die("Error al insertar los datos"); 
@@ -114,10 +109,10 @@ class ModulosCurso extends Controller
                     }  
                 }
             redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
-       }
+        }
     }
     
-   
+
     public function update()
     {
         $this->sessionActivaX();
@@ -130,7 +125,6 @@ class ModulosCurso extends Controller
                 'id_docente' => trim($_POST['mcid_docente']),
                 'observaciones' => trim($_POST['mcobservaciones'])
             ];
-           
             if($this->modulosCursoModel->update($datos))
             {
                 redireccionar("modulosCurso/curso/".$_POST['mcidcurso']);
@@ -139,14 +133,14 @@ class ModulosCurso extends Controller
             {
                 die("Error al insertar los datos");
             }
-       }
-   }
+        }
+    }
 
-   public function delete($id = null)
-   {
-    $this->sessionActivaX();
-       if (isset($id))
-           {
+    public function delete($id = null)
+    {
+        $this->sessionActivaX();
+        if (isset($id))
+            {
             if($this->modulosCursoModel->delete($id))
             {
                 redireccionar("modulosCurso/curso/$id");
@@ -166,8 +160,8 @@ class ModulosCurso extends Controller
     public function down($id=null)
     {
         $this->sessionActivaX();
-         if (isset($id))
-         {
+            if (isset($id))
+            {
             if($this->moduloModel->updateDown($id))
             {
                 redireccionar("modulosCurso/curso/$id");
@@ -181,10 +175,11 @@ class ModulosCurso extends Controller
         {
             $this->index();
         }
-     }
+    }
 
     public function nivel($cohorte)
     {
+        $this->sessionActivaX();
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Vista que muestra todos las cursos con sus respectivos modulos que existen";
         $datos = [
@@ -197,6 +192,7 @@ class ModulosCurso extends Controller
 
     public function curso($id_curso)
     {
+        $this->sessionActivaX();
         $curso = $this->cursoModel->findById($id_curso);
         $modulo = $this->moduloModel->findAll();
         $docente = $this->docenteModel->findAll();
@@ -218,20 +214,21 @@ class ModulosCurso extends Controller
 
     public function comprobar($curso,$modulo)
     {
-       if ($_SERVER['REQUEST_METHOD'] == 'POST')
-       {
-          $datos = [
-              'id_curso' => $curso,
-              'id_modulo' => $modulo
-          ];  
-          $bandera = $this->modulosCursoModel->comprobar($datos);
-      }
-      if ($bandera[0]->n_registros == 0) {
-            return TRUE;
-      } else {
-            return FALSE;
-      }
-      
+        $this->sessionActivaX();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $datos = [
+                'id_curso' => $curso,
+                'id_modulo' => $modulo
+            ];  
+            $bandera = $this->modulosCursoModel->comprobar($datos);
+        }
+        if ($bandera[0]->n_registros == 0) {
+                return TRUE;
+        } else {
+                return FALSE;
+        }
+        
     } 
 }
 

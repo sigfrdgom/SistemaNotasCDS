@@ -13,7 +13,6 @@ class Reporte extends Controller
         $this->porcetanjesCursoModel = $this->model('PorcentajesCursoModel');
         $this->tipoModuloModel = $this->model('TipoModuloModel');
         $this->matriculaModel = $this->model('MatriculaModel');
-        
     }
 
     /*Vista Principal*/
@@ -28,6 +27,7 @@ class Reporte extends Controller
     // Para desempeño del cohorte
     public function dsmpCohorte()
     {
+        $this->sessionActivaX();
         $curso = $this->cursoModel->findByCohorte();
         $datos = [
             'titulo' => "Reportes de Desempeño por cohorte",
@@ -40,6 +40,7 @@ class Reporte extends Controller
     // Reporte de desempeño por nivel muestra los cursos disponibles para generar un reporte
     public function dsmpNivel()
     {
+        $this->sessionActivaXD();
         $curso = $this->cursoModel->findAll();
         $datos = [
             'titulo' => "Reportes de Desempeño por nivel",
@@ -49,12 +50,13 @@ class Reporte extends Controller
     }
 
     public function generarDsmpCohorte($cohorte){
-        
+        $this->sessionActivaX();
     }
 
     // El metodo para generar el reporte por nivel de un cohorte
     public function generarDsmpNivel($c,$n)
     {
+        $this->sessionActivaXD();
         $id_curso=trim($c);
         $nivel=trim($n);
         // $id_participante=trim($p);
@@ -135,7 +137,7 @@ class Reporte extends Controller
     // El metodo para generar el reporte por nivel de un cohorte
     public function generarDsmpParticipante($curso,$nivel,$participante)
     {
-
+        // $this->sessionActivaXD();
         $modulos = $this->modulosCursoModel->modulosByCurso(trim($curso));
         $info = $this->cursoModel->findById(trim($curso));
         $alm = $this->participanteModel->findById($participante);
@@ -159,6 +161,7 @@ class Reporte extends Controller
 
     public function mostrarNotasParticipante($curso,$nivel,$participante)
     {
+        $this->sessionActivaXDP();
         $modulos = $this->modulosCursoModel->modulosByCurso(trim($curso));
         $info = $this->cursoModel->findById(trim($curso));
         $alm = $this->participanteModel->findById($participante);
@@ -212,6 +215,7 @@ class Reporte extends Controller
     // Muestra los cohortes disponibles
     public function dsmpParticipanteCohorte()
     {
+        $this->sessionActivaXD();
         $curso = $this->cursoModel->findByCohorte();
         $datos = [
             'titulo' => "Reportes de Desempeño por estudiante",
@@ -224,6 +228,7 @@ class Reporte extends Controller
     // Muestra los niveles disponibles por cohorte
     public function dsmpParticipanteNivel($cohorte)
     {
+        $this->sessionActivaXD();
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Reportes de Desempeño por estudiante";
         $datos = [
@@ -238,6 +243,7 @@ class Reporte extends Controller
     // Muestra la lista de participantes inscritos en un Cohorte por curso por nivel especifico (matricula)
     public function dsmpParticipante($id_curso)
     {
+        $this->sessionActivaXD();
         $matricula = $this->matriculaModel->findForTableCurso($id_curso);
         $curso = $this->cursoModel->findById($id_curso);
         
@@ -254,6 +260,8 @@ class Reporte extends Controller
     //  Para calcular el promedio por curso y nivel de un alumno en especificos
     public function generarDsmpNivelProm($c,$n,$p)
     {
+        // $this->sessionActivaXDP();
+        // ups
         $id_curso=trim($c);
         $nivel=trim($n);
         $id_participante=trim($p);
@@ -322,7 +330,8 @@ class Reporte extends Controller
     }
 
     public function cursosParticipante(){
-        session_start();
+        $this->sessionActivaXDP();
+        // session_start();
         $cursos=$this->matriculaModel-> cursosParticipante($_SESSION['id_participante']);
         $datos = [
             'titulo' => "Notas del participante: ",        

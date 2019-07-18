@@ -73,7 +73,7 @@ class TipoModulo extends Controller{
                 die("Error al eliminar los datos");
             }
         }else{
-             $this->index();
+            $this->index();
         }
     }
 

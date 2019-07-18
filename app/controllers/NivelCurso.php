@@ -7,6 +7,7 @@ class NivelCurso extends Controller{
 
     /*Vista Principal*/
     public function index(){
+        $this->sessionActivaX();
         $nivelModulo = $this->nivelCursoModel->findAll();
         $descripcion = "Vista que muestra todos los niveles de los cursos que existen";
         $datos = [
@@ -45,7 +46,6 @@ class NivelCurso extends Controller{
         $this->sessionActivaX();
         if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         { 
-             
             $datos = [
                 'id_nivel_curso' => $_POST['id_nivel_curso'],
                 'nivel_curso' => trim($_POST['nivel_curso']),

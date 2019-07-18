@@ -29,7 +29,6 @@ class Matricula extends Controller
 
 
     public function curso($id_curso=null){
-
         $this->sessionActivaX();
         if(isset($id_curso))
         {
@@ -48,12 +47,9 @@ class Matricula extends Controller
                 'id_curso' => $id_curso
             ];
             $this->view('pages/matricula/matriculaCurso', $datos);
-
         }else{
             redireccionar('matricula');
         }
-
-
     }
 
     
@@ -79,7 +75,7 @@ class Matricula extends Controller
     {
         $this->sessionActivaX();
         if (($_SERVER['REQUEST_METHOD'] == 'POST'))
-       {
+        {
             $curso= trim($_POST['mid_curso']);
             $participante = trim($_POST['mid_participante']);
 
@@ -91,11 +87,11 @@ class Matricula extends Controller
                 'observaciones' => trim($_POST['mobservaciones'])
             ];
                 $bandera=$this->comprobar();
-              var_dump($bandera);
-           if ($bandera) {
+                // var_dump($bandera);
+            if ($bandera) {
                     if($this->matriculaModel->create($datos))
                     {
-                       echo "momento de crear notas $curso -- $participante";
+                        echo "momento de crear notas $curso -- $participante";
                         // $this.crearNotas($curso, $participante);
                         redireccionar("matricula/crearNotas/$curso/$participante");
                         echo "Creo las notas y matriculo";
@@ -105,46 +101,45 @@ class Matricula extends Controller
                         redireccionar('matricula');
                         die("Error al insertar los datos");
                     }
-           }else{
+            }else{
                 echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese curso');</script>";
                 //redireccionar('matricula');
-           }
-           
-       }
-       else{
+            }
+        }
+        else{
         redireccionar('matricula');
-     }
-   }
+        }
+    }
 
-   public function update()
-   {
+    public function update()
+    {
         $this->sessionActivaX();
-       if (($_SERVER['REQUEST_METHOD'] == 'POST'))
-       {
-          $datos = [
-              'id_matricula' => trim($_POST['mid_matricula']),
-              'id_curso' => trim($_POST['mid_curso']),
-              'id_participante' => trim($_POST['mid_participante']),
-              'estado' => trim($_POST['mestado']),
-              'observaciones' => trim($_POST['mobservaciones'])
-          ];
-          var_dump($datos);
-          if($this->matriculaModel->update($datos))
-          {
-            redireccionar("matricula/curso/".$_POST['mid_curso']);
-          }
-          else
-          {
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        {
+            $datos = [
+                'id_matricula' => trim($_POST['mid_matricula']),
+                'id_curso' => trim($_POST['mid_curso']),
+                'id_participante' => trim($_POST['mid_participante']),
+                'estado' => trim($_POST['mestado']),
+                'observaciones' => trim($_POST['mobservaciones'])
+            ];
+            var_dump($datos);
+            if($this->matriculaModel->update($datos))
+            {
+                redireccionar("matricula/curso/".$_POST['mid_curso']);
+            }
+            else
+            {
             redireccionar('matricula');   
             die("Error al actualizar los datos");
-       }
-   }else{
-       redireccionar('matricula');
+        }
+    }else{
+        redireccionar('matricula');
+        }
     }
-  }
 
-   public function delete($id = null)
-   {
+    public function delete($id = null)
+    {
     $this->sessionActivaX();
         if (isset($id))
         {
@@ -168,44 +163,44 @@ class Matricula extends Controller
     {
         $this->sessionActivaX();
         if (isset($id))
-         {
-             if($this->matriculaModel->updateDown($id))
-             {
-                 redireccionar('matricula');
-             }
-             else
-             {
-                redireccionar('matricula');
-                 die("Error al dar de baja la matricula");
-             }
-         }
-         else
-         {
-             $this->index();
-         }
+            {
+                if($this->matriculaModel->updateDown($id))
+                {
+                    redireccionar('matricula');
+                }
+                else
+                {
+                    redireccionar('matricula');
+                    die("Error al dar de baja la matricula");
+                }
+            }
+            else
+            {
+                $this->index();
+            }
     }
 
     public function comprobar()
-   {
+    {
         $this->sessionActivaX();
         if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
-          $datos = [
-              'id_curso' => trim($_POST['mid_curso']),
-              'id_participante' => trim($_POST['mid_participante'])
-          ];  
-          $bandera = $this->matriculaModel->comprobar($datos);
-      }
-      if ($bandera[0]->n_registros == 0) {
-            return TRUE;
-      } else {
-            return FALSE;
-      }
-      
-  }
+            $datos = [
+                'id_curso' => trim($_POST['mid_curso']),
+                'id_participante' => trim($_POST['mid_participante'])
+            ];  
+            $bandera = $this->matriculaModel->comprobar($datos);
+        }
+        if ($bandera[0]->n_registros == 0) {
+                return TRUE;
+        } else {
+                return FALSE;
+        }
+        
+    }
 
-  public function upgrade($id = null)
-  {
+    public function upgrade($id = null)
+    {
     $this->sessionActivaX();
     if(isset($id)){
             $bandera = $this->matriculaModel->comprobarUpgrade($id);
@@ -229,7 +224,6 @@ class Matricula extends Controller
                         // $this.crearNotas($curso, $participante);
                         redireccionar("matricula/crearNotas/$id_upgrade/".$_POST['mid_participante']);
                         echo "Creo las notas y matriculado en el siguiente nivel";
-
                         }
                         else
                         {
@@ -248,27 +242,26 @@ class Matricula extends Controller
         die("Error al buscar el dato");
             
     }        
- }
+    }
 
  //validar?
- public function comprobarUpgrade($idCurso=null)
-   {
-    $this->sessionActivaX();
-       if (($_SERVER['REQUEST_METHOD'] == 'POST'))
-       {
-          $datos = [
-              'id_curso' => $idCurso,
-              'id_participante' => trim($_POST['mid_participante'])
-          ];  
-          $bandera = $this->matriculaModel->comprobar($datos);
-      }
-      if ($bandera[0]->n_registros == 0) {
-            return TRUE;
-      } else {
-            return FALSE;
-      }
-      
-  }
+    public function comprobarUpgrade($idCurso=null)
+    {
+        $this->sessionActivaX();
+        if (($_SERVER['REQUEST_METHOD'] == 'POST'))
+        {
+            $datos = [
+                'id_curso' => $idCurso,
+                'id_participante' => trim($_POST['mid_participante'])
+            ];  
+            $bandera = $this->matriculaModel->comprobar($datos);
+        }
+        if ($bandera[0]->n_registros == 0) {
+                return TRUE;
+        } else {
+                return FALSE;
+        }
+    }
 
 
 /** 

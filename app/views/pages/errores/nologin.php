@@ -8,7 +8,7 @@
             <div class="cloud x5"></div>
         </div>
         <div class='c'>
-            <div class='_404'>UPS</div>
+            <div class='_404'>¡UPS!</div>
             <hr>
             <div class='_2'>NO ESTAS</div>
             <br>

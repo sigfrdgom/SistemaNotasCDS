@@ -14,6 +14,7 @@ class Notas extends Controller
 
     public function index()
     {
+        $this->sessionActivaXD();
         $descripcion = "Vista que muestra todos los cursos";
         // $cursos = $this->cursoModel->orderByFechaDesc();
         $cursos = $this->cursoModel->orderByCohorteNivel();
@@ -27,6 +28,7 @@ class Notas extends Controller
 
     public function notas()
     {
+        $this->sessionActivaXD();
         $nota = $this->notaModel->findAll();
         $modulosCurso = $this->modulosCursoModel->findAll();
         $participante = $this->participanteModel->findAll();
@@ -44,6 +46,7 @@ class Notas extends Controller
 
     public function modulos($idCurso)
     {
+        $this->sessionActivaXD();
         $descripcion = "Vista que muestra todos los Modulos del curso";
         $modulos = $this->moduloModel->findbyIdCurso($idCurso);
         $datos = [
@@ -57,6 +60,7 @@ class Notas extends Controller
 
     public function calificaciones($id_curso, $id_modulo)
     {
+        $this->sessionActivaXD();
         $datos = [
             'id_curso' => trim($id_curso),
             'id_modulo' => trim($id_modulo),
@@ -77,6 +81,7 @@ class Notas extends Controller
 
     public function ingresarNotas($id_curso, $id_modulo)
     {
+        $this->sessionActivaXD();
         $datos = [
             'id_curso' => trim($id_curso),
             'id_modulo' => trim($id_modulo),
@@ -95,6 +100,7 @@ class Notas extends Controller
 
     public function create()
     {
+        $this->sessionActivaXD();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $datos = [
@@ -138,6 +144,7 @@ class Notas extends Controller
     }
 
     public function buscarNotas(){
+        $this->sessionActivaXD();
         $id_modulo = $_POST['id_modulo'];
         $id_curso = $_POST['id_curso'];
         $busqueda = $_POST['busqueda'];

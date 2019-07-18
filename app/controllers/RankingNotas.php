@@ -17,6 +17,7 @@ class RankingNotas extends Controller
 
     public function index()
     {
+        $this->sessionActivaXD();
         $descripcion = "Vista que muestra todos los cursos";
         $cursos = $this->cursoModel->orderByCohorteNivel();
         $datos = [
@@ -29,6 +30,7 @@ class RankingNotas extends Controller
 
     public function nivel($idCurso)
     {
+        $this->sessionActivaXD();
         $nivel = $this->nivelCursoModel->findNivelByCurso($idCurso);
         $datos = [
             'titulo' => "Niveles del Curso",
@@ -40,6 +42,7 @@ class RankingNotas extends Controller
 
     public function promedioModulos()
     {
+        $this->sessionActivaXD();
         $datos = [
             'id_curso' => trim($_POST['id_curso']),
             'nivel' => trim($_POST['nivel'])
@@ -61,6 +64,7 @@ class RankingNotas extends Controller
 
     public function seleccion()
     {
+        $this->sessionActivaXD();
         $datos = [
             'id_curso' => trim($_POST['id_curso']),
             'nivel' => trim($_POST['nivel']),
@@ -71,6 +75,7 @@ class RankingNotas extends Controller
 
     public function rankingTop()
     {
+        $this->sessionActivaXD();
         $this->sessionActivaX();
         $datos = [
             'id_curso' => trim($_POST['id_curso']),

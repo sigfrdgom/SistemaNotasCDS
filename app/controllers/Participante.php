@@ -7,6 +7,7 @@ class Participante extends Controller
     }
 
     public function index(){
+        $this->sessionActivaXD();
         $participante = $this->participanteModel->findAll();
         $descripcion = "Vista que muestra todos las participantes que existen";
         $datos = [
@@ -18,7 +19,6 @@ class Participante extends Controller
     }
 
     public function create(){
-        
         $this->sessionActivaX();
         if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
@@ -36,8 +36,6 @@ class Participante extends Controller
                 'pass' => trim($_POST['pass']),
                 // 'estado' => trim($_POST['pestado'])
                 'estado' => 1
-
-
             ];
             var_dump($datos);
             if($this->participanteModel->create($datos)){
@@ -129,6 +127,7 @@ class Participante extends Controller
     }
 
     public function buscarParticipante(){
+        $this->sessionActivaXD();
         $busqueda = trim($_POST['busqueda']);
 
         if($busqueda == null || $busqueda== ""){

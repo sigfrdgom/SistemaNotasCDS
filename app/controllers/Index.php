@@ -18,6 +18,7 @@ class Index extends Controller
 
 
     public function index2(){
+        $this->sessionActivaXDP();
         $nombres = array();
         $n_participantes= $this->participanteModel->count();
         $n_usuarios = $this->docenteModel->count();
@@ -35,7 +36,6 @@ class Index extends Controller
             'n_cursos' => $n_cursos[0]->n_registros,
             'n_modulos' => $n_modulos[0]->n_registros,
         ];
-         
         $this->view('pages/inicio', $datos);
         
     }

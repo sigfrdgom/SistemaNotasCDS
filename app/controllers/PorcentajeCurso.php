@@ -26,6 +26,7 @@ class PorcentajeCurso extends Controller
 
     public function nivel($cohorte)
     {
+        $this->sessionActivaX();
         $curso = $this->cursoModel->findByNivel($cohorte);
         $descripcion = "Vista que muestra todos las cursos con sus respectivos modulos que existen";
         $datos = [
@@ -38,6 +39,7 @@ class PorcentajeCurso extends Controller
 
     public function curso($id_curso)
     {
+        $this->sessionActivaX();
         $curso = $this->cursoModel->findById($id_curso);
         $porcentajesCurso = $this->porcentajesCursoModel->findByNivel($id_curso);
         $tipoModulo = $this->tipoModuloModel->findAll();
@@ -164,6 +166,7 @@ class PorcentajeCurso extends Controller
     }
 
     public function seleccionEdit(){
+        $this->sessionActivaX();
         $cursoConPorcentaje = $this->cursoModel->cursoConPorcentaje();
         $datos = [
             'cursoConPorcentaje' => $cursoConPorcentaje
@@ -172,6 +175,7 @@ class PorcentajeCurso extends Controller
     }
 
     public function seleccionAdd(){
+        $this->sessionActivaX();
         $cursoConPorcentaje = $this->cursoModel->cursoSinPorcentaje();
         $datos = [
             'cursoSinPorcentaje' => $cursoConPorcentaje

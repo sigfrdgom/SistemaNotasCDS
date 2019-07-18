@@ -363,20 +363,28 @@ $(document).ready(function () {
         
         // $('#ccohorte').val(data[3]);
         $("#ccohorte option[value='" + data[2] + "']").attr("selected", true);
-        $('#cdescripcion').val(data[4]);
-        $('#cduracion').val(data[5]);
+        $('#cdescripcion').val(data[3]);
+        $('#cduracion').val(data[4]);
 
-        $("#csede option[value='" + data[6] + "']").attr("selected", true);
+        $("#csede option[value='" + data[5] + "']").attr("selected", true);
 
-        if (data[7] == "ACTIVO") {
+        if (data[6] == "ACTIVO") {
             document.getElementById("cestado1").checked = true;
         } else {
             document.getElementById("cestado2").checked = true;
         }
 
-        var nivel=this.dataset.nivel;
         
-        $("#cnivel option[value='" + nivel + "']").attr("selected", true);
+
+        if (data[7]==='Nivel 1') {
+            $("#cnivel option[value='1']").attr("selected", true);
+        } else if (data[7]==='Nivel 2') {
+            $("#cnivel option[value='2']").attr("selected", true);
+        } else{
+            $("#cnivel option[value='3']").attr("selected", true);
+        }
+        
+        $("#cnivel option[value='" + data[7] + "']").attr("selected", true);
 
 
         $('#cfecha_inicio').val(data[8]);

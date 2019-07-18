@@ -68,7 +68,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
             
 
             <!-- Equipo de desarrollo -->
-            <div class="container">
+            <div >
                 
                 <div class="text-center breadcrumb-holder mt-3 pb-2 border-dark border">
                         <h3>Equipo de desarrollo</h3>
@@ -78,7 +78,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                     <div class="row card-deck" >
 
                         <!-- Card Carlos Martinez -->
-                        <div class="col mx-0 my-3" style="height: 25em" >
+                        <div class="col mx-0 my-3" >
                             <div class="card">
                             
                                 <div class="card-img-top text-center mt-2">
@@ -90,18 +90,18 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 <div class="card-body text-justify">
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 </div>
-                                <!-- <div class="align-bottom">
+                                <div class="align-bottom">
                                     <div class="bg-info text-center" style="font-size: 2em;">
                                     <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
                                     <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
                                     <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
 
                         <!-- Card Kevin Martinez -->
-                        <div class="col mx-0 my-3" style="height: 25em" >
+                        <div class="col mx-0 my-3" >
                             <div class="card">
                             
                                 <div class="card-img-top text-center mt-2">
@@ -113,18 +113,18 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 <div class="card-body text-justify">
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 </div>
-                                <!-- <div class="align-bottom">
+                                <div class="align-bottom">
                                     <div class="bg-info text-center" style="font-size: 2em;">
                                     <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
                                     <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
                                     <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
 
                         <!-- Card Sigfrido Gómez -->
-                        <div class="col mx-0 my-3" style="height: 25em" >
+                        <div class="col mx-0 my-3"  >
                             <div class="card">
                             
                                 <div class="card-img-top text-center mt-2">
@@ -136,13 +136,13 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 <div class="card-body text-justify">
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 </div>
-                                <!-- <div class="align-bottom">
+                                <div class="align-bottom">
                                     <div class="bg-info text-center" style="font-size: 2em;">
                                     <a class="text-dark mx-3" href=""><i class="fab fa-linkedin-square"></i></a>
                                     <a class="text-dark mx-3" href=""><i class="fas fa-file-pdf "></i></a>
                                     <a class="text-dark mx-3" href=""><i class="fa fa-phone" aria-hidden="true"></i></a>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
 

@@ -100,11 +100,11 @@ require_once RUTA_APP . '/views/include/footer.php';
                     var lineChart = new Chart(ctx1, {
                         type: 'bar',
                         data: {
-                            labels: ["HTML JS", "PHP", "C# Xamarin"],
+                            labels: ["C# MVC","C# XAMARIN","HTML JS", "PHP", "C# Xamarin"],
                             datasets: [{
                                 label: 'Promedio Por Curso',
-                                backgroundColor: '#b90c2f',
-                                data: [8.9, 9.1,4.0]
+                                backgroundColor: ['#b90c2f','#ff5d48','#f1b53d','#3db9dc','#002f6c'],
+                                data: [8.78,8.67,8.9, 9.1,4.0]
                             }]
 
                         },

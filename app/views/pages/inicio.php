@@ -77,13 +77,13 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <h3><i class="fa fa-line-chart"></i> Promedio por Cursos</h3>
-                    Pricipales promedio de los curso activos en el proyecto
+                    Pricipales promedios de los curso activos en el proyecto CDS
                 </div>
 
                 <div class="card-body">
                     <canvas id="lineChart"></canvas>
                 </div>
-                <div class="card-footer small text-muted">Actualizado ayer a las 11:59 AM</div>
+                <div class="card-footer small text-muted">Actualizado ayer a las 11:59 AM [ This is MOCK-UP <b>:(</b> ]</div>
             </div><!-- end card-->
         </div>
     </div>
@@ -100,11 +100,11 @@ require_once RUTA_APP . '/views/include/footer.php';
                     var lineChart = new Chart(ctx1, {
                         type: 'bar',
                         data: {
-                            labels: ["PHP", "C# y Xamarim", "JAVA", "HTML JS", "Python"],
+                            labels: ["HTML JS", "PHP", "C# Xamarin"],
                             datasets: [{
                                 label: 'Promedio Por Curso',
-                                backgroundColor: '#3EB9DC',
-                                data: [7.2, 7.5, 8.2, 9.1,8.5]
+                                backgroundColor: '#b90c2f',
+                                data: [8.9, 9.1,4.0]
                             }]
 
                         },

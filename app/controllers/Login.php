@@ -39,7 +39,7 @@ class Login extends Controller
         
         if (($_SERVER['REQUEST_METHOD'] == 'POST')&&(session_status() != 2))
         {
-            if (isset($_POST['estudiante'])) {
+            
                 $estudiante = $this->estudianteModel->logIn($_POST['pass'],$_POST['dui']);  
                 if($estudiante)
                 {
@@ -65,14 +65,9 @@ class Login extends Controller
                         // </script>";
 
                         redireccionar('index/index2');  
-                }else
-                {
-                //DESTRUIR TODA LA SESION Y COOKIES
-                $this->finalizarSesion();
-                }
-                
-            }else{
-                $docente = $this->docenteModel->logIn($_POST['pass'],$_POST['dui']);
+                }else{
+
+                    $docente = $this->docenteModel->logIn($_POST['pass'],$_POST['dui']);
                 //Verificacion de la consulta
                 if($docente)
                 {
@@ -108,8 +103,14 @@ class Login extends Controller
         {
             $this->index();
         }
+                }
+                
+
+
+
+    
+                
     }
 
 
 
-}

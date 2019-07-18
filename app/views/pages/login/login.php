@@ -39,10 +39,6 @@ require_once RUTA_APP . '/views/include/headerLogin.php';
 						</span>
                 </div>
 
-                <div class="wrap-input100 validate-input">
-                    <input type="checkbox" name="estudiante" class="ml-3" ><small> ESTUDIANTE</small>
-                    <span class="focus-input100"></span>
-                </div>
 
                 <div class="container-login100-form-btn">
                     <input class="login100-form-btn" type="submit" value="Iniciar" name="validando">

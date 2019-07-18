@@ -129,6 +129,13 @@ class MatriculaModel
         return $this->db->findAll();
     }
 
+    public function cursosParticipante($id){
+        $this->db->query('SELECT m.id_matricula, m.id_curso, c.nombre_curso, c.cohorte, c.nivel, c.fecha_fin, m.id_participante, concat(p.nombres," ",p.apellidos) as nombre, m.estado, m.observaciones from matricula m INNER JOIN curso c ON m.id_curso=c.id_curso INNER JOIN participante p ON m.id_participante=p.id_participante where m.id_participante=:id');
+        $this->db->bind(':id', $id);
+        return $this->db->findAll();
+    }
+    
+
 }
 ?>
 <!-- 

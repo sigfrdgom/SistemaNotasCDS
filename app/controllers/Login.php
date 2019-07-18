@@ -51,6 +51,7 @@ class Login extends Controller
                         $_SESSION['admin2']="DOCENTE";
                         $_SESSION['id_sesion'] = session_id();
                         $_SESSION['tipoUsuario']="PARTICIPANTE";
+                        $_SESSION['id_participante'] = $estudiante->id_participante;
                         $_SESSION['nombres'] = $estudiante->nombres;
                         $_SESSION['apellidos'] = $estudiante->apellidos;
                     //    $_SESSION['start'] = time();

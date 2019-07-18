@@ -156,6 +156,27 @@ class Reporte extends Controller
         $this->view('pages/reporte/participante/reporteDsmpParticipante', $datos);
     }
 
+    public function mostrarNotasParticipante($curso,$nivel,$participante)
+    {
+        $modulos = $this->modulosCursoModel->modulosByCurso(trim($curso));
+        $info = $this->cursoModel->findById(trim($curso));
+        $alm = $this->participanteModel->findById($participante);
+
+        $matrizModulos = array();
+        foreach ($modulos as $modulo) {
+            array_push($matrizModulos, $this->notaModel->findNotasByCursoModuloNivelParticipante($curso, $modulo->id_modulo, $nivel,$participante));
+        }
+
+        $promedio = $this->generarDsmpNivelProm($curso,$nivel,$participante);
+        $datos = [
+            'titulo' => "Notas: ".ucwords(strtolower("$alm->nombres $alm->apellidos")),
+            'modulos' => $modulos,
+            'matrizModulos' => $matrizModulos,
+            'sede' => $info->sede,
+            'promedio' => $promedio
+        ];
+        $this->view('pages/reporte/participante/mostrarNotasParticipante', $datos);
+    }
 
     // Para obtener los promedios de los modulos
     private function promedioModulo($notas)
@@ -297,5 +318,16 @@ class Reporte extends Controller
         unset($notas);
         return $arreglo;
         unset($arreglo);
+    }
+
+    public function cursosParticipante(){
+        session_start();
+        $cursos=$this->matriculaModel-> cursosParticipante($_SESSION['id_participante']);
+        $datos = [
+            'titulo' => "Notas del participante: ",        
+            'curso' => $cursos ,
+            'nombre' => $cursos[0]->nombre
+        ];
+        $this->view('pages/reporte/participante/participanteNivel', $datos);
     }
 }

@@ -72,7 +72,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                 <li class="list-inline-item dropdown notif">
                     
                 <div class="col">
-                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=""<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
+                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="true">
                                 <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
@@ -92,12 +92,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
 
                             </div>
                         </div>
-
-                    
-                    
-
                 </li>
-
             </ul>
 
             <ul class="list-inline menu-left mb-0">
@@ -123,16 +118,8 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                 <!-- <a href="<?php echo RUTA_URL; ?>/index/index2"><img alt="Logo" class="img-fgk" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/fgk.png" /></a> -->
 
                 <ul >
-                    <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/notas"><i class="fa fa-fw fa-book"></i><span> Notas </span> </a>
-                    </li>
-
-                    <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/reporte"><i class="fa fa-fw fa-print"></i><span> Reportes </span> </a>
-                    </li>
-
-                    <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/general/faq"><i class="fa fa-question-circle-o bigfonts" style="font-size: 1.5em;"></i><span> FA&Q </span> </a>
+                    <li class="submenu mt-5">
+                        <a href="<?php echo RUTA_URL ?>/reporte/cursosParticipante"><i class="fas fa-book-open"></i><span> Notas </span> </a>
                     </li>
 
                     <li class="submenu">

@@ -22,7 +22,6 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                 </div>
             </div>
             
-           
             <!-- Presentacion sistema -->
             <div>    
                 <div class="container-fluid align-middle">
@@ -40,7 +39,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                 
                                     <div class="card-body text-justify mx-3">
                                         <p class="card-text">
-                                            <b>Razon de ser del proyecto</b><br> <br>
+                                            <b>Razón de ser del proyecto</b><br> <br>
                                             El proyecto surge con la necesita de solventar el inconveniente modo de manejar las notas para el personal del Proyecto de USAID, Puentes para el Empleo, Centro de Desarrollo de Software y Fundación Gloria de Kriete sede de Santa Ana, de los participantes de los cursos que imparten y facilitar en la medida de lo posible la gestión de notas y reportes dentro de dicho proyecto.
                                             <br><br><b>Objetivos</b><br>
                                             <ul>
@@ -49,11 +48,12 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                                                 </li>
                                                 <br>
                                                 <li>
-                                                    Implementar en el sistema de notas, al funcionabilidad necesaria para el correcto funcionamiento de este y que pueda proveer de información que facilite la obtencion de reportes de desempeño, manteniendo la eficiencia, seguridad y la mayor usabilidad posible.
+                                                    Implementar en el sistema de notas, a la funcionabilidad necesaria para el correcto funcionamiento de este y que pueda proveer de información que facilite la obtención de reportes de desempeño, manteniendo la eficiencia, seguridad y la mayor usabilidad posible.
                                                 </li>
                                             </ul>
-                                            Todo lo anterior desarrollado y montado en un entorno web para que pueda ser accedido desde cualquier dispositivo con acceso a internet o intranet(Celular, Tablet, Computadora) y llegar a implementarse en más sedes aparte de Santa Ana, que es la sede donde se realiza el desarrollo de este proyecto.
+                                            Todo lo anterior desarrollado y montado en un entorno web para que pueda ser accedido desde cualquier dispositivo con acceso a internet o intranet (Celular, Tablet, Computadora) y llegar a implementarse en más sedes aparte de Santa Ana, que es la sede donde se realiza el desarrollo de este proyecto.
                                         </p>
+
                                     </div>
                             </div>
                         </div>

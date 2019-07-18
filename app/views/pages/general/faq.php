@@ -26,13 +26,14 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
     </div>
     
     <div class="text-center breadcrumb-holder mt-2 pb-2 border-info border">
-                        <h1 class="main-title">Perguntas y respuestas frecuentes Sistema de Notas CDS &nbsp;</h1>
+                        <h1 class="main-title">Preguntas y respuestas frecuentes sobre Sistema de Notas CDS &nbsp;</h1>
                 </div>
     
-    <div class='justify-content-center text-center ml-2 mr-2'>
+    <div class='justify-content-center text-center ml-2 mr-2'  style="height: 100%">
     <div class='tab'>
     
-    <button class='tablinks' onclick="openTab(event, 'usuarios')" id='defaultOpen'><p class="ml-2 my-0 font-weight-bold">Sobre usuarios</p></button>
+    <button class='tablinks' onclick="openTab(event, 'guia')" id='defaultOpen'><p class="ml-2 my-0 font-weight-bold">Guia de inicio rapido</p></button>
+    <button class='tablinks' onclick="openTab(event, 'usuarios')" ><p class="ml-2 my-0 font-weight-bold">Sobre usuarios</p></button>
     <button class='tablinks' onclick="openTab(event, 'participantes')"><p class="ml-2 my-0 font-weight-bold">Sobre participante</p></button>
     <button class='tablinks' onclick="openTab(event, 'cursos')"><p class="ml-2 my-0 font-weight-bold">Sobre cursos</p></button>
     <button class='tablinks' onclick="openTab(event, 'modulos')"><p class="ml-2 my-0 font-weight-bold">Sobre módulos</p></button>
@@ -42,6 +43,26 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
     </div>
     
  
+    <div id='guia' class='tabcontent'>
+      <h3>Guia de inicio rapido</h3>
+        <button class='accordion'>Ver guia &#9660;</button>
+        <div class='panel'>
+          <p style="text-align: left">Para hacer uso inicial deberá haber definido al menos un usuario administrar en la base de datos para ejecutar todas las configuraciones pertinentes.</p>
+          <ol style="text-align: left">
+            <li>Primer paso dentro del sistema es ingresar con sus credenciales correctas de administrador y realizar el ingreso de los demás usuarios que administrarán el sistema de notas y darán catedra en los diversos cursos de la fundación.</li>
+            <br><li>Siguiente paso es la realización del ingreso de los niveles de los cursos que manejara la fundación.</li>
+            <br><li>Siguiente paso es el ingreso de los cursos que impartirá la fundación a lo largo de su duración con su nivel inicial.</li>
+            <br><li>Siguiente paso es el ingreso de los tipos o categorías de los módulos que habrá y que contendrá todos los módulos de la fundación a impartir en los cursos.</li>
+            <br><li>Siguiente paso es el ingreso de los módulos perteneciente a cada tipo o categoría de módulos que hay ya ingresado en el sistema.</li>
+            <br><li>Luego de haber configurado los cursos y módulos con sus tipos correspondiente, lo siguiente será delegar a los usuarios que darán catedra en los diferentes cursos, más específicamente los módulos que estos impartirán.</li>
+            <br><li>El siguiente paso sería asignarle los porcentajes a los diferente tipo o categoría de módulos de cada curso.</li>
+            <br><li>El siguiente paso puede ser ejecutado en distintos tiempos anteriores lo cual es el registro de los diferentes participantes que estarán integrado en los cursos que imparten la fundación.</li>
+            <br><li>Ahora que los curso esta configurados correctamente con su docente, tipos de módulos, módulos y porcentaje de evaluación de los tipos de modulo, lo siguiente será empezar matricular los participantes en los diferentes cursos que están ingresado.</li>
+            <br><li>Para finalizar será lo que es el ingreso de notas en los diferentes cursos y los módulos que este lo integran de los participantes matriculados para luego ver su reportes y ranking al finalizar los cursos ya con las notas completas.</li>
+          </ol>
+        </div>
+        
+    </div>
     <div id='usuarios' class='tabcontent'>
       <h3>Usuarios</h3>
         <button class='accordion'>Nuevo &#9660;</button>

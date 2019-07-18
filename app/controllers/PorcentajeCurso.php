@@ -9,6 +9,7 @@ class PorcentajeCurso extends Controller
     }
 
     public function index(){
+        $this->sessionActivaX();
         // $porcentajesCurso = $this->porcentajesCursoModel->findForTable();
         // $tipoModulo = $this->tipoModuloModel->findAll();
         $curso = $this->cursoModel->findByCohorte();

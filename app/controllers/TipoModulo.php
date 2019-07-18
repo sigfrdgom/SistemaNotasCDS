@@ -7,6 +7,7 @@ class TipoModulo extends Controller{
 
     /*Vista Principal*/
     public function index(){
+        $this->sessionActivaX();
         $tipoModulo = $this->tipoModuloModel->findAll();
         $descripcion = "Vista que muestra todos los tipos de modulos que existen";
         $datos = [

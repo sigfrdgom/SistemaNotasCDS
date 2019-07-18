@@ -10,7 +10,7 @@ class Curso extends Controller
     }
 
     public function index(){
-        
+        $this->sessionActivaX();
         $curso = $this->cursoModel->findAll();
         $nivelCurso = $this->nivelCursoModel->findAll();
         // $obtenerNivel = $this->nivelCursoModel;
@@ -210,6 +210,7 @@ class Curso extends Controller
     }
 
     public function buscarCursos(){
+        $this->sessionActivaX();
         $id_curso = $_POST['id_curso'];
         $busqueda = $_POST['busqueda'];
 

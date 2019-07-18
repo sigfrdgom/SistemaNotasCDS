@@ -9,10 +9,10 @@ class Modulo extends Controller
     }
 
     public function index(){
+        
         // $modulo = $this->moduloModel->findAll();
         $tipoModulo = $this->tipoModuloModel->findAll();
-            
-        
+
         $descripcion = "Vista que muestra todos los modulos que existen";
         $datos = [
             'titulo' => "Modulo",
@@ -148,6 +148,7 @@ class Modulo extends Controller
     }
 
     public function detalle($id_tipo){
+        
         $modulo = $this->moduloModel->findByTipo($id_tipo);
         $tipoModulo = $this->tipoModuloModel->findById($id_tipo);
             

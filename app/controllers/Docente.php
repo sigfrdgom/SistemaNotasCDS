@@ -6,6 +6,7 @@ class Docente extends Controller
         $this->docenteModel = $this->model('DocenteModel');
     }
     public function index(){
+        $this->sessionActivaX();
         $docente = $this->docenteModel->findAll();
         $descripcion = "Vista que muestra todos los docentes que existen";
         $datos = [
@@ -37,8 +38,7 @@ class Docente extends Controller
            var_dump($datos);
            if($this->docenteModel->create($datos))
            {
-               redireccionar('docente/docente');
-
+               redireccionar('docente');
            }
            else
            {
@@ -70,7 +70,7 @@ class Docente extends Controller
         
           if($this->docenteModel->update($datos))
           {
-               redireccionar('docente/docente');
+               redireccionar('docente');
 
           }
           else
@@ -91,7 +91,7 @@ class Docente extends Controller
        {
             if($this->docenteModel->updateDown($id))
             {
-                redireccionar('docente/docente');
+                redireccionar('docente');
             }
             else
             {

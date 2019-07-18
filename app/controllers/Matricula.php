@@ -11,6 +11,7 @@ class Matricula extends Controller
     }
 
     public function index(){
+        $this->sessionActivaX();
         // $matricula = $this->matriculaModel->findForTable();
         // $participante = $this->participanteModel->findAll();
         $curso = $this->cursoModel->findByCohorte();

@@ -27,11 +27,14 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
         }
 
     }else{
-
+        require_once '../app/controllers/errores.php';
+        $this->controladorActual = new Errores();
+        $this->controladorActual->errorNoLOG();
+        
         //CAMBIARRRRRRRR ESTOS MENSAJE
-        echo "<script> alert('NO ESTA AUTORIZADO');
-         window.location='".RUTA_URL."';
-        </script>";
+        // echo "<script> alert('NO ESTA AUTORIZADO');
+        //  window.location='".RUTA_URL."';
+        // </script>";
         exit;}
     
 }

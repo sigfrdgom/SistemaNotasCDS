@@ -49,6 +49,7 @@ class Login extends Controller
                     //    session_cache_expire(60);
                         $_SESSION['admin']="ADMINISTRADOR";
                         $_SESSION['admin2']="DOCENTE";
+                        $_SESSION['admin3']="PARTICIPANTE";
                         $_SESSION['id_sesion'] = session_id();
                         $_SESSION['tipoUsuario']="PARTICIPANTE";
                         $_SESSION['id_participante'] = $estudiante->id_participante;
@@ -81,6 +82,7 @@ class Login extends Controller
                     //    session_cache_expire(60);
                         $_SESSION['admin']="ADMINISTRADOR";
                         $_SESSION['admin2']="DOCENTE";
+                        $_SESSION['admin3']="PARTICIPANTE";
                         $_SESSION['id_sesion'] = session_id();
                         $_SESSION['tipoUsuario']=$docente->tipo_usuario;
                         $_SESSION['id_usuario'] = $docente->id_docente;

@@ -13,4 +13,12 @@ class Errores extends Controller
     public function  error500(){
         $this->view('pages/errores/error500');
     }
+
+    public function  errorNoAUTH(){
+        $this->view('pages/errores/noauth');
+    }
+
+    public function  errorNoLOG(){
+        $this->view('pages/errores/nologin');
+    }
 }

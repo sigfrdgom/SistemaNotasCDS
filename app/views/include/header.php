@@ -150,7 +150,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/notas"><i class="fa fa-fw fa-book"></i><span> Notas </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/notas"><i class="fas fa-chart-line"></i><span> Notas </span> </a>
                     </li>
 
                     <li class="submenu">

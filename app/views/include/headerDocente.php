@@ -72,7 +72,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                 <li class="list-inline-item dropdown notif">
                     
                 <div class="col">
-                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="<?php echo RUTA_URL ?>" role="button" aria-haspopup="true" aria-expanded="true">
+                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="true">
                                 <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
@@ -132,7 +132,7 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
                     </li>
 
                     <li class="submenu">
-                        <a href="<?php echo RUTA_URL ?>/notas"><i class="fa fa-fw fa-book"></i><span> Notas </span> </a>
+                        <a href="<?php echo RUTA_URL ?>/notas"><i class="fas fa-chart-line"></i></i><span> Notas </span> </a>
                     </li>
 
                     <li class="submenu">

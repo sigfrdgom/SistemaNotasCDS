@@ -98,12 +98,18 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <td><?php echo $docentes->especialidad ?></td>
                             <td ><?php echo $docentes->tipo_usuario?></td>
                             <td class="secret"><?php echo $docentes->pass ?></td>
-                            <td><?php if($docentes->estado ==1) {
+                            <td><?php if($docentes->estado ==1 ) {
                                 echo 'ACTIVO';}else{ echo 'INACTIVO';} ?></td>
                             <td class='shrink'><button type='button' class='btn btn-warning btn_editar_usuario' data-toggle='modal' data-target='#agregarUsuario'><span class='fa fa-edit'></span> Editar</button></td>
-                            <td class='shrink'><button id='btn_eliminar3' onclick='menjaseBaja("docente/updateDown/<?php echo $docentes->id_docente?>", <?php echo $docentes->id_docente?>)' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>
+                            
+                            <?php if( $docentes->id_docente == $_SESSION['id_usuario']  ) { ?>
+                                <td></td>
+                            <?php }else if($docentes->estado ==1 ){ ?>
+                                <td class='shrink'><button id='btn_eliminar3' onclick='menjaseBaja("docente/updateDown/<?php echo $docentes->id_docente?>", <?php echo $docentes->id_docente?>)' class='btn btn-danger alert_sweet'><span class='fa fa-warning bigfonts'></span> Dar baja</button></td>                                 
+                                <?php } else{?>
+                                    <td></td>
                             </tr>
-                            <?php } ?>
+                            <?php }} ?>
                    
                     </tbody>
                 </table>

@@ -38,10 +38,11 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
                             <p class="card-text"><?php echo $cursos->nombre_curso ?>
-                            <small class="text-info"><?php echo "Nivel: ".$cursos->nivel ?></small></p>
-                            
+                            <small class="text-info"><?php echo "Nivel: ".$cursos->nivel ?></small></p> 
+                        </div>
+                        <div class="mx-3 mb-2">
                             <a href="<?php echo constant('RUTA_URL') ?>/notas/modulos/<?php echo $cursos->id_curso ?>"
-                               class="btn btn-primary btn-block">Ver Modulos</a>
+                            class="btn btn-primary btn-block">Ver Modulos</a>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>

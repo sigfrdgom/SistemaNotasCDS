@@ -60,57 +60,56 @@ if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {
     <!-- top bar navigation -->
     <div class="headerbar">
 
-        <!-- LOGO -->
-        <div class="headerbar-left">
-        <a href="<?php echo RUTA_URL ?>/index/index2" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a>
-        </div>
+<!-- LOGO -->
+<div class="headerbar-left" style="align-content: center;">
+    <!-- <a href="<?php echo RUTA_URL ?>/index/index2" class="logo "><img alt="Logo" class="img-logo" style="border-radius: 3px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" /> <span>CDS NOTAS</span></a> -->
+    <button class="button-menu-mobile open-left quit" >
+        <i class="fa fa-fw fa-bars mt-0 ml-2 text-white"></i>
+    </button>
+</div>
 
-        <nav class="navbar-custom">
+<nav class="navbar-custom">
+    
+    <ul class="list-inline float-right mb-0">
+        <li class="list-inline-item dropdown notif">
+            
+            <div class="row">
+                <a class="nav-link dropdown-toggle nav-user"  href="<?php echo RUTA_URL ?>/index/index2" role="button" aria-haspopup="true" aria-expanded="true">
+                    <img alt="Logo" class="img-logo" style="border-radius: 3px; width: 100px;" src="<?php echo RUTA_URL ?>/img/logo/usaid-es-hd.png" />
+                </a>
+                <a class="nav-link dropdown-toggle nav-user"  href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                    <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                </a>
+                <!-- El dropdown -->
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
+                    <div class="dropdown-item perfil_item ">
+                        <small class="text-overflow"><i class="fas fa-shield-alt"></i><?php echo $_SESSION['tipoUsuario'] ?></small>
+                    </div>
+                    <div class="dropdown-item perfil_item text-justify">
+                        <small class="text-overflow"><i class="fas fa-user"></i><?php echo $_SESSION['nombres']?></small>
+                    </div>
+                    <div class="cerrar_session">
+                        <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item cerrar_session">
+                            <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
 
-            <ul class="list-inline float-right mb-0">
+    <!-- El menu hamburguer -->
+    <!-- <ul class="list-inline menu-left mb-0">
+        <li class="float-left">
+            <button class="button-menu-mobile open-left">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+        </li>
+    </ul> -->
 
-                <li class="list-inline-item dropdown notif">
-                    
-                <div class="col">
-                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="true">
-                                <img src="<?php echo RUTA_URL ?>/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
-                                <!-- item-->
-                                <div class="dropdown-item perfil_item ">
-                                    <small class="text-overflow"><i class="fas fa-shield-alt"></i><?php echo $_SESSION['tipoUsuario'] ?></small>
-                                </div>
-                                <div class="dropdown-item perfil_item text-justify">
-                                    <small class="text-overflow"><i class="fas fa-user"></i><?php echo $_SESSION['nombres']?></small>
-                                </div>
-                                <div class="cerrar_session">
-                                    <a href="<?php echo RUTA_URL ?>/Login/finalizarSesion" class="dropdown-item notify-item cerrar_session">
-                                        <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
-                                    </a>
-                                </div>
-                                
+</nav>
 
-                            </div>
-                        </div>
-
-                    
-                    
-
-                </li>
-
-            </ul>
-
-            <ul class="list-inline menu-left mb-0">
-                <li class="float-left">
-                    <button class="button-menu-mobile open-left">
-                        <i class="fa fa-fw fa-bars"></i>
-                    </button>
-                </li>
-            </ul>
-
-        </nav>
-
-    </div>
+</div>
     <!-- End Navigation -->
 
 

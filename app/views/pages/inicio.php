@@ -97,33 +97,41 @@ require_once RUTA_APP . '/views/include/footer.php';
 
                 <script>
                     var ctx1 = document.getElementById("lineChart").getContext('2d');
-                    var lineChart = new Chart(ctx1, {
-                        type: 'bar',
-                        data: {
-                            labels: ["C# MVC","C# XAMARIN","HTML JS", "PHP", "C# Xamarin"],
-                            datasets: [{
-                                label: 'Promedio Por Curso',
-                                backgroundColor: ['#b90c2f','#ff5d48','#f1b53d','#3db9dc','#002f6c'],
-                                data: [8.78,8.67,8.9, 9.1,4.0]
-                            }]
+                    var urlPromedios= 'http://localhost/SistemaNotasCDS/indexRest/grafica';
 
-                        },
-                        options: {
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false
-                            },
-                            responsive: true,
-                            scales: {
-                                xAxes: [{
-                                    stacked: true,
-                                }],
-                                yAxes: [{
-                                    stacked: true
+                    fetch(urlPromedios).then(
+                        res =>{return res.json();}
+                    ).then( response =>{
+                        console.log(response.promedios);
+                        var lineChart = new Chart(ctx1, {
+                            type: 'bar',
+                            data: {
+                                labels: response.cursos,
+                                datasets: [{
+                                    label: 'Promedio Por Curso',
+                                    backgroundColor: ['#b90c2f','#ff5d48','#f1b53d','#3db9dc','#002f6c'],
+                                    data: response.promedios
                                 }]
+
+                            },
+                            options: {
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: false
+                                },
+                                responsive: true,
+                                scales: {
+                                    xAxes: [{
+                                        stacked: true,
+                                    }],
+                                    yAxes: [{
+                                        stacked: true
+                                    }]
+                                }
                             }
-                        }
+                        });
                     });
+
                 </script>
 
 

@@ -63,8 +63,8 @@ class Reporte extends Controller
 
         $infoCurso = $this->cursoModel->findById($id_curso);
         $tipoModulos = $this->tipoModuloModel->tipoModulosByCurso($id_curso);
-        $participantes = $this->participanteModel->participanteCursoNivel($id_curso, $nivel);
-        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso, $nivel);
+        $participantes = $this->participanteModel->participanteCursoNivel($id_curso);
+        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($id_curso);
         
         $suma = 0;
         $contProm = 0;

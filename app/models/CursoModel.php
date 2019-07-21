@@ -141,11 +141,16 @@ class CursoModel{
     }
 
     public function findByCriteria($datos){
-        
         $this->db->query("SELECT * FROM curso WHERE id_curso=:id_curso OR nombre_curso LIKE :busqueda OR cohorte LIKE :busqueda ORDER BY cohorte ASC");
         $this->db->bind(':id_curso',$datos['id_curso']);
         $busqueda = "%".$datos['busqueda']."%";
         $this->db->bind(':busqueda', $busqueda, PDO::PARAM_STR);
+        return $this->db->findAll();
+    }
+
+    public function cursoLast($num){
+        $this->db->query("SELECT * FROM curso ORDER BY id_curso DESC LIMIT :last");
+        $this->db->bind(':last',$num);
         return $this->db->findAll();
     }
 

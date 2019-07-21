@@ -83,8 +83,8 @@ class RankingNotas extends Controller
         ];
 
         $tipoModulos = $this->tipoModuloModel->tipoModulosByCurso($datos['id_curso']);
-        $participantes = $this->participanteModel->participanteCursoNivel($datos['id_curso'], $datos['nivel']);
-        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($datos['id_curso'], $datos['nivel']);
+        $participantes = $this->participanteModel->participanteCursoNivel($datos['id_curso']);
+        $notas = $this->notaModel->findNotasByCursoPorcenatejeNivelTop($datos['id_curso']);
 
         $suma = 0;
         $contProm = 0;

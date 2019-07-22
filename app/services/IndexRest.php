@@ -73,7 +73,7 @@ class IndexRest extends GenericAPI
                             }
                             $promedio = round($promedio / sizeof($totalProm), 2);
 
-                            array_push($cursosArray, $cursoActual->nombre_curso . " Nivel " . $cursoActual->nivel);
+                            array_push($cursosArray, $cursoActual->cohorte . ", Nivel " . $cursoActual->nivel);
                             array_push($promediosArray, $promedio);
                         }
                         unset($participantes);

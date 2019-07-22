@@ -74,6 +74,7 @@ class Matricula extends Controller
     public function create()
     {
         $this->sessionActivaX();
+
         if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
             $curso= trim($_POST['mid_curso']);
@@ -87,8 +88,10 @@ class Matricula extends Controller
                 'observaciones' => trim($_POST['mobservaciones'])
             ];
                 $bandera=$this->comprobar();
+                $modulos = $this->matriculaModel->obtenerModulos($curso);
                 // var_dump($bandera);
-            if ($bandera) {
+            if ($bandera   ) {
+                if (count($modulos) != 0) {
                     if($this->matriculaModel->create($datos))
                     {
                         echo "momento de crear notas $curso -- $participante";
@@ -100,10 +103,17 @@ class Matricula extends Controller
                     {
                         redireccionar('matricula');
                         die("Error al insertar los datos");
-                    }
+                    }  
+                }else{
+                    echo "<script> alert(' Lo que intentas hacer no es posible, el curso no posee modulos')
+                    window.location='".RUTA_URL."/matricula';</script>";
+                    
+
+                }
+                    
             }else{
-                echo "<script> alert(' Lo que intentas hacer no es posible, el estudiante ya esta matriculado en ese curso');</script>";
-                //redireccionar('matricula');
+                echo "<script> alert(' Lo que intentas hacer no es posible, el curso no posee modulos')
+                window.location='".RUTA_URL."/matricula';</script>";
             }
         }
         else{
@@ -309,6 +319,7 @@ public function crearNotas($curso, $participante)
         {
         //  Sin registros, deberia de dar una alert y redireccionar
             echo "sin modulos en el curso";
+            exit;
             // s$this->index();
         }
     }

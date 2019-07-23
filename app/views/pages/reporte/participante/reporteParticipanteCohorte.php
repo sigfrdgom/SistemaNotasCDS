@@ -51,8 +51,10 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div class="card-body" >
                                 <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
                                 <p class="card-text"><?php echo $cursos->nombre_curso ?> </p>
-                                    <a href="<?php echo constant('RUTA_URL')."/reporte/dsmpParticipanteNivel/". base64_encode($cursos->cohorte); ?>"
-                                    class="btn btn-primary btn-block">Ver niveles</a>
+                            </div>
+                            <div class="mt-0 mb-2 mx-5">
+                                <a href="<?php echo constant('RUTA_URL')."/reporte/dsmpParticipanteNivel/". base64_encode($cursos->cohorte); ?>"
+                                class="btn btn-primary btn-block">Ver niveles</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Sede: <?php echo $cursos->sede ?></small>

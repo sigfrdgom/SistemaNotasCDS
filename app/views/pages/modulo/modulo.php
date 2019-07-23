@@ -46,8 +46,10 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <div class="card-body" >
                                 <h5 class="card-title">Modulo tipo</h5>
                                 <p class="card-text"><?php echo "$tipo->nombre" ?> </p>
-                                    <a href="<?php echo constant('RUTA_URL')."/modulo/detalle/".$tipo->id_tipo_modulo ?>"
-                                    class="btn btn-primary btn-block text-center">Ver modulos</a>
+                            </div>
+                            <div class="mt-0 mx-5 mb-2">
+                                <a href="<?php echo constant('RUTA_URL')."/modulo/detalle/".$tipo->id_tipo_modulo ?>"
+                                class="btn btn-primary btn-block text-center">Ver modulos</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Estado: <?php echo ($tipo->estado == 1)?"<b style='color: green'>Activo</b>":"<b style='color:red'>Inactivo</b>" ?></small>
@@ -58,7 +60,6 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                     <?php if ($x == 4) { ?>
                         </div> <br>
                     <?php } ?>
-                   
                     <?php $c++; $x++;}} ?>
 
             <!-- Este es el deck -->

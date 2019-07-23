@@ -7,7 +7,7 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
     <!-- Start content -->
     <div class="content">
 
-        <div class="container-fluid">
+        <div class="container-fluid  mb-5">
 
             <div class="row">
                 <div class="col-xl-12">
@@ -48,8 +48,11 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <div class="card-body" >
                                 <h5 class="card-title"><?php echo $cursos->cohorte ?></h5>
                                 <p class="card-text"><?php echo $cursos->nombre_curso ?> </p>
-                                    <a href="<?php echo RUTA_URL."/matricula/nivel/". base64_encode($cursos->cohorte); ?>"
-                                    class="btn btn-primary btn-block">Ver niveles</a>
+                                    
+                            </div>
+                            <div class="mb-2 mt-0 mx-5">
+                                <a href="<?php echo RUTA_URL."/matricula/nivel/". base64_encode($cursos->cohorte); ?>"
+                                class="btn btn-primary btn-block">Ver niveles</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Sede: <?php echo $cursos->sede ?></small>

@@ -49,8 +49,10 @@ require_once RUTA_APP . '/views/include/headerPadre.php';
                             <div class="card-body" >
                                 <h5 class="card-title"><?php echo "<b> Curso:  </b> $cursos->nombre_curso" ?></h5>
                                 <p class="card-text"><?php echo "Nivel $cursos->nivel" ?></p>
-                                    <a href="<?php echo constant('RUTA_URL')."/reporte/mostrarNotasParticipante/$cursos->id_curso/$cursos->nivel/$cursos->id_participante" ?>"
-                                    class="btn btn-primary btn-block"  >Ver mis Notas</a>
+                            </div>
+                            <div class="mx-5 mt-0 mb-2">
+                                <a href="<?php echo constant('RUTA_URL')."/reporte/mostrarNotasParticipante/$cursos->id_curso/$cursos->nivel/$cursos->id_participante" ?>"
+                                class="btn btn-primary btn-block"  >Ver mis Notas</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted"><?php echo $cursos->cohorte ?></small>

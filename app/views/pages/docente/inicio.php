@@ -1,12 +1,6 @@
 <?php
-   
     // require_once RUTA_APP . '/views/include/header.php';
     require_once RUTA_APP . '/views/include/headerPadre.php';
-
-     
-
-    
-
 
 ?>
 
@@ -34,23 +28,23 @@
                 <div class="row">
 
 
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                    <!-- <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
                         <div class="card-box noradius noborder bg-info">
                             <i class="fa fa-user-o float-right text-white"></i>
                             <h6 class="text-white text-uppercase m-b-20">Usuarios</h6>
                             <h1 class="m-b-20 text-white counter"><?php echo $datos['n_usuarios'] ?></h1>
                             <span class="text-white">5 Nuevos Usuarios</span>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                    <!-- <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
                         <div class="card-box noradius noborder bg-success">
                             <i class="fa fa-user-o float-right text-white"></i>
                             <h6 class="text-white text-uppercase m-b-20">Participantes</h6>
                             <h1 class="m-b-20 text-white counter"><?php echo $datos['n_participantes']?></h1>
                             <span class="text-white">5 Nuevos Usuarios</span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
                         <div class="card-box noradius noborder bg-warning">
@@ -61,13 +55,13 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                    <!-- <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
                         <div class="card-box noradius noborder bg-danger">
                             <i class="fa fa-book float-right text-white"></i>
                             <h6 class="text-white text-uppercase m-b-20">Modulos</h6>
                             <h1 class="m-b-20 text-white counter"><?php echo $datos['n_modulos']?></h1>
                             <span class="text-white">5 Ingresos de notas</span>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -98,36 +92,44 @@
 require_once RUTA_APP . '/views/include/footer.php';
 ?>
 
-                <script>
-                    var ctx1 = document.getElementById("lineChart").getContext('2d');
-                    var lineChart = new Chart(ctx1, {
-                        type: 'bar',
-                        data: {
-                            labels: ["PHP", "C# y Xamarim", "JAVA", "HTML JS", "Python"],
-                            datasets: [{
-                                label: 'Promedio Por Curso',
-                                backgroundColor: '#3EB9DC',
-                                data: [7.2, 7.5, 8.2, 9.1,8.5]
-                            }]
+<script>
+    var ctx1 = document.getElementById("lineChart").getContext('2d');
+    var urlPromedios= 'http://localhost/SistemaNotasCDS/indexRest/grafica';
 
-                        },
-                        options: {
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false
-                            },
-                            responsive: true,
-                            scales: {
-                                xAxes: [{
-                                    stacked: true,
-                                }],
-                                yAxes: [{
-                                    stacked: true
-                                }]
-                            }
-                        }
-                    });
-                </script>
+    fetch(urlPromedios).then(
+        res =>{return res.json();}
+    ).then( response =>{
+        console.log(response.promedios);
+        var lineChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: response.cursos,
+                datasets: [{
+                    label: 'Promedio Por Curso',
+                    backgroundColor: ['#b90c2f','#ff5d48','#f1b53d','#3db9dc','#002f6c'],
+                    data: response.promedios
+                }]
+
+            },
+            options: {
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        stacked: true
+                    }]
+                }
+            }
+        });
+    });
+
+</script>
 
 
                 <!-- END Java Script for this page -->

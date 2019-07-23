@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2019 a las 23:52:24
+-- Tiempo de generación: 23-07-2019 a las 19:21:33
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -23,13 +23,11 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+CREATE DATABASE notas;
+USE notas;
 --
 -- Estructura de tabla para la tabla `curso`
 --
-DROP DATABASE IF EXISTS notas;
-CREATE DATABASE notas;
-USE notas;
 
 CREATE TABLE `curso` (
   `id_curso` int(11) NOT NULL,
@@ -55,7 +53,9 @@ INSERT INTO `curso` (`id_curso`, `nombre_curso`, `cohorte`, `descripcion`, `dura
 (4, 'XAMARIN', 'COHORTE 5', 'CURSO DE XAMARIN', '11 semana', 'SANTA ANA', 1, 1, '2019-02-02', '2019-04-05'),
 (5, 'HTML CUT', 'COHORTE 3', 'HTML CUT', '12 SEMANAS', 'SANTA ANA', 1, 1, '2019-03-04', '2019-06-07'),
 (6, 'C# MVC', 'COHORTE 1', 'ORIENTADO AL APRENDIZAJE DE C# MVC', '12 semanas', 'SANTA ANA', 1, 2, '2019-07-10', '2019-07-11'),
-(7, 'C# MVC', 'COHORTE 1', 'ORIENTADO AL APRENDIZAJE DE C# MVC', '12 semanas', 'SANTA ANA', 1, 3, '2019-07-10', '2019-07-11');
+(7, 'C# MVC', 'COHORTE 1', 'ORIENTADO AL APRENDIZAJE DE C# MVC', '12 semanas', 'SANTA ANA', 1, 3, '2019-07-10', '2019-07-11'),
+(8, 'ANALISTA PROGRAMADOR PHP', 'COHORTE 6', 'Analista programador en lenguaje php', '11 SEMANAS', 'SANTA ANA', 1, 1, '2019-08-12', '2019-10-31'),
+(9, 'ANALISTA PROGRAMADOR PHP', 'COHORTE 6', 'Analista programador en lenguaje php', '11 SEMANAS', 'SANTA ANA', 1, 2, '2019-07-18', '2019-07-31');
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,7 @@ CREATE TABLE `docente` (
 
 INSERT INTO `docente` (`id_docente`, `nombres`, `apellidos`, `fecha_nacimiento`, `sexo`, `dui`, `nit`, `especialidad`, `tipo_usuario`, `pass`, `estado`) VALUES
 (1, 'ADAN ULISES', 'SAMAYOA', '1970-06-10', 'MASCULINO', '12345678-0', '2547-845678-879-9', 'PROGRAMACION', 'ADMINISTRADOR', '21232f297a57a5a743894a0e4a801fc3', 1),
-(2, 'JOSE MAURICIO', 'DIAZ DE VIZVAR', '1990-10-10', 'MASCULINO', '12345678-1', '0210-111111-123-1', 'PROGRAMACION', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
+(2, 'JOSE MAURICIO', 'DIAZ DE VIZVAR', '1990-10-10', 'MASCULINO', '12345678-1', '0210-111111-123-1', 'PROGRAMACION', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 0),
 (3, 'NOEL ', 'MORAN GALDAMEZ', '1991-07-07', 'MASCULINO', '12345678-2', '0111-999999-112-1', 'PROGRAMACION', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
 (4, 'ROGELIO', 'MARTINEZ ROJAS', '1979-09-09', 'MASCULINO', '12345678-3', '0133-818181-122-1', 'PSICOLOGIA', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
 (5, 'MONICA MARIA', 'DEL CID LOPEZ', '1985-11-03', 'FEMENINO', '12345678-4', '0440-444444-121-1', 'PSICOLOGIA', 'DOCENTE', 'ac99fecf6fcb8c25d18788d14a5384ee', 1),
@@ -118,7 +118,12 @@ INSERT INTO `matricula` (`id_matricula`, `id_curso`, `id_participante`, `estado`
 (6, 1, 6, 1, 'MATRICULA EN NORMALIDAD'),
 (7, 1, 7, 1, 'MATRICULA EN NORMALIDAD'),
 (8, 1, 8, 1, 'MATRICULA EN NORMALIDAD'),
-(9, 1, 9, 1, 'MATRICULA EN NORMALIDAD');
+(9, 1, 9, 1, 'MATRICULA EN NORMALIDAD'),
+(11, 6, 1, 1, 'MATRICULA EN NORMALIDAD'),
+(12, 3, 10, 1, 'MATRICULA UNO DOS TRES'),
+(13, 6, 5, 1, 'MATRICULA EN NORMALIDAD'),
+(14, 7, 1, 1, 'MATRICULA EN NORMALIDAD'),
+(15, 2, 9, 1, 'TODO BIEN, TODO CORRECTO');
 
 -- --------------------------------------------------------
 
@@ -179,7 +184,11 @@ INSERT INTO `modulo` (`id_modulo`, `nombre_modulo`, `descripcion_modulo`, `horas
 (32, 'CERTIFICACION HTML CUT NIVEL 2', 'CERTIFICACION HTML CUT NIVEL DOS', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
 (33, 'CERTIFICACION HTML CUT NIVEL 3', 'CERTIFICACION HTML CUT NIVEL TRES', '4 HORAS', 3, 100, 0, 0, 0, 0, 0, 1),
 (34, 'HABILIDADES BLANDAS PUENTES NIVEL 2', 'HABILIDADES BLANDAS PUENTES', '12 HORAS', 5, 25, 25, 50, 0, 0, 0, 1),
-(35, 'PASANTIA NIVEL 2', 'PASANTIA NIVEL DOS', '240 HORAS', 4, 10, 20, 30, 40, 0, 0, 1);
+(35, 'PASANTIA NIVEL 2', 'PASANTIA NIVEL DOS', '240 HORAS', 4, 10, 20, 30, 40, 0, 0, 1),
+(36, 'C# MVC API ADVANCED MANAGEMENT', 'USO AVANZADO DE C# MVC Y APIS', '18 HORAS', 2, 25, 25, 50, 0, 0, 0, 1),
+(37, 'C# API CONSUME AND CREATION', 'CREACION Y CONSUMO DE APIS', '18 HORAS', 2, 25, 25, 25, 25, 0, 0, 1),
+(38, 'C# SECURITY LAYERS', 'IMPLEMENTACION DE SEGURIDAD EN PROYECTOS C#', '20 HORAS', 2, 10, 10, 20, 25, 15, 20, 1),
+(39, 'INTRODUCCION A JAVASCRIPT', 'INTRODUCCION A JAVASCRIPT', '12 HORAS', 1, 25, 25, 25, 25, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -216,7 +225,25 @@ INSERT INTO `modulos_curso` (`id_modulos_curso`, `id_curso`, `id_modulo`, `id_do
 (14, 1, 21, 2, 'TODO BIEN'),
 (15, 1, 22, 2, 'TODO BIEN'),
 (16, 1, 4, 1, 'TODO BIEN'),
-(17, 1, 23, 5, 'TODO BIEN');
+(17, 1, 23, 5, 'TODO BIEN'),
+(18, 6, 3, 3, 'TODO EN NORMALIDAD'),
+(19, 6, 25, 3, 'TODO EN NORMALIDAD'),
+(20, 6, 27, 3, 'TODO EN NORMALIDAD'),
+(21, 6, 8, 1, 'TODO EN NORMALIDAD'),
+(22, 6, 34, 6, 'TODO EN NORMALIDAD'),
+(23, 7, 36, 3, 'MODULOS AVANZADOS'),
+(24, 7, 37, 3, 'MODULOS AVANZADOS'),
+(25, 7, 38, 3, 'MODULOS AVANZADOS'),
+(26, 3, 1, 7, 'TODO CORRECTO'),
+(27, 3, 9, 2, 'TODO CORRECTO'),
+(28, 3, 10, 2, 'TODO CORRECTO'),
+(29, 3, 11, 2, 'TODO CORRECTO'),
+(30, 3, 12, 2, 'TODO CORRECTO'),
+(31, 3, 6, 2, 'TODO CORRECTO'),
+(32, 3, 7, 2, 'TODO CORRECTO'),
+(33, 3, 31, 2, 'TODO CORRECTO'),
+(34, 2, 1, 7, 'ninguna por el momento'),
+(35, 2, 21, 2, 'ninguna por el momento');
 
 -- --------------------------------------------------------
 
@@ -263,11 +290,11 @@ CREATE TABLE `nota` (
 --
 
 INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `observaciones`) VALUES
-(1, 1, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(2, 1, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(3, 1, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(4, 1, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(5, 1, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(1, 1, 1, 10.00, 10.00, 7.00, 8.00, NULL, NULL, 'Participante matriculado con exito'),
+(2, 1, 2, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(3, 1, 16, 10.00, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(4, 1, 3, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(5, 1, 4, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (6, 1, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (7, 1, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (8, 1, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -276,15 +303,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (11, 1, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (12, 1, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (13, 1, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(14, 1, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(14, 1, 14, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (15, 1, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (16, 1, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (17, 1, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(18, 2, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(19, 2, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(20, 2, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(21, 2, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(22, 2, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(18, 2, 1, 10.00, 8.00, 8.00, 2.00, NULL, NULL, 'Participante matriculado con exito'),
+(19, 2, 2, 8.00, 9.00, 9.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(20, 2, 16, 10.00, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(21, 2, 3, 10.00, 0.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(22, 2, 4, 4.00, 4.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (23, 2, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (24, 2, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (25, 2, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -293,15 +320,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (28, 2, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (29, 2, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (30, 2, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(31, 2, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(31, 2, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (32, 2, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (33, 2, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (34, 2, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(35, 3, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(36, 3, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(37, 3, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(38, 3, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(39, 3, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(35, 3, 1, 10.00, 7.00, 9.00, 5.00, NULL, NULL, 'Participante matriculado con exito'),
+(36, 3, 2, 8.00, 5.00, 4.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(37, 3, 16, 10.00, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(38, 3, 3, 0.00, 10.00, 10.00, 10.00, 4.00, NULL, 'Participante matriculado con exito'),
+(39, 3, 4, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (40, 3, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (41, 3, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (42, 3, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -310,15 +337,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (45, 3, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (46, 3, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (47, 3, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(48, 3, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(48, 3, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (49, 3, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (50, 3, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (51, 3, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(52, 4, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(53, 4, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(54, 4, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(55, 4, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(56, 4, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(52, 4, 1, 10.00, 5.00, 5.00, 5.00, NULL, NULL, 'Participante matriculado con exito'),
+(53, 4, 2, 10.00, 8.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(54, 4, 16, 9.50, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(55, 4, 3, 0.00, 8.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(56, 4, 4, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (57, 4, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (58, 4, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (59, 4, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -327,15 +354,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (62, 4, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (63, 4, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (64, 4, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(65, 4, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(65, 4, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (66, 4, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (67, 4, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (68, 4, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(69, 5, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(70, 5, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(71, 5, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(72, 5, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(73, 5, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(69, 5, 1, 10.00, 10.00, 10.00, 9.00, NULL, NULL, 'Participante matriculado con exito'),
+(70, 5, 2, 10.00, 8.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(71, 5, 16, 9.80, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(72, 5, 3, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(73, 5, 4, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (74, 5, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (75, 5, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (76, 5, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -344,15 +371,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (79, 5, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (80, 5, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (81, 5, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(82, 5, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(82, 5, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (83, 5, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (84, 5, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (85, 5, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(86, 6, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(87, 6, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(88, 6, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(89, 6, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(90, 6, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(86, 6, 1, 10.00, 2.00, 8.00, 5.00, NULL, NULL, 'Participante matriculado con exito'),
+(87, 6, 2, 8.00, 8.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(88, 6, 16, 8.00, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(89, 6, 3, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(90, 6, 4, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (91, 6, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (92, 6, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (93, 6, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -361,15 +388,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (96, 6, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (97, 6, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (98, 6, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(99, 6, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(99, 6, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (100, 6, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (101, 6, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (102, 6, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(103, 7, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(104, 7, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(105, 7, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(106, 7, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(107, 7, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(103, 7, 1, 10.00, 9.00, 8.00, 7.00, NULL, NULL, 'Participante matriculado con exito'),
+(104, 7, 2, 7.00, 8.00, 9.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(105, 7, 16, 8.00, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(106, 7, 3, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(107, 7, 4, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (108, 7, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (109, 7, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (110, 7, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -378,15 +405,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (113, 7, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (114, 7, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (115, 7, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(116, 7, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(116, 7, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (117, 7, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (118, 7, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (119, 7, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(120, 8, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(121, 8, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(122, 8, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(123, 8, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(124, 8, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(120, 8, 1, 10.00, 10.00, 10.00, 10.00, NULL, NULL, 'Participante matriculado con exito'),
+(121, 8, 2, 5.00, 8.00, 8.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(122, 8, 16, 5.00, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(123, 8, 3, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(124, 8, 4, 9.00, 9.00, 9.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (125, 8, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (126, 8, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (127, 8, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -395,15 +422,15 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (130, 8, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (131, 8, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (132, 8, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(133, 8, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(133, 8, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (134, 8, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (135, 8, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (136, 8, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(137, 9, 1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(138, 9, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(139, 9, 16, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(140, 9, 3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(141, 9, 4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(137, 9, 1, 10.00, 5.00, 5.00, 2.00, NULL, NULL, 'Participante matriculado con exito'),
+(138, 9, 2, 9.00, 9.00, 9.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(139, 9, 16, 9.00, NULL, NULL, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(140, 9, 3, 0.00, 0.00, 0.00, 0.00, 0.00, NULL, 'Participante matriculado con exito'),
+(141, 9, 4, 8.00, 9.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (142, 9, 5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (143, 9, 6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (144, 9, 7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
@@ -412,10 +439,31 @@ INSERT INTO `nota` (`id_nota`, `id_participante`, `id_modulos_curso`, `nota1`, `
 (147, 9, 10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (148, 9, 11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (149, 9, 12, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(150, 9, 14, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(150, 9, 14, 0.00, 0.00, 0.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
 (151, 9, 15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
 (152, 9, 17, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
-(153, 9, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito');
+(153, 9, 13, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(154, 1, 18, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(155, 1, 21, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(156, 1, 19, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(157, 1, 20, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(158, 1, 22, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(159, 10, 26, 10.00, 10.00, 10.00, 10.00, NULL, NULL, 'Participante matriculado con exito'),
+(160, 10, 31, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(161, 10, 32, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(162, 10, 27, 10.00, 6.00, 10.00, 10.00, 10.00, NULL, 'Participante matriculado con exito'),
+(163, 10, 28, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(164, 10, 29, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(165, 10, 30, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(166, 10, 33, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(167, 5, 18, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(168, 5, 21, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(169, 5, 19, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(170, 5, 20, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(171, 5, 22, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'Participante matriculado con exito'),
+(172, 1, 23, 10.00, 10.00, 10.00, NULL, NULL, NULL, 'Participante matriculado con exito'),
+(173, 1, 24, 9.00, 7.00, 9.00, 10.00, NULL, NULL, 'Participante matriculado con exito'),
+(174, 1, 25, 5.00, 8.00, 5.00, 7.00, 6.00, 8.00, 'Participante matriculado con exito');
 
 -- --------------------------------------------------------
 
@@ -444,15 +492,16 @@ CREATE TABLE `participante` (
 --
 
 INSERT INTO `participante` (`id_participante`, `nombres`, `apellidos`, `fecha_nacimiento`, `sexo`, `dui`, `nit`, `carnet_minoridad`, `direccion`, `telefono`, `email`, `pass`, `estado`) VALUES
-(1, 'CARLOS ALBERTO', 'MARTINEZ LOPEZ', '1993-06-21', 'MASCULINO', '02478959-9', '4578-789459-789-9', '3456789', 'en algun lugar de santa ana', '2345-6789', 'carlos.lopez@proyectosfgk.org', '12345', 1),
-(2, 'SIGFRIDO ERNESTO', 'GOMEZ GUINEA', '1990-05-05', 'MASCULINO', '12223456-9', '', '', 'COL.METROCENTRO', '2222-2222', 'sifri@gmail.com', '12345', 1),
-(3, 'KEVIN', 'MARTINEZ AYALA', '1996-02-10', 'MASCULINO', '99999999-1', '', '', 'COL.GUATEMALA', '2222-2222', 'KEVIN@gmail.com', '12345', 1),
-(4, 'ROBERTO HAROLDO', 'MORALES CHUMAGER', '2000-10-12', 'MASCULINO', '87654321-9', '', '', 'LAMATEPEC', '2999-9999', 'roberto@hotmail.com', '123456', 1),
-(5, 'ELIZABETH ESPERANZA', 'CARRANZA MORALES', '1995-10-11', 'FEMENINO', '', '1313-123123-131-1', '', 'LAMATEPEC', '2111-1111', 'elizabeth@yahoo.com', '12345', 1),
-(6, 'CLARA HAYDEE', 'ROJAS MARTINEZ', '1990-12-12', 'FEMENINO', '', '', '3333333', 'COL.GUATEMALITA', '2999-9872', 'klariwoman@hotmail.com', '12345', 1),
-(7, 'MARGARITA TEODORA', 'CONTRERAS', '2003-03-05', 'INDEFINIDO', '10101010-9', '', '', 'COL.IVU', '2999-9999', 'teorodito@gmail.com', '12345', 1),
-(8, 'JOSE MARIO', 'DIAZ MONTORROZA', '1998-02-02', 'MASCULINO', '24578954-9', '', '', 'Col Buena Vista #2 #182', '2578-8969', 'JOSEDIAS@OUTLOOK.COM', '12345', 1),
-(9, 'ALEJANDRA DINORA', 'MARTINEZ REPREZA', '1998-05-05', 'FEMENINO', '14978245-9', '', '', 'COLONIA CUSCATLAN CASA 23', '2784-8974', 'ALEJANDRADINORAH@GMAIL.COM', '12345', 1);
+(1, 'CARLOS ALBERTO', 'MARTINEZ LOPEZ', '1993-06-21', 'MASCULINO', '02345678-9', '4578-789459-789-9', '3456789', 'en algun lugar de santa ana', '2345-6789', 'carlos.lopez@proyectosfgk.org', '827ccb0eea8a706c4c34a16891f84e7b', 1),
+(2, 'SIGFRIDO ERNESTO', 'GOMEZ GUINEA', '1990-05-05', 'MASCULINO', '12223456-9', '', '', 'COL.METROCENTRO', '2222-2222', 'sifri@gmail.com', 'e4e4564027d73a4325024d948d167e93', 1),
+(3, 'KEVIN', 'MARTINEZ AYALA', '1996-02-10', 'MASCULINO', '99999999-1', '', '', 'COL.GUATEMALA', '2222-2222', 'KEVIN@gmail.com', 'e4e4564027d73a4325024d948d167e93', 1),
+(4, 'ROBERTO HAROLDO', 'MORALES CHUMAGER', '2000-10-12', 'MASCULINO', '87654321-9', '', '', 'LAMATEPEC', '2999-9999', 'roberto@hotmail.com', 'e4e4564027d73a4325024d948d167e93', 1),
+(5, 'ELIZABETH ESPERANZA', 'CARRANZA MORALES', '1995-10-11', 'FEMENINO', '', '1313-123123-131-1', '', 'LAMATEPEC', '2111-1111', 'elizabeth@yahoo.com', 'e4e4564027d73a4325024d948d167e93', 1),
+(6, 'CLARA HAYDEE', 'ROJAS MARTINEZ', '1990-12-12', 'FEMENINO', '', '', '3333333', 'COL.GUATEMALITA', '2999-9872', 'klariwoman@hotmail.com', 'e4e4564027d73a4325024d948d167e93', 1),
+(7, 'MARGARITA TEODORA', 'CONTRERAS', '2003-03-05', 'INDEFINIDO', '10101010-9', '', '', 'COL.IVU', '2999-9999', 'teorodito@gmail.com', 'e4e4564027d73a4325024d948d167e93', 1),
+(8, 'JOSE MARIO', 'DIAZ MONTORROZA', '1998-02-02', 'MASCULINO', '24578954-9', '', '', 'Col Buena Vista #2 #182', '2578-8969', 'JOSEDIAS@OUTLOOK.COM', 'e4e4564027d73a4325024d948d167e93', 1),
+(9, 'ALEJANDRA DINORA', 'MARTINEZ REPREZA', '1998-05-05', 'FEMENINO', '14978245-9', '', '', 'COLONIA CUSCATLAN CASA 23', '2784-8974', 'ALEJANDRADINORAH@GMAIL.COM', 'e4e4564027d73a4325024d948d167e93', 1),
+(10, 'MAURICIO ALFREDO', 'ORELLANA', '1997-07-19', 'MASCULINO', '09876543-1', '', '', 'EN ALGUN LUGAR DE SANTA ANA', '2458-8958', 'MAURICIO@OUTLOOK.COM', 'ESTUDIANTE', 1);
 
 -- --------------------------------------------------------
 
@@ -477,7 +526,27 @@ INSERT INTO `porcentajes_curso` (`id_porcentajes_curso`, `id_curso`, `id_tipo_mo
 (2, 1, 2, 20, 'Creado'),
 (3, 1, 3, 40, 'Creado'),
 (4, 1, 4, 0, 'Creado'),
-(5, 1, 5, 25, 'Creado');
+(5, 1, 5, 25, 'Creado'),
+(6, 6, 1, 0, 'Creado'),
+(7, 6, 2, 40, 'Creado'),
+(8, 6, 3, 40, 'Creado'),
+(9, 6, 4, 0, 'Creado'),
+(10, 6, 5, 20, 'Creado'),
+(11, 8, 1, 25, 'Creado'),
+(12, 8, 2, 25, 'Creado'),
+(13, 8, 3, 40, 'Creado'),
+(14, 8, 4, 0, 'Creado'),
+(15, 8, 5, 10, 'Creado'),
+(16, 2, 1, 15, 'Creado'),
+(17, 2, 2, 25, 'Creado'),
+(18, 2, 3, 40, 'Creado'),
+(19, 2, 4, 0, 'Creado'),
+(20, 2, 5, 20, 'Creado'),
+(21, 3, 1, 15, 'Creado'),
+(22, 3, 2, 20, 'Creado'),
+(23, 3, 3, 40, 'Creado'),
+(24, 3, 4, 0, 'Creado'),
+(25, 3, 5, 25, 'Creado');
 
 -- --------------------------------------------------------
 
@@ -585,7 +654,7 @@ ALTER TABLE `tipo_modulo`
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
@@ -597,19 +666,19 @@ ALTER TABLE `docente`
 -- AUTO_INCREMENT de la tabla `matricula`
 --
 ALTER TABLE `matricula`
-  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_matricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `modulo`
 --
 ALTER TABLE `modulo`
-  MODIFY `id_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_modulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `modulos_curso`
 --
 ALTER TABLE `modulos_curso`
-  MODIFY `id_modulos_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_modulos_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `nivel_curso`
@@ -621,19 +690,19 @@ ALTER TABLE `nivel_curso`
 -- AUTO_INCREMENT de la tabla `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT de la tabla `participante`
 --
 ALTER TABLE `participante`
-  MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `porcentajes_curso`
 --
 ALTER TABLE `porcentajes_curso`
-  MODIFY `id_porcentajes_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_porcentajes_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_modulo`

@@ -43,8 +43,6 @@ class Login extends Controller
                 $estudiante = $this->estudianteModel->logIn($_POST['pass'],$_POST['dui']);  
                 if($estudiante)
                 {
-                    //    ini_set("session.gc_maxlifetime","60");
-                    //    ini_set("session.cookie_lifetime","60");
                         session_start();
                     //    session_cache_expire(60);
                         $_SESSION['admin']="ADMINISTRADOR";
@@ -55,14 +53,7 @@ class Login extends Controller
                         $_SESSION['id_participante'] = $estudiante->id_participante;
                         $_SESSION['nombres'] = $estudiante->nombres;
                         $_SESSION['apellidos'] = $estudiante->apellidos;
-                    //    $_SESSION['start'] = time();
-                    //    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
-
-                    //MENSAJE DE BIENVENIDA CHAFA               
-                        // echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
-                        // </script>";
-                        // echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
-                        // </script>";
+                  
 
                         redireccionar('index/index2');  
                 }else{
@@ -86,9 +77,6 @@ class Login extends Controller
                     //    $_SESSION['start'] = time();
                     //    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60) ;						
 
-                    //MENSAJE DE BIENVENIDA CHAFA               
-                        // echo "<script> alert('Bienvenido ".$_SESSION['id_sesion']."');
-                        // </script>";
                         echo "<script> alert('Bienvenido ".$_SESSION['nombres']."');
                         </script>";
 

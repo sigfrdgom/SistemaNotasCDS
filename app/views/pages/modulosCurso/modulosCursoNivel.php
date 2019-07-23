@@ -51,8 +51,10 @@ require_once RUTA_APP . '/views/include/header.php';
                             <div class="card-body" >
                                 <h5 class="card-title"><?php echo "Nivel $cursos->nivel" ?></h5>
                                 <p class="card-text"><?php echo "<b>Curso:  </b> $cursos->nombre_curso" ?> </p>
-                                    <a href="<?php echo constant('RUTA_URL') ?>/modulosCurso/curso/<?php echo $cursos->id_curso ?>"
-                                    class="btn btn-primary btn-block"  >Ver modulos</a>
+                            </div>
+                            <div class="mx-5 mt-0 mb-2">
+                                <a href="<?php echo constant('RUTA_URL') ?>/modulosCurso/curso/<?php echo $cursos->id_curso ?>"
+                                class="btn btn-primary btn-block"  >Ver modulos</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Inicio: <?php echo $cursos->fecha_inicio ?></small>
@@ -63,7 +65,6 @@ require_once RUTA_APP . '/views/include/header.php';
                     <?php if ($x == 3) { ?>
                         </div> <br>
                     <?php } ?>
-                   
                     <?php $c++; $x++;}} ?>
 
             <!-- Este es el deck -->
